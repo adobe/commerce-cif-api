@@ -19,7 +19,7 @@ The CIF Cloud API is not a full CRUD commerce admin or management API, for examp
 
 ### API Specification
 
-The API and data models are specified in [swagger.yaml](src/main/resources/swagger/swagger.yaml) / [swagger.json](src/main/resources/swagger/swagger.json). Review directly in [Swagger UI](https://github.com/pages/adobe/commerce-cif-api/).
+The API and data models are specified in [swagger.yaml](src/main/resources/swagger/swagger.yaml) / [swagger.json](src/main/resources/swagger/swagger.json). Review directly in [Swagger UI](http://opensource.adobe.com/commerce-cif-api/).
 
 ### JSON model examples
 
@@ -49,7 +49,7 @@ To make changes to the API, simply edit the java model and api classes. Running 
 * the JS models and `package.json` files in `src/main/resources/javascript`
 
 ## Online Swagger-ui documentation
-To publish our CIF Cloud swagger specification, a [github page](https://github.com/pages/adobe/commerce-cif-api/) was 
+To publish our CIF Cloud swagger specification, a [github page](http://opensource.adobe.com/commerce-cif-api/) was 
 configured for the repository.
 The page is configured to display the content of the [docs](docs) folder, which is basically a slightly modified version of swagger-ui.
  
