@@ -1,0 +1,30 @@
+{
+    "id": "category-1-1",
+    "name": {
+        "de": "A localized DE name",
+        "en": "A localized EN name"
+    },
+    "description": {
+        "de": "A localized DE description",
+        "en": "A localized EN description"
+    },
+    "mainParentCategoryId": "category-1",
+    "parentCategories": [
+        {
+            "id": "category-1"
+        },
+        {
+            "id": "category-2"
+        }
+    ],
+    "subCategories": [
+        {
+            "id": "category-1-1-1"
+        },
+        {
+            "id": "category-1-1-2"
+        }
+    ],
+    "createdDate": "2017-01-11T14:58:29.432Z",
+    "lastModifiedDate": "2017-07-06T18:09:42.687Z"
+}

@@ -1,0 +1,43 @@
+{
+    "offset": 0,
+    "count": 4,
+    "total": 4,
+    "results": [
+        {
+            "id": "category-1",
+            "name": {
+                "en": "Root category 1"
+            },
+            "parentCategories": []
+        },
+        {
+            "id": "category-2",
+            "name": {
+                "en": "Root category 2"
+            },
+            "parentCategories": []
+        },
+        {
+            "id": "category-1-1",
+            "name": {
+                "en": "First child of category 1"
+            },
+            "parentCategories": [
+                {
+                    "id": "category-1"
+                }
+            ] 
+        },
+        {
+            "id": "category-2-1",
+            "name": {
+                "en": "First child of category 2"
+            },
+            "parentCategories": [
+                {
+                    "id": "category-2"
+                }
+            ] 
+        }
+    ]
+}

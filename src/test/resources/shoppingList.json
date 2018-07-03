@@ -1,0 +1,24 @@
+{
+  "id": "list-id",
+  "name": {
+    "en": "My List",
+    "de": "Meine Liste"
+  },
+  "description": {
+    "en": "Shopping list",
+    "de": "Einkaufsliste"
+  },
+  "entries": [
+    {
+      "id": "list-entry-id",
+      "productVariant": {
+      },
+      "quantity": 1,
+      "createdDate": "2017-01-11T14:58:29.432Z",
+      "lastModifiedDate": "2017-01-11T14:58:29.432Z"
+    }
+  ],
+  "customerId": "customerId",
+  "createdDate": "2017-01-11T14:58:29.432Z",
+  "lastModifiedDate": "2017-01-11T14:58:29.432Z"
+}

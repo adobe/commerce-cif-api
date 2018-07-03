@@ -1,0 +1,15 @@
+{
+    "offset": 0,
+    "count": 1,
+    "total": 1,
+    "results": [
+        {
+            "inventoryId": "inventory_id_12345",
+            "productId": "product-id-12345",
+            "scope": "scope",
+            "availableQuantity": 2,
+            "restockDaysPeriod": 5,
+            "expectedDeliveryDate": "2017-01-11T14:58:29.432Z"
+        }
+    ]
+}

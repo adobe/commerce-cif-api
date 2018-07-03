@@ -1,0 +1,21 @@
+{
+    "id": "shipping-1",
+    "name": "1-day shipping",
+    "price": {
+        "country": "US",
+        "currency": "USD",
+        "centAmount": 1000
+    },
+    "discountedPrice": {},
+    "shippingTaxInfo": {
+        "totalCentAmount": 100,
+        "taxPortions": [
+            {
+                "name": {
+                    "en": "Fuel tax 10%"
+                },
+                "centAmount": 100
+            }
+        ]
+    }
+}

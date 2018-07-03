@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright 2018 Adobe. All rights reserved.
+    This file is licensed to you under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License. You may obtain a copy
+    of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software distributed under
+    the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+    OF ANY KIND, either express or implied. See the License for the specific language
+    governing permissions and limitations under the License.
+
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.adobe.commerce.cif</groupId>
+    <artifactId>api-model</artifactId>
+    <version>0.1.119-SNAPSHOT</version>
+
+    <name>Commerce Integration Framework (CIF) Cloud - API and Models</name>
+    <description>This package contains the REST API and java model definition of the Commerce Integration Framework (CIF) Cloud.</description>
+
+    <scm>
+        <connection>scm:git:https://github.com/adobe/commerce-cif-api.git</connection>
+        <developerConnection>scm:git:git@github.com/adobe/commerce-cif-api.git</developerConnection>
+        <url>https://github.com/adobe/commerce-cif-api</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>**/*</exclude>
+                </excludes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>com.github.kongchen</groupId>
+                <artifactId>swagger-maven-plugin</artifactId>
+                <version>3.1.7</version>
+                <configuration>
+                    <apiSources>
+                        <apiSource>
+                            <springmvc>false</springmvc>
+                            <locations>com.adobe.commerce.cif.api</locations>
+                            <schemes>https</schemes>
+                            <host>runtime.adobe.com</host>
+                            <basePath>/commerce</basePath>
+                            <info>
+                                <title>Commerce Integration Framework (CIF) Cloud API</title>
+                                <version>${project.version}</version>
+                                <description>Adobe Commerce Cloud API</description>
+                                <license>
+                                    <name>Copyright 2018 Adobe. All rights reserved.</name>
+                                </license>
+                                <vendorExtensions>
+                                    <x-ow-namespace>your-namespace</x-ow-namespace>
+                                    <x-ow-package>default</x-ow-package>
+                                </vendorExtensions>
+                            </info>
+                            <templatePath>${basedir}/src/main/resources/template/strapdown.html.hbs</templatePath>
+                            <outputPath>${basedir}/src/main/resources/generated/swagger/document.html</outputPath>
+                            <swaggerDirectory>${basedir}/src/main/resources/generated/swagger/</swaggerDirectory>
+                            <outputFormats>json,yaml</outputFormats>
+                        </apiSource>
+                    </apiSources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.4</version>
+                <configuration>
+                    <workingDirectory>src/main/javascript</workingDirectory>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>Install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>v7.7.4</nodeVersion>
+                            <npmVersion>4.1.2</npmVersion>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>npm install</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>npm run build</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run build</arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>npm publish</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run perform</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>src/main/resources/generated/swagger</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>src/main/resources/generated/javascript</directory>
+                        </fileset>
+                        <fileset>
+                            <directory>src/main/javascript</directory>
+                            <excludes>
+                                <exclude>*.js</exclude>
+                                <exclude>README.md</exclude>
+                                <exclude>package.json</exclude>
+                                <exclude>license.txt</exclude>
+                                <exclude>models-package.json</exclude>
+                            </excludes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.rat</groupId>
+                <artifactId>apache-rat-plugin</artifactId>
+                <version>0.12</version>
+                <configuration>
+                    <addDefaultLicenseMatchers>true</addDefaultLicenseMatchers>
+                    <excludes combine.children="append">
+                        <!-- don't check anything in target -->
+                        <exclude>target/*</exclude>
+                        <!-- README files in markdown format -->
+                        <exclude>**/*.md</exclude>
+                        <exclude>wiki/*.md</exclude>
+                        <!-- ignore node and npm install directories -->
+                        <exclude>src/main/javascript/node/**</exclude>
+                        <exclude>src/main/javascript/node_modules/**</exclude>
+                        <!-- ignore the swagger doc template -->
+                        <exclude>src/main/resources/template/*</exclude>
+                        <!-- ignore package.json -->
+                        <exclude>**/package.json</exclude>
+                        <exclude>**/models-package.json</exclude>
+                        <!-- Post-release script -->
+                        <exclude>postrelease-commit.sh</exclude>
+                        <!-- Generated nginx gateway config -->
+                        <exclude>**/nginx-config.txt</exclude>
+                        <!-- swagger docs -->
+                        <exclude>docs/*</exclude>
+                        <exclude>src/main/resources/generated/swagger/*</exclude>
+                        <exclude>src/main/resources/swagger/*</exclude>
+                        <!-- JSON examples -->
+                        <exclude>src/test/resources/*</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+            </plugin>
+
+            <plugin>
+                <artifactId>exec-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <id>Postrelease commit generated files</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${basedir}/postrelease-commit.sh</executable>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Maven release plugins -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.1</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.release</groupId>
+                        <artifactId>maven-release-oddeven-policy</artifactId>
+                        <version>2.5.1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-gitexe</artifactId>
+                        <version>1.9.1</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <scmCommentPrefix>@releng [maven-scm] :</scmCommentPrefix>
+                    <preparationGoals>clean install</preparationGoals>
+                    <goals>deploy</goals>
+                    <projectVersionPolicyId>OddEvenVersionPolicy</projectVersionPolicyId>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <checkModificationExcludes>
+                        <!-- Generated files are ignored when the plugin checks for local modifications -->
+                        <checkModificationExclude>api-model/src/main/resources/javascript/*
+                        </checkModificationExclude>
+                        <checkModificationExclude>api-model/src/main/resources/swagger/*
+                        </checkModificationExclude>
+                    </checkModificationExcludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.4</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-core</artifactId>
+            <version>1.5.14</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.specs</groupId>
+            <artifactId>org.apache.servicemix.specs.jsr311-api-1.1</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        
+        <!-- Unit tests dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.8.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.8.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+    	    <groupId>com.google.guava</groupId>
+    	    <artifactId>guava</artifactId>
+    	    <version>24.1-jre</version>
+    	    <scope>test</scope>
+    	</dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>${releaseRepository-Id}</id>
+            <name>${releaseRepository-Name}</name>
+            <url>${releaseRepository-URL}</url>
+        </repository>
+        <snapshotRepository>
+            <id>${snapshotRepository-Id}</id>
+            <name>${snapshotRepository-Name}</name>
+            <url>${snapshotRepository-URL}</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>

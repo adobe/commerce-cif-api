@@ -1,0 +1,18 @@
+{
+  "name": "getProductById-example",
+  "version": "0.0.1",
+  "main": "getProductById.js",
+  "description": "An example getProductById implementation.",
+  "private": true,
+  "author": {
+    "name": "Adobe Systems Inc."
+  },
+  "dependencies": {
+    "node-rest-client": "3.1.0"
+  },
+  "scripts": {
+    "zip": "rm -f getProductById.zip; zip -q -r getProductById.zip getProductById.js package.json node_modules",
+    "update": "wsk -i action update getProductById --kind nodejs:6 --web true getProductById.zip",
+    "deploy": "npm run zip; npm run update"
+  }
+}

@@ -1,0 +1,21 @@
+{
+    "id": "address-1",
+    "organizationName": "Adobe Systems Incorporated",
+    "department": "IT",
+    "title": "Dr",
+    "salutation": "Mr",
+    "firstName": "John",
+    "lastName": "Doe",
+    "streetName": "Park Avenue",
+    "streetNumber": "345",
+    "additionalStreetInfo": "",
+    "additionalAddressInfo": "East Tower",
+    "postalCode": "95110-2704",
+    "city": "San Jose",
+    "region": "CA",
+    "country": "US",
+    "phone": "408-536-6000",
+    "mobile": "408-536-6000",
+    "fax": "408-537-6000",
+    "email": "nobody@adobe.com"
+}

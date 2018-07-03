@@ -1,0 +1,15 @@
+{
+    "id": "payment-1",
+    "customer": {},
+    "method": "Credit-Card payment",
+    "amount": {
+        "country": "US",
+        "currency": "USD",
+        "centAmount": 9000
+    },
+    "token": "9c119e06e12c077c15c511ed15f16ff32c5e9936",
+    "statusCode": "successful",
+    "status": "1",
+    "createdDate": "2017-01-11T14:58:29.432Z",
+    "lastModifiedDate": "2017-07-06T18:09:42.687Z"
+}

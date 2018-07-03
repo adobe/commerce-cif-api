@@ -1,0 +1,13 @@
+{
+  "name": "ccif-models",
+  "version": "0.1.118",
+  "description": "ES6 model classes based on the CCIF Swagger definitions.",
+  "main": "index.js",
+  "author": {
+    "name": "Adobe Systems",
+    "url": "http://adobe.com"
+  },
+  "publishConfig": {
+    "registry": "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-ccif-release/"
+  }
+}

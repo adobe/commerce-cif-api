@@ -1,0 +1,29 @@
+{
+    "customer": {
+        "id": "customer-1",
+        "email": "nobody@adobe.com",
+        "firstname": "John",
+        "lastname": "Doe",
+        "createdDate": "2017-01-11T14:58:29.432Z",
+        "lastModifiedDate": "2017-07-06T18:09:42.687Z"
+    },
+    "cart": {
+        "id": "cart-1",
+        "customerId": "customer-1",
+        "currency": "USD",
+        "taxIncludedInPrices": true,
+        "netTotalPrice": {},
+        "grossTotalPrice": {},
+        "totalProductPrice": {},
+        "cartEntries": [],
+        "cartTaxInfo": {},
+        "billingAddress": {},
+        "shippingAddress": {},
+        "shippingInfo": {},
+        "discounts": [],
+        "payment": {},
+        "coupons": [],
+        "createdDate": "2017-01-11T14:58:29.432Z",
+        "lastModifiedDate": "2017-07-06T18:09:42.687Z"
+    }
+}

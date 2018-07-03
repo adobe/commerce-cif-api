@@ -1,0 +1,22 @@
+{
+  "name": "ccif-js-model-generator",
+  "version": "0.1.0",
+  "description": "Generates ES6 model classes based on the CCIF Swagger definitions.",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node index.js; node nginx.js",
+    "perform": "cd ../resources/javascript; npm publish",
+    "nginx": "node nginx.js"
+  },
+  "author": {
+    "name": "Adobe Systems",
+    "url": "http://adobe.com"
+  },
+  "dependencies": {
+    "lodash": "4.17.4",
+    "fs-extra": "3.0.1",
+    "js-string-escape": "1.0.1"
+  }
+}
