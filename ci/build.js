@@ -23,8 +23,6 @@ ci.stage('BUILD');
 ci.sh('mvn -B clean install -DskipTests');
 
 ci.stage('UNIT TESTS');
-ci.dir('repo', () => {
-    ci.sh('mvn -B verify');
-});
+ci.sh('mvn -B verify');
 
 ci.stage('BUILD DONE');
