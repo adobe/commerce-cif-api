@@ -10,12 +10,10 @@ maven-eclipse.xml
 *.ipr
 *.iws
 *.bak
+*.log
 .vlt
 .DS_Store
-jcr.log
 atlassian-ide-plugin.xml
-.vlt-sync.log
-.vlt-sync-config.properties
 
 /target/
 src/main/javascript/node
