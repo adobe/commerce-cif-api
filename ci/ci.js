@@ -23,7 +23,6 @@ module.exports = class CI {
      * Print build context to stdout.
      */
     context() {
-        console.log(process.env);
         console.log("Node version: %s", process.version);
         this.sh('printf "NPM version: $(npm --version)"');
         this.sh('java -version');
