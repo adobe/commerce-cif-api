@@ -19,7 +19,7 @@ const ci = new CI();
 
 ci.context();
 
-ci.sh('echo $GPG_PRIVATE_KEY | base64 --decode | gpg --import');
+ci.sh('echo $GPG_PRIVATE_KEY | base64 --decode | gpg --batch --import');
 
 ci.stage('BUILD');
 ci.sh('mvn -B clean install -DskipTests -s ./settings.xml');
