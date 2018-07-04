@@ -22,9 +22,9 @@ ci.context();
 ci.sh('echo $GPG_PRIVATE_KEY | base64 --decode | gpg --batch --import');
 
 ci.stage('BUILD');
-ci.sh('mvn -B clean install -DskipTests -s ./settings.xml');
+ci.sh('mvn -B clean install -DskipTests -s ci/settings.xml');
 
 ci.stage('UNIT TESTS');
-ci.sh('mvn -B verify -s ./settings.xml');
+ci.sh('mvn -B verify -s ci/settings.xml');
 
 ci.stage('BUILD DONE');
