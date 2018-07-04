@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: adobe/commerce-cif-ci-env:v0.0.1
+    steps:
+      - checkout
+      - restore_cache:
+          keys: 
+            - maven-repo-v1-{{ checksum "pom.xml" }}
+            - maven-repo-v1-
+      - run:
+          name: Build
+          command: node ci/build.js
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: maven-repo-v1-{{ checksum "pom.xml" }}
+      - store_test_results:
+          path: target/surefire-reports
+      - store_artifacts:
+          path: target/surefire-reports
