@@ -181,6 +181,7 @@
                         <!-- ignore node and npm install directories -->
                         <exclude>src/main/javascript/node/**</exclude>
                         <exclude>src/main/javascript/node_modules/**</exclude>
+                        <exclude>**/npm-debug.log</exclude>
                         <!-- ignore the swagger doc template -->
                         <exclude>src/main/resources/template/*</exclude>
                         <!-- ignore package.json -->
@@ -196,6 +197,8 @@
                         <exclude>src/main/resources/swagger/*</exclude>
                         <!-- JSON examples -->
                         <exclude>src/test/resources/*</exclude>
+                        <!-- CircleCI -->
+                        <exclude>.circleci/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
