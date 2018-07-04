@@ -400,6 +400,12 @@
             <organizationUrl>https://www.adobe.com</organizationUrl>
         </developer>
         <developer>
+            <name>Daniel Platon</name>
+            <email>platon@adobe.com</email>
+            <organization>Adobe</organization>
+            <organizationUrl>https://www.adobe.com</organizationUrl>
+        </developer>
+        <developer>
             <name>Levente Santha</name>
             <email>sntha@adobe.com</email>
             <organization>Adobe</organization>
