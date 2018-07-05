@@ -1,4 +1,5 @@
 [![CircleCI](https://circleci.com/gh/adobe/commerce-cif-api.svg?style=svg)](https://circleci.com/gh/adobe/commerce-cif-api)
+[![Swagger](https://img.shields.io/badge/Swagger-CIF%20API-brightgreen.svg)](http://opensource.adobe.com/commerce-cif-api/)
 
 # Adobe CIF Cloud API and data model
 
