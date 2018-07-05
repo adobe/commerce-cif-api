@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/adobe/commerce-cif-api.svg?style=svg)](https://circleci.com/gh/adobe/commerce-cif-api)
+
 # Adobe CIF Cloud API and data model
 
 This repository contains the API reference and data model documentation files for the Adobe Commerce Integration Framework (CIF) Cloud API.
