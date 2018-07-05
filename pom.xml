@@ -22,6 +22,7 @@
 
     <name>Commerce Integration Framework (CIF) Cloud - API and Models</name>
     <description>This package contains the REST API and java model definition of the Commerce Integration Framework (CIF) Cloud.</description>
+    <url>https://github.com/adobe/commerce-cif-api</url>
 
     <scm>
         <connection>scm:git:https://github.com/adobe/commerce-cif-api.git</connection>
@@ -29,6 +30,20 @@
         <url>https://github.com/adobe/commerce-cif-api</url>
         <tag>HEAD</tag>
     </scm>
+    <organization>
+        <name>Adobe</name>
+        <url>https://www.adobe.com</url>
+    </organization>
+    <licenses>
+        <license>
+        <name>The Apache License, Version 2.0</name>
+        <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <build>
         <resources>
@@ -217,47 +232,18 @@
                 <version>3.0.2</version>
             </plugin>
 
-            <plugin>
-                <artifactId>exec-maven-plugin</artifactId>
-                <groupId>org.codehaus.mojo</groupId>
-                <version>1.6.0</version>
-                <executions>
-                    <execution>
-                        <id>Postrelease commit generated files</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>${basedir}/postrelease-commit.sh</executable>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
             <!-- Maven release plugins -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.5.1</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.release</groupId>
-                        <artifactId>maven-release-oddeven-policy</artifactId>
-                        <version>2.5.1</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.apache.maven.scm</groupId>
-                        <artifactId>maven-scm-provider-gitexe</artifactId>
-                        <version>1.9.1</version>
-                    </dependency>
-                </dependencies>
                 <configuration>
                     <scmCommentPrefix>@releng [maven-scm] :</scmCommentPrefix>
                     <preparationGoals>clean install</preparationGoals>
-                    <goals>deploy</goals>
-                    <projectVersionPolicyId>OddEvenVersionPolicy</projectVersionPolicyId>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <releaseProfiles>release</releaseProfiles>
+                    <goals>deploy</goals>
                     <checkModificationExcludes>
                         <!-- Generated files are ignored when the plugin checks for local modifications -->
                         <checkModificationExclude>api-model/src/main/resources/javascript/*
@@ -268,6 +254,17 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                   </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.8.2</version>
@@ -276,11 +273,44 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.9</version>
+                <configuration>
+                    <quiet>true</quiet>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -331,17 +361,58 @@
     </dependencies>
 
     <distributionManagement>
-        <repository>
-            <id>${releaseRepository-Id}</id>
-            <name>${releaseRepository-Name}</name>
-            <url>${releaseRepository-URL}</url>
-        </repository>
         <snapshotRepository>
-            <id>${snapshotRepository-Id}</id>
-            <name>${snapshotRepository-Name}</name>
-            <url>${snapshotRepository-URL}</url>
-            <uniqueVersion>false</uniqueVersion>
+	        <id>ossrh</id>
+	        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
+	    <repository>
+	        <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
     </distributionManagement>
 
+    <developers>
+        <developer>
+            <name>Mark J. Becker</name>
+            <email>mabecker@adobe.com</email>
+            <organization>Adobe</organization>
+            <organizationUrl>https://www.adobe.com</organizationUrl>
+        </developer>
+        <developer>
+            <name>Markus Haack</name>
+            <email>mhaack@adobe.com</email>
+            <organization>Adobe</organization>
+            <organizationUrl>https://www.adobe.com</organizationUrl>
+	    </developer>
+        <developer>
+            <name>Robert Hasna</name>
+            <email>rhasna@adobe.com</email>
+            <organization>Adobe</organization>
+            <organizationUrl>https://www.adobe.com</organizationUrl>
+        </developer>
+        <developer>
+            <name>Christophe Jelger</name>
+            <email>jelger@adobe.com</email>
+            <organization>Adobe</organization>
+            <organizationUrl>https://www.adobe.com</organizationUrl>
+        </developer>
+        <developer>
+            <name>Sorin Maftei</name>
+            <email>smaftei@adobe.com</email>
+            <organization>Adobe</organization>
+            <organizationUrl>https://www.adobe.com</organizationUrl>
+        </developer>
+        <developer>
+            <name>Daniel Platon</name>
+            <email>platon@adobe.com</email>
+            <organization>Adobe</organization>
+            <organizationUrl>https://www.adobe.com</organizationUrl>
+        </developer>
+        <developer>
+            <name>Levente Santha</name>
+            <email>sntha@adobe.com</email>
+            <organization>Adobe</organization>
+            <organizationUrl>https://www.adobe.com</organizationUrl>
+        </developer>
+    </developers>
 </project>
