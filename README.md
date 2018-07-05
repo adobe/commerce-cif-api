@@ -23,9 +23,9 @@ The CIF Cloud API is not a full CRUD commerce admin or management API, for examp
 
 The API and data models are specified in [swagger.yaml](src/main/resources/swagger/swagger.yaml) / [swagger.json](src/main/resources/swagger/swagger.json). Review directly in [Swagger UI](http://opensource.adobe.com/commerce-cif-api/).
 
-The API and models are actually defined in java with both `swagger` and `jax-rs` annotations, so we do not directly edit the swagger JSON oand YAML specification. These java definitions can be found under [src/main/java](src/main/java). They are used to automatically generate:
+The API and models are actually defined in java with both `swagger` and `jax-rs` annotations, so we do not directly edit the swagger JSON and YAML specification. These java definitions can be found under [src/main/java](src/main/java). They are used to automatically generate:
 * the swagger specification: [src/main/resources/swagger](src/main/resources/swagger)
-* the javascript model classes: [src/main/resources/javascript](src/main/resources/javascript)
+* the javascript model classes used by the CIF implementations written in `Node.js`: [src/main/resources/javascript](src/main/resources/javascript)
 * the nginx configuration that can be used to configure the CIF REST API endpoints on an Openwhisk environment: [src/main/resources/nginx](src/main/resources/nginx)
 
 Note that the build actually generates these files under the `src/main/resources/generated` folder, but this folder is not committed on the git repository. The `maven release` process actually copies the generated files to the folders mentioned above so that we only have released files in the repository.
@@ -34,9 +34,13 @@ Note that the build actually generates these files under the `src/main/resources
 
 To make changes to the API and/or object models, simply edit or add new java model(s) and api class(es). Running `mvn clean package` will then regenerate the swagger specification, documentation, javascript model classes, and nginx configuration.
 
+The java unit tests in [src/test](src/test) ensure that all model classes define proper `public` getter and setter methods for all fields with `protected` modifier. This ensures that java libraries like `jackson` or `GSON` will be able to convert JSON responses into java objects and that these java objects can easily be extended.
+
 ### JSON model examples
 
-The [examples](src/test/resources) folder contains some JSON model examples that can help during the development of the CIF Cloud API. Check the [README](src/test/resources) in that folder for more information about the examples.
+The [resources](src/test/resources) folder contains some JSON model examples that can help during the development of the CIF Cloud API. Check the [README](src/test/resources) in that folder for more information about the examples.
+
+Note that these examples are also used by unit tests to ensure that they are always up-to-date with the java models. This means that a change in a model usually requires applying that change to the corresponsing JSON example. This ensures that all examples are always also updated so that they accurately represent the JSON responses expected by the CIF API.
 
 ## Adobe I/O Runtime
 
