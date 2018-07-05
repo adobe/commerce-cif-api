@@ -46,11 +46,9 @@ Note that these examples are also used by unit tests to ensure that they are alw
 
 The CIF Cloud services architecture is based on [Apache OpenWhisk](https://openwhisk.apache.org) & [Adobe I/O Runtime](https://www.adobe.io/apis/cloudplatform/runtime.html). The main building blocks of the new commerce services are serverless functions (OpenWhisk actions). These actions run on Adobe I/O Runtime inside an isolated container, stateless and serverless interacting with the commerce backend system or other endpoints via their APIs. 
 
-## Get started
+## Implementing the CIF API
 
-To get started, you can follow the [tutorial](documentation/tutorial) that guides you into developing one particular API endpoint.
-
-## Documentation
+If you plan to implement the CIF API for a particular commerce system, you can follow the [tutorial](documentation/tutorial) that guides you into developing one particular API endpoint.
 
 ### Product Search
 
