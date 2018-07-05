@@ -26,7 +26,7 @@
 
     <scm>
         <connection>scm:git:https://github.com/adobe/commerce-cif-api.git</connection>
-        <developerConnection>scm:git:git@github.com/adobe/commerce-cif-api.git</developerConnection>
+        <developerConnection>scm:git:https://github.com/adobe/commerce-cif-api.git</developerConnection>
         <url>https://github.com/adobe/commerce-cif-api</url>
         <tag>HEAD</tag>
     </scm>
@@ -133,6 +133,7 @@
                             <arguments>run build</arguments>
                         </configuration>
                     </execution>
+                    <!--
                     <execution>
                         <id>npm publish</id>
                         <phase>deploy</phase>
@@ -143,6 +144,7 @@
                             <arguments>run perform</arguments>
                         </configuration>
                     </execution>
+                    -->
                 </executions>
             </plugin>
 
