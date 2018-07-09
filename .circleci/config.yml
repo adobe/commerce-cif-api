@@ -24,6 +24,7 @@ jobs:
     docker:
       - image: adobe/commerce-cif-ci-env:v0.0.1
     steps:
+      - checkout
       - restore_cache:
           keys: 
             - maven-repo-v1-{{ checksum "pom.xml" }}
@@ -41,6 +42,7 @@ workflows:
           requires:
             - build
           filters:
+            branches:
+              ignore: /.*/
             tags:
-              only:
-                - /^@release-(major|minor|patch).*/
+              only: /^@release-(major|minor|patch).*/
