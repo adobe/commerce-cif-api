@@ -67,10 +67,6 @@ function release(pomVersion) {
     console.log('Released version : ' + newVersion);
     console.log('Next version     : ' + nextVersion);
     
-    // Import PGP key into 'gpg' config + configure non-interactive mode
-    ci.sh('echo $GPG_PRIVATE_KEY | base64 --decode | gpg --batch --import');
-    ci.sh('echo "pinentry-mode loopback" > /home/circleci/.gnupg/gpg.conf');
-    
     ci.sh('mvn -B -s ci/settings.xml clean release:prepare release:perform -DreleaseVersion=' + newVersion + ' -DdevelopmentVersion=' + nextVersion);
     
     ci.stage('RELEASE DONE');
