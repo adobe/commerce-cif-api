@@ -1,13 +1,12 @@
 {
-  "name": "ccif-models",
+  "name": "@adobe/commerce-cif-model",
   "version": "VERSION_PLACEHOLDER",
-  "description": "ES6 model classes based on the CCIF Swagger definitions.",
-  "main": "index.js",
-  "author": {
-    "name": "Adobe Systems",
-    "url": "http://adobe.com"
-  },
-  "publishConfig": {
-    "registry": "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-ccif-release/"
+  "description": "Adobe Commerce Integration Framework (CIF) Model Project",
+  "author": "Adobe Systems Inc.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adobe/commerce-cif-api.git"
   }
 }
+
