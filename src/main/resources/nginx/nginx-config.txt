@@ -5,10 +5,10 @@
 #    before the first location directive that already exists in the file
 # 3) Restart the Openwhisk nginx/edge component by running "wskdev edge"
 #
-# CCIF API Version 0.1.118
+# CCIF API Version 0.1.120
 
 # set $controller "http://controllers";
-set $ow_namespace "aem_demo";
+set $ow_namespace "your-namespace";
 set $ow_package "default";
 
 location = /commerce/carts {

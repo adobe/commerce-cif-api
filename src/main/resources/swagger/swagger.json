@@ -2,10 +2,10 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "Adobe Commerce Cloud API",
-    "version" : "0.1.118",
-    "title" : "Commerce Cloud Integration Framework API",
+    "version" : "0.1.120",
+    "title" : "Commerce Integration Framework (CIF) Cloud API",
     "license" : {
-      "name" : "Copyright 2018 Adobe Systems Incorporated. All Rights Reserved."
+      "name" : "Copyright 2018 Adobe. All rights reserved."
     },
     "x-ow-namespace" : "your-namespace",
     "x-ow-package" : "default"
