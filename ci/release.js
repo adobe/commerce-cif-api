@@ -58,7 +58,7 @@ function release(pomVersion) {
     
     // We cannot find out what git branch has the tag, so we assume/enforce that releases are done on master
     console.log('Checking out the master branch so we can commit and push');
-    ci.sh('git checkout CIF-265');
+    ci.sh('git checkout master');
     
     let newVersion, nextVersion;
     let currentVersion = semver.coerce(pomVersion).version;
