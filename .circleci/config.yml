@@ -48,4 +48,4 @@ workflows:
             branches:
               ignore: /.*/
             tags:
-              only: /^@release-(major|minor|patch).*/
+              only: /^@release-(major|minor|patch)$/
