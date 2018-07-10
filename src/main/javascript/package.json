@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node index.js; node nginx.js",
-    "perform": "cd ../resources/javascript; npm publish",
+    "perform": "cd ../resources/javascript; npm publish --access public",
     "nginx": "node nginx.js"
   },
   "author": {

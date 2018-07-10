@@ -46,6 +46,9 @@ pomParser.parse(opts, function(err, response) {
     } finally {
         // Remove release tag
         ci.sh('git push --delete origin ' + gitTag);
+        
+        // Remove NPM token
+        ci.sh('rm -f ~/.npmrc');
     }
 });
 
@@ -80,6 +83,9 @@ function release(pomVersion) {
     // Import PGP key into 'gpg' config + configure non-interactive mode
     ci.sh('echo $GPG_PRIVATE_KEY | base64 --decode | gpg --batch --import');
     ci.sh('echo "pinentry-mode loopback" > /home/circleci/.gnupg/gpg.conf');
+    
+    // Configure NPM token
+    ci.sh('echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc');
     
     ci.sh('mvn -B -s ci/settings.xml clean release:prepare release:perform -DreleaseVersion=' + newVersion + ' -DdevelopmentVersion=' + nextVersion);
     

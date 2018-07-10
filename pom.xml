@@ -133,7 +133,6 @@
                             <arguments>run build</arguments>
                         </configuration>
                     </execution>
-                    <!--
                     <execution>
                         <id>npm publish</id>
                         <phase>deploy</phase>
@@ -144,7 +143,6 @@
                             <arguments>run perform</arguments>
                         </configuration>
                     </execution>
-                    -->
                 </executions>
             </plugin>
 
