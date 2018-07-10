@@ -51,9 +51,10 @@ pomParser.parse(opts, function(err, response) {
 
 function release(pomVersion) {
     
-    ci.stage('RELEASE ' + gitTag + ' ' + process.env.CIRCLE_BRANCH);
+    ci.stage('RELEASE ' + gitTag);
     
-    console.log('Checking out the current branch so we can commit and push');
+    // We cannot find out what git branch has the tag, so we assume/enforce that releases are done on master
+    console.log('Checking out the master branch so we can commit and push');
     ci.sh('git checkout CIF-265');
     
     let newVersion, nextVersion;
