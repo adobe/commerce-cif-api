@@ -32,7 +32,7 @@ var opts = {
 
 pomParser.parse(opts, function(err, response) {
     if (err) {
-        console.log('Error when opening/parsing POM' + err);
+        console.error('Error when opening/parsing POM' + err);
         throw err;
     }
  
@@ -41,14 +41,13 @@ pomParser.parse(opts, function(err, response) {
             release(response.pomObject.project.version);
             commit();
         });
-    } catch (error) {
-        throw error;
     } finally {
         // Remove release tag
         ci.sh('git push --delete origin ' + gitTag);
         
-        // Remove NPM token
+        // Remove NPM token and 'gpg' config
         ci.sh('rm -f ~/.npmrc');
+        ci.sh('rm -rf /home/circleci/.gnupg');
     }
 });
 

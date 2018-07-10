@@ -17,7 +17,6 @@ atlassian-ide-plugin.xml
 
 /target/
 src/main/javascript/node
-src/main/javascript/node_modules
 src/main/resources/generated
 
-ci/node_modules
+**/node_modules
