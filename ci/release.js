@@ -41,6 +41,8 @@ pomParser.parse(opts, function(err, response) {
             release(response.pomObject.project.version);
             commit();
         });
+    } catch (error) {
+        throw error;
     } finally {
         // Remove release tag
         ci.sh('git push --delete origin ' + gitTag);
@@ -52,7 +54,7 @@ function release(pomVersion) {
     ci.stage('RELEASE ' + gitTag + ' ' + process.env.CIRCLE_BRANCH);
     
     console.log('Checking out the current branch so we can commit and push');
-    ci.sh('git checkout ${CIRCLE_BRANCH}')
+    ci.sh('git checkout CIF-265');
     
     let newVersion, nextVersion;
     let currentVersion = semver.coerce(pomVersion).version;
@@ -94,7 +96,7 @@ function commit() {
     ci.sh('git add -A src/main/resources/nginx/*');
     ci.sh('git add -A docs/swagger.json');
     ci.sh('git commit -m "@releng : automatically commit generated files after maven release:perform"');
-    ci.sh('git push git@github.com:adobe/commerce-cif-api.git ${CIRCLE_BRANCH}');
+    ci.sh('git push git@github.com:adobe/commerce-cif-api.git');
     
     ci.stage('COMMIT DONE');
 }
