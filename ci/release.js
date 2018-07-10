@@ -32,12 +32,19 @@ var opts = {
 
 pomParser.parse(opts, function(err, response) {
     if (err) {
-          console.log('Error when opening/parsing POM' + err);
+        console.log('Error when opening/parsing POM' + err);
         throw err;
     }
  
-    release(response.pomObject.project.version);
-    commit();
+    try {
+        ci.gitImpersonate('CircleCi', 'noreply@circleci.com', () => {
+            release(response.pomObject.project.version);
+            commit();
+        });
+    } finally {
+        // Remove release tag
+        ci.sh('git push --delete origin ' + gitTag);
+    }
 });
 
 function release(pomVersion) {
