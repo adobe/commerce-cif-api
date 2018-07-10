@@ -31,7 +31,7 @@ jobs:
             - maven-repo-v1-
       - run:
           name: Release
-          command: echo "Performing release with $CIRCLE_TAG"
+          command: cd ci; npm install; cd ..; node ci/release.js
 
 workflows:
   version: 2

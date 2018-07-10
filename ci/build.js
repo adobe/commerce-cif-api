@@ -19,11 +19,8 @@ const ci = new CI();
 
 ci.context();
 
-ci.sh('echo $GPG_PRIVATE_KEY | base64 --decode | gpg --batch --import');
-ci.sh('echo "pinentry-mode loopback" > /home/circleci/.gnupg/gpg.conf');
-
 ci.stage('BUILD');
-ci.sh('mvn -B clean install -DskipTests -s ci/settings.xml');
+ci.sh('mvn -B clean package -DskipTests -s ci/settings.xml');
 
 ci.stage('UNIT TESTS');
 ci.sh('mvn -B verify -s ci/settings.xml');
