@@ -20,6 +20,4 @@ src/main/javascript/node
 src/main/javascript/node_modules
 src/main/resources/generated
 
-ci/package.json
-ci/package-lock.json
 ci/node_modules
