@@ -18,7 +18,7 @@ All response payloads are in JSON format.
 
 ## Content negociation
 
-Although the API will use only JSON for data serialization, it is good practice for clients to specify ```Accept: application/json``` in their request header.
+Although the API will use only JSON for data serialization, it is good practice for clients to specify `Accept: application/json` in their request header.
 
 ## Error codes
 
@@ -29,3 +29,15 @@ The API uses standard HTTP response codes as error codes. Here's a brief rundown
 | 400 Bad request| It usually means that the expected request parameters were not supplied
 | 403 Forbidden | The request cannot be performed mainly because authorization issues |
 | 404 Not found | The requested resource cannot be found
+
+## Paging and sorting
+
+The API methods that list entities accept parameters that control sorting and pagination.
+
+| Parameter | Description |
+|-----------|-------------|
+|`offset` | Defines the number of entities to skip when returning the list |
+|`limit` | Defines the number of entities to be returned for the current request |
+|`sort` | Defines the sorting of the entities. The parameter is passed as a list of fields separated by a `|` character. |
+
+Not all get API calls support pagination and sorting. You can find more details in the [Swagger docs](../docs).
