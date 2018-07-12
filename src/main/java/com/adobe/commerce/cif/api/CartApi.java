@@ -314,7 +314,7 @@ public interface CartApi {
         @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    Cart postCoupons(
+    Cart postCoupon(
         @ApiParam(value = "The id of the cart to which the coupon will be added.", required = true)
         @PathParam("id") String id,
 
@@ -333,7 +333,7 @@ public interface CartApi {
         @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
-    Cart deleteCoupons(
+    Cart deleteCoupon(
         @ApiParam(value = "The id of the cart for which the coupon will be deleted.", required = true)
         @PathParam("id") String id,
 

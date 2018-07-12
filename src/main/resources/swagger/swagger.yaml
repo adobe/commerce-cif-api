@@ -231,7 +231,7 @@ paths:
       - "carts"
       summary: "Adds a coupon to the shopping cart."
       description: ""
-      operationId: "postCoupons"
+      operationId: "postCoupon"
       consumes:
       - "application/x-www-form-urlencoded"
       produces:
@@ -276,7 +276,7 @@ paths:
       - "carts"
       summary: "Deletes a coupon from the shopping cart."
       description: ""
-      operationId: "deleteCoupons"
+      operationId: "deleteCoupon"
       produces:
       - "application/json"
       parameters:
