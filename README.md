@@ -33,6 +33,24 @@ The API and models are actually defined in Java with both `swagger` and `jax-rs`
 
 Note that the build actually generates these files under the `src/main/resources/generated` folder, but this folder is not committed on the git repository. The `maven release` process actually copies the generated files to the folders mentioned above so that we only have released files in the repository.
 
+### Using the API or building the SNAPSHOT version
+
+To use the API in an existing Maven project, simply add the following dependency:
+
+```xml
+<dependency>
+    <groupId>com.adobe.commerce.cif</groupId>
+    <artifactId>api-model</artifactId>
+    <version>...</version>
+</dependency>
+```
+
+For a Node.js project, just add the `@adobe/commerce-cif-model` package dependency to your project.
+
+If you want to build and install the SNAPSHOT version, just do `mvn clean install -Dgpg.skip`
+
+The code of the Node.js package, the Swagger specification, and the Nginx configuration is generated into the `src/main/resources/generated` folder (which is not included in this git repository). The other folders under `src/main/resources` are automatically updated by the release process and should not be updated manually.
+
 ### Making changes
 
 To make changes to the API and/or object models, simply edit or add new Java model(s) and api class(es). Running `mvn clean package` will then regenerate the Swagger specification, documentation, Javascript model classes, and Nginx configuration.
