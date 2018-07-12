@@ -28,6 +28,7 @@ import org.slf4j.LoggerFactory;
 import com.adobe.commerce.cif.model.PojoTest;
 import com.adobe.commerce.cif.model.common.LocalizedString;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -140,6 +141,8 @@ public class FieldTester {
             }
             
             assertTrue("Field " + obj.getClass().getSimpleName() + ":" + field.getName() + " should be 'protected'", Modifier.isProtected(field.getModifiers()));
+            assertFalse("Field " + obj.getClass().getSimpleName() + ":" + field.getName() + " should not be a primitive type", field
+                .getType().isPrimitive());
             
             if (ignoredFieldNames.contains(field.getName())) {
                 LOGGER.debug("Skipping check for field " + obj.getClass().getSimpleName() + ":" + field.getName());

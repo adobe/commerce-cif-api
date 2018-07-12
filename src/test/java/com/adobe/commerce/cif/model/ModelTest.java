@@ -61,6 +61,7 @@ public class ModelTest {
         FieldTester fieldTester = FieldTester.builder()
             .doCheckListElements()
             .withIgnoredListElements(Collections.singleton("categories"))
+            .withIgnoredFieldNames(Collections.singleton("variantAttribute"))
             .withRecursiveDepth(2)
             .build();
         fieldTester.assertAllFieldsNotNull(product);
@@ -181,6 +182,7 @@ public class ModelTest {
         FieldTester fieldTester = FieldTester.builder()
             .doCheckListElements()
             .withIgnoredListElements(new HashSet<String>(Arrays.asList(ignoredLists)))
+            .withIgnoredFieldNames(Collections.singleton("selected"))
             .withRecursiveDepth(3)
             .build();
         fieldTester.assertAllFieldsNotNull(pagedResponse);

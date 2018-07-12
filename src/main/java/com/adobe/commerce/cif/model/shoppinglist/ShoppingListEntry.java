@@ -14,11 +14,10 @@
 
 package com.adobe.commerce.cif.model.shoppinglist;
 
-import io.swagger.annotations.ApiModelProperty;
-
 import java.util.Date;
 
 import com.adobe.commerce.cif.model.product.ProductVariant;
+import io.swagger.annotations.ApiModelProperty;
 
 public class ShoppingListEntry {
 
@@ -29,7 +28,7 @@ public class ShoppingListEntry {
     protected ProductVariant productVariant;
 
     @ApiModelProperty(value = "The quantity for the entry.", required = true)
-    protected int quantity;
+    protected Integer quantity;
 
     @ApiModelProperty(value = "The date when this entry was created.")
     protected Date createdDate;
@@ -53,11 +52,11 @@ public class ShoppingListEntry {
         this.productVariant = productVariant;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
