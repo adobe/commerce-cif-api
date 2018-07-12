@@ -83,8 +83,6 @@ public class PojoTest {
                 setters.put(methodName.substring(3), method);
             } else if (methodName.startsWith("get")) {
                 getters.put(methodName.substring(3), method);
-            } else if (methodName.startsWith("is")) {
-                getters.put(methodName.substring(2), method);
             }
         }
 

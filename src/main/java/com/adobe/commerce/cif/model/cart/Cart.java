@@ -198,7 +198,7 @@ public class Cart {
         this.currency = currency;
     }
 
-    public Boolean isTaxIncludedInPrices() {
+    public Boolean getTaxIncludedInPrices() {
         return taxIncludedInPrices;
     }
 

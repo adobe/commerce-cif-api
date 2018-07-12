@@ -57,7 +57,7 @@ public class FacetValue {
         this.occurrences = occurrences;
     }
 
-    public Boolean isSelected() {
+    public Boolean getSelected() {
         return selected;
     }
 

@@ -54,12 +54,12 @@ public class Attribute {
         this.value = value;
     }
 
-    public Boolean isVariantAttribute() {
+    public Boolean getVariantAttribute() {
         return variantAttribute;
     }
 
     public void setVariantAttribute(Boolean variantAttribute) {
         this.variantAttribute = variantAttribute;
     }
-    
+
 }
