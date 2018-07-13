@@ -14,13 +14,13 @@
 
 package com.adobe.commerce.cif.model.cart;
 
+import java.util.List;
+
 import com.adobe.commerce.cif.model.common.Price;
 import com.adobe.commerce.cif.model.common.TaxInfo;
 import com.adobe.commerce.cif.model.discount.Discount;
 import com.adobe.commerce.cif.model.product.ProductVariant;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.util.List;
 
 public class CartEntry {
 
@@ -28,7 +28,7 @@ public class CartEntry {
     protected String id;
 
     @ApiModelProperty(value = "The quantity for the entry.", required = true)
-    protected int quantity;
+    protected Integer quantity;
 
     @ApiModelProperty(value = "The ProductVariant for the entry.", required = true)
     protected ProductVariant productVariant;
@@ -59,11 +59,11 @@ public class CartEntry {
         this.id = id;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 

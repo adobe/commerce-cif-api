@@ -49,7 +49,7 @@ public class Cart {
     protected TaxInfo cartTaxInfo;
 
     @ApiModelProperty(value = "Indicates if taxes are included or not in all the prices.")
-    protected boolean taxIncludedInPrices;
+    protected Boolean taxIncludedInPrices;
 
     @ApiModelProperty(value = "The date when this cart was created.")
     protected Date createdDate;
@@ -198,11 +198,11 @@ public class Cart {
         this.currency = currency;
     }
 
-    public boolean isTaxIncludedInPrices() {
+    public Boolean getTaxIncludedInPrices() {
         return taxIncludedInPrices;
     }
 
-    public void setTaxIncludedInPrices(boolean taxIncludedInPrices) {
+    public void setTaxIncludedInPrices(Boolean taxIncludedInPrices) {
         this.taxIncludedInPrices = taxIncludedInPrices;
     }
 

@@ -83,8 +83,6 @@ public class PojoTest {
                 setters.put(methodName.substring(3), method);
             } else if (methodName.startsWith("get")) {
                 getters.put(methodName.substring(3), method);
-            } else if (methodName.startsWith("is")) {
-                getters.put(methodName.substring(2), method);
             }
         }
 
@@ -97,8 +95,8 @@ public class PojoTest {
             assertTrue("Model method " + setterGetter.getter.getName() + " should be 'public'", Modifier.isPublic(setterGetter.getter.getModifiers()));
         }
         
-        // We check that each setter/getter pair sets and properly gets the same value
-        // (we cannot check for object equality with == because of autoboxing of primitive types)
+        // We check that each setter/getter pair sets and properly gets the same object
+        // We use object equality because this fails if a getter or setter uses a primitive instead of the primitive object type
         Object instance = clazz.newInstance();
         for (Map.Entry<String, SetterGetter> entry : gettersSetters.entrySet()) {
             LOGGER.debug("Checking getter/setter for " + clazz.getSimpleName() + ":" + entry.getKey());
@@ -109,7 +107,7 @@ public class PojoTest {
             Object arg = instantiateArg(type);
             setter.invoke(instance, arg);
             Object res = getter.invoke(instance);
-            assertTrue("Setter/getter value for " + clazz.getSimpleName() + ":" + entry.getKey() + " are not equal", arg.equals(res));
+            assertTrue("Setter/getter value for " + clazz.getSimpleName() + ":" + entry.getKey() + " are not equal", arg == res);
         }
     }
     

@@ -31,7 +31,7 @@ public class FacetValue {
     protected Integer occurrences;
 
     @ApiModelProperty(value = "Indicates if the current facet value was selected.")
-    protected boolean selected;
+    protected Boolean selected;
 
     public String getId() {
         return id;
@@ -57,11 +57,11 @@ public class FacetValue {
         this.occurrences = occurrences;
     }
 
-    public boolean isSelected() {
+    public Boolean getSelected() {
         return selected;
     }
 
-    public void setSelected(boolean selected) {
+    public void setSelected(Boolean selected) {
         this.selected = selected;
     }
 
