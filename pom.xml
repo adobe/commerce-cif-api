@@ -18,7 +18,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.adobe.commerce.cif</groupId>
     <artifactId>api-model</artifactId>
-    <version>0.1.120-SNAPSHOT</version>
+    <version>0.1.122-SNAPSHOT</version>
 
     <name>Commerce Integration Framework (CIF) Cloud - API and Models</name>
     <description>This package contains the REST API and java model definition of the Commerce Integration Framework (CIF) Cloud.</description>
@@ -133,7 +133,6 @@
                             <arguments>run build</arguments>
                         </configuration>
                     </execution>
-                    <!--
                     <execution>
                         <id>npm publish</id>
                         <phase>deploy</phase>
@@ -144,7 +143,6 @@
                             <arguments>run perform</arguments>
                         </configuration>
                     </execution>
-                    -->
                 </executions>
             </plugin>
 
@@ -216,6 +214,8 @@
                         <exclude>src/test/resources/*</exclude>
                         <!-- CircleCI -->
                         <exclude>.circleci/*</exclude>
+                        <exclude>ci/node_modules/**</exclude>
+                        <exclude>ci/package-lock.json</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -260,7 +260,7 @@
                 <configuration>
                     <serverId>ossrh</serverId>
                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
                    </configuration>
             </plugin>
             <plugin>

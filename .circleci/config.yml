@@ -20,3 +20,32 @@ jobs:
           path: target/surefire-reports
       - store_artifacts:
           path: target/surefire-reports
+  release:
+    docker:
+      - image: adobe/commerce-cif-ci-env:v0.0.1
+    steps:
+      - checkout
+      - restore_cache:
+          keys: 
+            - maven-repo-v1-{{ checksum "pom.xml" }}
+            - maven-repo-v1-
+      - run:
+          name: Release
+          command: cd ci; npm install; cd ..; node ci/release.js
+
+workflows:
+  version: 2
+  build-and-release:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
+      - release:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^@release-(major|minor|patch)$/
