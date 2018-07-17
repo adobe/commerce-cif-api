@@ -5,7 +5,7 @@
 #    before the first location directive that already exists in the file
 # 3) Restart the Openwhisk nginx/edge component by running "wskdev edge"
 #
-# CCIF API Version 0.1.121
+# CCIF API Version 0.1.123
 
 # set $controller "http://controllers";
 set $ow_namespace "your-namespace";
@@ -52,7 +52,7 @@ location ~ ^/commerce/carts/(?<id>[^/]+)/coupons$ {
   if ($request_method != POST) {
     return 405;
   }
-  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/postCoupons.http?id=${id} break;
+  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/postCoupon.http?id=${id} break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }
@@ -61,7 +61,7 @@ location ~ ^/commerce/carts/(?<id>[^/]+)/coupons/(?<couponId>[^/]+)$ {
   if ($request_method != DELETE) {
     return 405;
   }
-  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/deleteCoupons.http?id=${id}&couponId=${couponId} break;
+  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/deleteCoupon.http?id=${id}&couponId=${couponId} break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }

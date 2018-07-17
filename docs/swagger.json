@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "Adobe Commerce Cloud API",
-    "version" : "0.1.121",
+    "version" : "0.1.123",
     "title" : "Commerce Integration Framework (CIF) Cloud API",
     "license" : {
       "name" : "Copyright 2018 Adobe. All rights reserved."
@@ -287,7 +287,7 @@
         "tags" : [ "carts" ],
         "summary" : "Adds a coupon to the shopping cart.",
         "description" : "",
-        "operationId" : "postCoupons",
+        "operationId" : "postCoupon",
         "consumes" : [ "application/x-www-form-urlencoded" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -342,7 +342,7 @@
         "tags" : [ "carts" ],
         "summary" : "Deletes a coupon from the shopping cart.",
         "description" : "",
-        "operationId" : "deleteCoupons",
+        "operationId" : "deleteCoupon",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
@@ -1959,11 +1959,9 @@
           "description" : "The unique id for this text attribute, for example 'width'."
         },
         "name" : {
-          "type" : "object",
-          "description" : "The localized name for this text attribute, for example 'Width' or 'Breite'.",
-          "additionalProperties" : {
-            "type" : "string"
-          }
+          "type" : "string",
+          "example" : "Width",
+          "description" : "The name for this text attribute."
         },
         "value" : {
           "type" : "object",
@@ -2116,18 +2114,12 @@
           "description" : "The internal unique ID of the category in the commerce backend system."
         },
         "name" : {
-          "type" : "object",
-          "description" : "The localized name of the category.",
-          "additionalProperties" : {
-            "type" : "string"
-          }
+          "type" : "string",
+          "description" : "The name of the category."
         },
         "description" : {
-          "type" : "object",
-          "description" : "The localized description of the category.",
-          "additionalProperties" : {
-            "type" : "string"
-          }
+          "type" : "string",
+          "description" : "The description of the category."
         },
         "mainParentCategoryId" : {
           "type" : "string",
@@ -2172,11 +2164,8 @@
           "description" : "The code to activate the coupon."
         },
         "description" : {
-          "type" : "object",
-          "description" : "The description of the coupon.",
-          "additionalProperties" : {
-            "type" : "string"
-          }
+          "type" : "string",
+          "description" : "The description of the coupon."
         }
       }
     },
@@ -2218,28 +2207,22 @@
       "properties" : {
         "id" : {
           "type" : "string",
-          "description" : "The id for the discount"
+          "description" : "The id for the discount."
         },
         "type" : {
           "type" : "string",
-          "description" : "The type of the discount"
+          "description" : "The type of the discount."
         },
         "name" : {
-          "type" : "object",
-          "description" : "The name of the discount",
-          "additionalProperties" : {
-            "type" : "string"
-          }
+          "type" : "string",
+          "description" : "The name of the discount."
         },
         "message" : {
-          "type" : "object",
-          "description" : "The message associated with the discount. May be displayed in the UI.",
-          "additionalProperties" : {
-            "type" : "string"
-          }
+          "type" : "string",
+          "description" : "The message associated with the discount. May be displayed in the UI."
         },
         "discountedAmount" : {
-          "description" : "The amount which is discounted. Subtract this to obtain new price",
+          "description" : "The amount which is discounted. Subtract this to obtain new price.",
           "$ref" : "#/definitions/Price"
         }
       }
@@ -2258,12 +2241,9 @@
           "description" : "The error reason."
         },
         "message" : {
-          "type" : "object",
-          "example" : "{\n        \"en\": \"Coupon expired.\",\n        \"de\": \"Gutschein abgelaufen.\"\n    }",
-          "description" : "Localized message",
-          "additionalProperties" : {
-            "type" : "string"
-          }
+          "type" : "string",
+          "example" : "Coupon expired.",
+          "description" : "The error message."
         }
       }
     },
@@ -2276,11 +2256,8 @@
           "description" : "The name of the facet."
         },
         "label" : {
-          "type" : "object",
-          "description" : "The label of the facet.",
-          "additionalProperties" : {
-            "type" : "string"
-          }
+          "type" : "string",
+          "description" : "The label of the facet."
         },
         "missed" : {
           "type" : "integer",
@@ -2670,18 +2647,12 @@
           "description" : "The unique SKU of the product assigned by the vendor or manufacturer."
         },
         "name" : {
-          "type" : "object",
-          "description" : "The localized name of the product.",
-          "additionalProperties" : {
-            "type" : "string"
-          }
+          "type" : "string",
+          "description" : "The name of the product."
         },
         "description" : {
-          "type" : "object",
-          "description" : "The localized description of the product.",
-          "additionalProperties" : {
-            "type" : "string"
-          }
+          "type" : "string",
+          "description" : "The description of the product."
         },
         "prices" : {
           "type" : "array",
@@ -2747,18 +2718,12 @@
           "description" : "The unique SKU of the product assigned by the vendor or manufacturer."
         },
         "name" : {
-          "type" : "object",
-          "description" : "The localized name of the product.",
-          "additionalProperties" : {
-            "type" : "string"
-          }
+          "type" : "string",
+          "description" : "The name of the product."
         },
         "description" : {
-          "type" : "object",
-          "description" : "The localized description of the product.",
-          "additionalProperties" : {
-            "type" : "string"
-          }
+          "type" : "string",
+          "description" : "The description of the product."
         },
         "prices" : {
           "type" : "array",
@@ -2861,18 +2826,12 @@
           "description" : "The id of the shopping list."
         },
         "name" : {
-          "type" : "object",
-          "description" : "The name of the shopping list. Localization is optional here, the default language is en.",
-          "additionalProperties" : {
-            "type" : "string"
-          }
+          "type" : "string",
+          "description" : "The name of the shopping list."
         },
         "description" : {
-          "type" : "object",
-          "description" : "The description of the shopping list. Localization is optional here, the default language is en.",
-          "additionalProperties" : {
-            "type" : "string"
-          }
+          "type" : "string",
+          "description" : "The description of the shopping list."
         },
         "entries" : {
           "type" : "array",
@@ -2947,11 +2906,8 @@
       "type" : "object",
       "properties" : {
         "name" : {
-          "type" : "object",
-          "description" : "The localized name for this tax portion.",
-          "additionalProperties" : {
-            "type" : "string"
-          }
+          "type" : "string",
+          "description" : "The name for this tax portion."
         },
         "centAmount" : {
           "type" : "number",

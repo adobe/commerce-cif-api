@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.121
+ * @version 0.1.123
  */
 class Product {
 
@@ -41,14 +41,14 @@ class Product {
         this.sku = undefined;
 
         /**
-         * The localized name of the product.
-         * @type {object}
+         * The name of the product.
+         * @type {string}
          */
         this.name = undefined;
 
         /**
-         * The localized description of the product.
-         * @type {object}
+         * The description of the product.
+         * @type {string}
          */
         this.description = undefined;
 
