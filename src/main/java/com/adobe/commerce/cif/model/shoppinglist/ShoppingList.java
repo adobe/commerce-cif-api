@@ -19,18 +19,16 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import java.util.List;
 
-import com.adobe.commerce.cif.model.common.LocalizedString;
-
 public class ShoppingList {
 
     @ApiModelProperty(value = "The id of the shopping list.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The name of the shopping list. Localization is optional here, the default language is en.", required = true)
-    protected LocalizedString name;
+    @ApiModelProperty(value = "The name of the shopping list.", required = true)
+    protected String name;
 
-    @ApiModelProperty(value = "The description of the shopping list. Localization is optional here, the default language is en.")
-    protected LocalizedString description;
+    @ApiModelProperty(value = "The description of the shopping list.")
+    protected String description;
 
     @ApiModelProperty(value = "The entries of the shopping list.", required = true)
     protected List<ShoppingListEntry> entries;
@@ -52,19 +50,19 @@ public class ShoppingList {
         this.id = id;
     }
 
-    public LocalizedString getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(LocalizedString name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public LocalizedString getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(LocalizedString description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

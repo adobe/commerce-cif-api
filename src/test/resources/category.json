@@ -1,13 +1,7 @@
 {
     "id": "category-1-1",
-    "name": {
-        "de": "A localized DE name",
-        "en": "A localized EN name"
-    },
-    "description": {
-        "de": "A localized DE description",
-        "en": "A localized EN description"
-    },
+    "name": "A name",
+    "description": "A description",
     "mainParentCategoryId": "category-1",
     "parentCategories": [
         {

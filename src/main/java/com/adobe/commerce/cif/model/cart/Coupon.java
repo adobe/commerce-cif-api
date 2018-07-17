@@ -14,7 +14,6 @@
 
 package com.adobe.commerce.cif.model.cart;
 
-import com.adobe.commerce.cif.model.common.LocalizedString;
 import io.swagger.annotations.ApiModelProperty;
 
 public class Coupon {
@@ -26,7 +25,7 @@ public class Coupon {
     protected String code;
 
     @ApiModelProperty(value = "The description of the coupon.")
-    protected LocalizedString description;
+    protected String description;
 
     public String getId() {
         return id;
@@ -44,11 +43,11 @@ public class Coupon {
         this.code = code;
     }
 
-    public LocalizedString getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(LocalizedString description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 }
