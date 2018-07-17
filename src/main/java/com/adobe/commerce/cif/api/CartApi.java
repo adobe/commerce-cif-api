@@ -26,13 +26,12 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import com.adobe.commerce.cif.model.cart.Cart;
 import com.adobe.commerce.cif.model.cart.ShippingMethod;
+import com.adobe.commerce.cif.model.common.Address;
 import com.adobe.commerce.cif.model.error.ErrorResponse;
-import com.adobe.commerce.cif.model.wrapper.AddressWrapper;
 import com.adobe.commerce.cif.model.wrapper.PaymentWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -63,10 +62,7 @@ public interface CartApi {
         @FormParam("productVariantId") String productVariantId,
 
         @ApiParam(value = "The quantity for the product variant.")
-        @FormParam("quantity") int quantity,
-
-        @ApiParam(value = "If set, the newly created cart will belong to this customer.")
-        @FormParam("customerId") String customerId);
+        @FormParam("quantity") int quantity);
 
     @GET
     @Path("/{id}")
@@ -78,10 +74,7 @@ public interface CartApi {
     })
     Cart getCart(
         @ApiParam(value = "The ID of the cart to be returned.", required = true)
-        @PathParam("id") String id,
-
-        @ApiParam(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")
-        @QueryParam("customerId") String customerId);
+        @PathParam("id") String id);
 
     @DELETE
     @Path("/{id}")
@@ -93,10 +86,7 @@ public interface CartApi {
     })
     Cart deleteCart(
         @ApiParam(value = "The ID of the cart to be removed.", required = true)
-        @PathParam("id") String id,
-
-        @ApiParam(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")
-        @QueryParam("customerId") String customerId);
+        @PathParam("id") String id);
 
     @POST
     @Path("/{id}/entries")
@@ -117,10 +107,7 @@ public interface CartApi {
 
         @ApiParam(value = "The quantity for the new entry.", required = true)
         @FormParam("quantity")
-        @Min(value = 0) int quantity,
-
-        @ApiParam(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")
-        @FormParam("customerId") String customerId);
+        @Min(value = 0) int quantity);
 
     @PUT
     @Path("/{id}/entries/{cartEntryId}")
@@ -141,10 +128,7 @@ public interface CartApi {
         @ApiParam(value = "The cart entry quantity. When quantity is 0 the entry will be removed otherwise the " +
             "value is used as new quantity.", required = true)
         @FormParam("quantity")
-        @Min(value = 0) int quantity,
-
-        @ApiParam(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")
-        @FormParam("customerId") String customerId);
+        @Min(value = 0) int quantity);
 
     @DELETE
     @Path("/{id}/entries/{cartEntryId}")
@@ -159,10 +143,7 @@ public interface CartApi {
         @PathParam("id") String id,
 
         @ApiParam(value = "The cart entry id to be removed.", required = true)
-        @PathParam("cartEntryId") String cartEntryId,
-
-        @ApiParam(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")
-        @QueryParam("customerId") String customerId);
+        @PathParam("cartEntryId") String cartEntryId);
 
     @POST
     @Path("/{id}/shippingaddress")
@@ -177,8 +158,8 @@ public interface CartApi {
         @ApiParam(value = "The ID of the cart for the shipping address", required = true)
         @PathParam("id") String id,
 
-        @ApiParam(value = "The shipping address and an optional customer id that must be set if the cart belongs to a customer.", required = true)
-        AddressWrapper addressWrapper);
+        @ApiParam(value = "The shipping address", required = true)
+        Address address);
 
     @DELETE
     @Path("/{id}/shippingaddress")
@@ -190,10 +171,7 @@ public interface CartApi {
     })
     Cart deleteShippingAddress(
         @ApiParam(value = "The ID of the cart for which the shipping address will be deleted.", required = true)
-        @PathParam("id") String id,
-
-        @ApiParam(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")
-        @QueryParam("customerId") String customerId);
+        @PathParam("id") String id);
 
     @POST
     @Path("/{id}/billingaddress")
@@ -208,8 +186,8 @@ public interface CartApi {
         @ApiParam(value = "The ID of the cart for the billing address", required = true)
         @PathParam("id") String id,
 
-        @ApiParam(value = "The billing address and an optional customer id that must be set if the cart belongs to a customer.", required = true)
-        AddressWrapper addressWrapper);
+        @ApiParam(value = "The billing address", required = true)
+        Address address);
 
     @DELETE
     @Path("/{id}/billingaddress")
@@ -221,10 +199,7 @@ public interface CartApi {
     })
     Cart deleteBillingAddress(
         @ApiParam(value = "The ID of the cart for which the billing address will be deleted.", required = true)
-        @PathParam("id") String id,
-
-        @ApiParam(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")
-        @QueryParam("customerId") String customerId);
+        @PathParam("id") String id);
 
     @POST
     @Path("/{id}/shippingmethod")
@@ -240,10 +215,7 @@ public interface CartApi {
         @PathParam("id") String id,
 
         @ApiParam(value = "The shipping method id.", required = true)
-        @FormParam("shippingMethodId") String shippingMethodId,
-
-        @ApiParam(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")
-        @FormParam("customerId") String customerId);
+        @FormParam("shippingMethodId") String shippingMethodId);
 
     @DELETE
     @Path("/{id}/shippingmethod")
@@ -255,10 +227,7 @@ public interface CartApi {
     })
     Cart deleteShippingMethod(
         @ApiParam(value = "The ID of the cart for which the shipping method will be deleted.", required = true)
-        @PathParam("id") String id,
-
-        @ApiParam(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")
-        @QueryParam("customerId") String customerId);
+        @PathParam("id") String id);
 
     @GET
     @Path("/{id}/shippingmethods")
@@ -269,10 +238,7 @@ public interface CartApi {
     })
     List<ShippingMethod> getShippingMethods(
         @ApiParam(value = "The id of the cart", required = true)
-        @PathParam("id") String id,
-
-        @ApiParam(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")
-        @QueryParam("customerId") String customerId);
+        @PathParam("id") String id);
 
     @POST
     @Path("/{id}/payment")
@@ -300,10 +266,7 @@ public interface CartApi {
     })
     Cart deletePayment(
         @ApiParam(value = "The ID of the cart for which the payment will be deleted.", required = true)
-        @PathParam("id") String id,
-
-        @ApiParam(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")
-        @QueryParam("customerId") String customerId);
+        @PathParam("id") String id);
 
     @POST
     @Path("/{id}/coupons")
@@ -319,11 +282,7 @@ public interface CartApi {
         @PathParam("id") String id,
 
         @ApiParam(value = "The coupon code.", required = true)
-        @FormParam("code") String code,
-
-        @ApiParam(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")
-        @FormParam("customerId") String customerId
-    );
+        @FormParam("code") String code);
 
     @DELETE
     @Path("/{id}/coupons/{couponId}")
@@ -338,10 +297,7 @@ public interface CartApi {
         @PathParam("id") String id,
 
         @ApiParam(value = "The id of the coupon that will be deleted.", required = true)
-        @PathParam("couponId") String couponId,
-
-        @ApiParam(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")
-        @QueryParam("customerId") String customerId
+        @PathParam("couponId") String couponId
     );
 
 }

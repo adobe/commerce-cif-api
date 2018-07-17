@@ -33,9 +33,6 @@ public class ShoppingList {
     @ApiModelProperty(value = "The entries of the shopping list.", required = true)
     protected List<ShoppingListEntry> entries;
 
-    @ApiModelProperty(value = "The customer id that owns this shopping list.")
-    protected String customerId;
-
     @ApiModelProperty(value = "The date when this shopping list was created.")
     protected Date createdDate;
 
@@ -72,14 +69,6 @@ public class ShoppingList {
 
     public void setEntries(List<ShoppingListEntry> entries) {
         this.entries = entries;
-    }
-
-    public String getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
     }
 
     public Date getCreatedDate() {

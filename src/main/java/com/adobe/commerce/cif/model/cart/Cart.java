@@ -31,9 +31,6 @@ public class Cart {
 
     @ApiModelProperty(value = "The list of the entries in the cart.", required = true)
     protected List<CartEntry> cartEntries;
-
-    @ApiModelProperty(value = "If set, this defines the customer owning this cart. If not set, the cart is an anonymous cart.")
-    protected String customerId;
     
     @ApiModelProperty(value = "The net total price for the cart, including discounts, and shipping, but excluding any taxes.")
     protected Price netTotalPrice;
@@ -92,14 +89,6 @@ public class Cart {
 
     public void setCartEntries(List<CartEntry> cartEntries) {
         this.cartEntries = cartEntries;
-    }
-    
-    public String getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
     }
     
     public Price getNetTotalPrice() {

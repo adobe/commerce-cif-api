@@ -9,7 +9,6 @@
     },
     "cart": {
         "id": "cart-1",
-        "customerId": "customer-1",
         "currency": "USD",
         "taxIncludedInPrices": true,
         "netTotalPrice": {},
