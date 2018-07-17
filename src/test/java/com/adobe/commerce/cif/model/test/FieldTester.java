@@ -26,7 +26,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.adobe.commerce.cif.model.PojoTest;
-import com.adobe.commerce.cif.model.common.LocalizedString;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -169,7 +168,7 @@ public class FieldTester {
     }
     
     private <T> boolean isCheckableModelClass(Class<T> type) {
-        return type.getName().startsWith(PojoTest.MODEL_PACKAGE) && !LocalizedString.class.equals(type);
+        return type.getName().startsWith(PojoTest.MODEL_PACKAGE);
     }
     
     private List<Field> getAllFields(Class<?> type) {

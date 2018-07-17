@@ -14,25 +14,24 @@
 
 package com.adobe.commerce.cif.model.discount;
 
-import com.adobe.commerce.cif.model.common.LocalizedString;
 import com.adobe.commerce.cif.model.common.Price;
 import io.swagger.annotations.ApiModelProperty;
 
 public class Discount {
 
-    @ApiModelProperty(value = "The id for the discount", required = true)
+    @ApiModelProperty(value = "The id for the discount.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The type of the discount", required = true)
+    @ApiModelProperty(value = "The type of the discount.", required = true)
     protected String type;
 
-    @ApiModelProperty(value = "The name of the discount")
-    protected LocalizedString name;
+    @ApiModelProperty(value = "The name of the discount.")
+    protected String name;
 
     @ApiModelProperty(value = "The message associated with the discount. May be displayed in the UI.")
-    protected LocalizedString message;
+    protected String message;
 
-    @ApiModelProperty(value = "The amount which is discounted. Subtract this to obtain new price", required = true)
+    @ApiModelProperty(value = "The amount which is discounted. Subtract this to obtain new price.", required = true)
     protected Price discountedAmount;
 
     public String getId() {
@@ -51,19 +50,19 @@ public class Discount {
         this.type = type;
     }
 
-    public LocalizedString getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(LocalizedString name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public LocalizedString getMessage() {
+    public String getMessage() {
         return message;
     }
 
-    public void setMessage(LocalizedString message) {
+    public void setMessage(String message) {
         this.message = message;
     }
 

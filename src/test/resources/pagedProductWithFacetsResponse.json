@@ -12,12 +12,8 @@
                     "attributes": [
                         {
                             "id": "color",
-                            "name": {
-                                "en": "Color"
-                            },
-                            "value": {
-                                "en": "green"
-                            },
+                            "name": "Color",
+                            "value": "green",
                             "variantAttribute": true
                         }
                     ],
@@ -37,10 +33,7 @@
             "type": "text",
             "missed": 2,
             "multiSelect": true,
-            "label": {
-                "de": "A localized DE label",
-                "en": "A localized EN label"
-            },
+            "label": "A label",
             "facetValues": [
                 {
                     "id": "facet-value-1",
@@ -60,10 +53,7 @@
             "type": "range",
             "missed": 2,
             "multiSelect": true,
-            "label": {
-                "de": "A localized DE label",
-                "en": "A localized EN label"
-            },
+            "label": "A label",
             "facetValues": [
                 {
                     "id": "facet-value-3",

@@ -39,12 +39,8 @@
                 {
                     "id": "discount-id",
                     "type": "cart-entry-discount",
-                    "name": {
-                        "en": "$10 discount for orders over $100"
-                    },
-                    "message": {
-                        "en": "Get $10 discount for orders over $100."
-                    },
+                    "name": "$10 discount for orders over $100",
+                    "message": "Get $10 discount for orders over $100.",
                     "discountedAmount": {
                         "currency": "USD",
                         "centAmount": 1000
@@ -59,9 +55,7 @@
                 "totalCentAmount": 1000,
                 "taxPortions": [
                     {
-                        "name": {
-                            "en": "VAT 10%"
-                        },
+                        "name": "VAT 10%",
                         "centAmount": 1000
                     }
                 ]
@@ -73,9 +67,7 @@
         "totalCentAmount": 1000,
         "taxPortions": [
             {
-                "name": {
-                    "en": "VAT 10%"
-                },
+                "name": "VAT 10%",
                 "centAmount": 1000
             }
         ]
@@ -89,9 +81,7 @@
         {
             "id": "coupon-id",
             "code": "COUPON123",
-            "description": {
-                "en": "This is a coupon."
-            }
+            "description": "This is a coupon."
         }
     ],
     "createdDate": "2017-01-11T14:58:29.432Z",

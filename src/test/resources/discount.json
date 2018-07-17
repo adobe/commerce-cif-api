@@ -1,12 +1,8 @@
 {
     "id": "discount-1",
     "type": "unit-discount",
-        "name": {
-        "en": "$20 discount for orders over $200"
-    },
-    "message": {
-        "en": "Get $20 discount for orders over $200"
-    },
+    "name": "$20 discount for orders over $200",
+    "message": "Get $20 discount for orders over $200",
     "discountedAmount": {
         "country": "US",
         "currency": "USD",

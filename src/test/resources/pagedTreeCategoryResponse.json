@@ -5,29 +5,21 @@
     "results": [
         {
             "id": "category-1",
-            "name": {
-                "en": "Root category 1"
-            },
+            "name": "Root category 1",
             "subCategories": [
                 {
                     "id": "category-1-1",
-                    "name": {
-                        "en": "First child of category 1"
-                    }
+                    "name": "First child of category 1"
                 }
             ]
         },
         {
             "id": "category-2",
-            "name": {
-                "en": "Root category 2"
-            },
+            "name": "Root category 2",
             "subCategories": [
                 {
                     "id": "category-2-1",
-                    "name": {
-                        "en": "First child of category 2"
-                    }
+                    "name": "First child of category 2"
                 }
             ]
         }

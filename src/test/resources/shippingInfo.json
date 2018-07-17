@@ -11,9 +11,7 @@
         "totalCentAmount": 100,
         "taxPortions": [
             {
-                "name": {
-                    "en": "Fuel tax 10%"
-                },
+                "name": "Fuel tax 10%",
                 "centAmount": 100
             }
         ]

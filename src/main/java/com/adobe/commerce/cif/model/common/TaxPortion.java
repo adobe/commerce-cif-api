@@ -19,17 +19,17 @@ import java.math.BigDecimal;
 
 public class TaxPortion {
 
-    @ApiModelProperty(value = "The localized name for this tax portion.")
-    protected LocalizedString name;
+    @ApiModelProperty(value = "The name for this tax portion.")
+    protected String name;
 
     @ApiModelProperty(value = "The amount in cents for the tax portion.")
     protected BigDecimal centAmount;
 
-    public LocalizedString getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(LocalizedString name) {
+    public void setName(String name) {
         this.name = name;
     }
 

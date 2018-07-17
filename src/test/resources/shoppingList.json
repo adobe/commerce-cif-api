@@ -1,13 +1,7 @@
 {
   "id": "list-id",
-  "name": {
-    "en": "My List",
-    "de": "Meine Liste"
-  },
-  "description": {
-    "en": "Shopping list",
-    "de": "Einkaufsliste"
-  },
+  "name": "My List",
+  "description": "Shopping list",
   "entries": [
     {
       "id": "list-entry-id",

@@ -17,7 +17,6 @@ package com.adobe.commerce.cif.model.category;
 import java.util.Date;
 import java.util.List;
 
-import com.adobe.commerce.cif.model.common.LocalizedString;
 import io.swagger.annotations.ApiModelProperty;
 
 public class Category {
@@ -25,11 +24,11 @@ public class Category {
     @ApiModelProperty(value = "The internal unique ID of the category in the commerce backend system.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The localized name of the category.")
-    protected LocalizedString name;
+    @ApiModelProperty(value = "The name of the category.")
+    protected String name;
 
-    @ApiModelProperty(value = "The localized description of the category.")
-    protected LocalizedString description;
+    @ApiModelProperty(value = "The description of the category.")
+    protected String description;
     
     @ApiModelProperty(value = "The id of the main parent category (if this category has multiple parents).")
     protected String mainParentCategoryId;
@@ -54,19 +53,19 @@ public class Category {
         this.id = id;
     }
 
-    public LocalizedString getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(LocalizedString name) {
+    public void setName(String name) {
         this.name = name;
     }
-    
-    public LocalizedString getDescription() {
+
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(LocalizedString description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
