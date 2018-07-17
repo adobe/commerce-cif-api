@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.121
+ * @version 0.1.123
  */
 class ErrorResponse {
 
@@ -38,8 +38,8 @@ class ErrorResponse {
         this.reason = undefined;
 
         /**
-         * Localized message
-         * @type {object}
+         * The error message.
+         * @type {string}
          */
         this.message = undefined;
 

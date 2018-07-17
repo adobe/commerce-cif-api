@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.121
+ * @version 0.1.123
  */
 class Discount {
 
@@ -29,31 +29,31 @@ class Discount {
      */
     constructor(discountedAmount, id, type) {
         /**
-         * The id for the discount
+         * The id for the discount.
          * @type {string}
          */
         this.id = id;
 
         /**
-         * The type of the discount
+         * The type of the discount.
          * @type {string}
          */
         this.type = type;
 
         /**
-         * The name of the discount
-         * @type {object}
+         * The name of the discount.
+         * @type {string}
          */
         this.name = undefined;
 
         /**
          * The message associated with the discount. May be displayed in the UI.
-         * @type {object}
+         * @type {string}
          */
         this.message = undefined;
 
         /**
-         * The amount which is discounted. Subtract this to obtain new price
+         * The amount which is discounted. Subtract this to obtain new price.
          * @type {Price}
          */
         this.discountedAmount = discountedAmount;

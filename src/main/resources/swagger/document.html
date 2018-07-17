@@ -13,7 +13,7 @@ Adobe Commerce Cloud API
 
 
 
-**Version** 0.1.121
+**Version** 0.1.123
 
 [**Terms of Service**]()
 
@@ -539,7 +539,7 @@ Adobe Commerce Cloud API
 ### POST
 
 
-<a id="postCoupons">Adds a coupon to the shopping cart.</a>
+<a id="postCoupon">Adds a coupon to the shopping cart.</a>
 
 
 
@@ -658,7 +658,7 @@ Adobe Commerce Cloud API
 
 ### DELETE
 
-<a id="deleteCoupons">Deletes a coupon from the shopping cart.</a>
+<a id="deleteCoupon">Deletes a coupon from the shopping cart.</a>
 
 
 
@@ -4034,12 +4034,12 @@ The name and description properties will be stored as localized strings in the l
             <td>
                 
                     
-                    object
+                    string
                 
             </td>
             <td>required</td>
-            <td>The localized name for this text attribute, for example 'Width' or 'Breite'.</td>
-            <td></td>
+            <td>The name for this text attribute.</td>
+            <td>Width</td>
         </tr>
     
         <tr>
@@ -4471,11 +4471,11 @@ The name and description properties will be stored as localized strings in the l
             <td>
                 
                     
-                    object
+                    string
                 
             </td>
             <td>optional</td>
-            <td>The localized name of the category.</td>
+            <td>The name of the category.</td>
             <td></td>
         </tr>
     
@@ -4484,11 +4484,11 @@ The name and description properties will be stored as localized strings in the l
             <td>
                 
                     
-                    object
+                    string
                 
             </td>
             <td>optional</td>
-            <td>The localized description of the category.</td>
+            <td>The description of the category.</td>
             <td></td>
         </tr>
     
@@ -4605,7 +4605,7 @@ The name and description properties will be stored as localized strings in the l
             <td>
                 
                     
-                    object
+                    string
                 
             </td>
             <td>optional</td>
@@ -4726,7 +4726,7 @@ The name and description properties will be stored as localized strings in the l
                 
             </td>
             <td>required</td>
-            <td>The id for the discount</td>
+            <td>The id for the discount.</td>
             <td></td>
         </tr>
     
@@ -4739,7 +4739,7 @@ The name and description properties will be stored as localized strings in the l
                 
             </td>
             <td>required</td>
-            <td>The type of the discount</td>
+            <td>The type of the discount.</td>
             <td></td>
         </tr>
     
@@ -4748,11 +4748,11 @@ The name and description properties will be stored as localized strings in the l
             <td>
                 
                     
-                    object
+                    string
                 
             </td>
             <td>optional</td>
-            <td>The name of the discount</td>
+            <td>The name of the discount.</td>
             <td></td>
         </tr>
     
@@ -4761,7 +4761,7 @@ The name and description properties will be stored as localized strings in the l
             <td>
                 
                     
-                    object
+                    string
                 
             </td>
             <td>optional</td>
@@ -4778,7 +4778,7 @@ The name and description properties will be stored as localized strings in the l
                 
             </td>
             <td>required</td>
-            <td>The amount which is discounted. Subtract this to obtain new price</td>
+            <td>The amount which is discounted. Subtract this to obtain new price.</td>
             <td></td>
         </tr>
     
@@ -4826,15 +4826,12 @@ The name and description properties will be stored as localized strings in the l
             <td>
                 
                     
-                    object
+                    string
                 
             </td>
             <td>optional</td>
-            <td>Localized message</td>
-            <td>{
-        &quot;en&quot;: &quot;Coupon expired.&quot;,
-        &quot;de&quot;: &quot;Gutschein abgelaufen.&quot;
-    }</td>
+            <td>The error message.</td>
+            <td>Coupon expired.</td>
         </tr>
     
 </table>
@@ -4868,7 +4865,7 @@ The name and description properties will be stored as localized strings in the l
             <td>
                 
                     
-                    object
+                    string
                 
             </td>
             <td>optional</td>
@@ -5893,11 +5890,11 @@ The name and description properties will be stored as localized strings in the l
             <td>
                 
                     
-                    object
+                    string
                 
             </td>
             <td>optional</td>
-            <td>The localized name of the product.</td>
+            <td>The name of the product.</td>
             <td></td>
         </tr>
     
@@ -5906,11 +5903,11 @@ The name and description properties will be stored as localized strings in the l
             <td>
                 
                     
-                    object
+                    string
                 
             </td>
             <td>optional</td>
-            <td>The localized description of the product.</td>
+            <td>The description of the product.</td>
             <td></td>
         </tr>
     
@@ -6072,11 +6069,11 @@ The name and description properties will be stored as localized strings in the l
             <td>
                 
                     
-                    object
+                    string
                 
             </td>
             <td>optional</td>
-            <td>The localized name of the product.</td>
+            <td>The name of the product.</td>
             <td></td>
         </tr>
     
@@ -6085,11 +6082,11 @@ The name and description properties will be stored as localized strings in the l
             <td>
                 
                     
-                    object
+                    string
                 
             </td>
             <td>optional</td>
-            <td>The localized description of the product.</td>
+            <td>The description of the product.</td>
             <td></td>
         </tr>
     
@@ -6366,11 +6363,11 @@ The name and description properties will be stored as localized strings in the l
             <td>
                 
                     
-                    object
+                    string
                 
             </td>
             <td>required</td>
-            <td>The name of the shopping list. Localization is optional here, the default language is en.</td>
+            <td>The name of the shopping list.</td>
             <td></td>
         </tr>
     
@@ -6379,11 +6376,11 @@ The name and description properties will be stored as localized strings in the l
             <td>
                 
                     
-                    object
+                    string
                 
             </td>
             <td>optional</td>
-            <td>The description of the shopping list. Localization is optional here, the default language is en.</td>
+            <td>The description of the shopping list.</td>
             <td></td>
         </tr>
     
@@ -6578,11 +6575,11 @@ The name and description properties will be stored as localized strings in the l
             <td>
                 
                     
-                    object
+                    string
                 
             </td>
             <td>optional</td>
-            <td>The localized name for this tax portion.</td>
+            <td>The name for this tax portion.</td>
             <td></td>
         </tr>
     
