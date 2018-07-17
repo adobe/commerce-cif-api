@@ -32,6 +32,7 @@ import com.adobe.commerce.cif.model.cart.Cart;
 import com.adobe.commerce.cif.model.cart.ShippingMethod;
 import com.adobe.commerce.cif.model.common.Address;
 import com.adobe.commerce.cif.model.error.ErrorResponse;
+import com.adobe.commerce.cif.model.wrapper.AddressWrapper;
 import com.adobe.commerce.cif.model.wrapper.PaymentWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -159,7 +160,7 @@ public interface CartApi {
         @PathParam("id") String id,
 
         @ApiParam(value = "The shipping address", required = true)
-        Address address);
+        AddressWrapper addressWrapper);
 
     @DELETE
     @Path("/{id}/shippingaddress")
@@ -187,7 +188,7 @@ public interface CartApi {
         @PathParam("id") String id,
 
         @ApiParam(value = "The billing address", required = true)
-        Address address);
+        AddressWrapper addressWrapper);
 
     @DELETE
     @Path("/{id}/billingaddress")
