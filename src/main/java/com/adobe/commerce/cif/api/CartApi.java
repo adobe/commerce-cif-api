@@ -30,7 +30,6 @@ import javax.ws.rs.core.MediaType;
 
 import com.adobe.commerce.cif.model.cart.Cart;
 import com.adobe.commerce.cif.model.cart.ShippingMethod;
-import com.adobe.commerce.cif.model.common.Address;
 import com.adobe.commerce.cif.model.error.ErrorResponse;
 import com.adobe.commerce.cif.model.wrapper.AddressWrapper;
 import com.adobe.commerce.cif.model.wrapper.PaymentWrapper;
