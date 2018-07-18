@@ -38,6 +38,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.ResponseHeader;
 
 @Path("/carts")
 @Api(value = "/carts")
@@ -49,6 +50,8 @@ public interface CartApi {
     @ApiOperation(value = "Creates an empty cart. For convenience it also adds a cart entry when product variant id " +
         "and quantity are provided.")
     @ApiResponses(value = {
+        @ApiResponse(code = 201, message = "Created.", response = Cart.class,
+                responseHeaders = @ResponseHeader(name = "Location", description = "Location of the newly created cart.", response = String.class)),
         @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
         @ApiResponse(code = 403, message = "Not allowed to create a cart.", response = ErrorResponse.class)
@@ -80,11 +83,12 @@ public interface CartApi {
     @Path("/{id}")
     @ApiOperation(value = "Deletes the cart.")
     @ApiResponses(value = {
+        @ApiResponse(code = 204, message = "No Content."),
         @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
         @ApiResponse(code = 403, message = "Not allowed to delete that cart.", response = ErrorResponse.class)
     })
-    Cart deleteCart(
+    void deleteCart(
         @ApiParam(value = "The ID of the cart to be removed.", required = true)
         @PathParam("id") String id);
 
@@ -92,6 +96,8 @@ public interface CartApi {
     @Path("/{id}/entries")
     @ApiOperation(value = "Adds a new cart entry to an existing cart.")
     @ApiResponses(value = {
+        @ApiResponse(code = 201, message = "Created.", response = Cart.class,
+                responseHeaders = @ResponseHeader(name = "Location", description = "Location of the newly created cart entry.", response = String.class)),
         @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
         @ApiResponse(code = 403, message = "Not allowed to add an entry to that cart.", response = ErrorResponse.class)
@@ -134,6 +140,7 @@ public interface CartApi {
     @Path("/{id}/entries/{cartEntryId}")
     @ApiOperation(value = "Removes a cart entry from the cart.")
     @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "OK.", response = Cart.class),
         @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Resource not found - cart or entry.", response = ErrorResponse.class),
         @ApiResponse(code = 403, message = "Not allowed to delete that cart entry.", response = ErrorResponse.class)
@@ -149,6 +156,7 @@ public interface CartApi {
     @Path("/{id}/shippingaddress")
     @ApiOperation(value = "Sets the shipping address for the cart.")
     @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "OK.", response = Cart.class),
         @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
         @ApiResponse(code = 403, message = "Not allowed to set the shipping address", response = ErrorResponse.class)
@@ -165,6 +173,7 @@ public interface CartApi {
     @Path("/{id}/shippingaddress")
     @ApiOperation(value = "Deletes the shipping address for the cart.")
     @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "OK.", response = Cart.class),
         @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
         @ApiResponse(code = 403, message = "Not allowed to delete the shipping address", response = ErrorResponse.class)
@@ -177,6 +186,7 @@ public interface CartApi {
     @Path("/{id}/billingaddress")
     @ApiOperation(value = "Sets the billing address for the cart.")
     @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "OK.", response = Cart.class),
         @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
         @ApiResponse(code = 403, message = "Not allowed to set the billing address", response = ErrorResponse.class)
@@ -193,6 +203,7 @@ public interface CartApi {
     @Path("/{id}/billingaddress")
     @ApiOperation(value = "Deletes the billing address for the cart.")
     @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "OK.", response = Cart.class),
         @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
         @ApiResponse(code = 403, message = "Not allowed to delete the billing address", response = ErrorResponse.class)
@@ -205,6 +216,7 @@ public interface CartApi {
     @Path("/{id}/shippingmethod")
     @ApiOperation(value = "Updates the shipping method for the cart.")
     @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "OK.", response = Cart.class),
         @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
         @ApiResponse(code = 403, message = "Not allowed to set the shipping method.", response = ErrorResponse.class)
@@ -221,6 +233,7 @@ public interface CartApi {
     @Path("/{id}/shippingmethod")
     @ApiOperation(value = "Deletes the shipping method for the cart.")
     @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "OK.", response = Cart.class),
         @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
         @ApiResponse(code = 403, message = "Not allowed to delete the shipping method.", response = ErrorResponse.class)
@@ -244,6 +257,7 @@ public interface CartApi {
     @Path("/{id}/payment")
     @ApiOperation(value = "Creates a payment for this shopping cart.")
     @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "OK.", response = Cart.class),
         @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
         @ApiResponse(code = 403, message = "Not allowed to set the payment.", response = ErrorResponse.class)
@@ -260,6 +274,7 @@ public interface CartApi {
     @Path("/{id}/payment")
     @ApiOperation(value = "Removes the payment from the shopping cart. ")
     @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "OK.", response = Cart.class),
         @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
         @ApiResponse(code = 403, message = "Not allowed to update the payment.", response = ErrorResponse.class)
@@ -272,6 +287,7 @@ public interface CartApi {
     @Path("/{id}/coupons")
     @ApiOperation(value = "Adds a coupon to the shopping cart.")
     @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "OK.", response = Cart.class),
         @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
         @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
@@ -288,6 +304,7 @@ public interface CartApi {
     @Path("/{id}/coupons/{couponId}")
     @ApiOperation(value = "Deletes a coupon from the shopping cart.")
     @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "OK.", response = Cart.class),
         @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
         @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
