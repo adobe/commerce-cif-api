@@ -28,6 +28,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.ResponseHeader;
 
 @Path("/orders")
 @Api(value = "/orders")
@@ -38,6 +39,8 @@ public interface OrderApi {
     @Path("/")
     @ApiOperation(value = "Creates an order based on a cart.")
     @ApiResponses(value = {
+        @ApiResponse(code = 201, message = "Created.", response = Order.class,
+                responseHeaders = @ResponseHeader(name = "Location", description = "Location of the newly created order.", response = String.class)),
         @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
         @ApiResponse(code = 403, message = "Not allowed to create the order.", response = ErrorResponse.class)

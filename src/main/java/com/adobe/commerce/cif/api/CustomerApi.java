@@ -57,6 +57,7 @@ public interface CustomerApi {
         value = "Performs a customer login, potentially merging an anonymous cart with a customer cart."
     )
     @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "OK.", response = LoginResult.class),
         @ApiResponse(code = 400, message = "Invalid customer credentials", response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
