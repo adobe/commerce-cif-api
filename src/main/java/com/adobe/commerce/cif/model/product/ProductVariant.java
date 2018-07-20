@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class ProductVariant extends AbstractProduct {
 
-    @ApiModelProperty(value = "Indicates if the product is available or not in the inventory.")
+    @ApiModelProperty(value = "Indicates if the product is available or not in the inventory.", required = true)
     protected Boolean available;
 
     public Boolean getAvailable() {

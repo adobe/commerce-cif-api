@@ -27,7 +27,7 @@ public class FacetValue {
     @ApiModelProperty(value = "The value for this facet.", required = true)
     protected Object value;
 
-    @ApiModelProperty(value = "The number of facet value occurrences.", required = true)
+    @ApiModelProperty(value = "The number of facet value occurrences.")
     protected Integer occurrences;
 
     @ApiModelProperty(value = "Indicates if the current facet value was selected.")

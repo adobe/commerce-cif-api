@@ -22,13 +22,13 @@ public class InventoryItem {
     @ApiModelProperty(value = "The inventory identifier.", required = true)
     protected String inventoryId;
 
-    @ApiModelProperty(value = "The product identifier.")
+    @ApiModelProperty(value = "The product identifier.", required = true)
     protected String productId;
 
     @ApiModelProperty(value = "The scope for the inventory (i.e store or channel).")
     protected String scope;
 
-    @ApiModelProperty(value = "The product available quantity for this inventory.")
+    @ApiModelProperty(value = "The product available quantity for this inventory.", required = true)
     protected Integer availableQuantity;
 
     @ApiModelProperty(value = "The period in days when this inventory is restocked.")

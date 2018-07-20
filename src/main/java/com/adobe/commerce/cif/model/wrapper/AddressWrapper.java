@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class AddressWrapper {
 
-    @ApiModelProperty(value = "The address object.")
+    @ApiModelProperty(value = "The address object.", required = true)
     protected Address address;
 
     @ApiModelProperty(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")

@@ -24,7 +24,7 @@ public class Category {
     @ApiModelProperty(value = "The internal unique ID of the category in the commerce backend system.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The name of the category.")
+    @ApiModelProperty(value = "The name of the category.", required = true)
     protected String name;
 
     @ApiModelProperty(value = "The description of the category.")
