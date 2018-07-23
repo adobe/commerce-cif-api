@@ -45,7 +45,7 @@ public class CartEntry {
     @ApiModelProperty(value = "The cart entry price after all discounts have been applied.")
     protected Price discountedCartEntryPrice;
 
-    @ApiModelProperty(value = "The cart entry tax info.", required = true)
+    @ApiModelProperty(value = "The cart entry tax info.")
     protected TaxInfo cartEntryTaxInfo;
 
     @ApiModelProperty(value = "Cart entry type.", required = true)
