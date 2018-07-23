@@ -66,7 +66,7 @@ public class Address {
     @ApiModelProperty(value = "Street name.", required = true)
     protected String streetName;
 
-    @ApiModelProperty(value = "Street no.", required = true)
+    @ApiModelProperty(value = "Street no.")
     protected String streetNumber;
 
     @ApiModelProperty(value = "Additional details for the street address.")

@@ -35,10 +35,10 @@ public class Cart {
     @ApiModelProperty(value = "If set, this defines the customer owning this cart. If not set, the cart is an anonymous cart.")
     protected String customerId;
     
-    @ApiModelProperty(value = "The net total price for the cart, including discounts, and shipping, but excluding any taxes.", required = true)
+    @ApiModelProperty(value = "The net total price for the cart, including discounts, and shipping, but excluding any taxes. Until a shipping address is set, this field is typically not set.")
     protected Price netTotalPrice;
     
-    @ApiModelProperty(value = "The gross total price for the cart, including discounts, shipping, and all taxes.", required = true)
+    @ApiModelProperty(value = "The gross total price for the cart, including discounts, shipping, and all taxes. Until a shipping address is set, this field is typically not set.")
     protected Price grossTotalPrice;
     
     @ApiModelProperty(value = "The product subtotal for the cart, including discounts and with or without taxes depending if the product prices include taxes or not." +
