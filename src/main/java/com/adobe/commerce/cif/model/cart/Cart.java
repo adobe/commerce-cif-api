@@ -45,7 +45,7 @@ public class Cart {
                               "Until a shipping address is set, this field is typically used as the temporary cart total until it is known if prices include taxes or not.", required = true)
     protected Price totalProductPrice;
 
-    @ApiModelProperty(value = "The cart tax info, including cart entries tax and shipping info tax.")
+    @ApiModelProperty(value = "The cart tax info, including cart entries tax and shipping info tax. Until a shipping address is set, this field is typically not set.")
     protected TaxInfo cartTaxInfo;
 
     @ApiModelProperty(value = "Indicates if taxes are included or not in all the prices.", required = true)
