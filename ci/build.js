@@ -34,7 +34,7 @@ try {
 
     ci.stage('UNIT TESTS');
     ci.sh('mvn -B verify -s ci/settings.xml' + skipGPG);
-    ci.sh('bash <(curl -s https://codecov.io/bash)');
+    ci.sh('curl -s https://codecov.io/bash | bash');
 
     ci.stage('BUILD DONE');
 
