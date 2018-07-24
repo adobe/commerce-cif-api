@@ -45,7 +45,7 @@ import io.swagger.annotations.ResponseHeader;
 @Api(value = "/carts")
 @Produces(MediaType.APPLICATION_JSON)
 public interface CartApi {
-    
+
     @POST
     @Path("/")
     @ApiOperation(value = "Creates an empty cart. For convenience it also adds a cart entry when product variant id " +
