@@ -35,9 +35,9 @@ public interface InventoryApi {
     @Path("/query")
     @ApiOperation(value = "Queries inventory based on the given query parameters.")
     @ApiResponses(value = {
-            @ApiResponse(code = 400, message = "Invalid query parameters supplied", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class)
     })
-    public PagedResponse<InventoryItem> query(
+    PagedResponse<InventoryItem> query(
 
             @ApiParam(value = "The list of product identifiers for which the inventory will be queried.",
                     collectionFormat = "pipes")

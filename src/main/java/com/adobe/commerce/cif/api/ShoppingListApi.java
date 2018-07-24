@@ -50,7 +50,7 @@ public interface ShoppingListApi {
                   notes = "The entries property is empty for all shopping lists in the response. To retrieve entries, query a single shopping list.")
     @ApiResponses(value = {
         @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     PagedResponse<ShoppingList> getShoppingLists(
@@ -70,7 +70,7 @@ public interface ShoppingListApi {
     @ApiOperation(value = "Gets a users shopping list with a given id.")
     @ApiResponses(value = {
         @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     ShoppingList getShoppingList(
@@ -87,7 +87,7 @@ public interface ShoppingListApi {
         @ApiResponse(code = 201, message = "Created.", response = ShoppingList.class,
                      responseHeaders = @ResponseHeader(name = "Location", description = "Location of the newly created shopping list.", response = String.class)),
         @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -110,7 +110,7 @@ public interface ShoppingListApi {
     @ApiOperation(value = "Replaces a shopping list with the given one.")
     @ApiResponses(value = {
         @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -134,7 +134,7 @@ public interface ShoppingListApi {
     @ApiResponses(value = {
         @ApiResponse(code = 204, message = "No Content."),
         @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     void deleteShoppingList(
@@ -148,7 +148,7 @@ public interface ShoppingListApi {
     @ApiOperation(value = "Gets all entries from a shopping list.")
     @ApiResponses(value = {
         @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     PagedResponse<ShoppingListEntry> getShoppingListEntries(
@@ -172,7 +172,7 @@ public interface ShoppingListApi {
     @ApiOperation(value = "Gets a single entry from a shopping list.")
     @ApiResponses(value = {
         @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     ShoppingListEntry getShoppingListEntry(
@@ -192,7 +192,7 @@ public interface ShoppingListApi {
         @ApiResponse(code = 201, message = "Created.", response = ShoppingList.class,
                      responseHeaders = @ResponseHeader(name = "Location", description = "Location of the newly created entry.", response = String.class)),
         @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -216,7 +216,7 @@ public interface ShoppingListApi {
     @ApiOperation(value = "Replaces an entry with the given one.")
     @ApiResponses(value = {
         @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -245,7 +245,7 @@ public interface ShoppingListApi {
     @ApiResponses(value = {
         @ApiResponse(code = 204, message = "No Content."),
         @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized.", response = ErrorResponse.class),
         @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     void deleteShoppingListEntry(

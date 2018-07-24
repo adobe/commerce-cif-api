@@ -45,7 +45,7 @@ import io.swagger.annotations.ResponseHeader;
 @Api(value = "/carts")
 @Produces(MediaType.APPLICATION_JSON)
 public interface CartApi {
-
+    
     @POST
     @Path("/")
     @ApiOperation(value = "Creates an empty cart. For convenience it also adds a cart entry when product variant id " +
@@ -53,9 +53,9 @@ public interface CartApi {
     @ApiResponses(value = {
         @ApiResponse(code = 201, message = "Created.", response = Cart.class,
                 responseHeaders = @ResponseHeader(name = "Location", description = "Location of the newly created cart.", response = String.class)),
-        @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Not allowed to create a cart.", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     Cart postCart(
@@ -75,9 +75,9 @@ public interface CartApi {
     @Path("/{id}")
     @ApiOperation(value = "Returns a cart by ID.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Not allowed to fetch that cart.", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     Cart getCart(
         @ApiParam(value = "The ID of the cart to be returned.", required = true)
@@ -91,9 +91,9 @@ public interface CartApi {
     @ApiOperation(value = "Deletes the cart.")
     @ApiResponses(value = {
         @ApiResponse(code = 204, message = "No Content."),
-        @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Not allowed to delete that cart.", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     void deleteCart(
         @ApiParam(value = "The ID of the cart to be removed.", required = true)
@@ -108,9 +108,9 @@ public interface CartApi {
     @ApiResponses(value = {
         @ApiResponse(code = 201, message = "Created.", response = Cart.class,
                 responseHeaders = @ResponseHeader(name = "Location", description = "Location of the newly created cart entry.", response = String.class)),
-        @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Not allowed to add an entry to that cart.", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     Cart postCartEntry(
@@ -118,7 +118,7 @@ public interface CartApi {
         @PathParam("id") String id,
 
         @ApiParam(value = "The product variant id to be added to the cart entry. If product variant exists in the" +
-            " cart then the cart entry quantity is increased with the provided quantity", required = true)
+            " cart then the cart entry quantity is increased with the provided quantity.", required = true)
         @FormParam("productVariantId") String productVariantId,
 
         @ApiParam(value = "The quantity for the new entry.", required = true)
@@ -132,9 +132,9 @@ public interface CartApi {
     @Path("/{id}/entries/{cartEntryId}")
     @ApiOperation(value = "Updates an existing cart entry.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Resource not found.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Not allowed to update that cart entry.", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     Cart putCartEntry(
@@ -157,9 +157,9 @@ public interface CartApi {
     @ApiOperation(value = "Removes a cart entry from the cart.")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK.", response = Cart.class),
-        @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Resource not found - cart or entry.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Not allowed to delete that cart entry.", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     Cart deleteCartEntry(
         @ApiParam(value = "The ID of the cart.", required = true)
@@ -176,13 +176,13 @@ public interface CartApi {
     @ApiOperation(value = "Sets the shipping address for the cart.")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK.", response = Cart.class),
-        @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Not allowed to set the shipping address", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_JSON)
     Cart postShippingAddress(
-        @ApiParam(value = "The ID of the cart for the shipping address", required = true)
+        @ApiParam(value = "The ID of the cart for the shipping address.", required = true)
         @PathParam("id") String id,
 
         @ApiParam(value = "The shipping address and an optional customer id that must be set if the cart belongs to a customer.", required = true)
@@ -193,9 +193,9 @@ public interface CartApi {
     @ApiOperation(value = "Deletes the shipping address for the cart.")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK.", response = Cart.class),
-        @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Not allowed to delete the shipping address", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     Cart deleteShippingAddress(
         @ApiParam(value = "The ID of the cart for which the shipping address will be deleted.", required = true)
@@ -209,13 +209,13 @@ public interface CartApi {
     @ApiOperation(value = "Sets the billing address for the cart.")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK.", response = Cart.class),
-        @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Not allowed to set the billing address", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_JSON)
     Cart postBillingAddress(
-        @ApiParam(value = "The ID of the cart for the billing address", required = true)
+        @ApiParam(value = "The ID of the cart for the billing address.", required = true)
         @PathParam("id") String id,
 
         @ApiParam(value = "The billing address and an optional customer id that must be set if the cart belongs to a customer.", required = true)
@@ -226,9 +226,9 @@ public interface CartApi {
     @ApiOperation(value = "Deletes the billing address for the cart.")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK.", response = Cart.class),
-        @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Not allowed to delete the billing address", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     Cart deleteBillingAddress(
         @ApiParam(value = "The ID of the cart for which the billing address will be deleted.", required = true)
@@ -242,9 +242,9 @@ public interface CartApi {
     @ApiOperation(value = "Updates the shipping method for the cart.")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK.", response = Cart.class),
-        @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Not allowed to set the shipping method.", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     Cart postShippingMethod(
@@ -262,9 +262,9 @@ public interface CartApi {
     @ApiOperation(value = "Deletes the shipping method for the cart.")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK.", response = Cart.class),
-        @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Not allowed to delete the shipping method.", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     Cart deleteShippingMethod(
         @ApiParam(value = "The ID of the cart for which the shipping method will be deleted.", required = true)
@@ -277,11 +277,12 @@ public interface CartApi {
     @Path("/{id}/shippingmethods")
     @ApiOperation(value = "Retrieves the available shipping methods for the current cart.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     List<ShippingMethod> getShippingMethods(
-        @ApiParam(value = "The id of the cart", required = true)
+        @ApiParam(value = "The id of the cart.", required = true)
         @PathParam("id") String id,
 
         @ApiParam(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")
@@ -292,9 +293,9 @@ public interface CartApi {
     @ApiOperation(value = "Creates a payment for this shopping cart.")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK.", response = Cart.class),
-        @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Not allowed to set the payment.", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_JSON)
     Cart postPayment(
@@ -306,12 +307,12 @@ public interface CartApi {
 
     @DELETE
     @Path("/{id}/payment")
-    @ApiOperation(value = "Removes the payment from the shopping cart. ")
+    @ApiOperation(value = "Removes the payment from the shopping cart.")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK.", response = Cart.class),
-        @ApiResponse(code = 400, message = "Invalid ID supplied.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Cart not found.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Not allowed to update the payment.", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     Cart deletePayment(
         @ApiParam(value = "The ID of the cart for which the payment will be deleted.", required = true)

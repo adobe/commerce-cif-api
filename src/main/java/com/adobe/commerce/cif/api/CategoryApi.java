@@ -38,20 +38,23 @@ public interface CategoryApi {
 
     @GET
     @Path("/{id}")
-    @ApiOperation(value = "Returns a category by ID")
+    @ApiOperation(value = "Returns a category by ID.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Invalid ID supplied" , response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Category not found", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request." , response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
-    public Category getCategoryById(
-        @ApiParam(value = "The ID of the category to return", required = true)
+    Category getCategoryById(
+        @ApiParam(value = "The ID of the category to return.", required = true)
         @PathParam("id") String id
     );
     
     @GET
     @Path("/")
-    @ApiOperation(value = "Returns the entire category structure or a subset of it depending on pagination")
-    public PagedResponse<Category> getCategories(
+    @ApiOperation(value = "Returns the entire category structure or a subset of it depending on pagination.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 400, message = "Bad Request." , response = ErrorResponse.class)
+    })
+    PagedResponse<Category> getCategories(
         @ApiParam(
             value = "The sort attributes and direction, separated by the pipe character (OpenWhisk does not yet support the 'multi' collection format).",
             collectionFormat = "pipes"

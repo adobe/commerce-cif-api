@@ -41,11 +41,11 @@ public interface CustomerApi {
     @Path("/{id}")
     @ApiOperation(value = "Returns a customer by ID.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Invalid ID supplied", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Customer not found", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
     Customer getCustomerById(
-        @ApiParam(value = "The id of the customer", required = true)
+        @ApiParam(value = "The id of the customer.", required = true)
         @PathParam("id")
         String id
     );
@@ -58,19 +58,20 @@ public interface CustomerApi {
     )
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK.", response = LoginResult.class),
-        @ApiResponse(code = 400, message = "Invalid customer credentials", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized.", response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     LoginResult login(
-        @ApiParam(value = "The email address of the customer", required = true)
+        @ApiParam(value = "The email address of the customer.", required = true)
         @FormParam("email")
         String email,
         
-        @ApiParam(value = "The password for this customer", required = true)
+        @ApiParam(value = "The password for this customer.", required = true)
         @FormParam("password")
         String password,
         
-        @ApiParam(value = "An optional anonymous cart id to be merged during the login process")
+        @ApiParam(value = "An optional anonymous cart id to be merged during the login process.")
         @FormParam("anonymousCartId")
         String anonymousCartId
     );

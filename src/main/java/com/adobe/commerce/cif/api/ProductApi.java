@@ -40,22 +40,22 @@ public interface ProductApi {
     @Path("/{id}")
     @ApiOperation(value = "Returns a product by ID.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Invalid ID supplied", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Product not found", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
+        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
     })
-    public Product getProductById(
-        @ApiParam(value = "The ID of the product to return", required = true)
+    Product getProductById(
+        @ApiParam(value = "The ID of the product to return.", required = true)
         @PathParam("id")
         String id
     );
 
     @GET
     @Path("/search")
-    @ApiOperation(value = "Searches products based on the given query parameters")
+    @ApiOperation(value = "Searches products based on the given query parameters.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Invalid search parameters supplied", response = ErrorResponse.class)
+        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class)
     })
-    public PagedResponse<Product> searchProducts(
+    PagedResponse<Product> searchProducts(
         @ApiParam(value = "The text to search if this is a full-text search.")
         @QueryParam(value = "text")
         String text,
