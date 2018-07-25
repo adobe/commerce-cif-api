@@ -45,8 +45,9 @@ pomParser.parse(opts, function(err, response) {
         // Remove release tag
         ci.sh('git push --delete origin ' + gitTag);
         
-        // Remove NPM token
+        // Remove NPM token and 'gpg' config
         ci.sh('rm -f ~/.npmrc');
+        ci.sh('rm -rf /home/circleci/.gnupg');
     }
 });
 
