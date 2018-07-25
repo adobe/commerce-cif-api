@@ -20,11 +20,22 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class Product extends AbstractProduct {
 
+    @ApiModelProperty(value = "The unique SKU of the product assigned by the vendor or manufacturer.")
+    protected String sku;
+
     @ApiModelProperty(value = "The id of the master variant", required = true)
     protected String masterVariantId;
 
     @ApiModelProperty(value = "The variants for this product.", required = true)
     protected List<ProductVariant> variants;
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
 
     public String getMasterVariantId() {
         return masterVariantId;
@@ -41,5 +52,5 @@ public class Product extends AbstractProduct {
     public void setVariants(List<ProductVariant> variants) {
         this.variants = variants;
     }
-
+    
 }

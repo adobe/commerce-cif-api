@@ -33,22 +33,22 @@ public class CartEntry {
     @ApiModelProperty(value = "The ProductVariant for the entry.", required = true)
     protected ProductVariant productVariant;
 
-    @ApiModelProperty(value = "The product variant item price.")
+    @ApiModelProperty(value = "The product variant item price.", required = true)
     protected Price unitPrice;
 
-    @ApiModelProperty(value = "A list of all applied discounts")
+    @ApiModelProperty(value = "A list of all applied discounts.")
     protected List<Discount> discounts;
 
-    @ApiModelProperty(value = "The calculated cart entry price. May or may not include taxes, depending on the tax policy.")
+    @ApiModelProperty(value = "The calculated cart entry price. May or may not include taxes, depending on the tax policy.", required = true)
     protected Price cartEntryPrice;
 
     @ApiModelProperty(value = "The cart entry price after all discounts have been applied.")
     protected Price discountedCartEntryPrice;
 
-    @ApiModelProperty(value = "The cart entry tax info.")
+    @ApiModelProperty(value = "The cart entry tax info. Until a shipping address is set, this field is typically not set.")
     protected TaxInfo cartEntryTaxInfo;
 
-    @ApiModelProperty(value = "Cart entry type.")
+    @ApiModelProperty(value = "Cart entry type.", required = true)
     protected CartEntryType type;
 
     public String getId() {

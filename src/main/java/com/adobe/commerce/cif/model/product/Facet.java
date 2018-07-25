@@ -23,7 +23,7 @@ public class Facet {
     @ApiModelProperty(value = "The name of the facet.", required = true)
     protected String name;
 
-    @ApiModelProperty(value = "The label of the facet.")
+    @ApiModelProperty(value = "The label of the facet.", required = true)
     protected String label;
 
     @ApiModelProperty(value = "The number of missed items.")
@@ -32,10 +32,10 @@ public class Facet {
     @ApiModelProperty(value = "Indicates if the facet is multi selectable.")
     protected Boolean multiSelect;
 
-    @ApiModelProperty(value = "The type of the facet.")
+    @ApiModelProperty(value = "The type of the facet.", required = true)
     protected String type;
 
-    @ApiModelProperty(value = "List of facetValues calculated for this facet.")
+    @ApiModelProperty(value = "List of facetValues calculated for this facet.", required = true)
     protected List<FacetValue> facetValues;
 
     public String getName() {

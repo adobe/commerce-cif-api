@@ -18,8 +18,19 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class ProductVariant extends AbstractProduct {
 
-    @ApiModelProperty(value = "Indicates if the product is available or not in the inventory.")
+    @ApiModelProperty(value = "The unique SKU of the product variant assigned by the vendor or manufacturer.", required = true)
+    protected String sku;
+
+    @ApiModelProperty(value = "Indicates if the product is available or not in the inventory.", required = true)
     protected Boolean available;
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
 
     public Boolean getAvailable() {
         return available;
@@ -28,4 +39,5 @@ public class ProductVariant extends AbstractProduct {
     public void setAvailable(Boolean available) {
         this.available = available;
     }
+
 }

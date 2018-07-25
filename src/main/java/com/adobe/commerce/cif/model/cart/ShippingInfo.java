@@ -29,10 +29,10 @@ public class ShippingInfo {
     @ApiModelProperty(value = "The discounted shipping price.")
     protected Price discountedPrice;
 
-    @ApiModelProperty(value = "The tax for the shipping.")
+    @ApiModelProperty(value = "The tax for the shipping.", required = true)
     protected TaxInfo shippingTaxInfo;
 
-    @ApiModelProperty(value = "The shipping method id.")
+    @ApiModelProperty(value = "The shipping method id.", required = true)
     protected String id;
     
     public String getName() {

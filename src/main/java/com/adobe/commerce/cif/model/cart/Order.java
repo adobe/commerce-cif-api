@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class Order {
 
-    @ApiModelProperty(value = "The order id.")
+    @ApiModelProperty(value = "The order id.", required = true)
     protected String id;
 
     public String getId() {

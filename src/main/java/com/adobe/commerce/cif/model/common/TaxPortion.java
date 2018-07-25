@@ -19,10 +19,10 @@ import java.math.BigDecimal;
 
 public class TaxPortion {
 
-    @ApiModelProperty(value = "The name for this tax portion.")
+    @ApiModelProperty(value = "The name for this tax portion.", required = true)
     protected String name;
 
-    @ApiModelProperty(value = "The amount in cents for the tax portion.")
+    @ApiModelProperty(value = "The amount in cents for the tax portion.", required = true)
     protected BigDecimal centAmount;
 
     public String getName() {

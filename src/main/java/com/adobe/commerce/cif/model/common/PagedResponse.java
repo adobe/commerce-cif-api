@@ -21,16 +21,16 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class PagedResponse<T> {
 
-    @ApiModelProperty(value = "The offset for this response, this is the number of elements skipped, not a page number.")
+    @ApiModelProperty(value = "The offset for this response, this is the number of elements skipped, not a page number.", required = true)
     protected Integer offset;
 
-    @ApiModelProperty(value = "The actual number of results returned in results.")
+    @ApiModelProperty(value = "The actual number of results returned in results.", required = true)
     protected Integer count;
 
-    @ApiModelProperty(value = "The total number of results matching the query.")
+    @ApiModelProperty(value = "The total number of results matching the query.", required = true)
     protected Integer total;
 
-    @ApiModelProperty(value = "The results for this response.")
+    @ApiModelProperty(value = "The results for this response.", required = true)
     protected List<T> results;
 
     @ApiModelProperty(value = "The list of facets for this response.")

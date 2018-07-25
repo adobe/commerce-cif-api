@@ -22,13 +22,13 @@ public class ShippingMethod {
     @ApiModelProperty(value = "The id of the shipping method.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The name of the shipping method.")
+    @ApiModelProperty(value = "The name of the shipping method.", required = true)
     protected String name;
 
     @ApiModelProperty(value = "The description of the shipping method.")
     protected String description;
     
-    @ApiModelProperty(value = "The price of the shipping method aka shipping cost.")
+    @ApiModelProperty(value = "The price of the shipping method aka shipping cost.", required = true)
     protected Price price;
 
     public String getId() {

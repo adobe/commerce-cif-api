@@ -18,10 +18,10 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class Asset {
 
-    @ApiModelProperty(value = "The id of the asset.")
+    @ApiModelProperty(value = "The id of the asset.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The url of the asset.")
+    @ApiModelProperty(value = "The url of the asset.", required = true)
     protected String url;
 
     public String getId() {
