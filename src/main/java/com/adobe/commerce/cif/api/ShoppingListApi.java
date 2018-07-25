@@ -39,6 +39,17 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
+import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
+import static com.adobe.commerce.cif.api.Constants.HTTP_CREATED;
+import static com.adobe.commerce.cif.api.Constants.HTTP_CREATED_MESSAGE;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND_MESSAGE;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NO_CONTENT;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NO_CONTENT_MESSAGE;
+import static com.adobe.commerce.cif.api.Constants.HTTP_UNAUTHORIZED;
+import static com.adobe.commerce.cif.api.Constants.HTTP_UNAUTHORIZED_MESSAGE;
+
 @Path("/shoppinglists")
 @Api(value = "/shoppinglists")
 @Produces(MediaType.APPLICATION_JSON)
@@ -49,9 +60,9 @@ public interface ShoppingListApi {
     @ApiOperation(value = "Gets a users shopping lists.",
                   notes = "The entries property is empty for all shopping lists in the response. To retrieve entries, query a single shopping list.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     PagedResponse<ShoppingList> getShoppingLists(
         @ApiParam(value = "Defines the number of shopping lists to skip.")
@@ -69,9 +80,9 @@ public interface ShoppingListApi {
     @Path("/{id}")
     @ApiOperation(value = "Gets a users shopping list with a given id.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     ShoppingList getShoppingList(
         @ApiParam(value = "The id of the shopping list to return.", required = true)
@@ -84,11 +95,11 @@ public interface ShoppingListApi {
     @ApiOperation(value = "Creates a new shopping list for the current user.",
                   notes = "The name and description properties will be stored as localized strings in the language defined by the Content-Language header.")
     @ApiResponses(value = {
-        @ApiResponse(code = 201, message = "Created.", response = ShoppingList.class,
+        @ApiResponse(code = HTTP_CREATED, message = HTTP_CREATED_MESSAGE, response = ShoppingList.class,
                      responseHeaders = @ResponseHeader(name = "Location", description = "Location of the newly created shopping list.", response = String.class)),
-        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     ShoppingList postShoppingList(
@@ -109,9 +120,9 @@ public interface ShoppingListApi {
     @Path("/{id}")
     @ApiOperation(value = "Replaces a shopping list with the given one.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     ShoppingList putShoppingList(
@@ -132,10 +143,10 @@ public interface ShoppingListApi {
     @Path("/{id}")
     @ApiOperation(value = "Deletes a shopping list.")
     @ApiResponses(value = {
-        @ApiResponse(code = 204, message = "No Content."),
-        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_NO_CONTENT, message = HTTP_NO_CONTENT_MESSAGE),
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     void deleteShoppingList(
         @ApiParam(value = "The id of the shopping list to be deleted.", required = true)
@@ -147,9 +158,9 @@ public interface ShoppingListApi {
     @Path("/{id}/entries")
     @ApiOperation(value = "Gets all entries from a shopping list.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     PagedResponse<ShoppingListEntry> getShoppingListEntries(
         @ApiParam(value = "The id of the shopping list to return entries from.", required = true)
@@ -171,9 +182,9 @@ public interface ShoppingListApi {
     @Path("/{id}/entries/{entryId}")
     @ApiOperation(value = "Gets a single entry from a shopping list.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     ShoppingListEntry getShoppingListEntry(
         @ApiParam(value = "The id of the shopping list.", required = true)
@@ -189,11 +200,11 @@ public interface ShoppingListApi {
     @Path("/{id}/entries")
     @ApiOperation(value = "Creates a new entry for a shopping list.")
     @ApiResponses(value = {
-        @ApiResponse(code = 201, message = "Created.", response = ShoppingList.class,
+        @ApiResponse(code = HTTP_CREATED, message = HTTP_CREATED_MESSAGE, response = ShoppingList.class,
                      responseHeaders = @ResponseHeader(name = "Location", description = "Location of the newly created entry.", response = String.class)),
-        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     ShoppingListEntry postShoppingListEntry(
@@ -215,9 +226,9 @@ public interface ShoppingListApi {
     @Path("/{id}/entries/{entryId}")
     @ApiOperation(value = "Replaces an entry with the given one.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     ShoppingListEntry putShoppingListEntry(
@@ -243,10 +254,10 @@ public interface ShoppingListApi {
     @Path("/{id}/entries/{entryId}")
     @ApiOperation(value = "Deletes an entry from a shopping list.")
     @ApiResponses(value = {
-        @ApiResponse(code = 204, message = "No Content."),
-        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_NO_CONTENT, message = HTTP_NO_CONTENT_MESSAGE),
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     void deleteShoppingListEntry(
         @ApiParam(value = "The id of the shopping list.", required = true)
