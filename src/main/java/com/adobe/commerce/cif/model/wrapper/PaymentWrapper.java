@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class PaymentWrapper {
 
-    @ApiModelProperty(value = "The payment object.")
+    @ApiModelProperty(value = "The payment object.", required = true)
     protected Payment payment;
 
     public Payment getPayment() {

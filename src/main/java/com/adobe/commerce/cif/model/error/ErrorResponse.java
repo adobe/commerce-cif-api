@@ -18,13 +18,13 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class ErrorResponse {
 
-    @ApiModelProperty(value = "The error type.", example = "coupon")
+    @ApiModelProperty(value = "The error type.", example = "coupon", required = true)
     protected String type;
 
-    @ApiModelProperty(value = "The error reason.", example = "coupon-expired")
+    @ApiModelProperty(value = "The error reason.", example = "coupon-expired", required = true)
     protected String reason;
 
-    @ApiModelProperty(value = "The error message.", example = "Coupon expired.")
+    @ApiModelProperty(value = "The error message.", example = "Coupon expired.", required = true)
     protected String message;
 
     public String getType() {

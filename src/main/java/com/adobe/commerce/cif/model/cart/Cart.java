@@ -35,20 +35,20 @@ public class Cart {
     @ApiModelProperty(value = "If set, this defines the customer owning this cart. If not set, the cart is an anonymous cart.")
     protected String customerId;
     
-    @ApiModelProperty(value = "The net total price for the cart, including discounts, and shipping, but excluding any taxes.")
+    @ApiModelProperty(value = "The net total price for the cart, including discounts, and shipping, but excluding any taxes. Until a shipping address is set, this field is typically not set.")
     protected Price netTotalPrice;
     
-    @ApiModelProperty(value = "The gross total price for the cart, including discounts, shipping, and all taxes.")
+    @ApiModelProperty(value = "The gross total price for the cart, including discounts, shipping, and all taxes. Until a shipping address is set, this field is typically not set.")
     protected Price grossTotalPrice;
     
     @ApiModelProperty(value = "The product subtotal for the cart, including discounts and with or without taxes depending if the product prices include taxes or not." +
-                              "Until a shipping address is set, this field is typically used as the temporary cart total until it is known if prices include taxes or not.")
+                              "Until a shipping address is set, this field is typically used as the temporary cart total until it is known if prices include taxes or not.", required = true)
     protected Price totalProductPrice;
 
-    @ApiModelProperty(value = "The cart tax info, including cart entries tax and shipping info tax.")
+    @ApiModelProperty(value = "The cart tax info, including cart entries tax and shipping info tax. Until a shipping address is set, this field is typically not set.")
     protected TaxInfo cartTaxInfo;
 
-    @ApiModelProperty(value = "Indicates if taxes are included or not in all the prices.")
+    @ApiModelProperty(value = "Indicates if taxes are included or not in all the prices. Until a shipping address is set, this field is typically not set.")
     protected Boolean taxIncludedInPrices;
 
     @ApiModelProperty(value = "The date when this cart was created.")
@@ -72,7 +72,7 @@ public class Cart {
     @ApiModelProperty(value = "The payment details for the cart.")
     protected Payment payment;
 
-    @ApiModelProperty(value = "The currency for the cart.")
+    @ApiModelProperty(value = "The currency for the cart.", required = true)
     protected String currency;
 
     @ApiModelProperty(value = "A list of all coupons of the cart.")

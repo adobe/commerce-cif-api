@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class LoginResult {
 
-    @ApiModelProperty(value = "The customer info returned by the login process")
+    @ApiModelProperty(value = "The customer info returned by the login process", required = true)
     protected Customer customer;
 
     @ApiModelProperty(value = "The current or merged cart created during the login process")

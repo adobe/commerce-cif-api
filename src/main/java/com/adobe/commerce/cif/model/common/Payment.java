@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class Payment {
 
-    @ApiModelProperty(value = "The id of the payment.")
+    @ApiModelProperty(value = "The id of the payment.", required = true)
     protected String id;
 
     @ApiModelProperty(value = "The customer the payment belongs to. If this is not set the payment belongs to an " +

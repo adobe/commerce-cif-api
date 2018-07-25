@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class Address {
 
-    @ApiModelProperty(value = "Address unique identifier.")
+    @ApiModelProperty(value = "Address unique identifier.", required = true)
     protected String id;
 
     @ApiModelProperty(value = "Address title")
@@ -27,10 +27,10 @@ public class Address {
     @ApiModelProperty(value = "Address salutation")
     protected String salutation;
 
-    @ApiModelProperty(value = "First name.")
+    @ApiModelProperty(value = "First name.", required = true)
     protected String firstName;
 
-    @ApiModelProperty(value = "Last name.")
+    @ApiModelProperty(value = "Last name.", required = true)
     protected String lastName;
 
     @ApiModelProperty(value = "Email.")
@@ -45,25 +45,25 @@ public class Address {
     @ApiModelProperty(value = "Fax.")
     protected String fax;
 
-    @ApiModelProperty(value = "Country code as per ISO 3166-1. ")
+    @ApiModelProperty(value = "Country code as per ISO 3166-1.", required = true)
     protected String country;
 
     @ApiModelProperty(value = "Region.")
     protected String region;
 
-    @ApiModelProperty(value = "City.")
+    @ApiModelProperty(value = "City.", required = true)
     protected String city;
 
-    @ApiModelProperty(value = "Postal code.")
+    @ApiModelProperty(value = "Postal code.", required = true)
     protected String postalCode;
 
-    @ApiModelProperty(value = "Organization name. Can be company name. ")
+    @ApiModelProperty(value = "Organization name. Can be company name.")
     protected String organizationName;
 
     @ApiModelProperty(value = "Department.")
     protected String department;
 
-    @ApiModelProperty(value = "Street name.")
+    @ApiModelProperty(value = "Street name.", required = true)
     protected String streetName;
 
     @ApiModelProperty(value = "Street no.")
