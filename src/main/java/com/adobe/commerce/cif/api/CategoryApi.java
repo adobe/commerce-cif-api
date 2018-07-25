@@ -31,6 +31,11 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
+import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND_MESSAGE;
+
 @Path("/categories")
 @Api(value = "/categories")
 @Produces(MediaType.APPLICATION_JSON)
@@ -38,20 +43,23 @@ public interface CategoryApi {
 
     @GET
     @Path("/{id}")
-    @ApiOperation(value = "Returns a category by ID")
+    @ApiOperation(value = "Returns a category by ID.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Invalid ID supplied" , response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Category not found", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE , response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
-    public Category getCategoryById(
-        @ApiParam(value = "The ID of the category to return", required = true)
+    Category getCategoryById(
+        @ApiParam(value = "The ID of the category to return.", required = true)
         @PathParam("id") String id
     );
     
     @GET
     @Path("/")
-    @ApiOperation(value = "Returns the entire category structure or a subset of it depending on pagination")
-    public PagedResponse<Category> getCategories(
+    @ApiOperation(value = "Returns the entire category structure or a subset of it depending on pagination.")
+    @ApiResponses(value = {
+            @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class)
+    })
+    PagedResponse<Category> getCategories(
         @ApiParam(
             value = "The sort attributes and direction, separated by the pipe character (OpenWhisk does not yet support the 'multi' collection format).",
             collectionFormat = "pipes"

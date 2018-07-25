@@ -18,15 +18,13 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
 
-import com.adobe.commerce.cif.model.common.LocalizedString;
-
 public class Facet {
 
     @ApiModelProperty(value = "The name of the facet.", required = true)
     protected String name;
 
     @ApiModelProperty(value = "The label of the facet.")
-    protected LocalizedString label;
+    protected String label;
 
     @ApiModelProperty(value = "The number of missed items.")
     protected Integer missed;
@@ -48,11 +46,11 @@ public class Facet {
         this.name = name;
     }
 
-    public LocalizedString getLabel() {
+    public String getLabel() {
         return label;
     }
 
-    public void setLabel(LocalizedString label) {
+    public void setLabel(String label) {
         this.label = label;
     }
 

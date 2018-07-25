@@ -2,9 +2,7 @@
     "totalCentAmount": 900,
     "taxPortions": [
         {
-            "name": {
-                "en": "VAT 10%"
-            },
+            "name": "VAT 10%",
             "centAmount": 900
         }
     ]

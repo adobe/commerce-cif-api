@@ -1,0 +1,12 @@
+{
+  "name": "commerce-cif-api-release-tools",
+  "version": "1.0.0",
+  "description": "This package contains tools to build and release the CIF API",
+  "private": true,
+  "author": "Adobe Systems Inc.",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "pom-parser": "1.1.1",
+    "semver": "5.5.0"
+  }
+}

@@ -21,14 +21,14 @@ public class Attribute {
     @ApiModelProperty(value = "The unique id for this text attribute, for example 'width'.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The localized name for this text attribute, for example 'Width' or 'Breite'.", required = true)
-    protected LocalizedString name;
+    @ApiModelProperty(value = "The name for this text attribute.", required = true, example = "Width")
+    protected String name;
 
     @ApiModelProperty(value = "The value of the attribute. This can be any arbitrary valid JSON value.", required = true)
     protected Object value;
     
     @ApiModelProperty(value = "If true, this attribute is a variant attribute. If not set or false, the attribute is a normal/simple attribute.")
-    protected boolean variantAttribute;
+    protected Boolean variantAttribute;
     
     public String getId() {
         return id;
@@ -38,11 +38,11 @@ public class Attribute {
         this.id = id;
     }
 
-    public LocalizedString getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(LocalizedString name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -54,12 +54,12 @@ public class Attribute {
         this.value = value;
     }
 
-    public boolean isVariantAttribute() {
+    public Boolean getVariantAttribute() {
         return variantAttribute;
     }
 
-    public void setVariantAttribute(boolean variantAttribute) {
+    public void setVariantAttribute(Boolean variantAttribute) {
         this.variantAttribute = variantAttribute;
     }
-    
+
 }
