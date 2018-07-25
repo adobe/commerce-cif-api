@@ -4,6 +4,8 @@
 [![Maven Central](https://img.shields.io/maven-central/v/com.adobe.commerce.cif/api-model.svg)](https://search.maven.org/#search%7Cga%7C1%7Cg%3Acom.adobe.commerce.cif%20a%3Aapi-model)
 [![npm (scoped)](https://img.shields.io/npm/v/@adobe/commerce-cif-model.svg)](https://www.npmjs.com/package/@adobe/commerce-cif-model)
 
+test
+
 # Adobe CIF Cloud API and data model
 
 This repository contains the API reference and data model documentation files for the Adobe Commerce Integration Framework (CIF) Cloud API.
