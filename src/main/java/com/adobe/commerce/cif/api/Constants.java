@@ -15,9 +15,7 @@
 package com.adobe.commerce.cif.api;
 
 public final class Constants {
-
-    private Constants() {}
-
+    
     public static final int HTTP_OK = 200;
     public static final String HTTP_OK_MESSAGE = "OK.";
 
