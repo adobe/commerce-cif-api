@@ -31,6 +31,11 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
+import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND_MESSAGE;
+
 @Path("/products")
 @Api(value = "/products")
 @Produces(MediaType.APPLICATION_JSON)
@@ -40,8 +45,8 @@ public interface ProductApi {
     @Path("/{id}")
     @ApiOperation(value = "Returns a product by ID.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     Product getProductById(
         @ApiParam(value = "The ID of the product to return.", required = true)
@@ -53,7 +58,7 @@ public interface ProductApi {
     @Path("/search")
     @ApiOperation(value = "Searches products based on the given query parameters.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class)
     })
     PagedResponse<Product> searchProducts(
         @ApiParam(value = "The text to search if this is a full-text search.")

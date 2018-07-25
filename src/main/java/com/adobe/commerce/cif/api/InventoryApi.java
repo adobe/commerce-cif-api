@@ -26,6 +26,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
+import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
+
 @Path("/inventory")
 @Api(value = "/inventory")
 @Produces(MediaType.APPLICATION_JSON)
@@ -35,7 +38,7 @@ public interface InventoryApi {
     @Path("/query")
     @ApiOperation(value = "Queries inventory based on the given query parameters.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class)
     })
     PagedResponse<InventoryItem> query(
 

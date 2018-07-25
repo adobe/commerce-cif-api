@@ -32,6 +32,15 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
+import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND_MESSAGE;
+import static com.adobe.commerce.cif.api.Constants.HTTP_OK;
+import static com.adobe.commerce.cif.api.Constants.HTTP_OK_MESSAGE;
+import static com.adobe.commerce.cif.api.Constants.HTTP_UNAUTHORIZED;
+import static com.adobe.commerce.cif.api.Constants.HTTP_UNAUTHORIZED_MESSAGE;
+
 @Path("/customers")
 @Api(value = "/customers")
 @Produces(MediaType.APPLICATION_JSON)
@@ -41,8 +50,8 @@ public interface CustomerApi {
     @Path("/{id}")
     @ApiOperation(value = "Returns a customer by ID.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     Customer getCustomerById(
         @ApiParam(value = "The id of the customer.", required = true)
@@ -57,9 +66,9 @@ public interface CustomerApi {
         value = "Performs a customer login, potentially merging an anonymous cart with a customer cart."
     )
     @ApiResponses(value = {
-        @ApiResponse(code = 200, message = "OK.", response = LoginResult.class),
-        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 401, message = "Unauthorized.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_OK, message = HTTP_OK_MESSAGE, response = LoginResult.class),
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     LoginResult login(

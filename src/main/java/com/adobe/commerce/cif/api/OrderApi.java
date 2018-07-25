@@ -30,6 +30,15 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ResponseHeader;
 
+import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
+import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
+import static com.adobe.commerce.cif.api.Constants.HTTP_CREATED;
+import static com.adobe.commerce.cif.api.Constants.HTTP_CREATED_MESSAGE;
+import static com.adobe.commerce.cif.api.Constants.HTTP_FORBIDDEN;
+import static com.adobe.commerce.cif.api.Constants.HTTP_FORBIDDEN_MESSAGE;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND_MESSAGE;
+
 @Path("/orders")
 @Api(value = "/orders")
 @Produces(MediaType.APPLICATION_JSON)
@@ -39,11 +48,11 @@ public interface OrderApi {
     @Path("/")
     @ApiOperation(value = "Creates an order based on a cart.")
     @ApiResponses(value = {
-        @ApiResponse(code = 201, message = "Created.", response = Order.class,
+        @ApiResponse(code = HTTP_CREATED, message = HTTP_CREATED_MESSAGE, response = Order.class,
                 responseHeaders = @ResponseHeader(name = "Location", description = "Location of the newly created order.", response = String.class)),
-        @ApiResponse(code = 400, message = "Bad Request.", response = ErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden.", response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_FORBIDDEN, message = HTTP_FORBIDDEN_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     Order postOrder(

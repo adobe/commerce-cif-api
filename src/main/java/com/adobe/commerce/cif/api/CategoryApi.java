@@ -31,6 +31,11 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
+import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND_MESSAGE;
+
 @Path("/categories")
 @Api(value = "/categories")
 @Produces(MediaType.APPLICATION_JSON)
@@ -40,8 +45,8 @@ public interface CategoryApi {
     @Path("/{id}")
     @ApiOperation(value = "Returns a category by ID.")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Bad Request." , response = ErrorResponse.class),
-        @ApiResponse(code = 404, message = "Not Found.", response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE , response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     Category getCategoryById(
         @ApiParam(value = "The ID of the category to return.", required = true)
@@ -52,7 +57,7 @@ public interface CategoryApi {
     @Path("/")
     @ApiOperation(value = "Returns the entire category structure or a subset of it depending on pagination.")
     @ApiResponses(value = {
-            @ApiResponse(code = 400, message = "Bad Request." , response = ErrorResponse.class)
+            @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class)
     })
     PagedResponse<Category> getCategories(
         @ApiParam(
