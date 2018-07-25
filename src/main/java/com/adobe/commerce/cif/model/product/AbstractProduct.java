@@ -20,7 +20,6 @@ import java.util.List;
 import com.adobe.commerce.cif.model.category.Category;
 import com.adobe.commerce.cif.model.common.Asset;
 import com.adobe.commerce.cif.model.common.Attribute;
-import com.adobe.commerce.cif.model.common.LocalizedString;
 import com.adobe.commerce.cif.model.common.Price;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -32,11 +31,11 @@ public abstract class AbstractProduct {
     @ApiModelProperty(value = "The unique SKU of the product assigned by the vendor or manufacturer.")
     protected String sku;
     
-    @ApiModelProperty(value = "The localized name of the product.")
-    protected LocalizedString name;
+    @ApiModelProperty(value = "The name of the product.")
+    protected String name;
 
-    @ApiModelProperty(value = "The localized description of the product.")
-    protected LocalizedString description;
+    @ApiModelProperty(value = "The description of the product.")
+    protected String description;
 
     @ApiModelProperty(value = "The prices for this product.")
     protected List<Price> prices;
@@ -72,19 +71,19 @@ public abstract class AbstractProduct {
         this.sku = sku;
     }
     
-    public LocalizedString getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(LocalizedString name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public LocalizedString getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(LocalizedString description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

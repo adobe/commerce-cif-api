@@ -57,7 +57,7 @@ function createClass(definition, classname) {
     }
 
     fs.appendFileSync(file, '}\n');
-    fs.appendFileSync(file, 'module.exports.' + classname + ' = ' + classname + '\n');
+    fs.appendFileSync(file, 'module.exports.' + classname + ' = ' + classname + ';\n');
 }
 
 function addConstructor(definition, classname, file) {

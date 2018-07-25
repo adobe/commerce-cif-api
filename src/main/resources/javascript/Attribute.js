@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.121
+ * @version 0.1.123
  */
 class Attribute {
 
@@ -24,7 +24,7 @@ class Attribute {
      * Represents a Attribute
      * @constructor 
      * @param {string} id
-     * @param {object} name
+     * @param {string} name
      * @param {object} value
      */
     constructor(id, name, value) {
@@ -35,8 +35,8 @@ class Attribute {
         this.id = id;
 
         /**
-         * The localized name for this text attribute, for example 'Width' or 'Breite'.
-         * @type {object}
+         * The name for this text attribute.
+         * @type {string}
          */
         this.name = name;
 

@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.121
+ * @version 0.1.123
  */
 class ShoppingList {
 
@@ -25,7 +25,7 @@ class ShoppingList {
      * @constructor 
      * @param {ShoppingListEntry[]} entries
      * @param {string} id
-     * @param {object} name
+     * @param {string} name
      */
     constructor(entries, id, name) {
         /**
@@ -35,14 +35,14 @@ class ShoppingList {
         this.id = id;
 
         /**
-         * The name of the shopping list. Localization is optional here, the default language is en.
-         * @type {object}
+         * The name of the shopping list.
+         * @type {string}
          */
         this.name = name;
 
         /**
-         * The description of the shopping list. Localization is optional here, the default language is en.
-         * @type {object}
+         * The description of the shopping list.
+         * @type {string}
          */
         this.description = undefined;
 

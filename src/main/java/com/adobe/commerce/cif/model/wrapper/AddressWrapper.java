@@ -21,9 +21,6 @@ public class AddressWrapper {
 
     @ApiModelProperty(value = "The address object.")
     protected Address address;
-
-    @ApiModelProperty(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")
-    protected String customerId;
     
     public Address getAddress() {
         return address;
@@ -32,13 +29,4 @@ public class AddressWrapper {
     public void setAddress(Address address) {
         this.address = address;
     }
-
-    public String getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
-    
 }

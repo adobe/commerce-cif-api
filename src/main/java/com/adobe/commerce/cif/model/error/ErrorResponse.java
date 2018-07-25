@@ -14,7 +14,6 @@
 
 package com.adobe.commerce.cif.model.error;
 
-import com.adobe.commerce.cif.model.common.LocalizedString;
 import io.swagger.annotations.ApiModelProperty;
 
 public class ErrorResponse {
@@ -25,11 +24,8 @@ public class ErrorResponse {
     @ApiModelProperty(value = "The error reason.", example = "coupon-expired")
     protected String reason;
 
-    @ApiModelProperty(value = "Localized message", example = "{\n" +
-            "        \"en\": \"Coupon expired.\",\n" +
-            "        \"de\": \"Gutschein abgelaufen.\"\n" +
-            "    }")
-    protected LocalizedString message;
+    @ApiModelProperty(value = "The error message.", example = "Coupon expired.")
+    protected String message;
 
     public String getType() {
         return type;
@@ -47,11 +43,11 @@ public class ErrorResponse {
         this.reason = reason;
     }
 
-    public LocalizedString getMessage() {
+    public String getMessage() {
         return message;
     }
 
-    public void setMessage(LocalizedString message) {
+    public void setMessage(String message) {
         this.message = message;
     }
 }
