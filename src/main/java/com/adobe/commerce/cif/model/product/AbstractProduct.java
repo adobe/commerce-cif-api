@@ -27,9 +27,6 @@ public abstract class AbstractProduct {
 
     @ApiModelProperty(value = "The internal unique ID of the product in the commerce backend system.", required = true)
     protected String id;
-
-    @ApiModelProperty(value = "The unique SKU of the product assigned by the vendor or manufacturer.", required = true)
-    protected String sku;
     
     @ApiModelProperty(value = "The name of the product.", required = true)
     protected String name;
@@ -61,14 +58,6 @@ public abstract class AbstractProduct {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getSku() {
-        return sku;
-    }
-
-    public void setSku(String sku) {
-        this.sku = sku;
     }
     
     public String getName() {
