@@ -79,9 +79,8 @@ function release(pomVersion) {
     console.log('Released version : ' + newVersion);
     console.log('Next version     : ' + nextVersion);
     
-    // Import PGP key into 'gpg' config + configure non-interactive mode
+    // Import PGP key into 'gpg' config
     ci.sh('echo $GPG_PRIVATE_KEY | base64 --decode | gpg --batch --import');
-    ci.sh('echo "pinentry-mode loopback" > /home/circleci/.gnupg/gpg.conf');
     
     // Configure NPM token
     ci.sh('echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc');
