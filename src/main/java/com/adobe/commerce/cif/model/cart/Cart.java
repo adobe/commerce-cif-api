@@ -48,7 +48,7 @@ public class Cart {
     @ApiModelProperty(value = "The cart tax info, including cart entries tax and shipping info tax. Until a shipping address is set, this field is typically not set.")
     protected TaxInfo cartTaxInfo;
 
-    @ApiModelProperty(value = "Indicates if taxes are included or not in all the prices. Until a shipping address is set, this field is typically not set.",)
+    @ApiModelProperty(value = "Indicates if taxes are included or not in all the prices. Until a shipping address is set, this field is typically not set.")
     protected Boolean taxIncludedInPrices;
 
     @ApiModelProperty(value = "The date when this cart was created.")
