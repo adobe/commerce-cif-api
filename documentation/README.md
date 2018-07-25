@@ -18,8 +18,8 @@ Although the API will use only JSON for data serialization, it is good practice 
 
 ## Error codes
 
-The API uses standard HTTP response codes as error codes. For details about the error codes returned by specific endpoints you can check the [Swagger](http://opensource.adobe.com/commerce-cif-api/) documentation.
+The API uses standard HTTP response codes as error codes. For details about the error codes returned by specific endpoints you can check the [Swagger documentation](http://opensource.adobe.com/commerce-cif-api/).
 
 ## Paging and sorting
 
-The API methods that list entities accept parameters that control sorting and pagination. You can find more details in the [Swagger docs](http://opensource.adobe.com/commerce-cif-api/).
+The API methods that list entities accept parameters that control sorting and pagination. You can find more details in the [Swagger documentation](http://opensource.adobe.com/commerce-cif-api/).
