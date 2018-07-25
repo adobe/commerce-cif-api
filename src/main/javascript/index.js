@@ -18,7 +18,6 @@ const fsx = require('fs-extra');
 const escape = require('js-string-escape');
 const swagger = require('../resources/generated/swagger/swagger.json');
 const license = fs.readFileSync('license.txt');
-const replace = require("replace");
 
 if (!fs.existsSync('../resources/generated/javascript')) {
     fs.mkdirSync('../resources/generated/javascript');
@@ -121,21 +120,13 @@ function getType(object) {
 function replaceOperationIdProperties() {
     let pkg = swagger.info['x-ow-package'] || 'default';
 
-    replace({
-        regex: /"operationId" : "/g,
-        replacement: '"operationId" : "' + pkg + '/',
-        paths: ['../resources/generated/swagger/swagger.json'],
-        recursive: false,
-        silent: true,
-    });
+    let swagJson = fs.readFileSync('../resources/generated/swagger/swagger.json', 'utf-8');
+    swagJson = swagJson.replace(/"operationId" : "/g, '"operationId" : "' + pkg + '/');
+    fs.writeFileSync('../resources/generated/swagger/swagger.json', swagJson);
 
-    replace({
-        regex: /operationId: "/g,
-        replacement: 'operationId: "' + pkg + '/',
-        paths: ['../resources/generated/swagger/swagger.yaml'],
-        recursive: false,
-        silent: true,
-    });
+    let swagYaml = fs.readFileSync('../resources/generated/swagger/swagger.yaml', 'utf-8');
+    swagYaml = swagYaml.replace(/operationId: "/g, 'operationId: "' + pkg + '/');
+    fs.writeFileSync('../resources/generated/swagger/swagger.yaml', swagYaml);
 }
 
 // Generates all JS model classes
