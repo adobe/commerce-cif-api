@@ -57,8 +57,5 @@ public interface OrderApi {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     Order postOrder(
         @ApiParam(value = "The id of the cart from which the order will be created.")
-        @FormParam("cartId") String cartId,
-
-        @ApiParam(value = "If the cart belongs to a customer, this must be set to the customer id owning that cart.")
-        @FormParam("customerId") String customerId);
+        @FormParam("cartId") String cartId);
 }
