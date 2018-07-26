@@ -115,12 +115,29 @@ function getType(object) {
     return type;
 }
 
+// We do a final change to the Swagger spec, by adding the Openwhisk package name to all "operationId" fields
+// This is required for the 'wsk api create' configuration of the REST API in Adobe I/O Runtime
+function replaceOperationIdProperties() {
+    let pkg = swagger.info['x-ow-package'] || 'default';
+
+    let swagJson = fs.readFileSync('../resources/generated/swagger/swagger.json', 'utf-8');
+    swagJson = swagJson.replace(/"operationId" : "/g, '"operationId" : "' + pkg + '/');
+    fs.writeFileSync('../resources/generated/swagger/swagger.json', swagJson);
+
+    let swagYaml = fs.readFileSync('../resources/generated/swagger/swagger.yaml', 'utf-8');
+    swagYaml = swagYaml.replace(/operationId: "/g, 'operationId: "' + pkg + '/');
+    fs.writeFileSync('../resources/generated/swagger/swagger.yaml', swagYaml);
+}
+
 // Generates all JS model classes
 _.forEach(swagger.definitions, function(definition, classname) {
         addToIndex(escape(classname));
         createClass(definition, escape(classname));
     }
 );
+
+// Add OW package name to all "operationId" fields
+replaceOperationIdProperties();
 
 // If this is NOT a SNAPSHOT version, we copy the generated files to the folders included in github
 if (!swagger.info.version.includes('-SNAPSHOT')) {
