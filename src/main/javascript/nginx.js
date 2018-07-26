@@ -25,7 +25,7 @@ if (!fs.existsSync(genFolder + '/nginx')) {
 
 const config = fs.openSync(genFolder + '/nginx/nginx-config.txt', 'w');
 fs.appendFileSync(config, '\n');
-fs.appendFileSync(config, '# 1) Verify the 3 variables below this header and set them to match your OpenWhisk deployment.\n');
+fs.appendFileSync(config, '# 1) Verify the 2 variables below this header and set them to match your OpenWhisk deployment.\n');
 fs.appendFileSync(config, '#    For a local OW deployment, you need to uncomment the line setting the $controller variable.\n');
 fs.appendFileSync(config, '# 2) Copy the content of this file in ansible/roles/nginx/templates/nginx.conf.j2\n');
 fs.appendFileSync(config, '#    before the first location directive that already exists in the file\n');
@@ -34,8 +34,8 @@ fs.appendFileSync(config, '#\n');
 fs.appendFileSync(config, '# CCIF API Version ' + escape(swagger.info.version) + '\n\n');
 
 fs.appendFileSync(config, '# set $controller "http://controllers";\n');
-fs.appendFileSync(config, 'set $ow_namespace "' + escape(swagger.info['x-ow-namespace'] || 'guest') + '";\n');
-fs.appendFileSync(config, 'set $ow_package "' + escape(swagger.info['x-ow-package'] || 'default') + '";\n\n');
+fs.appendFileSync(config, 'set $ow_namespace "' + escape(swagger.info['x-ow-namespace'] || 'guest') + '";\n\n');
+// Note: the OW package name is embedded into all the "operationId" fields in the swagger.json file
 
 _.forEach(swagger.paths, (endpoints, path) => {
     console.log('Creating nginx location config for ' + escape(path));
@@ -108,7 +108,7 @@ function appendNginxConfig(endpoints, path) {
 }
 
 function createActionUrl(action, pathVariables) {
-    let url = '$ow_namespace/$ow_package/' + action + '.http';
+    let url = '$ow_namespace/' + action + '.http';
     pathVariables.forEach((pathVariable, index) => {
         url += (index == 0 ? '?' : '&') + pathVariable + '=${' + pathVariable + '}';
     });

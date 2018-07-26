@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class AddressWrapper {
 
-    @ApiModelProperty(value = "The address object.")
+    @ApiModelProperty(value = "The address object.", required = true)
     protected Address address;
     
     public Address getAddress() {

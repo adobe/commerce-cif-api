@@ -23,13 +23,13 @@ public class Customer {
     @ApiModelProperty(value = "The unique id of this customer", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The customer's email address")
+    @ApiModelProperty(value = "The customer's email address", required = true)
     protected String email;
 
-    @ApiModelProperty(value = "The firstname of this customer")
+    @ApiModelProperty(value = "The firstname of this customer", required = true)
     protected String firstname;
 
-    @ApiModelProperty(value = "The lastname of this customer")
+    @ApiModelProperty(value = "The lastname of this customer", required = true)
     protected String lastname;
 
     @ApiModelProperty(value = "The date when this customer was registered")

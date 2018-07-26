@@ -48,7 +48,7 @@ To use the API in an existing Maven project, simply add the following dependency
 
 For a Node.js project, just add the `@adobe/commerce-cif-model` package dependency to your project.
 
-If you want to build and install the SNAPSHOT version, just do `mvn clean install -Dgpg.skip`
+If you want to build and install the SNAPSHOT version, just do `mvn clean install`
 
 The code of the Node.js package, the Swagger specification, and the Nginx configuration is generated into the `src/main/resources/generated` folder (which is not included in this git repository). The other folders under `src/main/resources` are automatically updated by the release process and should not be updated manually.
 
