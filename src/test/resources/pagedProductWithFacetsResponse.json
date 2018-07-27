@@ -14,7 +14,7 @@
                             "id": "color",
                             "name": "Color",
                             "value": "green",
-                            "variant": true
+                            "isVariantAxis": true
                         }
                     ],
                     "prices": [

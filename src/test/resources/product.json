@@ -65,25 +65,25 @@
                     "id": "summary",
                     "name": "An example attribute",
                     "value": "An example value for variant 1",
-                    "variant": false
+                    "isVariantAxis": false
                 },
                 {
                     "id": "power",
                     "name": "An example Integer attribute",
                     "value": 1,
-                    "variant": true
+                    "isVariantAxis": true
                 },
                 {
                     "id": "brand",
                     "name": "An example String attribute",
                     "value": "Adobe",
-                    "variant": true
+                    "isVariantAxis": true
                 },
                 {
                     "id": "publishedDate",
                     "name": "An example Date attribute",
                     "value": "2018-04-17T17:26:29.432Z",
-                    "variant": false
+                    "isVariantAxis": false
                 }
             ],
             "available": "true"
@@ -118,25 +118,25 @@
                     "id": "summary",
                     "name": "An example attribute",
                     "value": "An example value for variant 2",
-                    "variant": false
+                    "isVariantAxis": false
                 },
                 {
                     "id": "power",
                     "name": "An example Integer attribute",
                     "value": 2,
-                    "variant": true
+                    "isVariantAxis": true
                 },
                 {
                     "id": "brand",
                     "name": "An example String attribute",
                     "value": "Adobe Systems",
-                    "variant": true
+                    "isVariantAxis": true
                 },
                 {
                     "id": "publishedDate",
                     "name": "An example Date attribute",
                     "value": "2018-04-17T17:26:29.432Z",
-                    "variant": false
+                    "isVariantAxis": false
                 }
             ],
             "available": "false"

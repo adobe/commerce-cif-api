@@ -62,7 +62,7 @@ public class ModelTest {
         FieldTester fieldTester = FieldTester.builder()
             .doCheckListElements()
             .withIgnoredListElements(Collections.singleton("categories"))
-            .withIgnoredFieldNames(Collections.singleton("variant"))
+            .withIgnoredFieldNames(Collections.singleton("isVariantAxis"))
             .withRecursiveDepth(2)
             .build();
         fieldTester.assertAllFieldsNotNull(product);
