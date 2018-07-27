@@ -68,6 +68,37 @@ Note that these examples are also used by unit tests to ensure that they are alw
 
 The CIF Cloud services architecture is based on [Apache OpenWhisk](https://openwhisk.apache.org) & [Adobe I/O Runtime](https://www.adobe.io/apis/cloudplatform/runtime.html). The main building blocks of the new commerce services are serverless functions (OpenWhisk actions). These actions run on Adobe I/O Runtime inside an isolated container, stateless and serverless interacting with the commerce backend system or other endpoints via their APIs. 
 
+### Configuring the REST API on Adobe I/O Runtime
+
+The current implementations of the CIF Cloud API for [Magento](https://github.com/adobe/commerce-cif-magento) and [Commercetools](https://github.com/adobe/commerce-cif-commercetools) expose web actions that can be called directly and that do not automatically "implement" the CIF Cloud REST API. For example, the `/products/{id}` endpoint would be reachable via the following URL, assuming an example `demo` namespace with the actions deployed in the `magento` package, looking up a product with id `123`:
+
+`https://runtime.adobe.io/api/v1/web/demo/magento/getProductById?id=123`
+
+The configuration of the REST API is done "on top" of those web actions, based on the Swagger specification and deployed with the `wsk` [OpenWhisk CLI](https://github.com/apache/incubator-openwhisk-cli/releases). Because each user of the API will deploy the actions in its own namespace and in a dedicated package, one has to regenerate the Swagger specification for its own environment before deploying the REST API.
+
+To do so, simply edit the [pom.xml](pom.xml) file of the project, and replace the following properties of the `swagger-maven-plugin`:
+* `basePath`: the base path via which your REST API will be reachable, for example `/commerce`
+* `x-ow-namespace`: the namespace in which your CIF Cloud actions are deployed
+* `x-ow-package`: the package in which your CIF Cloud actions are deployed
+
+then rebuild the project with `mvn clean compile`. This will regenerate the Swagger documentation in `src/main/resources/generated/swagger/`.
+
+To now deploy the REST API, make sure your `wsk` CLI is properly configured with your Adobe I/O Runtime credentials, and run:
+
+`wsk api create --config-file src/main/resources/generated/swagger/swagger.json`
+
+If the command is successful, it will display all the REST API endpoints that are configured. You can execute `wsk api list /basePath` with the `basePath` you configured to list again all your REST API endpoints.
+
+For the previous example, this would have created the following REST API endpoint for `getProductById`:
+
+`https://runtime.adobe.io/apis/demo/commerce/products/123`
+
+This endpoint basically fowards all requests to the corresponding web action. Note that in a later stage, one might also want to block all requests to all the web action endpoints, in order to only have the REST API reachable via Adobe I/O Runtime.
+
+### Configuring the REST API on a local Openwhisk instance
+
+The configuration of the REST API on a local Openwhisk instance is done differently. One has to do the same changes to the `pom.xml`, rebuild the project, and this also generates the file `src/main/resources/generated/nginx/nginx-config.txt`. See the instructions at the top of this file to add this nginx extra configuration to a local Openwhisk instance.
+
 ## Implementing the CIF API
 
 If you plan to implement the CIF API for a particular commerce system, you can follow the [tutorial](documentation/tutorial) that guides you into developing one particular API endpoint.
