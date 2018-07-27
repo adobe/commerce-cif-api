@@ -2,10 +2,10 @@
     "customer": {
         "id": "customer-1",
         "email": "nobody@adobe.com",
-        "firstname": "John",
-        "lastname": "Doe",
-        "createdDate": "2017-01-11T14:58:29.432Z",
-        "lastModifiedDate": "2017-07-06T18:09:42.687Z"
+        "firstName": "John",
+        "lastName": "Doe",
+        "createdAt": "2017-01-11T14:58:29.432Z",
+        "lastModifiedAt": "2017-07-06T18:09:42.687Z"
     },
     "cart": {
         "id": "cart-1",
@@ -14,16 +14,16 @@
         "taxIncludedInPrices": true,
         "netTotalPrice": {},
         "grossTotalPrice": {},
-        "totalProductPrice": {},
-        "cartEntries": [],
-        "cartTaxInfo": {},
+        "productTotalPrice": {},
+        "entries": [],
+        "taxInfo": {},
         "billingAddress": {},
         "shippingAddress": {},
         "shippingInfo": {},
         "discounts": [],
         "payment": {},
         "coupons": [],
-        "createdDate": "2017-01-11T14:58:29.432Z",
-        "lastModifiedDate": "2017-07-06T18:09:42.687Z"
+        "createdAt": "2017-01-11T14:58:29.432Z",
+        "lastModifiedAt": "2017-07-06T18:09:42.687Z"
     }
 }

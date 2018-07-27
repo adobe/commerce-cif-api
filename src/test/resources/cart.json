@@ -6,19 +6,19 @@
     "grossTotalPrice": {
         "country": "US",
         "currency": "USD",
-        "centAmount": 11000
+        "amount": 11000
     },
     "netTotalPrice": {
         "country": "US",
         "currency": "USD",
-        "centAmount": 10000
+        "amount": 10000
     },
-    "totalProductPrice": {
+    "productTotalPrice": {
         "country": "US",
         "currency": "USD",
-        "centAmount": 11000
+        "amount": 11000
     },
-    "cartEntries": [
+    "entries": [
         {
             "id": "entry-1",
             "quantity": 2,
@@ -28,47 +28,47 @@
             "unitPrice": {
                 "country": "US",
                 "currency": "USD",
-                "centAmount": 5500
+                "amount": 5500
             },
-            "cartEntryPrice": {
+            "price": {
                 "country": "US",
                 "currency": "USD",
-                "centAmount": 11000
+                "amount": 11000
             },
             "discounts": [
                 {
                     "id": "discount-id",
                     "type": "cart-entry-discount",
                     "name": "$10 discount for orders over $100",
-                    "message": "Get $10 discount for orders over $100.",
-                    "discountedAmount": {
+                    "description": "Get $10 discount for orders over $100.",
+                    "amount": {
                         "currency": "USD",
-                        "centAmount": 1000
+                        "amount": 1000
                     }
                 }
             ],
-            "discountedCartEntryPrice": {
+            "discountedPrice": {
                 "currency": "USD",
-                "centAmount": 10000
+                "amount": 10000
             },
-            "cartEntryTaxInfo": {
-                "totalCentAmount": 1000,
-                "taxPortions": [
+            "taxInfo": {
+                "amount": 1000,
+                "portions": [
                     {
                         "name": "VAT 10%",
-                        "centAmount": 1000
+                        "amount": 1000
                     }
                 ]
             },
             "type": "REGULAR"
         }
     ],
-    "cartTaxInfo": {
-        "totalCentAmount": 1000,
-        "taxPortions": [
+    "taxInfo": {
+        "amount": 1000,
+        "portions": [
             {
                 "name": "VAT 10%",
-                "centAmount": 1000
+                "amount": 1000
             }
         ]
     },
@@ -84,6 +84,6 @@
             "description": "This is a coupon."
         }
     ],
-    "createdDate": "2017-01-11T14:58:29.432Z",
-    "lastModifiedDate": "2017-07-06T18:09:42.687Z"
+    "createdAt": "2017-01-11T14:58:29.432Z",
+    "lastModifiedAt": "2017-07-06T18:09:42.687Z"
 }

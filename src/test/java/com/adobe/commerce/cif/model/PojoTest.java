@@ -14,25 +14,31 @@
 
 package com.adobe.commerce.cif.model;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.adobe.commerce.cif.model.cart.CartEntryType;
+import com.adobe.commerce.cif.model.test.FieldTester;
 import com.google.common.reflect.ClassPath;
 import com.google.common.reflect.ClassPath.ClassInfo;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class PojoTest {
@@ -61,9 +67,21 @@ public class PojoTest {
             testSettersAndGettersFor(clazz);
         }
     }
-    
+
     private void testSettersAndGettersFor(Class<?> clazz) throws Exception {
         
+        Set<String> fieldNames = new HashSet<>();
+        for (Field field : FieldTester.getAllFields(clazz)) {
+            if (field.getName().contains("jacoco")) {
+                continue; // ignore jacoco code coverage "instrumented" fields
+            }
+
+            String fieldName = clazz.getSimpleName() + ":" + field.getName();
+            assertTrue("Field " + fieldName + " should be 'protected'", Modifier.isProtected(field.getModifiers()));
+            assertFalse("Field " + fieldName + " should not be a primitive type", field.getType().isPrimitive());
+            fieldNames.add(field.getName());
+        }
+
         // We collect all the methods of the class and its parent class if they are in the same package
         Method[] methods = clazz.getDeclaredMethods();
         Class<?> superClass = clazz.getSuperclass();
@@ -80,19 +98,24 @@ public class PojoTest {
         for (Method method : methods) {
             String methodName = method.getName();
             if (methodName.startsWith("set")) {
-                setters.put(methodName.substring(3), method);
+                setters.put(StringUtils.uncapitalize(methodName.substring(3)), method);
             } else if (methodName.startsWith("get")) {
-                getters.put(methodName.substring(3), method);
+                getters.put(StringUtils.uncapitalize(methodName.substring(3)), method);
             }
         }
 
         Map<String, SetterGetter> gettersSetters = new HashMap<>();
-        for (Map.Entry<String, Method> entry : setters.entrySet()) {
-            assertTrue(clazz.getSimpleName() + " should have a getter for " + entry.getKey(), getters.containsKey(entry.getKey()));
-            SetterGetter setterGetter = new SetterGetter(entry.getValue(), getters.get(entry.getKey()));
-            gettersSetters.put(entry.getKey(), setterGetter);
-            assertTrue("Model method " + setterGetter.setter.getName() + " should be 'public'", Modifier.isPublic(setterGetter.setter.getModifiers()));
-            assertTrue("Model method " + setterGetter.getter.getName() + " should be 'public'", Modifier.isPublic(setterGetter.getter.getModifiers()));
+        for (String fieldName : fieldNames) {
+            Method setter = setters.get(fieldName);
+            Method getter = getters.get(fieldName);
+
+            assertNotNull(clazz.getSimpleName() + " should have a setter for " + fieldName, setter);
+            assertNotNull(clazz.getSimpleName() + " should have a getter for " + fieldName, getter);
+            assertTrue("Model method " + setter.getName() + " should be 'public'", Modifier.isPublic(setter.getModifiers()));
+            assertTrue("Model method " + getter.getName() + " should be 'public'", Modifier.isPublic(getter.getModifiers()));
+
+            SetterGetter setterGetter = new SetterGetter(setter, getter);
+            gettersSetters.put(fieldName, setterGetter);
         }
         
         // We check that each setter/getter pair sets and properly gets the same object

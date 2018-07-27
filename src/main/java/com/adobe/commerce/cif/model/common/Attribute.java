@@ -28,7 +28,7 @@ public class Attribute {
     protected Object value;
     
     @ApiModelProperty(value = "If true, this attribute is a variant attribute. If not set or false, the attribute is a normal/simple attribute.")
-    protected Boolean variantAttribute;
+    protected Boolean variant;
     
     public String getId() {
         return id;
@@ -54,12 +54,12 @@ public class Attribute {
         this.value = value;
     }
 
-    public Boolean getVariantAttribute() {
-        return variantAttribute;
+    public Boolean getVariant() {
+        return variant;
     }
 
-    public void setVariantAttribute(Boolean variantAttribute) {
-        this.variantAttribute = variantAttribute;
+    public void setVariant(Boolean variant) {
+        this.variant = variant;
     }
 
 }

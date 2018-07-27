@@ -14,12 +14,12 @@
 
 package com.adobe.commerce.cif.model.shoppinglist;
 
-import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Date;
 import java.util.List;
 
-public class ShoppingList {
+import com.adobe.commerce.cif.model.common.ModelWithDates;
+import io.swagger.annotations.ApiModelProperty;
+
+public class ShoppingList extends ModelWithDates {
 
     @ApiModelProperty(value = "The id of the shopping list.", required = true)
     protected String id;
@@ -35,12 +35,6 @@ public class ShoppingList {
 
     @ApiModelProperty(value = "The customer id that owns this shopping list.")
     protected String customerId;
-
-    @ApiModelProperty(value = "The date when this shopping list was created.")
-    protected Date createdDate;
-
-    @ApiModelProperty(value = "The date when this shopping list was last modified.")
-    protected Date lastModifiedDate;
 
     public String getId() {
         return id;
@@ -80,21 +74,5 @@ public class ShoppingList {
 
     public void setCustomerId(String customerId) {
         this.customerId = customerId;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Date getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Date lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
     }
 }

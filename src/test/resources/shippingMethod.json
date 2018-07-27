@@ -5,6 +5,6 @@
     "price": {
         "country": "US",
         "currency": "USD",
-        "centAmount": 2500
+        "amount": 2500
     }
 }

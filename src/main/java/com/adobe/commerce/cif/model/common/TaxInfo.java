@@ -14,32 +14,32 @@
 
 package com.adobe.commerce.cif.model.common;
 
-import io.swagger.annotations.ApiModelProperty;
-
 import java.math.BigDecimal;
 import java.util.List;
+
+import io.swagger.annotations.ApiModelProperty;
 
 public class TaxInfo {
 
     @ApiModelProperty(value = "The amount in cents for the tax info.", required = true)
-    protected BigDecimal totalCentAmount;
+    protected BigDecimal amount;
 
     @ApiModelProperty(value = "The portions for this tax.")
-    protected List<TaxPortion> taxPortions;
+    protected List<TaxPortion> portions;
 
-    public BigDecimal getTotalCentAmount() {
-        return totalCentAmount;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setTotalCentAmount(BigDecimal totalCentAmount) {
-        this.totalCentAmount = totalCentAmount;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 
-    public List<TaxPortion> getTaxPortions() {
-        return taxPortions;
+    public List<TaxPortion> getPortions() {
+        return portions;
     }
 
-    public void setTaxPortions(List<TaxPortion> taxPortions) {
-        this.taxPortions = taxPortions;
+    public void setPortions(List<TaxPortion> portions) {
+        this.portions = portions;
     }
 }
