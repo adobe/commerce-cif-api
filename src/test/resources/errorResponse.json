@@ -1,0 +1,5 @@
+{
+    "type": "coupon",
+    "reason": "coupon-expired",
+    "message": "This coupon has expired"
+}

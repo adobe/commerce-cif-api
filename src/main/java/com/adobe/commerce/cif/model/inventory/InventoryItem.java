@@ -14,13 +14,14 @@
 
 package com.adobe.commerce.cif.model.inventory;
 
-import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
+
+import io.swagger.annotations.ApiModelProperty;
 
 public class InventoryItem {
 
     @ApiModelProperty(value = "The inventory identifier.", required = true)
-    protected String inventoryId;
+    protected String id;
 
     @ApiModelProperty(value = "The product identifier.", required = true)
     protected String productId;
@@ -37,12 +38,12 @@ public class InventoryItem {
     @ApiModelProperty(value = "The next expected delivery date for this inventory.")
     protected Date expectedDeliveryDate;
 
-    public String getInventoryId() {
-        return inventoryId;
+    public String getId() {
+        return id;
     }
 
-    public void setInventoryId(String inventoryId) {
-        this.inventoryId = inventoryId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getProductId() {

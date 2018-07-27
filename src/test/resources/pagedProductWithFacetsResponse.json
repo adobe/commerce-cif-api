@@ -14,13 +14,13 @@
                             "id": "color",
                             "name": "Color",
                             "value": "green",
-                            "variantAttribute": true
+                            "isVariantAxis": true
                         }
                     ],
                     "prices": [
                         {
                             "currency": "USD",
-                            "centAmount": 10000
+                            "amount": 10000
                         }
                     ]
                 }
@@ -29,12 +29,12 @@
     ],
     "facets": [
         {
-            "name": "variants.attributes.color.en",
+            "id": "variants.attributes.color.en",
             "type": "text",
             "missed": 2,
             "multiSelect": true,
-            "label": "A label",
-            "facetValues": [
+            "name": "A name",
+            "values": [
                 {
                     "id": "facet-value-1",
                     "value": "red",
@@ -49,12 +49,12 @@
             ]
         },
         {
-            "name": "variants.prices.value.centAmount",
+            "id": "variants.prices.value.amount",
             "type": "range",
             "missed": 2,
             "multiSelect": true,
-            "label": "A label",
-            "facetValues": [
+            "name": "A name",
+            "values": [
                 {
                     "id": "facet-value-3",
                     "value": "0-5000",

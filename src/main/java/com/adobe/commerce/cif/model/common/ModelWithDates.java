@@ -14,32 +14,36 @@
 
 package com.adobe.commerce.cif.model.common;
 
-import java.math.BigDecimal;
-import java.util.List;
+import java.util.Date;
 
 import io.swagger.annotations.ApiModelProperty;
 
-public class TaxInfo {
+public class ModelWithDates {
 
-    @ApiModelProperty(value = "The amount in cents for the tax info.", required = true)
-    protected BigDecimal amount;
+    @ApiModelProperty(
+        value = "The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format",
+        example = "2018-06-05T10:58:18.000Z")
+    protected Date createdAt;
 
-    @ApiModelProperty(value = "The portions for this tax.")
-    protected List<TaxPortion> portions;
+    @ApiModelProperty(
+        value = "The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format",
+        example = "2018-06-05T10:58:18.000Z")
+    protected Date lastModifiedAt;
 
-    public BigDecimal getAmount() {
-        return amount;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public List<TaxPortion> getPortions() {
-        return portions;
+    public Date getLastModifiedAt() {
+        return lastModifiedAt;
     }
 
-    public void setPortions(List<TaxPortion> portions) {
-        this.portions = portions;
+    public void setLastModifiedAt(Date lastModifiedAt) {
+        this.lastModifiedAt = lastModifiedAt;
     }
+
 }

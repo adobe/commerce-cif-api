@@ -14,12 +14,12 @@
 
 package com.adobe.commerce.cif.model.category;
 
-import java.util.Date;
 import java.util.List;
 
+import com.adobe.commerce.cif.model.common.ModelWithDates;
 import io.swagger.annotations.ApiModelProperty;
 
-public class Category {
+public class Category extends ModelWithDates {
 
     @ApiModelProperty(value = "The internal unique ID of the category in the commerce backend system.", required = true)
     protected String id;
@@ -31,19 +31,13 @@ public class Category {
     protected String description;
     
     @ApiModelProperty(value = "The id of the main parent category (if this category has multiple parents).")
-    protected String mainParentCategoryId;
+    protected String mainParentId;
 
     @ApiModelProperty(value = "The list of parent categories for this category. Depending on the backend system, the returned items may only have their ids being set.")
-    protected List<Category> parentCategories;
+    protected List<Category> parents;
 
     @ApiModelProperty(value = "The list of subcategories for this category. Depending on the backend system, the returned items may only have their ids being set.")
-    protected List<Category> subCategories;
-
-    @ApiModelProperty(value = "The date when this product was created.")
-    protected Date createdDate;
-
-    @ApiModelProperty(value = "The date when this product was last modified.")
-    protected Date lastModifiedDate;
+    protected List<Category> children;
 
     public String getId() {
         return id;
@@ -69,43 +63,27 @@ public class Category {
         this.description = description;
     }
 
-    public String getMainParentCategoryId() {
-        return mainParentCategoryId;
+    public String getMainParentId() {
+        return mainParentId;
     }
 
-    public void setMainParentCategoryId(String mainParentCategoryId) {
-        this.mainParentCategoryId = mainParentCategoryId;
+    public void setMainParentId(String mainParentId) {
+        this.mainParentId = mainParentId;
     }
 
-    public List<Category> getParentCategories() {
-        return parentCategories;
+    public List<Category> getParents() {
+        return parents;
     }
 
-    public void setParentCategories(List<Category> parentCategories) {
-        this.parentCategories = parentCategories;
+    public void setParents(List<Category> parents) {
+        this.parents = parents;
     }
 
-    public List<Category> getSubCategories() {
-        return subCategories;
+    public List<Category> getChildren() {
+        return children;
     }
 
-    public void setSubCategories(List<Category> subCategories) {
-        this.subCategories = subCategories;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Date getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Date lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
+    public void setChildren(List<Category> children) {
+        this.children = children;
     }
 }

@@ -14,16 +14,16 @@
 
 package com.adobe.commerce.cif.model.product;
 
-import java.util.Date;
 import java.util.List;
 
 import com.adobe.commerce.cif.model.category.Category;
 import com.adobe.commerce.cif.model.common.Asset;
 import com.adobe.commerce.cif.model.common.Attribute;
+import com.adobe.commerce.cif.model.common.ModelWithDates;
 import com.adobe.commerce.cif.model.common.Price;
 import io.swagger.annotations.ApiModelProperty;
 
-public abstract class AbstractProduct {
+public abstract class AbstractProduct extends ModelWithDates {
 
     @ApiModelProperty(value = "The internal unique ID of the product in the commerce backend system.", required = true)
     protected String id;
@@ -45,12 +45,6 @@ public abstract class AbstractProduct {
 
     @ApiModelProperty(value = "The attributes for this product.")
     protected List<Attribute> attributes;
-
-    @ApiModelProperty(value = "The date when this product was created.")
-    protected Date createdDate;
-
-    @ApiModelProperty(value = "The date when this product was last modified.")
-    protected Date lastModifiedDate;
 
     public String getId() {
         return id;
@@ -107,21 +101,4 @@ public abstract class AbstractProduct {
     public void setAttributes(List<Attribute> attributes) {
         this.attributes = attributes;
     }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Date getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Date lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
 }

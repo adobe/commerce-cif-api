@@ -33,6 +33,7 @@ import com.adobe.commerce.cif.model.common.Payment;
 import com.adobe.commerce.cif.model.common.TaxInfo;
 import com.adobe.commerce.cif.model.customer.LoginResult;
 import com.adobe.commerce.cif.model.discount.Discount;
+import com.adobe.commerce.cif.model.error.ErrorResponse;
 import com.adobe.commerce.cif.model.inventory.InventoryItem;
 import com.adobe.commerce.cif.model.product.Product;
 import com.adobe.commerce.cif.model.shoppinglist.ShoppingList;
@@ -61,7 +62,7 @@ public class ModelTest {
         FieldTester fieldTester = FieldTester.builder()
             .doCheckListElements()
             .withIgnoredListElements(Collections.singleton("categories"))
-            .withIgnoredFieldNames(Collections.singleton("variantAttribute"))
+            .withIgnoredFieldNames(Collections.singleton("isVariantAxis"))
             .withRecursiveDepth(2)
             .build();
         fieldTester.assertAllFieldsNotNull(product);
@@ -77,7 +78,8 @@ public class ModelTest {
     @Test
     public void testCart() throws Exception {
         Cart cart = map("cart.json", Cart.class);
-        String[] ignoredFields = {"productVariant", "discountedCartEntryPrice", "type", "billingAddress", "shippingAddress", "shippingInfo", "payment"};
+        String[] ignoredFields = { "productVariant", "discountedPrice", "type", "billingAddress", "shippingAddress", "shippingInfo",
+            "payment" };
         FieldTester fieldTester = FieldTester.builder()
             .doCheckListElements()
             .withIgnoredFieldNames(new HashSet<String>(Arrays.asList(ignoredFields)))
@@ -191,7 +193,7 @@ public class ModelTest {
     @Test
     public void testPagedFlatCategoryResponse() throws Exception {
         PagedResponse<Category> pagedResponse = map("pagedFlatCategoryResponse.json", new TypeReference<PagedResponse<Category>>() {});
-        String[] ignoredFields = {"description", "mainParentCategoryId", "createdDate", "lastModifiedDate", "facets", "subCategories"};
+        String[] ignoredFields = { "description", "mainParentId", "createdAt", "lastModifiedAt", "facets", "children" };
         FieldTester fieldTester = FieldTester.builder()
             .doCheckListElements()
             .withIgnoredFieldNames(new HashSet<String>(Arrays.asList(ignoredFields)))
@@ -203,7 +205,7 @@ public class ModelTest {
     @Test
     public void testPagedTreeCategoryResponse() throws Exception {
         PagedResponse<Category> pagedResponse = map("pagedTreeCategoryResponse.json", new TypeReference<PagedResponse<Category>>() {});
-        String[] ignoredFields = {"description", "mainParentCategoryId", "createdDate", "lastModifiedDate", "facets", "parentCategories"};
+        String[] ignoredFields = { "description", "mainParentId", "createdAt", "lastModifiedAt", "facets", "parents" };
         FieldTester fieldTester = FieldTester.builder()
             .doCheckListElements()
             .withIgnoredFieldNames(new HashSet<String>(Arrays.asList(ignoredFields)))
@@ -223,6 +225,13 @@ public class ModelTest {
                 .withRecursiveDepth(1)
                 .build();
         fieldTester.assertAllFieldsNotNull(pagedResponse);
+    }
+
+    @Test
+    public void testErrorResponse() throws Exception {
+        ErrorResponse errorResponse = map("errorResponse.json", ErrorResponse.class);
+        FieldTester fieldTester = FieldTester.builder().build();
+        fieldTester.assertAllFieldsNotNull(errorResponse);
     }
 
     private <T> T map(String filename, Class<T> type) throws Exception {

@@ -2,8 +2,8 @@
     "id": "category-1-1",
     "name": "A name",
     "description": "A description",
-    "mainParentCategoryId": "category-1",
-    "parentCategories": [
+    "mainParentId": "category-1",
+    "parents": [
         {
             "id": "category-1"
         },
@@ -11,7 +11,7 @@
             "id": "category-2"
         }
     ],
-    "subCategories": [
+    "children": [
         {
             "id": "category-1-1-1"
         },
@@ -19,6 +19,6 @@
             "id": "category-1-1-2"
         }
     ],
-    "createdDate": "2017-01-11T14:58:29.432Z",
-    "lastModifiedDate": "2017-07-06T18:09:42.687Z"
+    "createdAt": "2017-01-11T14:58:29.432Z",
+    "lastModifiedAt": "2017-07-06T18:09:42.687Z"
 }

@@ -14,17 +14,17 @@
 
 package com.adobe.commerce.cif.model.product;
 
-import io.swagger.annotations.ApiModelProperty;
-
 import java.util.List;
+
+import io.swagger.annotations.ApiModelProperty;
 
 public class Facet {
 
+    @ApiModelProperty(value = "The id of the facet.", required = true)
+    protected String id;
+
     @ApiModelProperty(value = "The name of the facet.", required = true)
     protected String name;
-
-    @ApiModelProperty(value = "The label of the facet.", required = true)
-    protected String label;
 
     @ApiModelProperty(value = "The number of missed items.")
     protected Integer missed;
@@ -36,7 +36,15 @@ public class Facet {
     protected String type;
 
     @ApiModelProperty(value = "List of facetValues calculated for this facet.", required = true)
-    protected List<FacetValue> facetValues;
+    protected List<FacetValue> values;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -44,14 +52,6 @@ public class Facet {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
     }
 
     public Integer getMissed() {
@@ -62,12 +62,12 @@ public class Facet {
         this.missed = missed;
     }
 
-    public List<FacetValue> getFacetValues() {
-        return facetValues;
+    public List<FacetValue> getValues() {
+        return values;
     }
 
-    public void setFacetValues(List<FacetValue> facetValues) {
-        this.facetValues = facetValues;
+    public void setValues(List<FacetValue> values) {
+        this.values = values;
     }
 
     public Boolean getMultiSelect() {

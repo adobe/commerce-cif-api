@@ -15,7 +15,6 @@
 package com.adobe.commerce.cif.model.test;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -27,9 +26,7 @@ import org.slf4j.LoggerFactory;
 
 import com.adobe.commerce.cif.model.PojoTest;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 public class FieldTester {
 
@@ -138,11 +135,7 @@ public class FieldTester {
             if (field.getName().contains("jacoco")) {
                 continue; // ignore jacoco code coverage "instrumented" fields
             }
-            
-            assertTrue("Field " + obj.getClass().getSimpleName() + ":" + field.getName() + " should be 'protected'", Modifier.isProtected(field.getModifiers()));
-            assertFalse("Field " + obj.getClass().getSimpleName() + ":" + field.getName() + " should not be a primitive type", field
-                .getType().isPrimitive());
-            
+
             if (ignoredFieldNames.contains(field.getName())) {
                 LOGGER.debug("Skipping check for field " + obj.getClass().getSimpleName() + ":" + field.getName());
                 continue;
@@ -171,7 +164,7 @@ public class FieldTester {
         return type.getName().startsWith(PojoTest.MODEL_PACKAGE);
     }
     
-    private List<Field> getAllFields(Class<?> type) {
+    public static List<Field> getAllFields(Class<?> type) {
         List<Field> fields = new ArrayList<Field>();
         for (Class<?> c = type; c != null; c = c.getSuperclass()) {
             fields.addAll(Arrays.asList(c.getDeclaredFields()));

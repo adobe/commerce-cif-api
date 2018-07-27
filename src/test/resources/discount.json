@@ -2,10 +2,10 @@
     "id": "discount-1",
     "type": "unit-discount",
     "name": "$20 discount for orders over $200",
-    "message": "Get $20 discount for orders over $200",
-    "discountedAmount": {
+    "description": "Get $20 discount for orders over $200",
+    "amount": {
         "country": "US",
         "currency": "USD",
-        "centAmount": 20000
+        "amount": 20000
     }
 }

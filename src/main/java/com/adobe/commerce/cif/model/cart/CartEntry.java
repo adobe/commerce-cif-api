@@ -40,13 +40,13 @@ public class CartEntry {
     protected List<Discount> discounts;
 
     @ApiModelProperty(value = "The calculated cart entry price. May or may not include taxes, depending on the tax policy.", required = true)
-    protected Price cartEntryPrice;
+    protected Price price;
 
     @ApiModelProperty(value = "The cart entry price after all discounts have been applied.")
-    protected Price discountedCartEntryPrice;
+    protected Price discountedPrice;
 
     @ApiModelProperty(value = "The cart entry tax info. Until a shipping address is set, this field is typically not set.")
-    protected TaxInfo cartEntryTaxInfo;
+    protected TaxInfo taxInfo;
 
     @ApiModelProperty(value = "Cart entry type.", required = true)
     protected CartEntryType type;
@@ -91,20 +91,20 @@ public class CartEntry {
         this.discounts = discounts;
     }
 
-    public Price getCartEntryPrice() {
-        return cartEntryPrice;
+    public Price getPrice() {
+        return price;
     }
 
-    public void setCartEntryPrice(Price cartEntryPrice) {
-        this.cartEntryPrice = cartEntryPrice;
+    public void setPrice(Price price) {
+        this.price = price;
     }
 
-    public Price getDiscountedCartEntryPrice() {
-        return discountedCartEntryPrice;
+    public Price getDiscountedPrice() {
+        return discountedPrice;
     }
 
-    public void setDiscountedCartEntryPrice(Price discountedCartEntryPrice) {
-        this.discountedCartEntryPrice = discountedCartEntryPrice;
+    public void setDiscountedPrice(Price discountedPrice) {
+        this.discountedPrice = discountedPrice;
     }
 
     public CartEntryType getType() {
@@ -115,11 +115,11 @@ public class CartEntry {
         this.type = type;
     }
 
-    public TaxInfo getCartEntryTaxInfo() {
-        return cartEntryTaxInfo;
+    public TaxInfo getTaxInfo() {
+        return taxInfo;
     }
 
-    public void setCartEntryTaxInfo(TaxInfo cartEntryTaxInfo) {
-        this.cartEntryTaxInfo = cartEntryTaxInfo;
+    public void setTaxInfo(TaxInfo taxInfo) {
+        this.taxInfo = taxInfo;
     }
 }

@@ -28,11 +28,11 @@ public class Discount {
     @ApiModelProperty(value = "The name of the discount.")
     protected String name;
 
-    @ApiModelProperty(value = "The message associated with the discount. May be displayed in the UI.")
-    protected String message;
+    @ApiModelProperty(value = "The description associated with the discount. May be displayed in the UI.")
+    protected String description;
 
     @ApiModelProperty(value = "The amount which is discounted. Subtract this to obtain new price.", required = true)
-    protected Price discountedAmount;
+    protected Price amount;
 
     public String getId() {
         return id;
@@ -58,19 +58,19 @@ public class Discount {
         this.name = name;
     }
 
-    public String getMessage() {
-        return message;
+    public String getDescription() {
+        return description;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Price getDiscountedAmount() {
-        return discountedAmount;
+    public Price getAmount() {
+        return amount;
     }
 
-    public void setDiscountedAmount(Price discountedAmount) {
-        this.discountedAmount = discountedAmount;
+    public void setAmount(Price amount) {
+        this.amount = amount;
     }
 }

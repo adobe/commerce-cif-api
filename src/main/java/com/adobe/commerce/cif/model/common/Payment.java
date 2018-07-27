@@ -14,12 +14,10 @@
 
 package com.adobe.commerce.cif.model.common;
 
-import java.util.Date;
-
 import com.adobe.commerce.cif.model.customer.Customer;
 import io.swagger.annotations.ApiModelProperty;
 
-public class Payment {
+public class Payment extends ModelWithDates {
 
     @ApiModelProperty(value = "The id of the payment.", required = true)
     protected String id;
@@ -42,12 +40,6 @@ public class Payment {
 
     @ApiModelProperty(value = "The external status message/text for the payment.")
     protected String status;
-
-    @ApiModelProperty(value = "The date when this payment was created.")
-    protected Date createdDate;
-
-    @ApiModelProperty(value = "The date when this payment was last modified.")
-    protected Date lastModifiedDate;
 
     public String getId() {
         return id;
@@ -104,21 +96,4 @@ public class Payment {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Date getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Date lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
 }

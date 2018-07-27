@@ -1,9 +1,9 @@
 {
-    "totalCentAmount": 900,
-    "taxPortions": [
+    "amount": 900,
+    "portions": [
         {
             "name": "VAT 10%",
-            "centAmount": 900
+            "amount": 900
         }
     ]
 }

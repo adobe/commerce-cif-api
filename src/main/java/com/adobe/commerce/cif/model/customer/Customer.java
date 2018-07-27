@@ -14,11 +14,10 @@
 
 package com.adobe.commerce.cif.model.customer;
 
-import java.util.Date;
-
+import com.adobe.commerce.cif.model.common.ModelWithDates;
 import io.swagger.annotations.ApiModelProperty;
 
-public class Customer {
+public class Customer extends ModelWithDates {
 
     @ApiModelProperty(value = "The unique id of this customer", required = true)
     protected String id;
@@ -27,16 +26,10 @@ public class Customer {
     protected String email;
 
     @ApiModelProperty(value = "The firstname of this customer", required = true)
-    protected String firstname;
+    protected String firstName;
 
     @ApiModelProperty(value = "The lastname of this customer", required = true)
-    protected String lastname;
-
-    @ApiModelProperty(value = "The date when this customer was registered")
-    protected Date createdDate;
-
-    @ApiModelProperty(value = "The date when this customer was last modified")
-    protected Date lastModifiedDate;
+    protected String lastName;
 
     public String getId() {
         return id;
@@ -54,36 +47,19 @@ public class Customer {
         this.email = email;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Date getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Date lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
 }

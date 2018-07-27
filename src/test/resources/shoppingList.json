@@ -8,11 +8,11 @@
       "productVariant": {
       },
       "quantity": 1,
-      "createdDate": "2017-01-11T14:58:29.432Z",
-      "lastModifiedDate": "2017-01-11T14:58:29.432Z"
+      "createdAt": "2017-01-11T14:58:29.432Z",
+      "lastModifiedAt": "2017-01-11T14:58:29.432Z"
     }
   ],
   "customerId": "customerId",
-  "createdDate": "2017-01-11T14:58:29.432Z",
-  "lastModifiedDate": "2017-01-11T14:58:29.432Z"
+  "createdAt": "2017-01-11T14:58:29.432Z",
+  "lastModifiedAt": "2017-01-11T14:58:29.432Z"
 }

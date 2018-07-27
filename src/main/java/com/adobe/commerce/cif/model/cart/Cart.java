@@ -14,23 +14,23 @@
 
 package com.adobe.commerce.cif.model.cart;
 
-import java.util.Date;
 import java.util.List;
 
 import com.adobe.commerce.cif.model.common.Address;
+import com.adobe.commerce.cif.model.common.ModelWithDates;
 import com.adobe.commerce.cif.model.common.Payment;
 import com.adobe.commerce.cif.model.common.Price;
 import com.adobe.commerce.cif.model.common.TaxInfo;
 import com.adobe.commerce.cif.model.discount.Discount;
 import io.swagger.annotations.ApiModelProperty;
 
-public class Cart {
+public class Cart extends ModelWithDates {
 
     @ApiModelProperty(value = "The id for the cart.", required = true)
     protected String id;
 
     @ApiModelProperty(value = "The list of the entries in the cart.", required = true)
-    protected List<CartEntry> cartEntries;
+    protected List<CartEntry> entries;
 
     @ApiModelProperty(value = "If set, this defines the customer owning this cart. If not set, the cart is an anonymous cart.")
     protected String customerId;
@@ -43,19 +43,13 @@ public class Cart {
     
     @ApiModelProperty(value = "The product subtotal for the cart, including discounts and with or without taxes depending if the product prices include taxes or not." +
                               "Until a shipping address is set, this field is typically used as the temporary cart total until it is known if prices include taxes or not.", required = true)
-    protected Price totalProductPrice;
+    protected Price productTotalPrice;
 
     @ApiModelProperty(value = "The cart tax info, including cart entries tax and shipping info tax. Until a shipping address is set, this field is typically not set.")
-    protected TaxInfo cartTaxInfo;
+    protected TaxInfo taxInfo;
 
     @ApiModelProperty(value = "Indicates if taxes are included or not in all the prices. Until a shipping address is set, this field is typically not set.")
     protected Boolean taxIncludedInPrices;
-
-    @ApiModelProperty(value = "The date when this cart was created.")
-    protected Date createdDate;
-
-    @ApiModelProperty(value = "The date when this cart was last modified.")
-    protected Date lastModifiedDate;
 
     @ApiModelProperty(value = "The shipping address for the cart products.")
     protected Address shippingAddress;
@@ -86,12 +80,12 @@ public class Cart {
         this.id = id;
     }
 
-    public List<CartEntry> getCartEntries() {
-        return cartEntries;
+    public List<CartEntry> getEntries() {
+        return entries;
     }
 
-    public void setCartEntries(List<CartEntry> cartEntries) {
-        this.cartEntries = cartEntries;
+    public void setEntries(List<CartEntry> entries) {
+        this.entries = entries;
     }
     
     public String getCustomerId() {
@@ -118,28 +112,12 @@ public class Cart {
         this.grossTotalPrice = grossTotalPrice;
     }
     
-    public Price getTotalProductPrice() {
-        return totalProductPrice;
+    public Price getProductTotalPrice() {
+        return productTotalPrice;
     }
 
-    public void setTotalProductPrice(Price totalProductPrice) {
-        this.totalProductPrice = totalProductPrice;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Date getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Date lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
+    public void setProductTotalPrice(Price productTotalPrice) {
+        this.productTotalPrice = productTotalPrice;
     }
 
     public Address getShippingAddress() {
@@ -182,12 +160,12 @@ public class Cart {
         this.payment = payment;
     }
 
-    public TaxInfo getCartTaxInfo() {
-        return cartTaxInfo;
+    public TaxInfo getTaxInfo() {
+        return taxInfo;
     }
 
-    public void setCartTaxInfo(TaxInfo cartTaxInfo) {
-        this.cartTaxInfo = cartTaxInfo;
+    public void setTaxInfo(TaxInfo taxInfo) {
+        this.taxInfo = taxInfo;
     }
 
     public String getCurrency() {
