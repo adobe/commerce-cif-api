@@ -16,17 +16,25 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class ShippingInfo {
 
     /**
      * Represents a ShippingInfo
      * @constructor 
+     * @param {string} id
      * @param {string} name
      * @param {Price} price
+     * @param {TaxInfo} taxInfo
      */
-    constructor(name, price) {
+    constructor(id, name, price, taxInfo) {
+        /**
+         * The shipping method id.
+         * @type {string}
+         */
+        this.id = id;
+
         /**
          * The shipping method name.
          * @type {string}
@@ -49,14 +57,8 @@ class ShippingInfo {
          * The tax for the shipping.
          * @type {TaxInfo}
          */
-        this.shippingTaxInfo = undefined;
-
-        /**
-         * The shipping method id.
-         * @type {string}
-         */
-        this.id = undefined;
+        this.taxInfo = taxInfo;
 
     }
 }
-module.exports.ShippingInfo = ShippingInfo
+module.exports.ShippingInfo = ShippingInfo;

@@ -16,20 +16,21 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class LoginResult {
 
     /**
      * Represents a LoginResult
      * @constructor 
+     * @param {Customer} customer
      */
-    constructor() {
+    constructor(customer) {
         /**
          * The customer info returned by the login process
          * @type {Customer}
          */
-        this.customer = undefined;
+        this.customer = customer;
 
         /**
          * The current or merged cart created during the login process
@@ -39,4 +40,4 @@ class LoginResult {
 
     }
 }
-module.exports.LoginResult = LoginResult
+module.exports.LoginResult = LoginResult;

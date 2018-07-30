@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class ShippingMethod {
 
@@ -24,8 +24,10 @@ class ShippingMethod {
      * Represents a ShippingMethod
      * @constructor 
      * @param {string} id
+     * @param {string} name
+     * @param {Price} price
      */
-    constructor(id) {
+    constructor(id, name, price) {
         /**
          * The id of the shipping method.
          * @type {string}
@@ -36,7 +38,7 @@ class ShippingMethod {
          * The name of the shipping method.
          * @type {string}
          */
-        this.name = undefined;
+        this.name = name;
 
         /**
          * The description of the shipping method.
@@ -48,8 +50,8 @@ class ShippingMethod {
          * The price of the shipping method aka shipping cost.
          * @type {Price}
          */
-        this.price = undefined;
+        this.price = price;
 
     }
 }
-module.exports.ShippingMethod = ShippingMethod
+module.exports.ShippingMethod = ShippingMethod;

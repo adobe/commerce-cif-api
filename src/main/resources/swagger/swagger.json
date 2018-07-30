@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "Adobe Commerce Cloud API",
-    "version" : "0.1.123",
+    "version" : "0.1.124",
     "title" : "Commerce Integration Framework (CIF) Cloud API",
     "license" : {
       "name" : "Copyright 2018 Adobe. All rights reserved."
@@ -34,7 +34,7 @@
         "tags" : [ "carts" ],
         "summary" : "Creates an empty cart. For convenience it also adds a cart entry when product variant id and quantity are provided.",
         "description" : "",
-        "operationId" : "postCart",
+        "operationId" : "default/postCart",
         "consumes" : [ "application/x-www-form-urlencoded" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -56,34 +56,34 @@
           "required" : false,
           "type" : "integer",
           "format" : "int32"
-        }, {
-          "name" : "customerId",
-          "in" : "formData",
-          "description" : "If set, the newly created cart will belong to this customer.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
-            "description" : "successful operation",
+            "description" : "OK.",
             "schema" : {
               "$ref" : "#/definitions/Cart"
+            },
+            "headers" : {
+              "Location" : {
+                "type" : "string",
+                "description" : "Location of the newly created cart."
+              }
             }
           },
           "400" : {
-            "description" : "Invalid ID supplied.",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "403" : {
-            "description" : "Not allowed to create a cart.",
+            "description" : "Forbidden.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Cart not found.",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -96,19 +96,13 @@
         "tags" : [ "carts" ],
         "summary" : "Returns a cart by ID.",
         "description" : "",
-        "operationId" : "getCart",
+        "operationId" : "default/getCart",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
           "description" : "The ID of the cart to be returned.",
           "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "customerId",
-          "in" : "query",
-          "description" : "If the cart belongs to a customer, this must be set to the customer id owning that cart.",
-          "required" : false,
           "type" : "string"
         } ],
         "responses" : {
@@ -119,19 +113,19 @@
             }
           },
           "400" : {
-            "description" : "Invalid ID supplied.",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "403" : {
-            "description" : "Not allowed to fetch that cart.",
+            "description" : "Forbidden.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Cart not found.",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -142,7 +136,7 @@
         "tags" : [ "carts" ],
         "summary" : "Deletes the cart.",
         "description" : "",
-        "operationId" : "deleteCart",
+        "operationId" : "default/deleteCart",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
@@ -150,34 +144,25 @@
           "description" : "The ID of the cart to be removed.",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "customerId",
-          "in" : "query",
-          "description" : "If the cart belongs to a customer, this must be set to the customer id owning that cart.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
-          "200" : {
-            "description" : "successful operation",
-            "schema" : {
-              "$ref" : "#/definitions/Cart"
-            }
+          "204" : {
+            "description" : "No Content."
           },
           "400" : {
-            "description" : "Invalid ID supplied.",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "403" : {
-            "description" : "Not allowed to delete that cart.",
+            "description" : "Forbidden.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Cart not found.",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -190,19 +175,19 @@
         "tags" : [ "carts" ],
         "summary" : "Sets the billing address for the cart.",
         "description" : "",
-        "operationId" : "postBillingAddress",
+        "operationId" : "default/postBillingAddress",
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
-          "description" : "The ID of the cart for the billing address",
+          "description" : "The ID of the cart for the billing address.",
           "required" : true,
           "type" : "string"
         }, {
           "in" : "body",
           "name" : "body",
-          "description" : "The billing address and an optional customer id that must be set if the cart belongs to a customer.",
+          "description" : "The billing address",
           "required" : true,
           "schema" : {
             "$ref" : "#/definitions/AddressWrapper"
@@ -210,25 +195,25 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "successful operation",
+            "description" : "OK.",
             "schema" : {
               "$ref" : "#/definitions/Cart"
             }
           },
           "400" : {
-            "description" : "Invalid ID supplied.",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "403" : {
-            "description" : "Not allowed to set the billing address",
+            "description" : "Forbidden.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Cart not found.",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -239,7 +224,7 @@
         "tags" : [ "carts" ],
         "summary" : "Deletes the billing address for the cart.",
         "description" : "",
-        "operationId" : "deleteBillingAddress",
+        "operationId" : "default/deleteBillingAddress",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
@@ -247,34 +232,28 @@
           "description" : "The ID of the cart for which the billing address will be deleted.",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "customerId",
-          "in" : "query",
-          "description" : "If the cart belongs to a customer, this must be set to the customer id owning that cart.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
-            "description" : "successful operation",
+            "description" : "OK.",
             "schema" : {
               "$ref" : "#/definitions/Cart"
             }
           },
           "400" : {
-            "description" : "Invalid ID supplied.",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "403" : {
-            "description" : "Not allowed to delete the billing address",
+            "description" : "Forbidden.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Cart not found.",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -287,7 +266,7 @@
         "tags" : [ "carts" ],
         "summary" : "Adds a coupon to the shopping cart.",
         "description" : "",
-        "operationId" : "postCoupon",
+        "operationId" : "default/postCoupon",
         "consumes" : [ "application/x-www-form-urlencoded" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -302,16 +281,10 @@
           "description" : "The coupon code.",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "customerId",
-          "in" : "formData",
-          "description" : "If the cart belongs to a customer, this must be set to the customer id owning that cart.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
-            "description" : "successful operation",
+            "description" : "OK.",
             "schema" : {
               "$ref" : "#/definitions/Cart"
             }
@@ -342,7 +315,7 @@
         "tags" : [ "carts" ],
         "summary" : "Deletes a coupon from the shopping cart.",
         "description" : "",
-        "operationId" : "deleteCoupon",
+        "operationId" : "default/deleteCoupon",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
@@ -356,16 +329,10 @@
           "description" : "The id of the coupon that will be deleted.",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "customerId",
-          "in" : "query",
-          "description" : "If the cart belongs to a customer, this must be set to the customer id owning that cart.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
-            "description" : "successful operation",
+            "description" : "OK.",
             "schema" : {
               "$ref" : "#/definitions/Cart"
             }
@@ -396,7 +363,7 @@
         "tags" : [ "carts" ],
         "summary" : "Adds a new cart entry to an existing cart.",
         "description" : "",
-        "operationId" : "postCartEntry",
+        "operationId" : "default/postCartEntry",
         "consumes" : [ "application/x-www-form-urlencoded" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -408,7 +375,7 @@
         }, {
           "name" : "productVariantId",
           "in" : "formData",
-          "description" : "The product variant id to be added to the cart entry. If product variant exists in the cart then the cart entry quantity is increased with the provided quantity",
+          "description" : "The product variant id to be added to the cart entry. If product variant exists in the cart then the cart entry quantity is increased with the provided quantity.",
           "required" : true,
           "type" : "string"
         }, {
@@ -419,12 +386,6 @@
           "type" : "integer",
           "minimum" : 0,
           "format" : "int32"
-        }, {
-          "name" : "customerId",
-          "in" : "formData",
-          "description" : "If the cart belongs to a customer, this must be set to the customer id owning that cart.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -433,20 +394,32 @@
               "$ref" : "#/definitions/Cart"
             }
           },
+          "201" : {
+            "description" : "Created.",
+            "schema" : {
+              "$ref" : "#/definitions/Cart"
+            },
+            "headers" : {
+              "Location" : {
+                "type" : "string",
+                "description" : "Location of the newly created cart entry."
+              }
+            }
+          },
           "400" : {
-            "description" : "Invalid ID supplied.",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "403" : {
-            "description" : "Not allowed to add an entry to that cart.",
+            "description" : "Forbidden.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Cart not found.",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -459,7 +432,7 @@
         "tags" : [ "carts" ],
         "summary" : "Updates an existing cart entry.",
         "description" : "",
-        "operationId" : "putCartEntry",
+        "operationId" : "default/putCartEntry",
         "consumes" : [ "application/x-www-form-urlencoded" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -482,12 +455,6 @@
           "type" : "integer",
           "minimum" : 0,
           "format" : "int32"
-        }, {
-          "name" : "customerId",
-          "in" : "formData",
-          "description" : "If the cart belongs to a customer, this must be set to the customer id owning that cart.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -497,19 +464,19 @@
             }
           },
           "400" : {
-            "description" : "Invalid ID supplied.",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "403" : {
-            "description" : "Not allowed to update that cart entry.",
+            "description" : "Forbidden.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Resource not found.",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -520,7 +487,7 @@
         "tags" : [ "carts" ],
         "summary" : "Removes a cart entry from the cart.",
         "description" : "",
-        "operationId" : "deleteCartEntry",
+        "operationId" : "default/deleteCartEntry",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
@@ -534,34 +501,28 @@
           "description" : "The cart entry id to be removed.",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "customerId",
-          "in" : "query",
-          "description" : "If the cart belongs to a customer, this must be set to the customer id owning that cart.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
-            "description" : "successful operation",
+            "description" : "OK.",
             "schema" : {
               "$ref" : "#/definitions/Cart"
             }
           },
           "400" : {
-            "description" : "Invalid ID supplied.",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "403" : {
-            "description" : "Not allowed to delete that cart entry.",
+            "description" : "Forbidden.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Resource not found - cart or entry.",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -574,7 +535,7 @@
         "tags" : [ "carts" ],
         "summary" : "Creates a payment for this shopping cart.",
         "description" : "",
-        "operationId" : "postPayment",
+        "operationId" : "default/postPayment",
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -594,25 +555,25 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "successful operation",
+            "description" : "OK.",
             "schema" : {
               "$ref" : "#/definitions/Cart"
             }
           },
           "400" : {
-            "description" : "Invalid ID supplied.",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "403" : {
-            "description" : "Not allowed to set the payment.",
+            "description" : "Forbidden.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Cart not found.",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -621,9 +582,9 @@
       },
       "delete" : {
         "tags" : [ "carts" ],
-        "summary" : "Removes the payment from the shopping cart. ",
+        "summary" : "Removes the payment from the shopping cart.",
         "description" : "",
-        "operationId" : "deletePayment",
+        "operationId" : "default/deletePayment",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
@@ -631,34 +592,28 @@
           "description" : "The ID of the cart for which the payment will be deleted.",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "customerId",
-          "in" : "query",
-          "description" : "If the cart belongs to a customer, this must be set to the customer id owning that cart.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
-            "description" : "successful operation",
+            "description" : "OK.",
             "schema" : {
               "$ref" : "#/definitions/Cart"
             }
           },
           "400" : {
-            "description" : "Invalid ID supplied.",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "403" : {
-            "description" : "Not allowed to update the payment.",
+            "description" : "Forbidden.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Cart not found.",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -671,19 +626,19 @@
         "tags" : [ "carts" ],
         "summary" : "Sets the shipping address for the cart.",
         "description" : "",
-        "operationId" : "postShippingAddress",
+        "operationId" : "default/postShippingAddress",
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
-          "description" : "The ID of the cart for the shipping address",
+          "description" : "The ID of the cart for the shipping address.",
           "required" : true,
           "type" : "string"
         }, {
           "in" : "body",
           "name" : "body",
-          "description" : "The shipping address and an optional customer id that must be set if the cart belongs to a customer.",
+          "description" : "The shipping address",
           "required" : true,
           "schema" : {
             "$ref" : "#/definitions/AddressWrapper"
@@ -691,25 +646,25 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "successful operation",
+            "description" : "OK.",
             "schema" : {
               "$ref" : "#/definitions/Cart"
             }
           },
           "400" : {
-            "description" : "Invalid ID supplied.",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "403" : {
-            "description" : "Not allowed to set the shipping address",
+            "description" : "Forbidden.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Cart not found.",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -720,7 +675,7 @@
         "tags" : [ "carts" ],
         "summary" : "Deletes the shipping address for the cart.",
         "description" : "",
-        "operationId" : "deleteShippingAddress",
+        "operationId" : "default/deleteShippingAddress",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
@@ -728,34 +683,28 @@
           "description" : "The ID of the cart for which the shipping address will be deleted.",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "customerId",
-          "in" : "query",
-          "description" : "If the cart belongs to a customer, this must be set to the customer id owning that cart.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
-            "description" : "successful operation",
+            "description" : "OK.",
             "schema" : {
               "$ref" : "#/definitions/Cart"
             }
           },
           "400" : {
-            "description" : "Invalid ID supplied.",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "403" : {
-            "description" : "Not allowed to delete the shipping address",
+            "description" : "Forbidden.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Cart not found.",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -768,7 +717,7 @@
         "tags" : [ "carts" ],
         "summary" : "Updates the shipping method for the cart.",
         "description" : "",
-        "operationId" : "postShippingMethod",
+        "operationId" : "default/postShippingMethod",
         "consumes" : [ "application/x-www-form-urlencoded" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -783,34 +732,28 @@
           "description" : "The shipping method id.",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "customerId",
-          "in" : "formData",
-          "description" : "If the cart belongs to a customer, this must be set to the customer id owning that cart.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
-            "description" : "successful operation",
+            "description" : "OK.",
             "schema" : {
               "$ref" : "#/definitions/Cart"
             }
           },
           "400" : {
-            "description" : "Invalid ID supplied.",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "403" : {
-            "description" : "Not allowed to set the shipping method.",
+            "description" : "Forbidden.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Cart not found.",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -821,7 +764,7 @@
         "tags" : [ "carts" ],
         "summary" : "Deletes the shipping method for the cart.",
         "description" : "",
-        "operationId" : "deleteShippingMethod",
+        "operationId" : "default/deleteShippingMethod",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
@@ -829,34 +772,28 @@
           "description" : "The ID of the cart for which the shipping method will be deleted.",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "customerId",
-          "in" : "query",
-          "description" : "If the cart belongs to a customer, this must be set to the customer id owning that cart.",
-          "required" : false,
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
-            "description" : "successful operation",
+            "description" : "OK.",
             "schema" : {
               "$ref" : "#/definitions/Cart"
             }
           },
           "400" : {
-            "description" : "Invalid ID supplied.",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "403" : {
-            "description" : "Not allowed to delete the shipping method.",
+            "description" : "Forbidden.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Cart not found.",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -869,19 +806,13 @@
         "tags" : [ "carts" ],
         "summary" : "Retrieves the available shipping methods for the current cart.",
         "description" : "",
-        "operationId" : "getShippingMethods",
+        "operationId" : "default/getShippingMethods",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
-          "description" : "The id of the cart",
+          "description" : "The id of the cart.",
           "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "customerId",
-          "in" : "query",
-          "description" : "If the cart belongs to a customer, this must be set to the customer id owning that cart.",
-          "required" : false,
           "type" : "string"
         } ],
         "responses" : {
@@ -895,13 +826,19 @@
             }
           },
           "400" : {
-            "description" : "Invalid ID supplied.",
+            "description" : "Bad Request.",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Cart not found.",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -912,9 +849,9 @@
     "/categories" : {
       "get" : {
         "tags" : [ "categories" ],
-        "summary" : "Returns the entire category structure or a subset of it depending on pagination",
+        "summary" : "Returns the entire category structure or a subset of it depending on pagination.",
         "description" : "",
-        "operationId" : "getCategories",
+        "operationId" : "default/getCategories",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "sort",
@@ -965,6 +902,12 @@
             "schema" : {
               "$ref" : "#/definitions/PagedResponseCategory"
             }
+          },
+          "400" : {
+            "description" : "Bad Request.",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
           }
         }
       }
@@ -972,14 +915,14 @@
     "/categories/{id}" : {
       "get" : {
         "tags" : [ "categories" ],
-        "summary" : "Returns a category by ID",
+        "summary" : "Returns a category by ID.",
         "description" : "",
-        "operationId" : "getCategoryById",
+        "operationId" : "default/getCategoryById",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
-          "description" : "The ID of the category to return",
+          "description" : "The ID of the category to return.",
           "required" : true,
           "type" : "string"
         } ],
@@ -991,13 +934,13 @@
             }
           },
           "400" : {
-            "description" : "Invalid ID supplied",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Category not found",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1010,37 +953,43 @@
         "tags" : [ "customers" ],
         "summary" : "Performs a customer login, potentially merging an anonymous cart with a customer cart.",
         "description" : "",
-        "operationId" : "postCustomerLogin",
+        "operationId" : "default/postCustomerLogin",
         "consumes" : [ "application/x-www-form-urlencoded" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "email",
           "in" : "formData",
-          "description" : "The email address of the customer",
+          "description" : "The email address of the customer.",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "password",
           "in" : "formData",
-          "description" : "The password for this customer",
+          "description" : "The password for this customer.",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "anonymousCartId",
           "in" : "formData",
-          "description" : "An optional anonymous cart id to be merged during the login process",
+          "description" : "An optional anonymous cart id to be merged during the login process.",
           "required" : false,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
-            "description" : "successful operation",
+            "description" : "OK.",
             "schema" : {
               "$ref" : "#/definitions/LoginResult"
             }
           },
           "400" : {
-            "description" : "Invalid customer credentials",
+            "description" : "Bad Request.",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1053,12 +1002,12 @@
         "tags" : [ "customers" ],
         "summary" : "Returns a customer by ID.",
         "description" : "",
-        "operationId" : "getCustomerById",
+        "operationId" : "default/getCustomerById",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
-          "description" : "The id of the customer",
+          "description" : "The id of the customer.",
           "required" : true,
           "type" : "string"
         } ],
@@ -1070,13 +1019,13 @@
             }
           },
           "400" : {
-            "description" : "Invalid ID supplied",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Customer not found",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1089,7 +1038,7 @@
         "tags" : [ "inventory" ],
         "summary" : "Queries inventory based on the given query parameters.",
         "description" : "",
-        "operationId" : "query",
+        "operationId" : "default/query",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "productId",
@@ -1136,7 +1085,7 @@
             }
           },
           "400" : {
-            "description" : "Invalid query parameters supplied",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1149,19 +1098,13 @@
         "tags" : [ "orders" ],
         "summary" : "Creates an order based on a cart.",
         "description" : "",
-        "operationId" : "postOrder",
+        "operationId" : "default/postOrder",
         "consumes" : [ "application/x-www-form-urlencoded" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "cartId",
           "in" : "formData",
           "description" : "The id of the cart from which the order will be created.",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "name" : "customerId",
-          "in" : "formData",
-          "description" : "If the cart belongs to a customer, this must be set to the customer id owning that cart.",
           "required" : false,
           "type" : "string"
         } ],
@@ -1172,20 +1115,32 @@
               "$ref" : "#/definitions/Order"
             }
           },
+          "201" : {
+            "description" : "Created.",
+            "schema" : {
+              "$ref" : "#/definitions/Order"
+            },
+            "headers" : {
+              "Location" : {
+                "type" : "string",
+                "description" : "Location of the newly created order."
+              }
+            }
+          },
           "400" : {
-            "description" : "Invalid ID supplied.",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "403" : {
-            "description" : "Not allowed to create the order.",
+            "description" : "Forbidden.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Cart not found.",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1196,9 +1151,9 @@
     "/products/search" : {
       "get" : {
         "tags" : [ "products" ],
-        "summary" : "Searches products based on the given query parameters",
+        "summary" : "Searches products based on the given query parameters.",
         "description" : "",
-        "operationId" : "searchProducts",
+        "operationId" : "default/searchProducts",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "text",
@@ -1271,7 +1226,7 @@
             }
           },
           "400" : {
-            "description" : "Invalid search parameters supplied",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1284,12 +1239,12 @@
         "tags" : [ "products" ],
         "summary" : "Returns a product by ID.",
         "description" : "",
-        "operationId" : "getProductById",
+        "operationId" : "default/getProductById",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
-          "description" : "The ID of the product to return",
+          "description" : "The ID of the product to return.",
           "required" : true,
           "type" : "string"
         } ],
@@ -1301,13 +1256,13 @@
             }
           },
           "400" : {
-            "description" : "Invalid ID supplied",
+            "description" : "Bad Request.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "404" : {
-            "description" : "Product not found",
+            "description" : "Not Found.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1320,7 +1275,7 @@
         "tags" : [ "shoppinglists" ],
         "summary" : "Gets a users shopping lists.",
         "description" : "The entries property is empty for all shopping lists in the response. To retrieve entries, query a single shopping list.",
-        "operationId" : "getShoppingLists",
+        "operationId" : "default/getShoppingLists",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "offset",
@@ -1352,8 +1307,8 @@
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
-          "403" : {
-            "description" : "Forbidden.",
+          "401" : {
+            "description" : "Unauthorized.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1370,7 +1325,7 @@
         "tags" : [ "shoppinglists" ],
         "summary" : "Creates a new shopping list for the current user.",
         "description" : "The name and description properties will be stored as localized strings in the language defined by the Content-Language header.",
-        "operationId" : "postShoppingList",
+        "operationId" : "default/postShoppingList",
         "consumes" : [ "application/x-www-form-urlencoded" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -1417,8 +1372,8 @@
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
-          "403" : {
-            "description" : "Forbidden.",
+          "401" : {
+            "description" : "Unauthorized.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1437,7 +1392,7 @@
         "tags" : [ "shoppinglists" ],
         "summary" : "Gets a users shopping list with a given id.",
         "description" : "",
-        "operationId" : "getShoppingList",
+        "operationId" : "default/getShoppingList",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
@@ -1459,8 +1414,8 @@
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
-          "403" : {
-            "description" : "Forbidden.",
+          "401" : {
+            "description" : "Unauthorized.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1477,7 +1432,7 @@
         "tags" : [ "shoppinglists" ],
         "summary" : "Replaces a shopping list with the given one.",
         "description" : "",
-        "operationId" : "putShoppingList",
+        "operationId" : "default/putShoppingList",
         "consumes" : [ "application/x-www-form-urlencoded" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -1512,8 +1467,8 @@
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
-          "403" : {
-            "description" : "Forbidden.",
+          "401" : {
+            "description" : "Unauthorized.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1530,7 +1485,7 @@
         "tags" : [ "shoppinglists" ],
         "summary" : "Deletes a shopping list.",
         "description" : "",
-        "operationId" : "deleteShoppingList",
+        "operationId" : "default/deleteShoppingList",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
@@ -1549,8 +1504,8 @@
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
-          "403" : {
-            "description" : "Forbidden.",
+          "401" : {
+            "description" : "Unauthorized.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1569,7 +1524,7 @@
         "tags" : [ "shoppinglists" ],
         "summary" : "Gets all entries from a shopping list.",
         "description" : "",
-        "operationId" : "getShoppingListEntries",
+        "operationId" : "default/getShoppingListEntries",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
@@ -1607,8 +1562,8 @@
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
-          "403" : {
-            "description" : "Forbidden.",
+          "401" : {
+            "description" : "Unauthorized.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1625,7 +1580,7 @@
         "tags" : [ "shoppinglists" ],
         "summary" : "Creates a new entry for a shopping list.",
         "description" : "",
-        "operationId" : "postShoppingListEntry",
+        "operationId" : "default/postShoppingListEntry",
         "consumes" : [ "application/x-www-form-urlencoded" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -1674,8 +1629,8 @@
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
-          "403" : {
-            "description" : "Forbidden.",
+          "401" : {
+            "description" : "Unauthorized.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1694,7 +1649,7 @@
         "tags" : [ "shoppinglists" ],
         "summary" : "Gets a single entry from a shopping list.",
         "description" : "",
-        "operationId" : "getShoppingListEntry",
+        "operationId" : "default/getShoppingListEntry",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
@@ -1722,8 +1677,8 @@
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
-          "403" : {
-            "description" : "Forbidden.",
+          "401" : {
+            "description" : "Unauthorized.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1740,7 +1695,7 @@
         "tags" : [ "shoppinglists" ],
         "summary" : "Replaces an entry with the given one.",
         "description" : "",
-        "operationId" : "putShoppingListEntry",
+        "operationId" : "default/putShoppingListEntry",
         "consumes" : [ "application/x-www-form-urlencoded" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
@@ -1783,8 +1738,8 @@
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
-          "403" : {
-            "description" : "Forbidden.",
+          "401" : {
+            "description" : "Unauthorized.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1801,7 +1756,7 @@
         "tags" : [ "shoppinglists" ],
         "summary" : "Deletes an entry from a shopping list.",
         "description" : "",
-        "operationId" : "deleteShoppingListEntry",
+        "operationId" : "default/deleteShoppingListEntry",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
@@ -1826,8 +1781,8 @@
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
-          "403" : {
-            "description" : "Forbidden.",
+          "401" : {
+            "description" : "Unauthorized.",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -1845,6 +1800,7 @@
   "definitions" : {
     "Address" : {
       "type" : "object",
+      "required" : [ "city", "country", "firstName", "id", "lastName", "postalCode", "streetName" ],
       "properties" : {
         "id" : {
           "type" : "string",
@@ -1884,7 +1840,7 @@
         },
         "country" : {
           "type" : "string",
-          "description" : "Country code as per ISO 3166-1. "
+          "description" : "Country code as per ISO 3166-1."
         },
         "region" : {
           "type" : "string",
@@ -1900,7 +1856,7 @@
         },
         "organizationName" : {
           "type" : "string",
-          "description" : "Organization name. Can be company name. "
+          "description" : "Organization name. Can be company name."
         },
         "department" : {
           "type" : "string",
@@ -1926,19 +1882,17 @@
     },
     "AddressWrapper" : {
       "type" : "object",
+      "required" : [ "address" ],
       "properties" : {
         "address" : {
           "description" : "The address object.",
           "$ref" : "#/definitions/Address"
-        },
-        "customerId" : {
-          "type" : "string",
-          "description" : "If the cart belongs to a customer, this must be set to the customer id owning that cart."
         }
       }
     },
     "Asset" : {
       "type" : "object",
+      "required" : [ "id", "url" ],
       "properties" : {
         "id" : {
           "type" : "string",
@@ -1967,7 +1921,7 @@
           "type" : "object",
           "description" : "The value of the attribute. This can be any arbitrary valid JSON value."
         },
-        "variantAttribute" : {
+        "isVariantAxis" : {
           "type" : "boolean",
           "description" : "If true, this attribute is a variant attribute. If not set or false, the attribute is a normal/simple attribute."
         }
@@ -1975,13 +1929,25 @@
     },
     "Cart" : {
       "type" : "object",
-      "required" : [ "cartEntries", "id" ],
+      "required" : [ "currency", "entries", "id", "productTotalPrice" ],
       "properties" : {
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2018-06-05T10:58:18.000Z",
+          "description" : "The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format"
+        },
+        "lastModifiedAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2018-06-05T10:58:18.000Z",
+          "description" : "The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format"
+        },
         "id" : {
           "type" : "string",
           "description" : "The id for the cart."
         },
-        "cartEntries" : {
+        "entries" : {
           "type" : "array",
           "description" : "The list of the entries in the cart.",
           "items" : {
@@ -1993,34 +1959,24 @@
           "description" : "If set, this defines the customer owning this cart. If not set, the cart is an anonymous cart."
         },
         "netTotalPrice" : {
-          "description" : "The net total price for the cart, including discounts, and shipping, but excluding any taxes.",
+          "description" : "The net total price for the cart, including discounts, and shipping, but excluding any taxes. Until a shipping address is set, this field is typically not set.",
           "$ref" : "#/definitions/Price"
         },
         "grossTotalPrice" : {
-          "description" : "The gross total price for the cart, including discounts, shipping, and all taxes.",
+          "description" : "The gross total price for the cart, including discounts, shipping, and all taxes. Until a shipping address is set, this field is typically not set.",
           "$ref" : "#/definitions/Price"
         },
-        "totalProductPrice" : {
+        "productTotalPrice" : {
           "description" : "The product subtotal for the cart, including discounts and with or without taxes depending if the product prices include taxes or not.Until a shipping address is set, this field is typically used as the temporary cart total until it is known if prices include taxes or not.",
           "$ref" : "#/definitions/Price"
         },
-        "cartTaxInfo" : {
-          "description" : "The cart tax info, including cart entries tax and shipping info tax.",
+        "taxInfo" : {
+          "description" : "The cart tax info, including cart entries tax and shipping info tax. Until a shipping address is set, this field is typically not set.",
           "$ref" : "#/definitions/TaxInfo"
         },
         "taxIncludedInPrices" : {
           "type" : "boolean",
-          "description" : "Indicates if taxes are included or not in all the prices."
-        },
-        "createdDate" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "The date when this cart was created."
-        },
-        "lastModifiedDate" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "The date when this cart was last modified."
+          "description" : "Indicates if taxes are included or not in all the prices. Until a shipping address is set, this field is typically not set."
         },
         "shippingAddress" : {
           "description" : "The shipping address for the cart products.",
@@ -2060,7 +2016,7 @@
     },
     "CartEntry" : {
       "type" : "object",
-      "required" : [ "id", "productVariant", "quantity" ],
+      "required" : [ "id", "price", "productVariant", "quantity", "type", "unitPrice" ],
       "properties" : {
         "id" : {
           "type" : "string",
@@ -2081,21 +2037,21 @@
         },
         "discounts" : {
           "type" : "array",
-          "description" : "A list of all applied discounts",
+          "description" : "A list of all applied discounts.",
           "items" : {
             "$ref" : "#/definitions/Discount"
           }
         },
-        "cartEntryPrice" : {
+        "price" : {
           "description" : "The calculated cart entry price. May or may not include taxes, depending on the tax policy.",
           "$ref" : "#/definitions/Price"
         },
-        "discountedCartEntryPrice" : {
+        "discountedPrice" : {
           "description" : "The cart entry price after all discounts have been applied.",
           "$ref" : "#/definitions/Price"
         },
-        "cartEntryTaxInfo" : {
-          "description" : "The cart entry tax info.",
+        "taxInfo" : {
+          "description" : "The cart entry tax info. Until a shipping address is set, this field is typically not set.",
           "$ref" : "#/definitions/TaxInfo"
         },
         "type" : {
@@ -2109,6 +2065,18 @@
       "type" : "object",
       "required" : [ "id" ],
       "properties" : {
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2018-06-05T10:58:18.000Z",
+          "description" : "The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format"
+        },
+        "lastModifiedAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2018-06-05T10:58:18.000Z",
+          "description" : "The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format"
+        },
         "id" : {
           "type" : "string",
           "description" : "The internal unique ID of the category in the commerce backend system."
@@ -2121,33 +2089,23 @@
           "type" : "string",
           "description" : "The description of the category."
         },
-        "mainParentCategoryId" : {
+        "mainParentId" : {
           "type" : "string",
           "description" : "The id of the main parent category (if this category has multiple parents)."
         },
-        "parentCategories" : {
+        "parents" : {
           "type" : "array",
           "description" : "The list of parent categories for this category. Depending on the backend system, the returned items may only have their ids being set.",
           "items" : {
             "$ref" : "#/definitions/Category"
           }
         },
-        "subCategories" : {
+        "children" : {
           "type" : "array",
           "description" : "The list of subcategories for this category. Depending on the backend system, the returned items may only have their ids being set.",
           "items" : {
             "$ref" : "#/definitions/Category"
           }
-        },
-        "createdDate" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "The date when this product was created."
-        },
-        "lastModifiedDate" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "The date when this product was last modified."
         }
       }
     },
@@ -2171,8 +2129,20 @@
     },
     "Customer" : {
       "type" : "object",
-      "required" : [ "id" ],
+      "required" : [ "email", "firstName", "id", "lastName" ],
       "properties" : {
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2018-06-05T10:58:18.000Z",
+          "description" : "The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format"
+        },
+        "lastModifiedAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2018-06-05T10:58:18.000Z",
+          "description" : "The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format"
+        },
         "id" : {
           "type" : "string",
           "description" : "The unique id of this customer"
@@ -2181,29 +2151,19 @@
           "type" : "string",
           "description" : "The customer's email address"
         },
-        "firstname" : {
+        "firstName" : {
           "type" : "string",
           "description" : "The firstname of this customer"
         },
-        "lastname" : {
+        "lastName" : {
           "type" : "string",
           "description" : "The lastname of this customer"
-        },
-        "createdDate" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "The date when this customer was registered"
-        },
-        "lastModifiedDate" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "The date when this customer was last modified"
         }
       }
     },
     "Discount" : {
       "type" : "object",
-      "required" : [ "discountedAmount", "id", "type" ],
+      "required" : [ "amount", "id", "type" ],
       "properties" : {
         "id" : {
           "type" : "string",
@@ -2217,11 +2177,11 @@
           "type" : "string",
           "description" : "The name of the discount."
         },
-        "message" : {
+        "description" : {
           "type" : "string",
-          "description" : "The message associated with the discount. May be displayed in the UI."
+          "description" : "The description associated with the discount. May be displayed in the UI."
         },
-        "discountedAmount" : {
+        "amount" : {
           "description" : "The amount which is discounted. Subtract this to obtain new price.",
           "$ref" : "#/definitions/Price"
         }
@@ -2229,35 +2189,33 @@
     },
     "ErrorResponse" : {
       "type" : "object",
+      "required" : [ "message", "reason", "type" ],
       "properties" : {
         "type" : {
           "type" : "string",
-          "example" : "coupon",
           "description" : "The error type."
         },
         "reason" : {
           "type" : "string",
-          "example" : "coupon-expired",
           "description" : "The error reason."
         },
         "message" : {
           "type" : "string",
-          "example" : "Coupon expired.",
           "description" : "The error message."
         }
       }
     },
     "Facet" : {
       "type" : "object",
-      "required" : [ "name" ],
+      "required" : [ "id", "name", "type", "values" ],
       "properties" : {
+        "id" : {
+          "type" : "string",
+          "description" : "The id of the facet."
+        },
         "name" : {
           "type" : "string",
           "description" : "The name of the facet."
-        },
-        "label" : {
-          "type" : "string",
-          "description" : "The label of the facet."
         },
         "missed" : {
           "type" : "integer",
@@ -2272,7 +2230,7 @@
           "type" : "string",
           "description" : "The type of the facet."
         },
-        "facetValues" : {
+        "values" : {
           "type" : "array",
           "description" : "List of facetValues calculated for this facet.",
           "items" : {
@@ -2283,7 +2241,7 @@
     },
     "FacetValue" : {
       "type" : "object",
-      "required" : [ "id", "occurrences", "value" ],
+      "required" : [ "id", "value" ],
       "properties" : {
         "id" : {
           "type" : "string",
@@ -2306,9 +2264,9 @@
     },
     "InventoryItem" : {
       "type" : "object",
-      "required" : [ "inventoryId" ],
+      "required" : [ "availableQuantity", "id", "productId" ],
       "properties" : {
-        "inventoryId" : {
+        "id" : {
           "type" : "string",
           "description" : "The inventory identifier."
         },
@@ -2339,6 +2297,7 @@
     },
     "LoginResult" : {
       "type" : "object",
+      "required" : [ "customer" ],
       "properties" : {
         "customer" : {
           "description" : "The customer info returned by the login process",
@@ -2352,6 +2311,7 @@
     },
     "Order" : {
       "type" : "object",
+      "required" : [ "id" ],
       "properties" : {
         "id" : {
           "type" : "string",
@@ -2361,6 +2321,7 @@
     },
     "PagedResponse" : {
       "type" : "object",
+      "required" : [ "count", "offset", "results", "total" ],
       "properties" : {
         "offset" : {
           "type" : "integer",
@@ -2395,6 +2356,7 @@
     },
     "PagedResponseCategory" : {
       "type" : "object",
+      "required" : [ "count", "offset", "results", "total" ],
       "properties" : {
         "offset" : {
           "type" : "integer",
@@ -2429,6 +2391,7 @@
     },
     "PagedResponseInventoryItem" : {
       "type" : "object",
+      "required" : [ "count", "offset", "results", "total" ],
       "properties" : {
         "offset" : {
           "type" : "integer",
@@ -2463,6 +2426,7 @@
     },
     "PagedResponseProduct" : {
       "type" : "object",
+      "required" : [ "count", "offset", "results", "total" ],
       "properties" : {
         "offset" : {
           "type" : "integer",
@@ -2497,6 +2461,7 @@
     },
     "PagedResponseShoppingList" : {
       "type" : "object",
+      "required" : [ "count", "offset", "results", "total" ],
       "properties" : {
         "offset" : {
           "type" : "integer",
@@ -2531,6 +2496,7 @@
     },
     "PagedResponseShoppingListEntry" : {
       "type" : "object",
+      "required" : [ "count", "offset", "results", "total" ],
       "properties" : {
         "offset" : {
           "type" : "integer",
@@ -2565,8 +2531,20 @@
     },
     "Payment" : {
       "type" : "object",
-      "required" : [ "method" ],
+      "required" : [ "id", "method" ],
       "properties" : {
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2018-06-05T10:58:18.000Z",
+          "description" : "The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format"
+        },
+        "lastModifiedAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2018-06-05T10:58:18.000Z",
+          "description" : "The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format"
+        },
         "id" : {
           "type" : "string",
           "description" : "The id of the payment."
@@ -2594,21 +2572,12 @@
         "status" : {
           "type" : "string",
           "description" : "The external status message/text for the payment."
-        },
-        "createdDate" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "The date when this payment was created."
-        },
-        "lastModifiedDate" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "The date when this payment was last modified."
         }
       }
     },
     "PaymentWrapper" : {
       "type" : "object",
+      "required" : [ "payment" ],
       "properties" : {
         "payment" : {
           "description" : "The payment object.",
@@ -2618,13 +2587,13 @@
     },
     "Price" : {
       "type" : "object",
-      "required" : [ "centAmount", "currency" ],
+      "required" : [ "amount", "currency" ],
       "properties" : {
         "currency" : {
           "type" : "string",
           "description" : "The currency code for that price."
         },
-        "centAmount" : {
+        "amount" : {
           "type" : "number",
           "description" : "The amount in cents for that price."
         },
@@ -2636,15 +2605,23 @@
     },
     "Product" : {
       "type" : "object",
-      "required" : [ "id", "masterVariantId", "variants" ],
+      "required" : [ "id", "masterVariantId", "name", "prices", "variants" ],
       "properties" : {
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2018-06-05T10:58:18.000Z",
+          "description" : "The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format"
+        },
+        "lastModifiedAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2018-06-05T10:58:18.000Z",
+          "description" : "The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format"
+        },
         "id" : {
           "type" : "string",
           "description" : "The internal unique ID of the product in the commerce backend system."
-        },
-        "sku" : {
-          "type" : "string",
-          "description" : "The unique SKU of the product assigned by the vendor or manufacturer."
         },
         "name" : {
           "type" : "string",
@@ -2682,15 +2659,9 @@
             "$ref" : "#/definitions/Attribute"
           }
         },
-        "createdDate" : {
+        "sku" : {
           "type" : "string",
-          "format" : "date-time",
-          "description" : "The date when this product was created."
-        },
-        "lastModifiedDate" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "The date when this product was last modified."
+          "description" : "The unique SKU of the product assigned by the vendor or manufacturer."
         },
         "masterVariantId" : {
           "type" : "string",
@@ -2707,15 +2678,23 @@
     },
     "ProductVariant" : {
       "type" : "object",
-      "required" : [ "id" ],
+      "required" : [ "available", "id", "name", "prices", "sku" ],
       "properties" : {
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2018-06-05T10:58:18.000Z",
+          "description" : "The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format"
+        },
+        "lastModifiedAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2018-06-05T10:58:18.000Z",
+          "description" : "The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format"
+        },
         "id" : {
           "type" : "string",
           "description" : "The internal unique ID of the product in the commerce backend system."
-        },
-        "sku" : {
-          "type" : "string",
-          "description" : "The unique SKU of the product assigned by the vendor or manufacturer."
         },
         "name" : {
           "type" : "string",
@@ -2753,15 +2732,9 @@
             "$ref" : "#/definitions/Attribute"
           }
         },
-        "createdDate" : {
+        "sku" : {
           "type" : "string",
-          "format" : "date-time",
-          "description" : "The date when this product was created."
-        },
-        "lastModifiedDate" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "The date when this product was last modified."
+          "description" : "The unique SKU of the product variant assigned by the vendor or manufacturer."
         },
         "available" : {
           "type" : "boolean",
@@ -2771,8 +2744,12 @@
     },
     "ShippingInfo" : {
       "type" : "object",
-      "required" : [ "name", "price" ],
+      "required" : [ "id", "name", "price", "taxInfo" ],
       "properties" : {
+        "id" : {
+          "type" : "string",
+          "description" : "The shipping method id."
+        },
         "name" : {
           "type" : "string",
           "description" : "The shipping method name."
@@ -2785,19 +2762,15 @@
           "description" : "The discounted shipping price.",
           "$ref" : "#/definitions/Price"
         },
-        "shippingTaxInfo" : {
+        "taxInfo" : {
           "description" : "The tax for the shipping.",
           "$ref" : "#/definitions/TaxInfo"
-        },
-        "id" : {
-          "type" : "string",
-          "description" : "The shipping method id."
         }
       }
     },
     "ShippingMethod" : {
       "type" : "object",
-      "required" : [ "id" ],
+      "required" : [ "id", "name", "price" ],
       "properties" : {
         "id" : {
           "type" : "string",
@@ -2821,6 +2794,18 @@
       "type" : "object",
       "required" : [ "entries", "id", "name" ],
       "properties" : {
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2018-06-05T10:58:18.000Z",
+          "description" : "The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format"
+        },
+        "lastModifiedAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2018-06-05T10:58:18.000Z",
+          "description" : "The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format"
+        },
         "id" : {
           "type" : "string",
           "description" : "The id of the shopping list."
@@ -2843,16 +2828,6 @@
         "customerId" : {
           "type" : "string",
           "description" : "The customer id that owns this shopping list."
-        },
-        "createdDate" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "The date when this shopping list was created."
-        },
-        "lastModifiedDate" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "The date when this shopping list was last modified."
         }
       }
     },
@@ -2860,6 +2835,18 @@
       "type" : "object",
       "required" : [ "id", "productVariant", "quantity" ],
       "properties" : {
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2018-06-05T10:58:18.000Z",
+          "description" : "The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format"
+        },
+        "lastModifiedAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2018-06-05T10:58:18.000Z",
+          "description" : "The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format"
+        },
         "id" : {
           "type" : "string",
           "description" : "The id of the entry."
@@ -2872,28 +2859,18 @@
           "type" : "integer",
           "format" : "int32",
           "description" : "The quantity for the entry."
-        },
-        "createdDate" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "The date when this entry was created."
-        },
-        "lastModifiedDate" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "The date when this entry was last modified."
         }
       }
     },
     "TaxInfo" : {
       "type" : "object",
-      "required" : [ "totalCentAmount" ],
+      "required" : [ "amount" ],
       "properties" : {
-        "totalCentAmount" : {
+        "amount" : {
           "type" : "number",
           "description" : "The amount in cents for the tax info."
         },
-        "taxPortions" : {
+        "portions" : {
           "type" : "array",
           "description" : "The portions for this tax.",
           "items" : {
@@ -2904,12 +2881,13 @@
     },
     "TaxPortion" : {
       "type" : "object",
+      "required" : [ "amount", "name" ],
       "properties" : {
         "name" : {
           "type" : "string",
           "description" : "The name for this tax portion."
         },
-        "centAmount" : {
+        "amount" : {
           "type" : "number",
           "description" : "The amount in cents for the tax portion."
         }

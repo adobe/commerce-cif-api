@@ -16,27 +16,30 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class Facet {
 
     /**
      * Represents a Facet
      * @constructor 
+     * @param {string} id
      * @param {string} name
+     * @param {string} type
+     * @param {FacetValue[]} values
      */
-    constructor(name) {
+    constructor(id, name, type, values) {
+        /**
+         * The id of the facet.
+         * @type {string}
+         */
+        this.id = id;
+
         /**
          * The name of the facet.
          * @type {string}
          */
         this.name = name;
-
-        /**
-         * The label of the facet.
-         * @type {string}
-         */
-        this.label = undefined;
 
         /**
          * The number of missed items.
@@ -54,14 +57,14 @@ class Facet {
          * The type of the facet.
          * @type {string}
          */
-        this.type = undefined;
+        this.type = type;
 
         /**
          * List of facetValues calculated for this facet.
          * @type {FacetValue[]}
          */
-        this.facetValues = undefined;
+        this.values = values;
 
     }
 }
-module.exports.Facet = Facet
+module.exports.Facet = Facet;

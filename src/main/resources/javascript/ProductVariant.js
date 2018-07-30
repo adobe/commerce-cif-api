@@ -16,16 +16,32 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class ProductVariant {
 
     /**
      * Represents a ProductVariant
      * @constructor 
+     * @param {boolean} available
      * @param {string} id
+     * @param {string} name
+     * @param {Price[]} prices
+     * @param {string} sku
      */
-    constructor(id) {
+    constructor(available, id, name, prices, sku) {
+        /**
+         * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.createdAt = undefined;
+
+        /**
+         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.lastModifiedAt = undefined;
+
         /**
          * The internal unique ID of the product in the commerce backend system.
          * @type {string}
@@ -33,16 +49,10 @@ class ProductVariant {
         this.id = id;
 
         /**
-         * The unique SKU of the product assigned by the vendor or manufacturer.
-         * @type {string}
-         */
-        this.sku = undefined;
-
-        /**
          * The name of the product.
          * @type {string}
          */
-        this.name = undefined;
+        this.name = name;
 
         /**
          * The description of the product.
@@ -54,7 +64,7 @@ class ProductVariant {
          * The prices for this product.
          * @type {Price[]}
          */
-        this.prices = undefined;
+        this.prices = prices;
 
         /**
          * The categories for this product.
@@ -75,23 +85,17 @@ class ProductVariant {
         this.attributes = undefined;
 
         /**
-         * The date when this product was created.
+         * The unique SKU of the product variant assigned by the vendor or manufacturer.
          * @type {string}
          */
-        this.createdDate = undefined;
-
-        /**
-         * The date when this product was last modified.
-         * @type {string}
-         */
-        this.lastModifiedDate = undefined;
+        this.sku = sku;
 
         /**
          * Indicates if the product is available or not in the inventory.
          * @type {boolean}
          */
-        this.available = undefined;
+        this.available = available;
 
     }
 }
-module.exports.ProductVariant = ProductVariant
+module.exports.ProductVariant = ProductVariant;

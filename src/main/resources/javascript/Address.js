@@ -16,20 +16,27 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class Address {
 
     /**
      * Represents a Address
      * @constructor 
+     * @param {string} city
+     * @param {string} country
+     * @param {string} firstName
+     * @param {string} id
+     * @param {string} lastName
+     * @param {string} postalCode
+     * @param {string} streetName
      */
-    constructor() {
+    constructor(city, country, firstName, id, lastName, postalCode, streetName) {
         /**
          * Address unique identifier.
          * @type {string}
          */
-        this.id = undefined;
+        this.id = id;
 
         /**
          * Address title
@@ -47,13 +54,13 @@ class Address {
          * First name.
          * @type {string}
          */
-        this.firstName = undefined;
+        this.firstName = firstName;
 
         /**
          * Last name.
          * @type {string}
          */
-        this.lastName = undefined;
+        this.lastName = lastName;
 
         /**
          * Email.
@@ -80,10 +87,10 @@ class Address {
         this.fax = undefined;
 
         /**
-         * Country code as per ISO 3166-1. 
+         * Country code as per ISO 3166-1.
          * @type {string}
          */
-        this.country = undefined;
+        this.country = country;
 
         /**
          * Region.
@@ -95,16 +102,16 @@ class Address {
          * City.
          * @type {string}
          */
-        this.city = undefined;
+        this.city = city;
 
         /**
          * Postal code.
          * @type {string}
          */
-        this.postalCode = undefined;
+        this.postalCode = postalCode;
 
         /**
-         * Organization name. Can be company name. 
+         * Organization name. Can be company name.
          * @type {string}
          */
         this.organizationName = undefined;
@@ -119,7 +126,7 @@ class Address {
          * Street name.
          * @type {string}
          */
-        this.streetName = undefined;
+        this.streetName = streetName;
 
         /**
          * Street no.
@@ -141,4 +148,4 @@ class Address {
 
     }
 }
-module.exports.Address = Address
+module.exports.Address = Address;

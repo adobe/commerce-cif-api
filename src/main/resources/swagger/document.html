@@ -13,7 +13,7 @@ Adobe Commerce Cloud API
 
 
 
-**Version** 0.1.123
+**Version** 0.1.124
 
 [**Terms of Service**]()
 
@@ -118,22 +118,6 @@ Adobe Commerce Cloud API
 
 </tr>
 
-<tr>
-    <th>customerId</th>
-    <td>formData</td>
-    <td>no</td>
-    <td>
-        If set, the newly created cart will belong to this customer.
-        
-    </td>
-    <td> - </td>
-
-    
-            <td>string </td>
-    
-
-</tr>
-
 
 </table>
 
@@ -146,10 +130,10 @@ Adobe Commerce Cloud API
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| 200    | successful operation | <a href="#/definitions/Cart">Cart</a>|
-| 400    | Invalid ID supplied. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Not allowed to create a cart. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Cart not found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 200    | OK. | <a href="#/definitions/Cart">Cart</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -214,22 +198,6 @@ Adobe Commerce Cloud API
 
 </tr>
 
-<tr>
-    <th>customerId</th>
-    <td>query</td>
-    <td>no</td>
-    <td>
-        If the cart belongs to a customer, this must be set to the customer id owning that cart.
-        
-    </td>
-    <td> - </td>
-
-    
-            <td>string </td>
-    
-
-</tr>
-
 
 </table>
 
@@ -243,9 +211,9 @@ Adobe Commerce Cloud API
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/Cart">Cart</a>|
-| 400    | Invalid ID supplied. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Not allowed to fetch that cart. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Cart not found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -301,22 +269,6 @@ Adobe Commerce Cloud API
 
 </tr>
 
-<tr>
-    <th>customerId</th>
-    <td>query</td>
-    <td>no</td>
-    <td>
-        If the cart belongs to a customer, this must be set to the customer id owning that cart.
-        
-    </td>
-    <td> - </td>
-
-    
-            <td>string </td>
-    
-
-</tr>
-
 
 </table>
 
@@ -329,10 +281,10 @@ Adobe Commerce Cloud API
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| 200    | successful operation | <a href="#/definitions/Cart">Cart</a>|
-| 400    | Invalid ID supplied. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Not allowed to delete that cart. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Cart not found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 204    | No Content. |  - |
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -389,7 +341,7 @@ Adobe Commerce Cloud API
     <td>path</td>
     <td>yes</td>
     <td>
-        The ID of the cart for the billing address
+        The ID of the cart for the billing address.
         
     </td>
     <td> - </td>
@@ -405,7 +357,7 @@ Adobe Commerce Cloud API
     <td>body</td>
     <td>yes</td>
     <td>
-        The billing address and an optional customer id that must be set if the cart belongs to a customer.
+        The billing address
         
     </td>
     <td> - </td>
@@ -429,10 +381,10 @@ Adobe Commerce Cloud API
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| 200    | successful operation | <a href="#/definitions/Cart">Cart</a>|
-| 400    | Invalid ID supplied. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Not allowed to set the billing address | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Cart not found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 200    | OK. | <a href="#/definitions/Cart">Cart</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -485,22 +437,6 @@ Adobe Commerce Cloud API
 
 </tr>
 
-<tr>
-    <th>customerId</th>
-    <td>query</td>
-    <td>no</td>
-    <td>
-        If the cart belongs to a customer, this must be set to the customer id owning that cart.
-        
-    </td>
-    <td> - </td>
-
-    
-            <td>string </td>
-    
-
-</tr>
-
 
 </table>
 
@@ -513,10 +449,10 @@ Adobe Commerce Cloud API
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| 200    | successful operation | <a href="#/definitions/Cart">Cart</a>|
-| 400    | Invalid ID supplied. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Not allowed to delete the billing address | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Cart not found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 200    | OK. | <a href="#/definitions/Cart">Cart</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -600,22 +536,6 @@ Adobe Commerce Cloud API
 
 </tr>
 
-<tr>
-    <th>customerId</th>
-    <td>formData</td>
-    <td>no</td>
-    <td>
-        If the cart belongs to a customer, this must be set to the customer id owning that cart.
-        
-    </td>
-    <td> - </td>
-
-    
-            <td>string </td>
-    
-
-</tr>
-
 
 </table>
 
@@ -628,7 +548,7 @@ Adobe Commerce Cloud API
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| 200    | successful operation | <a href="#/definitions/Cart">Cart</a>|
+| 200    | OK. | <a href="#/definitions/Cart">Cart</a>|
 | 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 | 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 | 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
@@ -718,22 +638,6 @@ Adobe Commerce Cloud API
 
 </tr>
 
-<tr>
-    <th>customerId</th>
-    <td>query</td>
-    <td>no</td>
-    <td>
-        If the cart belongs to a customer, this must be set to the customer id owning that cart.
-        
-    </td>
-    <td> - </td>
-
-    
-            <td>string </td>
-    
-
-</tr>
-
 
 </table>
 
@@ -746,7 +650,7 @@ Adobe Commerce Cloud API
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| 200    | successful operation | <a href="#/definitions/Cart">Cart</a>|
+| 200    | OK. | <a href="#/definitions/Cart">Cart</a>|
 | 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 | 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 | 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
@@ -822,7 +726,7 @@ Adobe Commerce Cloud API
     <td>formData</td>
     <td>yes</td>
     <td>
-        The product variant id to be added to the cart entry. If product variant exists in the cart then the cart entry quantity is increased with the provided quantity
+        The product variant id to be added to the cart entry. If product variant exists in the cart then the cart entry quantity is increased with the provided quantity.
         
     </td>
     <td> - </td>
@@ -849,22 +753,6 @@ Adobe Commerce Cloud API
 
 </tr>
 
-<tr>
-    <th>customerId</th>
-    <td>formData</td>
-    <td>no</td>
-    <td>
-        If the cart belongs to a customer, this must be set to the customer id owning that cart.
-        
-    </td>
-    <td> - </td>
-
-    
-            <td>string </td>
-    
-
-</tr>
-
 
 </table>
 
@@ -878,9 +766,10 @@ Adobe Commerce Cloud API
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/Cart">Cart</a>|
-| 400    | Invalid ID supplied. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Not allowed to add an entry to that cart. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Cart not found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 201    | Created. | <a href="#/definitions/Cart">Cart</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -980,22 +869,6 @@ Adobe Commerce Cloud API
 
 </tr>
 
-<tr>
-    <th>customerId</th>
-    <td>formData</td>
-    <td>no</td>
-    <td>
-        If the cart belongs to a customer, this must be set to the customer id owning that cart.
-        
-    </td>
-    <td> - </td>
-
-    
-            <td>string </td>
-    
-
-</tr>
-
 
 </table>
 
@@ -1009,9 +882,9 @@ Adobe Commerce Cloud API
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/Cart">Cart</a>|
-| 400    | Invalid ID supplied. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Not allowed to update that cart entry. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Resource not found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -1081,22 +954,6 @@ Adobe Commerce Cloud API
 
 </tr>
 
-<tr>
-    <th>customerId</th>
-    <td>query</td>
-    <td>no</td>
-    <td>
-        If the cart belongs to a customer, this must be set to the customer id owning that cart.
-        
-    </td>
-    <td> - </td>
-
-    
-            <td>string </td>
-    
-
-</tr>
-
 
 </table>
 
@@ -1109,10 +966,10 @@ Adobe Commerce Cloud API
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| 200    | successful operation | <a href="#/definitions/Cart">Cart</a>|
-| 400    | Invalid ID supplied. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Not allowed to delete that cart entry. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Resource not found - cart or entry. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 200    | OK. | <a href="#/definitions/Cart">Cart</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -1209,10 +1066,10 @@ Adobe Commerce Cloud API
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| 200    | successful operation | <a href="#/definitions/Cart">Cart</a>|
-| 400    | Invalid ID supplied. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Not allowed to set the payment. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Cart not found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 200    | OK. | <a href="#/definitions/Cart">Cart</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -1221,7 +1078,7 @@ Adobe Commerce Cloud API
 
 ### DELETE
 
-<a id="deletePayment">Removes the payment from the shopping cart. </a>
+<a id="deletePayment">Removes the payment from the shopping cart.</a>
 
 
 
@@ -1265,22 +1122,6 @@ Adobe Commerce Cloud API
 
 </tr>
 
-<tr>
-    <th>customerId</th>
-    <td>query</td>
-    <td>no</td>
-    <td>
-        If the cart belongs to a customer, this must be set to the customer id owning that cart.
-        
-    </td>
-    <td> - </td>
-
-    
-            <td>string </td>
-    
-
-</tr>
-
 
 </table>
 
@@ -1293,10 +1134,10 @@ Adobe Commerce Cloud API
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| 200    | successful operation | <a href="#/definitions/Cart">Cart</a>|
-| 400    | Invalid ID supplied. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Not allowed to update the payment. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Cart not found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 200    | OK. | <a href="#/definitions/Cart">Cart</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -1353,7 +1194,7 @@ Adobe Commerce Cloud API
     <td>path</td>
     <td>yes</td>
     <td>
-        The ID of the cart for the shipping address
+        The ID of the cart for the shipping address.
         
     </td>
     <td> - </td>
@@ -1369,7 +1210,7 @@ Adobe Commerce Cloud API
     <td>body</td>
     <td>yes</td>
     <td>
-        The shipping address and an optional customer id that must be set if the cart belongs to a customer.
+        The shipping address
         
     </td>
     <td> - </td>
@@ -1393,10 +1234,10 @@ Adobe Commerce Cloud API
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| 200    | successful operation | <a href="#/definitions/Cart">Cart</a>|
-| 400    | Invalid ID supplied. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Not allowed to set the shipping address | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Cart not found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 200    | OK. | <a href="#/definitions/Cart">Cart</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -1449,22 +1290,6 @@ Adobe Commerce Cloud API
 
 </tr>
 
-<tr>
-    <th>customerId</th>
-    <td>query</td>
-    <td>no</td>
-    <td>
-        If the cart belongs to a customer, this must be set to the customer id owning that cart.
-        
-    </td>
-    <td> - </td>
-
-    
-            <td>string </td>
-    
-
-</tr>
-
 
 </table>
 
@@ -1477,10 +1302,10 @@ Adobe Commerce Cloud API
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| 200    | successful operation | <a href="#/definitions/Cart">Cart</a>|
-| 400    | Invalid ID supplied. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Not allowed to delete the shipping address | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Cart not found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 200    | OK. | <a href="#/definitions/Cart">Cart</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -1564,22 +1389,6 @@ Adobe Commerce Cloud API
 
 </tr>
 
-<tr>
-    <th>customerId</th>
-    <td>formData</td>
-    <td>no</td>
-    <td>
-        If the cart belongs to a customer, this must be set to the customer id owning that cart.
-        
-    </td>
-    <td> - </td>
-
-    
-            <td>string </td>
-    
-
-</tr>
-
 
 </table>
 
@@ -1592,10 +1401,10 @@ Adobe Commerce Cloud API
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| 200    | successful operation | <a href="#/definitions/Cart">Cart</a>|
-| 400    | Invalid ID supplied. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Not allowed to set the shipping method. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Cart not found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 200    | OK. | <a href="#/definitions/Cart">Cart</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -1648,22 +1457,6 @@ Adobe Commerce Cloud API
 
 </tr>
 
-<tr>
-    <th>customerId</th>
-    <td>query</td>
-    <td>no</td>
-    <td>
-        If the cart belongs to a customer, this must be set to the customer id owning that cart.
-        
-    </td>
-    <td> - </td>
-
-    
-            <td>string </td>
-    
-
-</tr>
-
 
 </table>
 
@@ -1676,10 +1469,10 @@ Adobe Commerce Cloud API
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| 200    | successful operation | <a href="#/definitions/Cart">Cart</a>|
-| 400    | Invalid ID supplied. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Not allowed to delete the shipping method. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Cart not found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 200    | OK. | <a href="#/definitions/Cart">Cart</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -1730,23 +1523,7 @@ Adobe Commerce Cloud API
     <td>path</td>
     <td>yes</td>
     <td>
-        The id of the cart
-        
-    </td>
-    <td> - </td>
-
-    
-            <td>string </td>
-    
-
-</tr>
-
-<tr>
-    <th>customerId</th>
-    <td>query</td>
-    <td>no</td>
-    <td>
-        If the cart belongs to a customer, this must be set to the customer id owning that cart.
+        The id of the cart.
         
     </td>
     <td> - </td>
@@ -1770,8 +1547,9 @@ Adobe Commerce Cloud API
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | successful operation | Array[<a href="#/definitions/ShippingMethod">ShippingMethod</a>]|
-| 400    | Invalid ID supplied. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Cart not found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -1795,7 +1573,7 @@ Adobe Commerce Cloud API
 
 ### GET
 
-<a id="getCategories">Returns the entire category structure or a subset of it depending on pagination</a>
+<a id="getCategories">Returns the entire category structure or a subset of it depending on pagination.</a>
 
 
 
@@ -1920,6 +1698,7 @@ Adobe Commerce Cloud API
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/PagedResponseCategory">PagedResponseCategory</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -1943,7 +1722,7 @@ Adobe Commerce Cloud API
 
 ### GET
 
-<a id="getCategoryById">Returns a category by ID</a>
+<a id="getCategoryById">Returns a category by ID.</a>
 
 
 
@@ -1976,7 +1755,7 @@ Adobe Commerce Cloud API
     <td>path</td>
     <td>yes</td>
     <td>
-        The ID of the category to return
+        The ID of the category to return.
         
     </td>
     <td> - </td>
@@ -2000,8 +1779,8 @@ Adobe Commerce Cloud API
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/Category">Category</a>|
-| 400    | Invalid ID supplied | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Category not found | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -2064,7 +1843,7 @@ Adobe Commerce Cloud API
     <td>formData</td>
     <td>yes</td>
     <td>
-        The email address of the customer
+        The email address of the customer.
         
     </td>
     <td> - </td>
@@ -2080,7 +1859,7 @@ Adobe Commerce Cloud API
     <td>formData</td>
     <td>yes</td>
     <td>
-        The password for this customer
+        The password for this customer.
         
     </td>
     <td> - </td>
@@ -2096,7 +1875,7 @@ Adobe Commerce Cloud API
     <td>formData</td>
     <td>no</td>
     <td>
-        An optional anonymous cart id to be merged during the login process
+        An optional anonymous cart id to be merged during the login process.
         
     </td>
     <td> - </td>
@@ -2119,8 +1898,9 @@ Adobe Commerce Cloud API
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| 200    | successful operation | <a href="#/definitions/LoginResult">LoginResult</a>|
-| 400    | Invalid customer credentials | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 200    | OK. | <a href="#/definitions/LoginResult">LoginResult</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 401    | Unauthorized. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -2174,7 +1954,7 @@ Adobe Commerce Cloud API
     <td>path</td>
     <td>yes</td>
     <td>
-        The id of the customer
+        The id of the customer.
         
     </td>
     <td> - </td>
@@ -2198,8 +1978,8 @@ Adobe Commerce Cloud API
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/Customer">Customer</a>|
-| 400    | Invalid ID supplied | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Customer not found | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -2328,7 +2108,7 @@ Adobe Commerce Cloud API
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/PagedResponseInventoryItem">PagedResponseInventoryItem</a>|
-| 400    | Invalid query parameters supplied | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -2402,22 +2182,6 @@ Adobe Commerce Cloud API
 
 </tr>
 
-<tr>
-    <th>customerId</th>
-    <td>formData</td>
-    <td>no</td>
-    <td>
-        If the cart belongs to a customer, this must be set to the customer id owning that cart.
-        
-    </td>
-    <td> - </td>
-
-    
-            <td>string </td>
-    
-
-</tr>
-
 
 </table>
 
@@ -2431,9 +2195,10 @@ Adobe Commerce Cloud API
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/Order">Order</a>|
-| 400    | Invalid ID supplied. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Not allowed to create the order. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Cart not found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 201    | Created. | <a href="#/definitions/Order">Order</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -2454,7 +2219,7 @@ Adobe Commerce Cloud API
 
 ### GET
 
-<a id="searchProducts">Searches products based on the given query parameters</a>
+<a id="searchProducts">Searches products based on the given query parameters.</a>
 
 
 
@@ -2607,7 +2372,7 @@ Adobe Commerce Cloud API
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/PagedResponseProduct">PagedResponseProduct</a>|
-| 400    | Invalid search parameters supplied | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -2664,7 +2429,7 @@ Adobe Commerce Cloud API
     <td>path</td>
     <td>yes</td>
     <td>
-        The ID of the product to return
+        The ID of the product to return.
         
     </td>
     <td> - </td>
@@ -2688,8 +2453,8 @@ Adobe Commerce Cloud API
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/Product">Product</a>|
-| 400    | Invalid ID supplied | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 404    | Product not found | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -2787,7 +2552,7 @@ The entries property is empty for all shopping lists in the response. To retriev
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/PagedResponseShoppingList">PagedResponseShoppingList</a>|
 | 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 401    | Unauthorized. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 | 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
@@ -2891,7 +2656,7 @@ The name and description properties will be stored as localized strings in the l
 | 200    | successful operation | <a href="#/definitions/ShoppingList">ShoppingList</a>|
 | 201    | Created. | <a href="#/definitions/ShoppingList">ShoppingList</a>|
 | 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 401    | Unauthorized. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 | 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
@@ -2971,7 +2736,7 @@ The name and description properties will be stored as localized strings in the l
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/ShoppingList">ShoppingList</a>|
 | 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 401    | Unauthorized. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 | 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
@@ -3071,7 +2836,7 @@ The name and description properties will be stored as localized strings in the l
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/ShoppingList">ShoppingList</a>|
 | 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 401    | Unauthorized. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 | 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
@@ -3140,7 +2905,7 @@ The name and description properties will be stored as localized strings in the l
 |-------------|-------------|----------------|
 | 204    | No Content. |  - |
 | 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 401    | Unauthorized. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 | 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
@@ -3249,7 +3014,7 @@ The name and description properties will be stored as localized strings in the l
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/PagedResponseShoppingListEntry">PagedResponseShoppingListEntry</a>|
 | 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 401    | Unauthorized. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 | 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
@@ -3353,7 +3118,7 @@ The name and description properties will be stored as localized strings in the l
 | 200    | successful operation | <a href="#/definitions/ShoppingListEntry">ShoppingListEntry</a>|
 | 201    | Created. | <a href="#/definitions/ShoppingList">ShoppingList</a>|
 | 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 401    | Unauthorized. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 | 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
@@ -3449,7 +3214,7 @@ The name and description properties will be stored as localized strings in the l
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/ShoppingListEntry">ShoppingListEntry</a>|
 | 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 401    | Unauthorized. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 | 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
@@ -3565,7 +3330,7 @@ The name and description properties will be stored as localized strings in the l
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/ShoppingListEntry">ShoppingListEntry</a>|
 | 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 401    | Unauthorized. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 | 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
@@ -3650,7 +3415,7 @@ The name and description properties will be stored as localized strings in the l
 |-------------|-------------|----------------|
 | 204    | No Content. |  - |
 | 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
-| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 401    | Unauthorized. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 | 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
@@ -3686,7 +3451,7 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>Address unique identifier.</td>
             <td></td>
         </tr>
@@ -3725,7 +3490,7 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>First name.</td>
             <td></td>
         </tr>
@@ -3738,7 +3503,7 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>Last name.</td>
             <td></td>
         </tr>
@@ -3803,8 +3568,8 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
-            <td>Country code as per ISO 3166-1. </td>
+            <td>required</td>
+            <td>Country code as per ISO 3166-1.</td>
             <td></td>
         </tr>
     
@@ -3829,7 +3594,7 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>City.</td>
             <td></td>
         </tr>
@@ -3842,7 +3607,7 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>Postal code.</td>
             <td></td>
         </tr>
@@ -3856,7 +3621,7 @@ The name and description properties will be stored as localized strings in the l
                 
             </td>
             <td>optional</td>
-            <td>Organization name. Can be company name. </td>
+            <td>Organization name. Can be company name.</td>
             <td></td>
         </tr>
     
@@ -3881,7 +3646,7 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>Street name.</td>
             <td></td>
         </tr>
@@ -3946,21 +3711,8 @@ The name and description properties will be stored as localized strings in the l
                     
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The address object.</td>
-            <td></td>
-        </tr>
-    
-        <tr>
-            <td>customerId</td>
-            <td>
-                
-                    
-                    string
-                
-            </td>
-            <td>optional</td>
-            <td>If the cart belongs to a customer, this must be set to the customer id owning that cart.</td>
             <td></td>
         </tr>
     
@@ -3985,7 +3737,7 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The id of the asset.</td>
             <td></td>
         </tr>
@@ -3998,7 +3750,7 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The url of the asset.</td>
             <td></td>
         </tr>
@@ -4056,7 +3808,7 @@ The name and description properties will be stored as localized strings in the l
         </tr>
     
         <tr>
-            <td>variantAttribute</td>
+            <td>isVariantAxis</td>
             <td>
                 
                     
@@ -4082,6 +3834,32 @@ The name and description properties will be stored as localized strings in the l
     </tr>
     
         <tr>
+            <td>createdAt</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>optional</td>
+            <td>The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format</td>
+            <td>2018-06-05T10:58:18.000Z</td>
+        </tr>
+    
+        <tr>
+            <td>lastModifiedAt</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>optional</td>
+            <td>The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format</td>
+            <td>2018-06-05T10:58:18.000Z</td>
+        </tr>
+    
+        <tr>
             <td>id</td>
             <td>
                 
@@ -4095,7 +3873,7 @@ The name and description properties will be stored as localized strings in the l
         </tr>
     
         <tr>
-            <td>cartEntries</td>
+            <td>entries</td>
             <td>
                 
                 
@@ -4131,7 +3909,7 @@ The name and description properties will be stored as localized strings in the l
                 
             </td>
             <td>optional</td>
-            <td>The net total price for the cart, including discounts, and shipping, but excluding any taxes.</td>
+            <td>The net total price for the cart, including discounts, and shipping, but excluding any taxes. Until a shipping address is set, this field is typically not set.</td>
             <td></td>
         </tr>
     
@@ -4144,25 +3922,25 @@ The name and description properties will be stored as localized strings in the l
                 
             </td>
             <td>optional</td>
-            <td>The gross total price for the cart, including discounts, shipping, and all taxes.</td>
+            <td>The gross total price for the cart, including discounts, shipping, and all taxes. Until a shipping address is set, this field is typically not set.</td>
             <td></td>
         </tr>
     
         <tr>
-            <td>totalProductPrice</td>
+            <td>productTotalPrice</td>
             <td>
                 
                     <a href="#/definitions/Price">Price</a>
                     
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The product subtotal for the cart, including discounts and with or without taxes depending if the product prices include taxes or not.Until a shipping address is set, this field is typically used as the temporary cart total until it is known if prices include taxes or not.</td>
             <td></td>
         </tr>
     
         <tr>
-            <td>cartTaxInfo</td>
+            <td>taxInfo</td>
             <td>
                 
                     <a href="#/definitions/TaxInfo">TaxInfo</a>
@@ -4170,7 +3948,7 @@ The name and description properties will be stored as localized strings in the l
                 
             </td>
             <td>optional</td>
-            <td>The cart tax info, including cart entries tax and shipping info tax.</td>
+            <td>The cart tax info, including cart entries tax and shipping info tax. Until a shipping address is set, this field is typically not set.</td>
             <td></td>
         </tr>
     
@@ -4183,33 +3961,7 @@ The name and description properties will be stored as localized strings in the l
                 
             </td>
             <td>optional</td>
-            <td>Indicates if taxes are included or not in all the prices.</td>
-            <td></td>
-        </tr>
-    
-        <tr>
-            <td>createdDate</td>
-            <td>
-                
-                    
-                    string (date-time)
-                
-            </td>
-            <td>optional</td>
-            <td>The date when this cart was created.</td>
-            <td></td>
-        </tr>
-    
-        <tr>
-            <td>lastModifiedDate</td>
-            <td>
-                
-                    
-                    string (date-time)
-                
-            </td>
-            <td>optional</td>
-            <td>The date when this cart was last modified.</td>
+            <td>Indicates if taxes are included or not in all the prices. Until a shipping address is set, this field is typically not set.</td>
             <td></td>
         </tr>
     
@@ -4288,7 +4040,7 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The currency for the cart.</td>
             <td></td>
         </tr>
@@ -4368,7 +4120,7 @@ The name and description properties will be stored as localized strings in the l
                     
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The product variant item price.</td>
             <td></td>
         </tr>
@@ -4384,25 +4136,25 @@ The name and description properties will be stored as localized strings in the l
                 
             </td>
             <td>optional</td>
-            <td>A list of all applied discounts</td>
+            <td>A list of all applied discounts.</td>
             <td></td>
         </tr>
     
         <tr>
-            <td>cartEntryPrice</td>
+            <td>price</td>
             <td>
                 
                     <a href="#/definitions/Price">Price</a>
                     
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The calculated cart entry price. May or may not include taxes, depending on the tax policy.</td>
             <td></td>
         </tr>
     
         <tr>
-            <td>discountedCartEntryPrice</td>
+            <td>discountedPrice</td>
             <td>
                 
                     <a href="#/definitions/Price">Price</a>
@@ -4415,7 +4167,7 @@ The name and description properties will be stored as localized strings in the l
         </tr>
     
         <tr>
-            <td>cartEntryTaxInfo</td>
+            <td>taxInfo</td>
             <td>
                 
                     <a href="#/definitions/TaxInfo">TaxInfo</a>
@@ -4423,7 +4175,7 @@ The name and description properties will be stored as localized strings in the l
                 
             </td>
             <td>optional</td>
-            <td>The cart entry tax info.</td>
+            <td>The cart entry tax info. Until a shipping address is set, this field is typically not set.</td>
             <td></td>
         </tr>
     
@@ -4435,7 +4187,7 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>Cart entry type.</td>
             <td></td>
         </tr>
@@ -4452,6 +4204,32 @@ The name and description properties will be stored as localized strings in the l
         <th>description</th>
         <th>example</th>
     </tr>
+    
+        <tr>
+            <td>createdAt</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>optional</td>
+            <td>The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format</td>
+            <td>2018-06-05T10:58:18.000Z</td>
+        </tr>
+    
+        <tr>
+            <td>lastModifiedAt</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>optional</td>
+            <td>The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format</td>
+            <td>2018-06-05T10:58:18.000Z</td>
+        </tr>
     
         <tr>
             <td>id</td>
@@ -4493,7 +4271,7 @@ The name and description properties will be stored as localized strings in the l
         </tr>
     
         <tr>
-            <td>mainParentCategoryId</td>
+            <td>mainParentId</td>
             <td>
                 
                     
@@ -4506,7 +4284,7 @@ The name and description properties will be stored as localized strings in the l
         </tr>
     
         <tr>
-            <td>parentCategories</td>
+            <td>parents</td>
             <td>
                 
                 
@@ -4521,7 +4299,7 @@ The name and description properties will be stored as localized strings in the l
         </tr>
     
         <tr>
-            <td>subCategories</td>
+            <td>children</td>
             <td>
                 
                 
@@ -4532,32 +4310,6 @@ The name and description properties will be stored as localized strings in the l
             </td>
             <td>optional</td>
             <td>The list of subcategories for this category. Depending on the backend system, the returned items may only have their ids being set.</td>
-            <td></td>
-        </tr>
-    
-        <tr>
-            <td>createdDate</td>
-            <td>
-                
-                    
-                    string (date-time)
-                
-            </td>
-            <td>optional</td>
-            <td>The date when this product was created.</td>
-            <td></td>
-        </tr>
-    
-        <tr>
-            <td>lastModifiedDate</td>
-            <td>
-                
-                    
-                    string (date-time)
-                
-            </td>
-            <td>optional</td>
-            <td>The date when this product was last modified.</td>
             <td></td>
         </tr>
     
@@ -4627,6 +4379,32 @@ The name and description properties will be stored as localized strings in the l
     </tr>
     
         <tr>
+            <td>createdAt</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>optional</td>
+            <td>The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format</td>
+            <td>2018-06-05T10:58:18.000Z</td>
+        </tr>
+    
+        <tr>
+            <td>lastModifiedAt</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>optional</td>
+            <td>The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format</td>
+            <td>2018-06-05T10:58:18.000Z</td>
+        </tr>
+    
+        <tr>
             <td>id</td>
             <td>
                 
@@ -4647,60 +4425,34 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The customer's email address</td>
             <td></td>
         </tr>
     
         <tr>
-            <td>firstname</td>
+            <td>firstName</td>
             <td>
                 
                     
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The firstname of this customer</td>
             <td></td>
         </tr>
     
         <tr>
-            <td>lastname</td>
+            <td>lastName</td>
             <td>
                 
                     
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The lastname of this customer</td>
-            <td></td>
-        </tr>
-    
-        <tr>
-            <td>createdDate</td>
-            <td>
-                
-                    
-                    string (date-time)
-                
-            </td>
-            <td>optional</td>
-            <td>The date when this customer was registered</td>
-            <td></td>
-        </tr>
-    
-        <tr>
-            <td>lastModifiedDate</td>
-            <td>
-                
-                    
-                    string (date-time)
-                
-            </td>
-            <td>optional</td>
-            <td>The date when this customer was last modified</td>
             <td></td>
         </tr>
     
@@ -4757,7 +4509,7 @@ The name and description properties will be stored as localized strings in the l
         </tr>
     
         <tr>
-            <td>message</td>
+            <td>description</td>
             <td>
                 
                     
@@ -4765,12 +4517,12 @@ The name and description properties will be stored as localized strings in the l
                 
             </td>
             <td>optional</td>
-            <td>The message associated with the discount. May be displayed in the UI.</td>
+            <td>The description associated with the discount. May be displayed in the UI.</td>
             <td></td>
         </tr>
     
         <tr>
-            <td>discountedAmount</td>
+            <td>amount</td>
             <td>
                 
                     <a href="#/definitions/Price">Price</a>
@@ -4803,9 +4555,9 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The error type.</td>
-            <td>coupon</td>
+            <td></td>
         </tr>
     
         <tr>
@@ -4816,9 +4568,9 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The error reason.</td>
-            <td>coupon-expired</td>
+            <td></td>
         </tr>
     
         <tr>
@@ -4829,9 +4581,9 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The error message.</td>
-            <td>Coupon expired.</td>
+            <td></td>
         </tr>
     
 </table>
@@ -4848,6 +4600,19 @@ The name and description properties will be stored as localized strings in the l
     </tr>
     
         <tr>
+            <td>id</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>required</td>
+            <td>The id of the facet.</td>
+            <td></td>
+        </tr>
+    
+        <tr>
             <td>name</td>
             <td>
                 
@@ -4857,19 +4622,6 @@ The name and description properties will be stored as localized strings in the l
             </td>
             <td>required</td>
             <td>The name of the facet.</td>
-            <td></td>
-        </tr>
-    
-        <tr>
-            <td>label</td>
-            <td>
-                
-                    
-                    string
-                
-            </td>
-            <td>optional</td>
-            <td>The label of the facet.</td>
             <td></td>
         </tr>
     
@@ -4907,13 +4659,13 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The type of the facet.</td>
             <td></td>
         </tr>
     
         <tr>
-            <td>facetValues</td>
+            <td>values</td>
             <td>
                 
                 
@@ -4922,7 +4674,7 @@ The name and description properties will be stored as localized strings in the l
                 
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>List of facetValues calculated for this facet.</td>
             <td></td>
         </tr>
@@ -4974,7 +4726,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>required</td>
+            <td>optional</td>
             <td>The number of facet value occurrences.</td>
             <td></td>
         </tr>
@@ -5006,7 +4758,7 @@ The name and description properties will be stored as localized strings in the l
     </tr>
     
         <tr>
-            <td>inventoryId</td>
+            <td>id</td>
             <td>
                 
                     
@@ -5026,7 +4778,7 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The product identifier.</td>
             <td></td>
         </tr>
@@ -5052,7 +4804,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The product available quantity for this inventory.</td>
             <td></td>
         </tr>
@@ -5104,7 +4856,7 @@ The name and description properties will be stored as localized strings in the l
                     
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The customer info returned by the login process</td>
             <td></td>
         </tr>
@@ -5143,7 +4895,7 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The order id.</td>
             <td></td>
         </tr>
@@ -5169,7 +4921,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The offset for this response, this is the number of elements skipped, not a page number.</td>
             <td></td>
         </tr>
@@ -5182,7 +4934,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The actual number of results returned in results.</td>
             <td></td>
         </tr>
@@ -5195,7 +4947,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The total number of results matching the query.</td>
             <td></td>
         </tr>
@@ -5208,7 +4960,7 @@ The name and description properties will be stored as localized strings in the l
                 array[object]
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The results for this response.</td>
             <td></td>
         </tr>
@@ -5249,7 +5001,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The offset for this response, this is the number of elements skipped, not a page number.</td>
             <td></td>
         </tr>
@@ -5262,7 +5014,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The actual number of results returned in results.</td>
             <td></td>
         </tr>
@@ -5275,7 +5027,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The total number of results matching the query.</td>
             <td></td>
         </tr>
@@ -5290,7 +5042,7 @@ The name and description properties will be stored as localized strings in the l
                 
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The results for this response.</td>
             <td></td>
         </tr>
@@ -5331,7 +5083,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The offset for this response, this is the number of elements skipped, not a page number.</td>
             <td></td>
         </tr>
@@ -5344,7 +5096,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The actual number of results returned in results.</td>
             <td></td>
         </tr>
@@ -5357,7 +5109,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The total number of results matching the query.</td>
             <td></td>
         </tr>
@@ -5372,7 +5124,7 @@ The name and description properties will be stored as localized strings in the l
                 
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The results for this response.</td>
             <td></td>
         </tr>
@@ -5413,7 +5165,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The offset for this response, this is the number of elements skipped, not a page number.</td>
             <td></td>
         </tr>
@@ -5426,7 +5178,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The actual number of results returned in results.</td>
             <td></td>
         </tr>
@@ -5439,7 +5191,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The total number of results matching the query.</td>
             <td></td>
         </tr>
@@ -5454,7 +5206,7 @@ The name and description properties will be stored as localized strings in the l
                 
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The results for this response.</td>
             <td></td>
         </tr>
@@ -5495,7 +5247,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The offset for this response, this is the number of elements skipped, not a page number.</td>
             <td></td>
         </tr>
@@ -5508,7 +5260,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The actual number of results returned in results.</td>
             <td></td>
         </tr>
@@ -5521,7 +5273,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The total number of results matching the query.</td>
             <td></td>
         </tr>
@@ -5536,7 +5288,7 @@ The name and description properties will be stored as localized strings in the l
                 
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The results for this response.</td>
             <td></td>
         </tr>
@@ -5577,7 +5329,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The offset for this response, this is the number of elements skipped, not a page number.</td>
             <td></td>
         </tr>
@@ -5590,7 +5342,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The actual number of results returned in results.</td>
             <td></td>
         </tr>
@@ -5603,7 +5355,7 @@ The name and description properties will be stored as localized strings in the l
                     integer (int32)
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The total number of results matching the query.</td>
             <td></td>
         </tr>
@@ -5618,7 +5370,7 @@ The name and description properties will be stored as localized strings in the l
                 
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The results for this response.</td>
             <td></td>
         </tr>
@@ -5652,6 +5404,32 @@ The name and description properties will be stored as localized strings in the l
     </tr>
     
         <tr>
+            <td>createdAt</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>optional</td>
+            <td>The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format</td>
+            <td>2018-06-05T10:58:18.000Z</td>
+        </tr>
+    
+        <tr>
+            <td>lastModifiedAt</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>optional</td>
+            <td>The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format</td>
+            <td>2018-06-05T10:58:18.000Z</td>
+        </tr>
+    
+        <tr>
             <td>id</td>
             <td>
                 
@@ -5659,7 +5437,7 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The id of the payment.</td>
             <td></td>
         </tr>
@@ -5742,32 +5520,6 @@ The name and description properties will be stored as localized strings in the l
             <td></td>
         </tr>
     
-        <tr>
-            <td>createdDate</td>
-            <td>
-                
-                    
-                    string (date-time)
-                
-            </td>
-            <td>optional</td>
-            <td>The date when this payment was created.</td>
-            <td></td>
-        </tr>
-    
-        <tr>
-            <td>lastModifiedDate</td>
-            <td>
-                
-                    
-                    string (date-time)
-                
-            </td>
-            <td>optional</td>
-            <td>The date when this payment was last modified.</td>
-            <td></td>
-        </tr>
-    
 </table>
 
 ## <a name="/definitions/PaymentWrapper">PaymentWrapper</a>
@@ -5789,7 +5541,7 @@ The name and description properties will be stored as localized strings in the l
                     
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The payment object.</td>
             <td></td>
         </tr>
@@ -5821,7 +5573,7 @@ The name and description properties will be stored as localized strings in the l
         </tr>
     
         <tr>
-            <td>centAmount</td>
+            <td>amount</td>
             <td>
                 
                     
@@ -5860,6 +5612,32 @@ The name and description properties will be stored as localized strings in the l
     </tr>
     
         <tr>
+            <td>createdAt</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>optional</td>
+            <td>The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format</td>
+            <td>2018-06-05T10:58:18.000Z</td>
+        </tr>
+    
+        <tr>
+            <td>lastModifiedAt</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>optional</td>
+            <td>The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format</td>
+            <td>2018-06-05T10:58:18.000Z</td>
+        </tr>
+    
+        <tr>
             <td>id</td>
             <td>
                 
@@ -5873,19 +5651,6 @@ The name and description properties will be stored as localized strings in the l
         </tr>
     
         <tr>
-            <td>sku</td>
-            <td>
-                
-                    
-                    string
-                
-            </td>
-            <td>optional</td>
-            <td>The unique SKU of the product assigned by the vendor or manufacturer.</td>
-            <td></td>
-        </tr>
-    
-        <tr>
             <td>name</td>
             <td>
                 
@@ -5893,7 +5658,7 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The name of the product.</td>
             <td></td>
         </tr>
@@ -5921,7 +5686,7 @@ The name and description properties will be stored as localized strings in the l
                 
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The prices for this product.</td>
             <td></td>
         </tr>
@@ -5972,28 +5737,15 @@ The name and description properties will be stored as localized strings in the l
         </tr>
     
         <tr>
-            <td>createdDate</td>
+            <td>sku</td>
             <td>
                 
                     
-                    string (date-time)
+                    string
                 
             </td>
             <td>optional</td>
-            <td>The date when this product was created.</td>
-            <td></td>
-        </tr>
-    
-        <tr>
-            <td>lastModifiedDate</td>
-            <td>
-                
-                    
-                    string (date-time)
-                
-            </td>
-            <td>optional</td>
-            <td>The date when this product was last modified.</td>
+            <td>The unique SKU of the product assigned by the vendor or manufacturer.</td>
             <td></td>
         </tr>
     
@@ -6039,6 +5791,32 @@ The name and description properties will be stored as localized strings in the l
     </tr>
     
         <tr>
+            <td>createdAt</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>optional</td>
+            <td>The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format</td>
+            <td>2018-06-05T10:58:18.000Z</td>
+        </tr>
+    
+        <tr>
+            <td>lastModifiedAt</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>optional</td>
+            <td>The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format</td>
+            <td>2018-06-05T10:58:18.000Z</td>
+        </tr>
+    
+        <tr>
             <td>id</td>
             <td>
                 
@@ -6052,19 +5830,6 @@ The name and description properties will be stored as localized strings in the l
         </tr>
     
         <tr>
-            <td>sku</td>
-            <td>
-                
-                    
-                    string
-                
-            </td>
-            <td>optional</td>
-            <td>The unique SKU of the product assigned by the vendor or manufacturer.</td>
-            <td></td>
-        </tr>
-    
-        <tr>
             <td>name</td>
             <td>
                 
@@ -6072,7 +5837,7 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The name of the product.</td>
             <td></td>
         </tr>
@@ -6100,7 +5865,7 @@ The name and description properties will be stored as localized strings in the l
                 
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The prices for this product.</td>
             <td></td>
         </tr>
@@ -6151,28 +5916,15 @@ The name and description properties will be stored as localized strings in the l
         </tr>
     
         <tr>
-            <td>createdDate</td>
+            <td>sku</td>
             <td>
                 
                     
-                    string (date-time)
+                    string
                 
             </td>
-            <td>optional</td>
-            <td>The date when this product was created.</td>
-            <td></td>
-        </tr>
-    
-        <tr>
-            <td>lastModifiedDate</td>
-            <td>
-                
-                    
-                    string (date-time)
-                
-            </td>
-            <td>optional</td>
-            <td>The date when this product was last modified.</td>
+            <td>required</td>
+            <td>The unique SKU of the product variant assigned by the vendor or manufacturer.</td>
             <td></td>
         </tr>
     
@@ -6184,7 +5936,7 @@ The name and description properties will be stored as localized strings in the l
                     boolean
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>Indicates if the product is available or not in the inventory.</td>
             <td></td>
         </tr>
@@ -6201,6 +5953,19 @@ The name and description properties will be stored as localized strings in the l
         <th>description</th>
         <th>example</th>
     </tr>
+    
+        <tr>
+            <td>id</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>required</td>
+            <td>The shipping method id.</td>
+            <td></td>
+        </tr>
     
         <tr>
             <td>name</td>
@@ -6242,28 +6007,15 @@ The name and description properties will be stored as localized strings in the l
         </tr>
     
         <tr>
-            <td>shippingTaxInfo</td>
+            <td>taxInfo</td>
             <td>
                 
                     <a href="#/definitions/TaxInfo">TaxInfo</a>
                     
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The tax for the shipping.</td>
-            <td></td>
-        </tr>
-    
-        <tr>
-            <td>id</td>
-            <td>
-                
-                    
-                    string
-                
-            </td>
-            <td>optional</td>
-            <td>The shipping method id.</td>
             <td></td>
         </tr>
     
@@ -6301,7 +6053,7 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The name of the shipping method.</td>
             <td></td>
         </tr>
@@ -6327,7 +6079,7 @@ The name and description properties will be stored as localized strings in the l
                     
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The price of the shipping method aka shipping cost.</td>
             <td></td>
         </tr>
@@ -6344,6 +6096,32 @@ The name and description properties will be stored as localized strings in the l
         <th>description</th>
         <th>example</th>
     </tr>
+    
+        <tr>
+            <td>createdAt</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>optional</td>
+            <td>The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format</td>
+            <td>2018-06-05T10:58:18.000Z</td>
+        </tr>
+    
+        <tr>
+            <td>lastModifiedAt</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>optional</td>
+            <td>The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format</td>
+            <td>2018-06-05T10:58:18.000Z</td>
+        </tr>
     
         <tr>
             <td>id</td>
@@ -6412,32 +6190,6 @@ The name and description properties will be stored as localized strings in the l
             <td></td>
         </tr>
     
-        <tr>
-            <td>createdDate</td>
-            <td>
-                
-                    
-                    string (date-time)
-                
-            </td>
-            <td>optional</td>
-            <td>The date when this shopping list was created.</td>
-            <td></td>
-        </tr>
-    
-        <tr>
-            <td>lastModifiedDate</td>
-            <td>
-                
-                    
-                    string (date-time)
-                
-            </td>
-            <td>optional</td>
-            <td>The date when this shopping list was last modified.</td>
-            <td></td>
-        </tr>
-    
 </table>
 
 ## <a name="/definitions/ShoppingListEntry">ShoppingListEntry</a>
@@ -6450,6 +6202,32 @@ The name and description properties will be stored as localized strings in the l
         <th>description</th>
         <th>example</th>
     </tr>
+    
+        <tr>
+            <td>createdAt</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>optional</td>
+            <td>The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format</td>
+            <td>2018-06-05T10:58:18.000Z</td>
+        </tr>
+    
+        <tr>
+            <td>lastModifiedAt</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>optional</td>
+            <td>The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format</td>
+            <td>2018-06-05T10:58:18.000Z</td>
+        </tr>
     
         <tr>
             <td>id</td>
@@ -6490,32 +6268,6 @@ The name and description properties will be stored as localized strings in the l
             <td></td>
         </tr>
     
-        <tr>
-            <td>createdDate</td>
-            <td>
-                
-                    
-                    string (date-time)
-                
-            </td>
-            <td>optional</td>
-            <td>The date when this entry was created.</td>
-            <td></td>
-        </tr>
-    
-        <tr>
-            <td>lastModifiedDate</td>
-            <td>
-                
-                    
-                    string (date-time)
-                
-            </td>
-            <td>optional</td>
-            <td>The date when this entry was last modified.</td>
-            <td></td>
-        </tr>
-    
 </table>
 
 ## <a name="/definitions/TaxInfo">TaxInfo</a>
@@ -6530,7 +6282,7 @@ The name and description properties will be stored as localized strings in the l
     </tr>
     
         <tr>
-            <td>totalCentAmount</td>
+            <td>amount</td>
             <td>
                 
                     
@@ -6543,7 +6295,7 @@ The name and description properties will be stored as localized strings in the l
         </tr>
     
         <tr>
-            <td>taxPortions</td>
+            <td>portions</td>
             <td>
                 
                 
@@ -6578,20 +6330,20 @@ The name and description properties will be stored as localized strings in the l
                     string
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The name for this tax portion.</td>
             <td></td>
         </tr>
     
         <tr>
-            <td>centAmount</td>
+            <td>amount</td>
             <td>
                 
                     
                     number
                 
             </td>
-            <td>optional</td>
+            <td>required</td>
             <td>The amount in cents for the tax portion.</td>
             <td></td>
         </tr>

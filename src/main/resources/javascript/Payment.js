@@ -16,21 +16,34 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class Payment {
 
     /**
      * Represents a Payment
      * @constructor 
+     * @param {string} id
      * @param {string} method
      */
-    constructor(method) {
+    constructor(id, method) {
+        /**
+         * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.createdAt = undefined;
+
+        /**
+         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.lastModifiedAt = undefined;
+
         /**
          * The id of the payment.
          * @type {string}
          */
-        this.id = undefined;
+        this.id = id;
 
         /**
          * The customer the payment belongs to. If this is not set the payment belongs to an anonymous customer.
@@ -68,18 +81,6 @@ class Payment {
          */
         this.status = undefined;
 
-        /**
-         * The date when this payment was created.
-         * @type {string}
-         */
-        this.createdDate = undefined;
-
-        /**
-         * The date when this payment was last modified.
-         * @type {string}
-         */
-        this.lastModifiedDate = undefined;
-
     }
 }
-module.exports.Payment = Payment
+module.exports.Payment = Payment;

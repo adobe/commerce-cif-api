@@ -16,18 +16,18 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class Discount {
 
     /**
      * Represents a Discount
      * @constructor 
-     * @param {Price} discountedAmount
+     * @param {Price} amount
      * @param {string} id
      * @param {string} type
      */
-    constructor(discountedAmount, id, type) {
+    constructor(amount, id, type) {
         /**
          * The id for the discount.
          * @type {string}
@@ -47,17 +47,17 @@ class Discount {
         this.name = undefined;
 
         /**
-         * The message associated with the discount. May be displayed in the UI.
+         * The description associated with the discount. May be displayed in the UI.
          * @type {string}
          */
-        this.message = undefined;
+        this.description = undefined;
 
         /**
          * The amount which is discounted. Subtract this to obtain new price.
          * @type {Price}
          */
-        this.discountedAmount = discountedAmount;
+        this.amount = amount;
 
     }
 }
-module.exports.Discount = Discount
+module.exports.Discount = Discount;

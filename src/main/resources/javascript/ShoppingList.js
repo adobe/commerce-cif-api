@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class ShoppingList {
 
@@ -28,6 +28,18 @@ class ShoppingList {
      * @param {string} name
      */
     constructor(entries, id, name) {
+        /**
+         * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.createdAt = undefined;
+
+        /**
+         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.lastModifiedAt = undefined;
+
         /**
          * The id of the shopping list.
          * @type {string}
@@ -58,18 +70,6 @@ class ShoppingList {
          */
         this.customerId = undefined;
 
-        /**
-         * The date when this shopping list was created.
-         * @type {string}
-         */
-        this.createdDate = undefined;
-
-        /**
-         * The date when this shopping list was last modified.
-         * @type {string}
-         */
-        this.lastModifiedDate = undefined;
-
     }
 }
-module.exports.ShoppingList = ShoppingList
+module.exports.ShoppingList = ShoppingList;

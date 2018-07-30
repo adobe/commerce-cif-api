@@ -16,17 +16,17 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class Price {
 
     /**
      * Represents a Price
      * @constructor 
-     * @param {number} centAmount
+     * @param {number} amount
      * @param {string} currency
      */
-    constructor(centAmount, currency) {
+    constructor(amount, currency) {
         /**
          * The currency code for that price.
          * @type {string}
@@ -37,7 +37,7 @@ class Price {
          * The amount in cents for that price.
          * @type {number}
          */
-        this.centAmount = centAmount;
+        this.amount = amount;
 
         /**
          * The country code for that price.
@@ -47,4 +47,4 @@ class Price {
 
     }
 }
-module.exports.Price = Price
+module.exports.Price = Price;

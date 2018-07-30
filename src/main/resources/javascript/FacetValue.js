@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class FacetValue {
 
@@ -24,10 +24,9 @@ class FacetValue {
      * Represents a FacetValue
      * @constructor 
      * @param {string} id
-     * @param {integer} occurrences
      * @param {object} value
      */
-    constructor(id, occurrences, value) {
+    constructor(id, value) {
         /**
          * The id for this facet.
          * @type {string}
@@ -44,7 +43,7 @@ class FacetValue {
          * The number of facet value occurrences.
          * @type {integer}
          */
-        this.occurrences = occurrences;
+        this.occurrences = undefined;
 
         /**
          * Indicates if the current facet value was selected.
@@ -54,4 +53,4 @@ class FacetValue {
 
     }
 }
-module.exports.FacetValue = FacetValue
+module.exports.FacetValue = FacetValue;

@@ -16,38 +16,42 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class PagedResponseInventoryItem {
 
     /**
      * Represents a PagedResponseInventoryItem
      * @constructor 
+     * @param {integer} count
+     * @param {integer} offset
+     * @param {InventoryItem[]} results
+     * @param {integer} total
      */
-    constructor() {
+    constructor(count, offset, results, total) {
         /**
          * The offset for this response, this is the number of elements skipped, not a page number.
          * @type {integer}
          */
-        this.offset = undefined;
+        this.offset = offset;
 
         /**
          * The actual number of results returned in results.
          * @type {integer}
          */
-        this.count = undefined;
+        this.count = count;
 
         /**
          * The total number of results matching the query.
          * @type {integer}
          */
-        this.total = undefined;
+        this.total = total;
 
         /**
          * The results for this response.
          * @type {InventoryItem[]}
          */
-        this.results = undefined;
+        this.results = results;
 
         /**
          * The list of facets for this response.
@@ -57,4 +61,4 @@ class PagedResponseInventoryItem {
 
     }
 }
-module.exports.PagedResponseInventoryItem = PagedResponseInventoryItem
+module.exports.PagedResponseInventoryItem = PagedResponseInventoryItem;

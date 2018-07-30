@@ -16,21 +16,22 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class Order {
 
     /**
      * Represents a Order
      * @constructor 
+     * @param {string} id
      */
-    constructor() {
+    constructor(id) {
         /**
          * The order id.
          * @type {string}
          */
-        this.id = undefined;
+        this.id = id;
 
     }
 }
-module.exports.Order = Order
+module.exports.Order = Order;

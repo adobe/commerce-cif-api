@@ -16,27 +16,29 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class Asset {
 
     /**
      * Represents a Asset
      * @constructor 
+     * @param {string} id
+     * @param {string} url
      */
-    constructor() {
+    constructor(id, url) {
         /**
          * The id of the asset.
          * @type {string}
          */
-        this.id = undefined;
+        this.id = id;
 
         /**
          * The url of the asset.
          * @type {string}
          */
-        this.url = undefined;
+        this.url = url;
 
     }
 }
-module.exports.Asset = Asset
+module.exports.Asset = Asset;

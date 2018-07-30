@@ -16,28 +16,28 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class TaxInfo {
 
     /**
      * Represents a TaxInfo
      * @constructor 
-     * @param {number} totalCentAmount
+     * @param {number} amount
      */
-    constructor(totalCentAmount) {
+    constructor(amount) {
         /**
          * The amount in cents for the tax info.
          * @type {number}
          */
-        this.totalCentAmount = totalCentAmount;
+        this.amount = amount;
 
         /**
          * The portions for this tax.
          * @type {TaxPortion[]}
          */
-        this.taxPortions = undefined;
+        this.portions = undefined;
 
     }
 }
-module.exports.TaxInfo = TaxInfo
+module.exports.TaxInfo = TaxInfo;

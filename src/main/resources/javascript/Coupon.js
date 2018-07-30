@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class Coupon {
 
@@ -47,4 +47,4 @@ class Coupon {
 
     }
 }
-module.exports.Coupon = Coupon
+module.exports.Coupon = Coupon;

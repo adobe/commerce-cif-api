@@ -16,27 +16,29 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class InventoryItem {
 
     /**
      * Represents a InventoryItem
      * @constructor 
-     * @param {string} inventoryId
+     * @param {integer} availableQuantity
+     * @param {string} id
+     * @param {string} productId
      */
-    constructor(inventoryId) {
+    constructor(availableQuantity, id, productId) {
         /**
          * The inventory identifier.
          * @type {string}
          */
-        this.inventoryId = inventoryId;
+        this.id = id;
 
         /**
          * The product identifier.
          * @type {string}
          */
-        this.productId = undefined;
+        this.productId = productId;
 
         /**
          * The scope for the inventory (i.e store or channel).
@@ -48,7 +50,7 @@ class InventoryItem {
          * The product available quantity for this inventory.
          * @type {integer}
          */
-        this.availableQuantity = undefined;
+        this.availableQuantity = availableQuantity;
 
         /**
          * The period in days when this inventory is restocked.
@@ -64,4 +66,4 @@ class InventoryItem {
 
     }
 }
-module.exports.InventoryItem = InventoryItem
+module.exports.InventoryItem = InventoryItem;

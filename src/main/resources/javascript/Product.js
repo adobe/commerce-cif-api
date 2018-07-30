@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class Product {
 
@@ -25,9 +25,23 @@ class Product {
      * @constructor 
      * @param {string} id
      * @param {string} masterVariantId
+     * @param {string} name
+     * @param {Price[]} prices
      * @param {ProductVariant[]} variants
      */
-    constructor(id, masterVariantId, variants) {
+    constructor(id, masterVariantId, name, prices, variants) {
+        /**
+         * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.createdAt = undefined;
+
+        /**
+         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.lastModifiedAt = undefined;
+
         /**
          * The internal unique ID of the product in the commerce backend system.
          * @type {string}
@@ -35,16 +49,10 @@ class Product {
         this.id = id;
 
         /**
-         * The unique SKU of the product assigned by the vendor or manufacturer.
-         * @type {string}
-         */
-        this.sku = undefined;
-
-        /**
          * The name of the product.
          * @type {string}
          */
-        this.name = undefined;
+        this.name = name;
 
         /**
          * The description of the product.
@@ -56,7 +64,7 @@ class Product {
          * The prices for this product.
          * @type {Price[]}
          */
-        this.prices = undefined;
+        this.prices = prices;
 
         /**
          * The categories for this product.
@@ -77,16 +85,10 @@ class Product {
         this.attributes = undefined;
 
         /**
-         * The date when this product was created.
+         * The unique SKU of the product assigned by the vendor or manufacturer.
          * @type {string}
          */
-        this.createdDate = undefined;
-
-        /**
-         * The date when this product was last modified.
-         * @type {string}
-         */
-        this.lastModifiedDate = undefined;
+        this.sku = undefined;
 
         /**
          * The id of the master variant
@@ -102,4 +104,4 @@ class Product {
 
     }
 }
-module.exports.Product = Product
+module.exports.Product = Product;

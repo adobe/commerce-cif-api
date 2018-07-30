@@ -16,27 +16,29 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class TaxPortion {
 
     /**
      * Represents a TaxPortion
      * @constructor 
+     * @param {number} amount
+     * @param {string} name
      */
-    constructor() {
+    constructor(amount, name) {
         /**
          * The name for this tax portion.
          * @type {string}
          */
-        this.name = undefined;
+        this.name = name;
 
         /**
          * The amount in cents for the tax portion.
          * @type {number}
          */
-        this.centAmount = undefined;
+        this.amount = amount;
 
     }
 }
-module.exports.TaxPortion = TaxPortion
+module.exports.TaxPortion = TaxPortion;

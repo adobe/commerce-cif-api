@@ -16,33 +16,36 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class ErrorResponse {
 
     /**
      * Represents a ErrorResponse
      * @constructor 
+     * @param {string} message
+     * @param {string} reason
+     * @param {string} type
      */
-    constructor() {
+    constructor(message, reason, type) {
         /**
          * The error type.
          * @type {string}
          */
-        this.type = undefined;
+        this.type = type;
 
         /**
          * The error reason.
          * @type {string}
          */
-        this.reason = undefined;
+        this.reason = reason;
 
         /**
          * The error message.
          * @type {string}
          */
-        this.message = undefined;
+        this.message = message;
 
     }
 }
-module.exports.ErrorResponse = ErrorResponse
+module.exports.ErrorResponse = ErrorResponse;

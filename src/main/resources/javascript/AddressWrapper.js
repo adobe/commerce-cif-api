@@ -16,27 +16,22 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class AddressWrapper {
 
     /**
      * Represents a AddressWrapper
      * @constructor 
+     * @param {Address} address
      */
-    constructor() {
+    constructor(address) {
         /**
          * The address object.
          * @type {Address}
          */
-        this.address = undefined;
-
-        /**
-         * If the cart belongs to a customer, this must be set to the customer id owning that cart.
-         * @type {string}
-         */
-        this.customerId = undefined;
+        this.address = address;
 
     }
 }
-module.exports.AddressWrapper = AddressWrapper
+module.exports.AddressWrapper = AddressWrapper;

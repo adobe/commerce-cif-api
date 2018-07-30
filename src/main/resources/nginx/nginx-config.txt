@@ -1,21 +1,20 @@
 
-# 1) Verify the 3 variables below this header and set them to match your OpenWhisk deployment.
+# 1) Verify the 2 variables below this header and set them to match your OpenWhisk deployment.
 #    For a local OW deployment, you need to uncomment the line setting the $controller variable.
 # 2) Copy the content of this file in ansible/roles/nginx/templates/nginx.conf.j2
 #    before the first location directive that already exists in the file
 # 3) Restart the Openwhisk nginx/edge component by running "wskdev edge"
 #
-# CCIF API Version 0.1.123
+# CCIF API Version 0.1.124
 
 # set $controller "http://controllers";
 set $ow_namespace "your-namespace";
-set $ow_package "default";
 
 location = /commerce/carts {
   if ($request_method != POST) {
     return 405;
   }
-  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/postCart.http break;
+  rewrite ^ /api/v1/web/$ow_namespace/default/postCart.http break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }
@@ -25,10 +24,10 @@ location ~ ^/commerce/carts/(?<id>[^/]+)$ {
     return 405;
   }
   if ($request_method = GET) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/getCart.http?id=${id} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/getCart.http?id=${id} break;
   }
   if ($request_method = DELETE) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/deleteCart.http?id=${id} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/deleteCart.http?id=${id} break;
   }
   proxy_pass $controller;
   proxy_read_timeout 70s;
@@ -39,10 +38,10 @@ location ~ ^/commerce/carts/(?<id>[^/]+)/billingaddress$ {
     return 405;
   }
   if ($request_method = POST) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/postBillingAddress.http?id=${id} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/postBillingAddress.http?id=${id} break;
   }
   if ($request_method = DELETE) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/deleteBillingAddress.http?id=${id} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/deleteBillingAddress.http?id=${id} break;
   }
   proxy_pass $controller;
   proxy_read_timeout 70s;
@@ -52,7 +51,7 @@ location ~ ^/commerce/carts/(?<id>[^/]+)/coupons$ {
   if ($request_method != POST) {
     return 405;
   }
-  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/postCoupon.http?id=${id} break;
+  rewrite ^ /api/v1/web/$ow_namespace/default/postCoupon.http?id=${id} break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }
@@ -61,7 +60,7 @@ location ~ ^/commerce/carts/(?<id>[^/]+)/coupons/(?<couponId>[^/]+)$ {
   if ($request_method != DELETE) {
     return 405;
   }
-  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/deleteCoupon.http?id=${id}&couponId=${couponId} break;
+  rewrite ^ /api/v1/web/$ow_namespace/default/deleteCoupon.http?id=${id}&couponId=${couponId} break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }
@@ -70,7 +69,7 @@ location ~ ^/commerce/carts/(?<id>[^/]+)/entries$ {
   if ($request_method != POST) {
     return 405;
   }
-  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/postCartEntry.http?id=${id} break;
+  rewrite ^ /api/v1/web/$ow_namespace/default/postCartEntry.http?id=${id} break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }
@@ -80,10 +79,10 @@ location ~ ^/commerce/carts/(?<id>[^/]+)/entries/(?<cartEntryId>[^/]+)$ {
     return 405;
   }
   if ($request_method = PUT) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/putCartEntry.http?id=${id}&cartEntryId=${cartEntryId} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/putCartEntry.http?id=${id}&cartEntryId=${cartEntryId} break;
   }
   if ($request_method = DELETE) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/deleteCartEntry.http?id=${id}&cartEntryId=${cartEntryId} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/deleteCartEntry.http?id=${id}&cartEntryId=${cartEntryId} break;
   }
   proxy_pass $controller;
   proxy_read_timeout 70s;
@@ -94,10 +93,10 @@ location ~ ^/commerce/carts/(?<id>[^/]+)/payment$ {
     return 405;
   }
   if ($request_method = POST) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/postPayment.http?id=${id} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/postPayment.http?id=${id} break;
   }
   if ($request_method = DELETE) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/deletePayment.http?id=${id} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/deletePayment.http?id=${id} break;
   }
   proxy_pass $controller;
   proxy_read_timeout 70s;
@@ -108,10 +107,10 @@ location ~ ^/commerce/carts/(?<id>[^/]+)/shippingaddress$ {
     return 405;
   }
   if ($request_method = POST) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/postShippingAddress.http?id=${id} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/postShippingAddress.http?id=${id} break;
   }
   if ($request_method = DELETE) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/deleteShippingAddress.http?id=${id} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/deleteShippingAddress.http?id=${id} break;
   }
   proxy_pass $controller;
   proxy_read_timeout 70s;
@@ -122,10 +121,10 @@ location ~ ^/commerce/carts/(?<id>[^/]+)/shippingmethod$ {
     return 405;
   }
   if ($request_method = POST) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/postShippingMethod.http?id=${id} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/postShippingMethod.http?id=${id} break;
   }
   if ($request_method = DELETE) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/deleteShippingMethod.http?id=${id} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/deleteShippingMethod.http?id=${id} break;
   }
   proxy_pass $controller;
   proxy_read_timeout 70s;
@@ -135,7 +134,7 @@ location ~ ^/commerce/carts/(?<id>[^/]+)/shippingmethods$ {
   if ($request_method != GET) {
     return 405;
   }
-  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/getShippingMethods.http?id=${id} break;
+  rewrite ^ /api/v1/web/$ow_namespace/default/getShippingMethods.http?id=${id} break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }
@@ -144,7 +143,7 @@ location = /commerce/categories {
   if ($request_method != GET) {
     return 405;
   }
-  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/getCategories.http break;
+  rewrite ^ /api/v1/web/$ow_namespace/default/getCategories.http break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }
@@ -153,7 +152,7 @@ location ~ ^/commerce/categories/(?<id>[^/]+)$ {
   if ($request_method != GET) {
     return 405;
   }
-  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/getCategoryById.http?id=${id} break;
+  rewrite ^ /api/v1/web/$ow_namespace/default/getCategoryById.http?id=${id} break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }
@@ -162,7 +161,7 @@ location = /commerce/customers/login {
   if ($request_method != POST) {
     return 405;
   }
-  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/postCustomerLogin.http break;
+  rewrite ^ /api/v1/web/$ow_namespace/default/postCustomerLogin.http break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }
@@ -171,7 +170,7 @@ location ~ ^/commerce/customers/(?<id>[^/]+)$ {
   if ($request_method != GET) {
     return 405;
   }
-  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/getCustomerById.http?id=${id} break;
+  rewrite ^ /api/v1/web/$ow_namespace/default/getCustomerById.http?id=${id} break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }
@@ -180,7 +179,7 @@ location = /commerce/inventory/query {
   if ($request_method != GET) {
     return 405;
   }
-  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/query.http break;
+  rewrite ^ /api/v1/web/$ow_namespace/default/query.http break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }
@@ -189,7 +188,7 @@ location = /commerce/orders {
   if ($request_method != POST) {
     return 405;
   }
-  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/postOrder.http break;
+  rewrite ^ /api/v1/web/$ow_namespace/default/postOrder.http break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }
@@ -198,7 +197,7 @@ location = /commerce/products/search {
   if ($request_method != GET) {
     return 405;
   }
-  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/searchProducts.http break;
+  rewrite ^ /api/v1/web/$ow_namespace/default/searchProducts.http break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }
@@ -207,7 +206,7 @@ location ~ ^/commerce/products/(?<id>[^/]+)$ {
   if ($request_method != GET) {
     return 405;
   }
-  rewrite ^ /api/v1/web/$ow_namespace/$ow_package/getProductById.http?id=${id} break;
+  rewrite ^ /api/v1/web/$ow_namespace/default/getProductById.http?id=${id} break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }
@@ -217,10 +216,10 @@ location = /commerce/shoppinglists {
     return 405;
   }
   if ($request_method = GET) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/getShoppingLists.http break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/getShoppingLists.http break;
   }
   if ($request_method = POST) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/postShoppingList.http break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/postShoppingList.http break;
   }
   proxy_pass $controller;
   proxy_read_timeout 70s;
@@ -231,13 +230,13 @@ location ~ ^/commerce/shoppinglists/(?<id>[^/]+)$ {
     return 405;
   }
   if ($request_method = GET) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/getShoppingList.http?id=${id} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/getShoppingList.http?id=${id} break;
   }
   if ($request_method = PUT) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/putShoppingList.http?id=${id} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/putShoppingList.http?id=${id} break;
   }
   if ($request_method = DELETE) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/deleteShoppingList.http?id=${id} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/deleteShoppingList.http?id=${id} break;
   }
   proxy_pass $controller;
   proxy_read_timeout 70s;
@@ -248,10 +247,10 @@ location ~ ^/commerce/shoppinglists/(?<id>[^/]+)/entries$ {
     return 405;
   }
   if ($request_method = GET) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/getShoppingListEntries.http?id=${id} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/getShoppingListEntries.http?id=${id} break;
   }
   if ($request_method = POST) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/postShoppingListEntry.http?id=${id} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/postShoppingListEntry.http?id=${id} break;
   }
   proxy_pass $controller;
   proxy_read_timeout 70s;
@@ -262,13 +261,13 @@ location ~ ^/commerce/shoppinglists/(?<id>[^/]+)/entries/(?<entryId>[^/]+)$ {
     return 405;
   }
   if ($request_method = GET) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/getShoppingListEntry.http?id=${id}&entryId=${entryId} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/getShoppingListEntry.http?id=${id}&entryId=${entryId} break;
   }
   if ($request_method = PUT) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/putShoppingListEntry.http?id=${id}&entryId=${entryId} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/putShoppingListEntry.http?id=${id}&entryId=${entryId} break;
   }
   if ($request_method = DELETE) {
-    rewrite ^ /api/v1/web/$ow_namespace/$ow_package/deleteShoppingListEntry.http?id=${id}&entryId=${entryId} break;
+    rewrite ^ /api/v1/web/$ow_namespace/default/deleteShoppingListEntry.http?id=${id}&entryId=${entryId} break;
   }
   proxy_pass $controller;
   proxy_read_timeout 70s;

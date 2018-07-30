@@ -16,21 +16,22 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class PaymentWrapper {
 
     /**
      * Represents a PaymentWrapper
      * @constructor 
+     * @param {Payment} payment
      */
-    constructor() {
+    constructor(payment) {
         /**
          * The payment object.
          * @type {Payment}
          */
-        this.payment = undefined;
+        this.payment = payment;
 
     }
 }
-module.exports.PaymentWrapper = PaymentWrapper
+module.exports.PaymentWrapper = PaymentWrapper;

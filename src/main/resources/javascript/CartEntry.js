@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class CartEntry {
 
@@ -24,10 +24,13 @@ class CartEntry {
      * Represents a CartEntry
      * @constructor 
      * @param {string} id
+     * @param {Price} price
      * @param {ProductVariant} productVariant
      * @param {integer} quantity
+     * @param {string} type
+     * @param {Price} unitPrice
      */
-    constructor(id, productVariant, quantity) {
+    constructor(id, price, productVariant, quantity, type, unitPrice) {
         /**
          * The id for the entry.
          * @type {string}
@@ -50,10 +53,10 @@ class CartEntry {
          * The product variant item price.
          * @type {Price}
          */
-        this.unitPrice = undefined;
+        this.unitPrice = unitPrice;
 
         /**
-         * A list of all applied discounts
+         * A list of all applied discounts.
          * @type {Discount[]}
          */
         this.discounts = undefined;
@@ -62,26 +65,26 @@ class CartEntry {
          * The calculated cart entry price. May or may not include taxes, depending on the tax policy.
          * @type {Price}
          */
-        this.cartEntryPrice = undefined;
+        this.price = price;
 
         /**
          * The cart entry price after all discounts have been applied.
          * @type {Price}
          */
-        this.discountedCartEntryPrice = undefined;
+        this.discountedPrice = undefined;
 
         /**
-         * The cart entry tax info.
+         * The cart entry tax info. Until a shipping address is set, this field is typically not set.
          * @type {TaxInfo}
          */
-        this.cartEntryTaxInfo = undefined;
+        this.taxInfo = undefined;
 
         /**
          * Cart entry type.
          * @type {string}
          */
-        this.type = undefined;
+        this.type = type;
 
     }
 }
-module.exports.CartEntry = CartEntry
+module.exports.CartEntry = CartEntry;

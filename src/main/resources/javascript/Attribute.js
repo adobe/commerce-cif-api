@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.124
  */
 class Attribute {
 
@@ -50,8 +50,8 @@ class Attribute {
          * If true, this attribute is a variant attribute. If not set or false, the attribute is a normal/simple attribute.
          * @type {boolean}
          */
-        this.variantAttribute = undefined;
+        this.isVariantAxis = undefined;
 
     }
 }
-module.exports.Attribute = Attribute
+module.exports.Attribute = Attribute;
