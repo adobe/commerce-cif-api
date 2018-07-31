@@ -100,7 +100,7 @@ function addConstructor(definition, classname, file) {
     fs.appendFileSync(file, '    /**\n');
     fs.appendFileSync(file, '     * Constructs a ' + classname + ' based on its enclosed builder.\n');
     fs.appendFileSync(file, '     * @constructor \n');
-    fs.appendFileSync(file, `     * @param {Builder} the ${classname} builder\n`);
+    fs.appendFileSync(file, `     * @param {Builder} builder the ${classname} builder\n`);
     fs.appendFileSync(file, '     */\n');
     fs.appendFileSync(file, '    constructor(builder) {\n');
     addProperties(definition.properties, definition.required, file);
