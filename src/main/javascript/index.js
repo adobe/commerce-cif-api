@@ -34,6 +34,83 @@ function addToIndex(classname) {
     fs.appendFileSync(index, 'module.exports.' + classname + ' = require(\'./' + classname + '.js\').' + classname + ';\n');
 }
 
+function firstLetterToUpperCase(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function getParentClass(allOf) {
+    var parts = allOf['$ref'].split('/');
+    return parts[parts.length - 1];
+}
+
+function getType(object) {
+    var type = object.type;
+    if (!type && object['$ref']) {
+        var parts = object['$ref'].split('/');
+        type = parts[parts.length - 1];
+    }
+    return type;
+}
+
+function addBuilderMethod(requiredProperties, file, classname) {
+    _.forEach(requiredProperties, function(name) {
+        fs.appendFileSync(file, `            with${firstLetterToUpperCase(name)} (${name}) {\n`);
+        fs.appendFileSync(file, `                this.${name} = ${name};\n`);
+        fs.appendFileSync(file, `                return this;\n`);
+        fs.appendFileSync(file, `            }\n\n`);
+    });
+    fs.appendFileSync(file, `            build () {\n`);
+    fs.appendFileSync(file, `                return new ${classname}(this);\n`);
+    fs.appendFileSync(file, `            }\n`);
+}
+
+function addBuilder(definition, classname, file) {
+    fs.appendFileSync(file, '\n');
+    fs.appendFileSync(file, '    /**\n');
+    fs.appendFileSync(file, `     * Builds a ${classname} based on API required properties.\n`);
+    fs.appendFileSync(file, '    */\n');
+    fs.appendFileSync(file, '    static get Builder () {\n');
+    fs.appendFileSync(file, '        class Builder {\n');
+    addBuilderMethod(definition.required, file, classname);
+    fs.appendFileSync(file, '        }\n');
+    fs.appendFileSync(file, '        return Builder;\n');
+    fs.appendFileSync(file, '    }\n');
+}
+
+function addProperties(properties, requiredProperties, file) {
+    _.forEach(properties, function(property, name) {
+
+        var type = getType(property);
+
+        if (type == 'array' && property.items) {
+            type = getType(property.items) + '[]';
+        }
+
+        fs.appendFileSync(file, '        /**\n');
+        fs.appendFileSync(file, '         * ' + property.description + '\n');
+        fs.appendFileSync(file, '         * @type {' + type + '}\n');
+        fs.appendFileSync(file, '         */\n');
+
+        if (_.some(requiredProperties, (el) => _.includes(name, el))) {
+            fs.appendFileSync(file, '        this.' + name + ' = builder.' + name + ';\n\n');
+        } else {
+            fs.appendFileSync(file, '        this.' + name + ' = undefined;\n\n');
+        }
+
+    });
+}
+
+function addConstructor(definition, classname, file) {
+    fs.appendFileSync(file, '    /**\n');
+    fs.appendFileSync(file, '     * Constructs a ' + classname + ' based on its enclosed builder.\n\n');
+    fs.appendFileSync(file, '     * @constructor \n');
+    fs.appendFileSync(file, `     * @param {Builder} the ${classname} builder\n`);
+    fs.appendFileSync(file, '     */\n');
+    fs.appendFileSync(file, '    constructor(builder) {\n');
+    addProperties(definition.properties, definition.required, file);
+    fs.appendFileSync(file, '    }\n');
+}
+
 function createClass(definition, classname) {
     var file = fs.openSync('../resources/generated/javascript/' + classname + '.js', 'w');
     console.log('Creating class for ' + classname);
@@ -62,79 +139,6 @@ function createClass(definition, classname) {
     fs.appendFileSync(file, 'module.exports.' + classname + ' = ' + classname + ';\n');
 }
 
-function addConstructor(definition, classname, file) {
-    fs.appendFileSync(file, '    /**\n');
-    fs.appendFileSync(file, '     * Constructs a ' + classname + ' based on its enclosed builder.\n\n');
-    fs.appendFileSync(file, '     * @constructor \n');
-    fs.appendFileSync(file, `     * @param {Builder} the ${classname} builder\n`);
-    fs.appendFileSync(file, '     */\n');
-    fs.appendFileSync(file, '    constructor(builder) {\n');
-    addProperties(definition.properties, definition.required, file);
-    fs.appendFileSync(file, '    }\n');
-}
-
-function addBuilder(definition, classname, file) {
-    fs.appendFileSync(file, '\n');
-    fs.appendFileSync(file, '    /**\n');
-    fs.appendFileSync(file, `     * Builds a ${classname} based on API required properties.\n`);
-    fs.appendFileSync(file, '    */\n');
-    fs.appendFileSync(file, '    static get Builder () {\n');
-    fs.appendFileSync(file, '        class Builder {\n');
-    addBuilderMethod(definition.required, file, classname);
-    fs.appendFileSync(file, '        }\n');
-    fs.appendFileSync(file, '        return Builder;\n');
-    fs.appendFileSync(file, '    }\n');
-}
-
-function addBuilderMethod(requiredProperties, file, classname) {
-    _.forEach(requiredProperties, function(name) {
-        fs.appendFileSync(file, `            with${firstLetterToUpperCase(name)} (${name}) {\n`);
-        fs.appendFileSync(file, `                this.${name} = ${name};\n`);
-        fs.appendFileSync(file, `                return this;\n`);
-        fs.appendFileSync(file, `            }\n\n`);
-    });
-    fs.appendFileSync(file, `            build () {\n`);
-    fs.appendFileSync(file, `                return new ${classname}(this);\n`);
-    fs.appendFileSync(file, `            }\n`);
-}
-
-function addProperties(properties, requiredProperties, file) {
-    _.forEach(properties, function(property, name) {
-
-        var type = getType(property);
-
-        if (type == 'array' && property.items) {
-            type = getType(property.items) + '[]';
-        }
-
-        fs.appendFileSync(file, '        /**\n');
-        fs.appendFileSync(file, '         * ' + property.description + '\n');
-        fs.appendFileSync(file, '         * @type {' + type + '}\n');
-        fs.appendFileSync(file, '         */\n');
-
-        if (_.some(requiredProperties, (el) => _.includes(name, el))) {
-            fs.appendFileSync(file, '        this.' + name + ' = builder.' + name + ';\n\n');
-        } else {
-            fs.appendFileSync(file, '        this.' + name + ' = undefined;\n\n');
-        }
-
-    });
-}
-
-function getParentClass(allOf) {
-    var parts = allOf['$ref'].split('/');
-    return parts[parts.length - 1];
-}
-
-function getType(object) {
-    var type = object.type;
-    if (!type && object['$ref']) {
-        var parts = object['$ref'].split('/');
-        type = parts[parts.length - 1];
-    }
-    return type;
-}
-
 // We do a final change to the Swagger spec, by adding the Openwhisk package name to all "operationId" fields
 // This is required for the 'wsk api create' configuration of the REST API in Adobe I/O Runtime
 function replaceOperationIdProperties() {
@@ -148,9 +152,7 @@ function replaceOperationIdProperties() {
     swagYaml = swagYaml.replace(/operationId: "/g, 'operationId: "' + pkg + '/');
     fs.writeFileSync('../resources/generated/swagger/swagger.yaml', swagYaml);
 }
-function firstLetterToUpperCase(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+
 // Generates all JS model classes
 _.forEach(swagger.definitions, function(definition, classname) {
         addToIndex(escape(classname));
