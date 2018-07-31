@@ -96,6 +96,25 @@ function addProperties(properties, requiredProperties, file) {
     });
 }
 
+function addImports(classname, properties, file) {
+    let types = new Set();
+    _.forEach(properties, function(property, name) {
+        var type = getType(property);
+        if (type == 'array' && property.items) {
+            type = getType(property.items);
+        }
+        if (type != classname && swagger.definitions[type]) {
+            types.add(type);
+        }
+    });
+    if (types.size) {
+        types.forEach(type => {
+            fs.appendFileSync(file, "import { " + type + " } from './" + type + ".js';\n");
+        });
+        fs.appendFileSync(file, '\n');
+    }
+}
+
 function addConstructor(definition, classname, file) {
     fs.appendFileSync(file, '    /**\n');
     fs.appendFileSync(file, '     * Constructs a ' + classname + ' based on its enclosed builder.\n');
@@ -117,7 +136,10 @@ function createClass(definition, classname) {
     fs.appendFileSync(file, ' * Dot not edit manually. Manual changes will be overridden.\n');
     fs.appendFileSync(file, ' *\n');
     fs.appendFileSync(file, ' * @version ' + escape(swagger.info.version) + '\n');
-    fs.appendFileSync(file, ' */\n');
+    fs.appendFileSync(file, ' */\n\n');
+
+    let def = definition.allOf ? definition.allOf[1] : definition;
+    addImports(classname, def.properties, file);
 
     /* Support inheritance by making a class extend another one */
     if (definition.allOf) {
