@@ -50,12 +50,12 @@ function getType(object) {
 
 function addBuilderMethod(requiredProperties, file, classname) {
     _.forEach(requiredProperties, function(name) {
-        fs.appendFileSync(file, `            with${_.capitalize(name)} (${name}) {\n`);
+        fs.appendFileSync(file, `            with${_.capitalize(name)}(${name}) {\n`);
         fs.appendFileSync(file, `                this.${name} = ${name};\n`);
         fs.appendFileSync(file, `                return this;\n`);
         fs.appendFileSync(file, `            }\n\n`);
     });
-    fs.appendFileSync(file, `            build () {\n`);
+    fs.appendFileSync(file, `            build() {\n`);
     fs.appendFileSync(file, `                return new ${classname}(this);\n`);
     fs.appendFileSync(file, `            }\n`);
 }
@@ -64,8 +64,8 @@ function addBuilder(definition, classname, file) {
     fs.appendFileSync(file, '\n');
     fs.appendFileSync(file, '    /**\n');
     fs.appendFileSync(file, `     * Builds a ${classname} based on API required properties.\n`);
-    fs.appendFileSync(file, '    */\n');
-    fs.appendFileSync(file, '    static get Builder () {\n');
+    fs.appendFileSync(file, '     */\n');
+    fs.appendFileSync(file, '    static get Builder() {\n');
     fs.appendFileSync(file, '        class Builder {\n');
     addBuilderMethod(definition.required, file, classname);
     fs.appendFileSync(file, '        }\n');
@@ -98,7 +98,7 @@ function addProperties(properties, requiredProperties, file) {
 
 function addConstructor(definition, classname, file) {
     fs.appendFileSync(file, '    /**\n');
-    fs.appendFileSync(file, '     * Constructs a ' + classname + ' based on its enclosed builder.\n\n');
+    fs.appendFileSync(file, '     * Constructs a ' + classname + ' based on its enclosed builder.\n');
     fs.appendFileSync(file, '     * @constructor \n');
     fs.appendFileSync(file, `     * @param {Builder} the ${classname} builder\n`);
     fs.appendFileSync(file, '     */\n');
