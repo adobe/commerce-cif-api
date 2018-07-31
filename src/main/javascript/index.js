@@ -34,10 +34,6 @@ function addToIndex(classname) {
     fs.appendFileSync(index, 'module.exports.' + classname + ' = require(\'./' + classname + '.js\').' + classname + ';\n');
 }
 
-function firstLetterToUpperCase(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 function getParentClass(allOf) {
     var parts = allOf['$ref'].split('/');
     return parts[parts.length - 1];
@@ -54,7 +50,7 @@ function getType(object) {
 
 function addBuilderMethod(requiredProperties, file, classname) {
     _.forEach(requiredProperties, function(name) {
-        fs.appendFileSync(file, `            with${firstLetterToUpperCase(name)} (${name}) {\n`);
+        fs.appendFileSync(file, `            with${_.capitalize(name)} (${name}) {\n`);
         fs.appendFileSync(file, `                this.${name} = ${name};\n`);
         fs.appendFileSync(file, `                return this;\n`);
         fs.appendFileSync(file, `            }\n\n`);
