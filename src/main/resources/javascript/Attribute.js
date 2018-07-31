@@ -16,35 +16,34 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
 class Attribute {
 
     /**
-     * Represents a Attribute
+     * Constructs a Attribute based on its enclosed builder.
      * @constructor 
-     * @param {string} id
-     * @param {string} name
-     * @param {object} value
+     * @param {Builder} builder the Attribute builder
      */
-    constructor(id, name, value) {
+    constructor(builder) {
         /**
          * The unique id for this text attribute, for example 'width'.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * The name for this text attribute.
          * @type {string}
          */
-        this.name = name;
+        this.name = builder.name;
 
         /**
          * The value of the attribute. This can be any arbitrary valid JSON value.
          * @type {object}
          */
-        this.value = value;
+        this.value = builder.value;
 
         /**
          * If true, this attribute is a variant attribute. If not set or false, the attribute is a normal/simple attribute.
@@ -52,6 +51,33 @@ class Attribute {
          */
         this.isVariantAxis = undefined;
 
+    }
+
+    /**
+     * Builds a Attribute based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withName(name) {
+                this.name = name;
+                return this;
+            }
+
+            withValue(value) {
+                this.value = value;
+                return this;
+            }
+
+            build() {
+                return new Attribute(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.Attribute = Attribute;

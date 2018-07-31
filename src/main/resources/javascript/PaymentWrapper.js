@@ -16,22 +16,42 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
+import { Payment } from './Payment.js';
+
 class PaymentWrapper {
 
     /**
-     * Represents a PaymentWrapper
+     * Constructs a PaymentWrapper based on its enclosed builder.
      * @constructor 
-     * @param {Payment} payment
+     * @param {Builder} builder the PaymentWrapper builder
      */
-    constructor(payment) {
+    constructor(builder) {
         /**
          * The payment object.
          * @type {Payment}
          */
-        this.payment = payment;
+        this.payment = builder.payment;
 
+    }
+
+    /**
+     * Builds a PaymentWrapper based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withPayment(payment) {
+                this.payment = payment;
+                return this;
+            }
+
+            build() {
+                return new PaymentWrapper(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.PaymentWrapper = PaymentWrapper;

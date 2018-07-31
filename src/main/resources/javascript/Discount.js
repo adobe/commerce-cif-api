@@ -16,29 +16,30 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
+import { Price } from './Price.js';
+
 class Discount {
 
     /**
-     * Represents a Discount
+     * Constructs a Discount based on its enclosed builder.
      * @constructor 
-     * @param {Price} amount
-     * @param {string} id
-     * @param {string} type
+     * @param {Builder} builder the Discount builder
      */
-    constructor(amount, id, type) {
+    constructor(builder) {
         /**
          * The id for the discount.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * The type of the discount.
          * @type {string}
          */
-        this.type = type;
+        this.type = builder.type;
 
         /**
          * The name of the discount.
@@ -56,8 +57,35 @@ class Discount {
          * The amount which is discounted. Subtract this to obtain new price.
          * @type {Price}
          */
-        this.amount = amount;
+        this.amount = builder.amount;
 
+    }
+
+    /**
+     * Builds a Discount based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withAmount(amount) {
+                this.amount = amount;
+                return this;
+            }
+
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withType(type) {
+                this.type = type;
+                return this;
+            }
+
+            build() {
+                return new Discount(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.Discount = Discount;

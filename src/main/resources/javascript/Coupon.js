@@ -16,28 +16,28 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
 class Coupon {
 
     /**
-     * Represents a Coupon
+     * Constructs a Coupon based on its enclosed builder.
      * @constructor 
-     * @param {string} code
-     * @param {string} id
+     * @param {Builder} builder the Coupon builder
      */
-    constructor(code, id) {
+    constructor(builder) {
         /**
          * The id of the coupon instance applied to a cart. If not supported by commerce engine, should be equal to code.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * The code to activate the coupon.
          * @type {string}
          */
-        this.code = code;
+        this.code = builder.code;
 
         /**
          * The description of the coupon.
@@ -45,6 +45,28 @@ class Coupon {
          */
         this.description = undefined;
 
+    }
+
+    /**
+     * Builds a Coupon based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withCode(code) {
+                this.code = code;
+                return this;
+            }
+
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            build() {
+                return new Coupon(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.Coupon = Coupon;

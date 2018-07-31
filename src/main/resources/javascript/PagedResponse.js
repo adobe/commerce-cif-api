@@ -16,42 +16,42 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
+import { Facet } from './Facet.js';
+
 class PagedResponse {
 
     /**
-     * Represents a PagedResponse
+     * Constructs a PagedResponse based on its enclosed builder.
      * @constructor 
-     * @param {integer} count
-     * @param {integer} offset
-     * @param {object[]} results
-     * @param {integer} total
+     * @param {Builder} builder the PagedResponse builder
      */
-    constructor(count, offset, results, total) {
+    constructor(builder) {
         /**
          * The offset for this response, this is the number of elements skipped, not a page number.
          * @type {integer}
          */
-        this.offset = offset;
+        this.offset = builder.offset;
 
         /**
          * The actual number of results returned in results.
          * @type {integer}
          */
-        this.count = count;
+        this.count = builder.count;
 
         /**
          * The total number of results matching the query.
          * @type {integer}
          */
-        this.total = total;
+        this.total = builder.total;
 
         /**
          * The results for this response.
          * @type {object[]}
          */
-        this.results = results;
+        this.results = builder.results;
 
         /**
          * The list of facets for this response.
@@ -59,6 +59,38 @@ class PagedResponse {
          */
         this.facets = undefined;
 
+    }
+
+    /**
+     * Builds a PagedResponse based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withCount(count) {
+                this.count = count;
+                return this;
+            }
+
+            withOffset(offset) {
+                this.offset = offset;
+                return this;
+            }
+
+            withResults(results) {
+                this.results = results;
+                return this;
+            }
+
+            withTotal(total) {
+                this.total = total;
+                return this;
+            }
+
+            build() {
+                return new PagedResponse(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.PagedResponse = PagedResponse;

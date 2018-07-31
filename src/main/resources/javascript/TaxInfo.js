@@ -16,21 +16,24 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
+import { TaxPortion } from './TaxPortion.js';
+
 class TaxInfo {
 
     /**
-     * Represents a TaxInfo
+     * Constructs a TaxInfo based on its enclosed builder.
      * @constructor 
-     * @param {number} amount
+     * @param {Builder} builder the TaxInfo builder
      */
-    constructor(amount) {
+    constructor(builder) {
         /**
          * The amount in cents for the tax info.
          * @type {number}
          */
-        this.amount = amount;
+        this.amount = builder.amount;
 
         /**
          * The portions for this tax.
@@ -38,6 +41,23 @@ class TaxInfo {
          */
         this.portions = undefined;
 
+    }
+
+    /**
+     * Builds a TaxInfo based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withAmount(amount) {
+                this.amount = amount;
+                return this;
+            }
+
+            build() {
+                return new TaxInfo(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.TaxInfo = TaxInfo;

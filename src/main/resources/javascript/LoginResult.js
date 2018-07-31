@@ -16,21 +16,25 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
+import { Customer } from './Customer.js';
+import { Cart } from './Cart.js';
+
 class LoginResult {
 
     /**
-     * Represents a LoginResult
+     * Constructs a LoginResult based on its enclosed builder.
      * @constructor 
-     * @param {Customer} customer
+     * @param {Builder} builder the LoginResult builder
      */
-    constructor(customer) {
+    constructor(builder) {
         /**
          * The customer info returned by the login process
          * @type {Customer}
          */
-        this.customer = customer;
+        this.customer = builder.customer;
 
         /**
          * The current or merged cart created during the login process
@@ -38,6 +42,23 @@ class LoginResult {
          */
         this.cart = undefined;
 
+    }
+
+    /**
+     * Builds a LoginResult based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withCustomer(customer) {
+                this.customer = customer;
+                return this;
+            }
+
+            build() {
+                return new LoginResult(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.LoginResult = LoginResult;

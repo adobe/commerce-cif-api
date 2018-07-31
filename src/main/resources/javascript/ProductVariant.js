@@ -16,20 +16,22 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
+import { Price } from './Price.js';
+import { Category } from './Category.js';
+import { Asset } from './Asset.js';
+import { Attribute } from './Attribute.js';
+
 class ProductVariant {
 
     /**
-     * Represents a ProductVariant
+     * Constructs a ProductVariant based on its enclosed builder.
      * @constructor 
-     * @param {boolean} available
-     * @param {string} id
-     * @param {string} name
-     * @param {Price[]} prices
-     * @param {string} sku
+     * @param {Builder} builder the ProductVariant builder
      */
-    constructor(available, id, name, prices, sku) {
+    constructor(builder) {
         /**
          * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
          * @type {string}
@@ -46,13 +48,13 @@ class ProductVariant {
          * The internal unique ID of the product in the commerce backend system.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * The name of the product.
          * @type {string}
          */
-        this.name = name;
+        this.name = builder.name;
 
         /**
          * The description of the product.
@@ -64,7 +66,7 @@ class ProductVariant {
          * The prices for this product.
          * @type {Price[]}
          */
-        this.prices = prices;
+        this.prices = builder.prices;
 
         /**
          * The categories for this product.
@@ -88,14 +90,51 @@ class ProductVariant {
          * The unique SKU of the product variant assigned by the vendor or manufacturer.
          * @type {string}
          */
-        this.sku = sku;
+        this.sku = builder.sku;
 
         /**
          * Indicates if the product is available or not in the inventory.
          * @type {boolean}
          */
-        this.available = available;
+        this.available = builder.available;
 
+    }
+
+    /**
+     * Builds a ProductVariant based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withAvailable(available) {
+                this.available = available;
+                return this;
+            }
+
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withName(name) {
+                this.name = name;
+                return this;
+            }
+
+            withPrices(prices) {
+                this.prices = prices;
+                return this;
+            }
+
+            withSku(sku) {
+                this.sku = sku;
+                return this;
+            }
+
+            build() {
+                return new ProductVariant(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.ProductVariant = ProductVariant;

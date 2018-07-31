@@ -16,36 +16,62 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
 class ErrorResponse {
 
     /**
-     * Represents a ErrorResponse
+     * Constructs a ErrorResponse based on its enclosed builder.
      * @constructor 
-     * @param {string} message
-     * @param {string} reason
-     * @param {string} type
+     * @param {Builder} builder the ErrorResponse builder
      */
-    constructor(message, reason, type) {
+    constructor(builder) {
         /**
          * The error type.
          * @type {string}
          */
-        this.type = type;
+        this.type = builder.type;
 
         /**
          * The error reason.
          * @type {string}
          */
-        this.reason = reason;
+        this.reason = builder.reason;
 
         /**
          * The error message.
          * @type {string}
          */
-        this.message = message;
+        this.message = builder.message;
 
+    }
+
+    /**
+     * Builds a ErrorResponse based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withMessage(message) {
+                this.message = message;
+                return this;
+            }
+
+            withReason(reason) {
+                this.reason = reason;
+                return this;
+            }
+
+            withType(type) {
+                this.type = type;
+                return this;
+            }
+
+            build() {
+                return new ErrorResponse(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.ErrorResponse = ErrorResponse;

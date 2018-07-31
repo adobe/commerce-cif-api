@@ -16,29 +16,28 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
 class InventoryItem {
 
     /**
-     * Represents a InventoryItem
+     * Constructs a InventoryItem based on its enclosed builder.
      * @constructor 
-     * @param {integer} availableQuantity
-     * @param {string} id
-     * @param {string} productId
+     * @param {Builder} builder the InventoryItem builder
      */
-    constructor(availableQuantity, id, productId) {
+    constructor(builder) {
         /**
          * The inventory identifier.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * The product identifier.
          * @type {string}
          */
-        this.productId = productId;
+        this.productId = builder.productId;
 
         /**
          * The scope for the inventory (i.e store or channel).
@@ -50,7 +49,7 @@ class InventoryItem {
          * The product available quantity for this inventory.
          * @type {integer}
          */
-        this.availableQuantity = availableQuantity;
+        this.availableQuantity = builder.availableQuantity;
 
         /**
          * The period in days when this inventory is restocked.
@@ -64,6 +63,33 @@ class InventoryItem {
          */
         this.expectedDeliveryDate = undefined;
 
+    }
+
+    /**
+     * Builds a InventoryItem based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withAvailableQuantity(availableQuantity) {
+                this.availableQuantity = availableQuantity;
+                return this;
+            }
+
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withProductId(productId) {
+                this.productId = productId;
+                return this;
+            }
+
+            build() {
+                return new InventoryItem(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.InventoryItem = InventoryItem;

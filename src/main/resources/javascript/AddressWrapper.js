@@ -16,22 +16,42 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
+import { Address } from './Address.js';
+
 class AddressWrapper {
 
     /**
-     * Represents a AddressWrapper
+     * Constructs a AddressWrapper based on its enclosed builder.
      * @constructor 
-     * @param {Address} address
+     * @param {Builder} builder the AddressWrapper builder
      */
-    constructor(address) {
+    constructor(builder) {
         /**
          * The address object.
          * @type {Address}
          */
-        this.address = address;
+        this.address = builder.address;
 
+    }
+
+    /**
+     * Builds a AddressWrapper based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withAddress(address) {
+                this.address = address;
+                return this;
+            }
+
+            build() {
+                return new AddressWrapper(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.AddressWrapper = AddressWrapper;

@@ -16,16 +16,17 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
 class Category {
 
     /**
-     * Represents a Category
+     * Constructs a Category based on its enclosed builder.
      * @constructor 
-     * @param {string} id
+     * @param {Builder} builder the Category builder
      */
-    constructor(id) {
+    constructor(builder) {
         /**
          * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
          * @type {string}
@@ -42,7 +43,7 @@ class Category {
          * The internal unique ID of the category in the commerce backend system.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * The name of the category.
@@ -74,6 +75,23 @@ class Category {
          */
         this.children = undefined;
 
+    }
+
+    /**
+     * Builds a Category based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            build() {
+                return new Category(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.Category = Category;

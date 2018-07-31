@@ -16,42 +16,43 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
+import { Category } from './Category.js';
+import { Facet } from './Facet.js';
+
 class PagedResponseCategory {
 
     /**
-     * Represents a PagedResponseCategory
+     * Constructs a PagedResponseCategory based on its enclosed builder.
      * @constructor 
-     * @param {integer} count
-     * @param {integer} offset
-     * @param {Category[]} results
-     * @param {integer} total
+     * @param {Builder} builder the PagedResponseCategory builder
      */
-    constructor(count, offset, results, total) {
+    constructor(builder) {
         /**
          * The offset for this response, this is the number of elements skipped, not a page number.
          * @type {integer}
          */
-        this.offset = offset;
+        this.offset = builder.offset;
 
         /**
          * The actual number of results returned in results.
          * @type {integer}
          */
-        this.count = count;
+        this.count = builder.count;
 
         /**
          * The total number of results matching the query.
          * @type {integer}
          */
-        this.total = total;
+        this.total = builder.total;
 
         /**
          * The results for this response.
          * @type {Category[]}
          */
-        this.results = results;
+        this.results = builder.results;
 
         /**
          * The list of facets for this response.
@@ -59,6 +60,38 @@ class PagedResponseCategory {
          */
         this.facets = undefined;
 
+    }
+
+    /**
+     * Builds a PagedResponseCategory based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withCount(count) {
+                this.count = count;
+                return this;
+            }
+
+            withOffset(offset) {
+                this.offset = offset;
+                return this;
+            }
+
+            withResults(results) {
+                this.results = results;
+                return this;
+            }
+
+            withTotal(total) {
+                this.total = total;
+                return this;
+            }
+
+            build() {
+                return new PagedResponseCategory(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.PagedResponseCategory = PagedResponseCategory;

@@ -16,27 +16,22 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
 class Address {
 
     /**
-     * Represents a Address
+     * Constructs a Address based on its enclosed builder.
      * @constructor 
-     * @param {string} city
-     * @param {string} country
-     * @param {string} firstName
-     * @param {string} id
-     * @param {string} lastName
-     * @param {string} postalCode
-     * @param {string} streetName
+     * @param {Builder} builder the Address builder
      */
-    constructor(city, country, firstName, id, lastName, postalCode, streetName) {
+    constructor(builder) {
         /**
          * Address unique identifier.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * Address title
@@ -54,13 +49,13 @@ class Address {
          * First name.
          * @type {string}
          */
-        this.firstName = firstName;
+        this.firstName = builder.firstName;
 
         /**
          * Last name.
          * @type {string}
          */
-        this.lastName = lastName;
+        this.lastName = builder.lastName;
 
         /**
          * Email.
@@ -90,7 +85,7 @@ class Address {
          * Country code as per ISO 3166-1.
          * @type {string}
          */
-        this.country = country;
+        this.country = builder.country;
 
         /**
          * Region.
@@ -102,13 +97,13 @@ class Address {
          * City.
          * @type {string}
          */
-        this.city = city;
+        this.city = builder.city;
 
         /**
          * Postal code.
          * @type {string}
          */
-        this.postalCode = postalCode;
+        this.postalCode = builder.postalCode;
 
         /**
          * Organization name. Can be company name.
@@ -126,7 +121,7 @@ class Address {
          * Street name.
          * @type {string}
          */
-        this.streetName = streetName;
+        this.streetName = builder.streetName;
 
         /**
          * Street no.
@@ -146,6 +141,53 @@ class Address {
          */
         this.additionalAddressInfo = undefined;
 
+    }
+
+    /**
+     * Builds a Address based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withCity(city) {
+                this.city = city;
+                return this;
+            }
+
+            withCountry(country) {
+                this.country = country;
+                return this;
+            }
+
+            withFirstName(firstName) {
+                this.firstName = firstName;
+                return this;
+            }
+
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withLastName(lastName) {
+                this.lastName = lastName;
+                return this;
+            }
+
+            withPostalCode(postalCode) {
+                this.postalCode = postalCode;
+                return this;
+            }
+
+            withStreetName(streetName) {
+                this.streetName = streetName;
+                return this;
+            }
+
+            build() {
+                return new Address(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.Address = Address;

@@ -16,22 +16,40 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
 class Order {
 
     /**
-     * Represents a Order
+     * Constructs a Order based on its enclosed builder.
      * @constructor 
-     * @param {string} id
+     * @param {Builder} builder the Order builder
      */
-    constructor(id) {
+    constructor(builder) {
         /**
          * The order id.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
+    }
+
+    /**
+     * Builds a Order based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            build() {
+                return new Order(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.Order = Order;

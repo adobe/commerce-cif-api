@@ -16,29 +16,51 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
 class TaxPortion {
 
     /**
-     * Represents a TaxPortion
+     * Constructs a TaxPortion based on its enclosed builder.
      * @constructor 
-     * @param {number} amount
-     * @param {string} name
+     * @param {Builder} builder the TaxPortion builder
      */
-    constructor(amount, name) {
+    constructor(builder) {
         /**
          * The name for this tax portion.
          * @type {string}
          */
-        this.name = name;
+        this.name = builder.name;
 
         /**
          * The amount in cents for the tax portion.
          * @type {number}
          */
-        this.amount = amount;
+        this.amount = builder.amount;
 
+    }
+
+    /**
+     * Builds a TaxPortion based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withAmount(amount) {
+                this.amount = amount;
+                return this;
+            }
+
+            withName(name) {
+                this.name = name;
+                return this;
+            }
+
+            build() {
+                return new TaxPortion(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.TaxPortion = TaxPortion;

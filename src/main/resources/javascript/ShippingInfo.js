@@ -16,36 +16,37 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
+import { Price } from './Price.js';
+import { TaxInfo } from './TaxInfo.js';
+
 class ShippingInfo {
 
     /**
-     * Represents a ShippingInfo
+     * Constructs a ShippingInfo based on its enclosed builder.
      * @constructor 
-     * @param {string} id
-     * @param {string} name
-     * @param {Price} price
-     * @param {TaxInfo} taxInfo
+     * @param {Builder} builder the ShippingInfo builder
      */
-    constructor(id, name, price, taxInfo) {
+    constructor(builder) {
         /**
          * The shipping method id.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * The shipping method name.
          * @type {string}
          */
-        this.name = name;
+        this.name = builder.name;
 
         /**
          * The shipping price.
          * @type {Price}
          */
-        this.price = price;
+        this.price = builder.price;
 
         /**
          * The discounted shipping price.
@@ -57,8 +58,40 @@ class ShippingInfo {
          * The tax for the shipping.
          * @type {TaxInfo}
          */
-        this.taxInfo = taxInfo;
+        this.taxInfo = builder.taxInfo;
 
+    }
+
+    /**
+     * Builds a ShippingInfo based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withName(name) {
+                this.name = name;
+                return this;
+            }
+
+            withPrice(price) {
+                this.price = price;
+                return this;
+            }
+
+            withTaxInfo(taxInfo) {
+                this.taxInfo = taxInfo;
+                return this;
+            }
+
+            build() {
+                return new ShippingInfo(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.ShippingInfo = ShippingInfo;

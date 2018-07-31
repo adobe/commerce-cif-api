@@ -16,28 +16,28 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
 class Price {
 
     /**
-     * Represents a Price
+     * Constructs a Price based on its enclosed builder.
      * @constructor 
-     * @param {number} amount
-     * @param {string} currency
+     * @param {Builder} builder the Price builder
      */
-    constructor(amount, currency) {
+    constructor(builder) {
         /**
          * The currency code for that price.
          * @type {string}
          */
-        this.currency = currency;
+        this.currency = builder.currency;
 
         /**
          * The amount in cents for that price.
          * @type {number}
          */
-        this.amount = amount;
+        this.amount = builder.amount;
 
         /**
          * The country code for that price.
@@ -45,6 +45,28 @@ class Price {
          */
         this.country = undefined;
 
+    }
+
+    /**
+     * Builds a Price based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withAmount(amount) {
+                this.amount = amount;
+                return this;
+            }
+
+            withCurrency(currency) {
+                this.currency = currency;
+                return this;
+            }
+
+            build() {
+                return new Price(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.Price = Price;

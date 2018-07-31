@@ -16,44 +16,45 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.124
+ * @version 0.1.125
  */
+
+import { ProductVariant } from './ProductVariant.js';
+import { Price } from './Price.js';
+import { Discount } from './Discount.js';
+import { TaxInfo } from './TaxInfo.js';
+
 class CartEntry {
 
     /**
-     * Represents a CartEntry
+     * Constructs a CartEntry based on its enclosed builder.
      * @constructor 
-     * @param {string} id
-     * @param {Price} price
-     * @param {ProductVariant} productVariant
-     * @param {integer} quantity
-     * @param {string} type
-     * @param {Price} unitPrice
+     * @param {Builder} builder the CartEntry builder
      */
-    constructor(id, price, productVariant, quantity, type, unitPrice) {
+    constructor(builder) {
         /**
          * The id for the entry.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * The quantity for the entry.
          * @type {integer}
          */
-        this.quantity = quantity;
+        this.quantity = builder.quantity;
 
         /**
          * The ProductVariant for the entry.
          * @type {ProductVariant}
          */
-        this.productVariant = productVariant;
+        this.productVariant = builder.productVariant;
 
         /**
          * The product variant item price.
          * @type {Price}
          */
-        this.unitPrice = unitPrice;
+        this.unitPrice = builder.unitPrice;
 
         /**
          * A list of all applied discounts.
@@ -65,7 +66,7 @@ class CartEntry {
          * The calculated cart entry price. May or may not include taxes, depending on the tax policy.
          * @type {Price}
          */
-        this.price = price;
+        this.price = builder.price;
 
         /**
          * The cart entry price after all discounts have been applied.
@@ -83,8 +84,50 @@ class CartEntry {
          * Cart entry type.
          * @type {string}
          */
-        this.type = type;
+        this.type = builder.type;
 
+    }
+
+    /**
+     * Builds a CartEntry based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withPrice(price) {
+                this.price = price;
+                return this;
+            }
+
+            withProductVariant(productVariant) {
+                this.productVariant = productVariant;
+                return this;
+            }
+
+            withQuantity(quantity) {
+                this.quantity = quantity;
+                return this;
+            }
+
+            withType(type) {
+                this.type = type;
+                return this;
+            }
+
+            withUnitPrice(unitPrice) {
+                this.unitPrice = unitPrice;
+                return this;
+            }
+
+            build() {
+                return new CartEntry(this);
+            }
+        }
+        return Builder;
     }
 }
 module.exports.CartEntry = CartEntry;
