@@ -50,7 +50,7 @@ function getType(object) {
 
 function addBuilderMethod(requiredProperties, file, classname) {
     _.forEach(requiredProperties, function(name) {
-        fs.appendFileSync(file, `            with${_.capitalize(name)}(${name}) {\n`);
+        fs.appendFileSync(file, `            with${_.upperFirst(name)}(${name}) {\n`);
         fs.appendFileSync(file, `                this.${name} = ${name};\n`);
         fs.appendFileSync(file, `                return this;\n`);
         fs.appendFileSync(file, `            }\n\n`);
