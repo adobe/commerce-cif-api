@@ -109,7 +109,7 @@ function addImports(classname, properties, file) {
     });
     if (types.size) {
         types.forEach(type => {
-            fs.appendFileSync(file, "import { " + type + " } from './" + type + ".js';\n");
+            fs.appendFileSync(file, `const ${type} = require('./${type}.js').${type};\n`);
         });
         fs.appendFileSync(file, '\n');
     }
