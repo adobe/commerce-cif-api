@@ -16,11 +16,11 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.125
+ * @version 0.1.126
  */
 
-import { Customer } from './Customer.js';
-import { Cart } from './Cart.js';
+const Customer = require('./Customer.js').Customer;
+const Cart = require('./Cart.js').Cart;
 
 class LoginResult {
 

@@ -16,13 +16,13 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.125
+ * @version 0.1.126
  */
 
-import { ProductVariant } from './ProductVariant.js';
-import { Price } from './Price.js';
-import { Discount } from './Discount.js';
-import { TaxInfo } from './TaxInfo.js';
+const ProductVariant = require('./ProductVariant.js').ProductVariant;
+const Price = require('./Price.js').Price;
+const Discount = require('./Discount.js').Discount;
+const TaxInfo = require('./TaxInfo.js').TaxInfo;
 
 class CartEntry {
 

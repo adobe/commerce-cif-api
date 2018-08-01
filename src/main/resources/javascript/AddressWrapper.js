@@ -16,10 +16,10 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.125
+ * @version 0.1.126
  */
 
-import { Address } from './Address.js';
+const Address = require('./Address.js').Address;
 
 class AddressWrapper {
 

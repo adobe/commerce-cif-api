@@ -16,11 +16,11 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.125
+ * @version 0.1.126
  */
 
-import { ShoppingListEntry } from './ShoppingListEntry.js';
-import { Facet } from './Facet.js';
+const ShoppingListEntry = require('./ShoppingListEntry.js').ShoppingListEntry;
+const Facet = require('./Facet.js').Facet;
 
 class PagedResponseShoppingListEntry {
 

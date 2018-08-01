@@ -16,14 +16,14 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.125
+ * @version 0.1.126
  */
 
-import { Price } from './Price.js';
-import { Category } from './Category.js';
-import { Asset } from './Asset.js';
-import { Attribute } from './Attribute.js';
-import { ProductVariant } from './ProductVariant.js';
+const Price = require('./Price.js').Price;
+const Category = require('./Category.js').Category;
+const Asset = require('./Asset.js').Asset;
+const Attribute = require('./Attribute.js').Attribute;
+const ProductVariant = require('./ProductVariant.js').ProductVariant;
 
 class Product {
 
