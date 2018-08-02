@@ -66,7 +66,7 @@ public interface CartApi {
     @ApiOperation(value = "Creates an empty cart. For convenience it also adds a cart entry when product variant id " +
         "and quantity are provided.")
     @ApiResponses(value = {
-        @ApiResponse(code = HTTP_OK, message = HTTP_OK_MESSAGE, response = Cart.class,
+        @ApiResponse(code = HTTP_CREATED, message = HTTP_CREATED_MESSAGE, response = Cart.class,
                 responseHeaders = @ResponseHeader(name = "Location", description = "Location of the newly created cart.", response = String.class)),
         @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
         @ApiResponse(code = HTTP_FORBIDDEN, message = HTTP_FORBIDDEN_MESSAGE, response = ErrorResponse.class),
