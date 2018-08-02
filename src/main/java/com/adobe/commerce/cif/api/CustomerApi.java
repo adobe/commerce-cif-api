@@ -17,6 +17,7 @@ package com.adobe.commerce.cif.api;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -32,6 +33,8 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE;
+import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE_DESC;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
 import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND;
@@ -56,7 +59,10 @@ public interface CustomerApi {
     Customer getCustomerById(
         @ApiParam(value = "The id of the customer.", required = true)
         @PathParam("id")
-        String id
+        String id,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
     
     @POST
@@ -82,6 +88,9 @@ public interface CustomerApi {
         
         @ApiParam(value = "An optional anonymous cart id to be merged during the login process.")
         @FormParam("anonymousCartId")
-        String anonymousCartId
+        String anonymousCartId,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 }

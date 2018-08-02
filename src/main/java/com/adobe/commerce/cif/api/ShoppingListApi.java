@@ -14,17 +14,6 @@
 
 package com.adobe.commerce.cif.api;
 
-import com.adobe.commerce.cif.model.common.PagedResponse;
-import com.adobe.commerce.cif.model.error.ErrorResponse;
-import com.adobe.commerce.cif.model.shoppinglist.ShoppingList;
-import com.adobe.commerce.cif.model.shoppinglist.ShoppingListEntry;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-import io.swagger.annotations.ResponseHeader;
-
 import javax.validation.constraints.Min;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -39,6 +28,19 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import com.adobe.commerce.cif.model.common.PagedResponse;
+import com.adobe.commerce.cif.model.error.ErrorResponse;
+import com.adobe.commerce.cif.model.shoppinglist.ShoppingList;
+import com.adobe.commerce.cif.model.shoppinglist.ShoppingListEntry;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.ResponseHeader;
+
+import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE;
+import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE_DESC;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
 import static com.adobe.commerce.cif.api.Constants.HTTP_CREATED;
@@ -73,7 +75,10 @@ public interface ShoppingListApi {
         @ApiParam(value = "Defines the maximum number of shopping lists to be returned.")
         @QueryParam(value = "limit")
         @Min(value = 0)
-        Integer limit
+        Integer limit,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 
     @GET
@@ -87,7 +92,10 @@ public interface ShoppingListApi {
     ShoppingList getShoppingList(
         @ApiParam(value = "The id of the shopping list to return.", required = true)
         @PathParam("id")
-        String id
+        String id,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 
     @POST
@@ -113,7 +121,10 @@ public interface ShoppingListApi {
 
         @ApiParam(value = "Language of the shopping list.")
         @HeaderParam("Content-Language")
-        String contentLanguage
+        String contentLanguage,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 
     @PUT
@@ -136,7 +147,10 @@ public interface ShoppingListApi {
 
         @ApiParam(value = "Description of the shopping list.")
         @FormParam("description")
-        String description
+        String description,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 
     @DELETE
@@ -151,7 +165,10 @@ public interface ShoppingListApi {
     void deleteShoppingList(
         @ApiParam(value = "The id of the shopping list to be deleted.", required = true)
         @PathParam("id")
-        String id
+        String id,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 
     @GET
@@ -175,7 +192,10 @@ public interface ShoppingListApi {
         @ApiParam(value = "Defines the maximum number of entries to be returned.")
         @QueryParam(value = "limit")
         @Min(value = 0)
-        Integer limit
+        Integer limit,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 
     @GET
@@ -193,7 +213,10 @@ public interface ShoppingListApi {
 
         @ApiParam(value = "The id of the shopping list entry to return.", required = true)
         @PathParam("entryId")
-        String entryId
+        String entryId,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 
     @POST
@@ -219,7 +242,10 @@ public interface ShoppingListApi {
 
         @ApiParam(value = "The product variant id to be added to the entry. If the product variant exists in the shopping list, its quantity is increased with the provided quantity.", required = true)
         @FormParam("productVariantId")
-        String productVariantId
+        String productVariantId,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 
     @PUT
@@ -247,7 +273,10 @@ public interface ShoppingListApi {
 
         @ApiParam(value = "The product variant id to be added to the entry. If the product variant exists in another entry in the shopping list, this request fails.", required = true)
         @FormParam("productVariantId")
-        String productVariantId
+        String productVariantId,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 
     @DELETE
@@ -266,7 +295,10 @@ public interface ShoppingListApi {
 
         @ApiParam(value = "The id of the entry.", required = true)
         @PathParam("entryId")
-        String entryId
+        String entryId,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 
 }
