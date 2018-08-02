@@ -16,6 +16,7 @@ package com.adobe.commerce.cif.api;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -30,6 +31,8 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ResponseHeader;
 
+import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE;
+import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE_DESC;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
 import static com.adobe.commerce.cif.api.Constants.HTTP_CREATED;
@@ -57,5 +60,8 @@ public interface OrderApi {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     Order postOrder(
         @ApiParam(value = "The id of the cart from which the order will be created.")
-        @FormParam("cartId") String cartId);
+        @FormParam("cartId") String cartId,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 }

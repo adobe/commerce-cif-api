@@ -16,6 +16,7 @@ package com.adobe.commerce.cif.api;
 
 import javax.validation.constraints.Min;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -31,6 +32,8 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE;
+import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE_DESC;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
 import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND;
@@ -51,7 +54,10 @@ public interface ProductApi {
     Product getProductById(
         @ApiParam(value = "The ID of the product to return.", required = true)
         @PathParam("id")
-        String id
+        String id,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 
     @GET
@@ -101,6 +107,9 @@ public interface ProductApi {
         @ApiParam(value = "Defines the maximum number of products to be returned by that search.")
         @QueryParam(value = "limit") 
         @Min(value = 0)
-        Integer limit
+        Integer limit,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 }
