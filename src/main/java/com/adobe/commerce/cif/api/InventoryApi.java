@@ -14,18 +14,25 @@
 
 package com.adobe.commerce.cif.api;
 
-import com.adobe.commerce.cif.model.common.PagedResponse;
-import com.adobe.commerce.cif.model.error.ErrorResponse;
-import com.adobe.commerce.cif.model.inventory.InventoryItem;
-import io.swagger.annotations.*;
-
 import javax.validation.constraints.Min;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import com.adobe.commerce.cif.model.common.PagedResponse;
+import com.adobe.commerce.cif.model.error.ErrorResponse;
+import com.adobe.commerce.cif.model.inventory.InventoryItem;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
+import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE;
+import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE_DESC;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
 
@@ -42,24 +49,25 @@ public interface InventoryApi {
     })
     PagedResponse<InventoryItem> query(
 
-            @ApiParam(value = "The list of product identifiers for which the inventory will be queried.",
-                    collectionFormat = "pipes")
+            @ApiParam(value = "The list of product identifiers for which the inventory will be queried.", collectionFormat = "pipes")
             @QueryParam(value = "productId")
-                    String[] productId,
+            String[] productId,
 
-            @ApiParam(value = "The list of scopes for which the inventory will be queried.",
-                    collectionFormat = "pipes")
+            @ApiParam(value = "The list of scopes for which the inventory will be queried.", collectionFormat = "pipes")
             @QueryParam(value = "scope")
-                    String[] scope,
+            String[] scope,
 
             @ApiParam(value = "Defines the number of inventory items to skip when returning the result.")
             @QueryParam(value = "offset")
             @Min(value = 0)
-                    Integer offset,
+            Integer offset,
 
             @ApiParam(value = "Defines the maximum number of inventory items to be returned in the result.")
             @QueryParam(value = "limit")
             @Min(value = 0)
-                    Integer limit
+            Integer limit,
+
+            @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+            @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 }

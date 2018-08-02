@@ -66,7 +66,7 @@
                             <springmvc>false</springmvc>
                             <locations>com.adobe.commerce.cif.api</locations>
                             <schemes>https</schemes>
-                            <host>runtime.adobe.com</host>
+                            <host>runtime.adobe.io</host>
                             <basePath>/commerce</basePath>
                             <info>
                                 <title>Commerce Integration Framework (CIF) Cloud API</title>

@@ -21,6 +21,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -40,6 +41,8 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ResponseHeader;
 
+import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE;
+import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE_DESC;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
 import static com.adobe.commerce.cif.api.Constants.HTTP_CREATED;
@@ -78,7 +81,10 @@ public interface CartApi {
         @FormParam("productVariantId") String productVariantId,
 
         @ApiParam(value = "The quantity for the product variant.")
-        @FormParam("quantity") int quantity);
+        @FormParam("quantity") int quantity,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 
     @GET
     @Path("/{id}")
@@ -90,7 +96,10 @@ public interface CartApi {
     })
     Cart getCart(
         @ApiParam(value = "The ID of the cart to be returned.", required = true)
-        @PathParam("id") String id);
+        @PathParam("id") String id,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 
     @DELETE
     @Path("/{id}")
@@ -103,7 +112,10 @@ public interface CartApi {
     })
     void deleteCart(
         @ApiParam(value = "The ID of the cart to be removed.", required = true)
-        @PathParam("id") String id);
+        @PathParam("id") String id,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 
     @POST
     @Path("/{id}/entries")
@@ -126,7 +138,10 @@ public interface CartApi {
 
         @ApiParam(value = "The quantity for the new entry.", required = true)
         @FormParam("quantity")
-        @Min(value = 0) int quantity);
+        @Min(value = 0) int quantity,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 
     @PUT
     @Path("/{id}/entries/{cartEntryId}")
@@ -147,7 +162,10 @@ public interface CartApi {
         @ApiParam(value = "The cart entry quantity. When quantity is 0 the entry will be removed otherwise the " +
             "value is used as new quantity.", required = true)
         @FormParam("quantity")
-        @Min(value = 0) int quantity);
+        @Min(value = 0) int quantity,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 
     @DELETE
     @Path("/{id}/entries/{cartEntryId}")
@@ -163,7 +181,10 @@ public interface CartApi {
         @PathParam("id") String id,
 
         @ApiParam(value = "The cart entry id to be removed.", required = true)
-        @PathParam("cartEntryId") String cartEntryId);
+        @PathParam("cartEntryId") String cartEntryId,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 
     @POST
     @Path("/{id}/shippingaddress")
@@ -180,7 +201,10 @@ public interface CartApi {
         @PathParam("id") String id,
 
         @ApiParam(value = "The shipping address", required = true)
-        AddressWrapper addressWrapper);
+        AddressWrapper addressWrapper,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 
     @DELETE
     @Path("/{id}/shippingaddress")
@@ -193,7 +217,10 @@ public interface CartApi {
     })
     Cart deleteShippingAddress(
         @ApiParam(value = "The ID of the cart for which the shipping address will be deleted.", required = true)
-        @PathParam("id") String id);
+        @PathParam("id") String id,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 
     @POST
     @Path("/{id}/billingaddress")
@@ -210,7 +237,10 @@ public interface CartApi {
         @PathParam("id") String id,
 
         @ApiParam(value = "The billing address", required = true)
-        AddressWrapper addressWrapper);
+        AddressWrapper addressWrapper,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 
     @DELETE
     @Path("/{id}/billingaddress")
@@ -223,7 +253,10 @@ public interface CartApi {
     })
     Cart deleteBillingAddress(
         @ApiParam(value = "The ID of the cart for which the billing address will be deleted.", required = true)
-        @PathParam("id") String id);
+        @PathParam("id") String id,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 
     @POST
     @Path("/{id}/shippingmethod")
@@ -240,7 +273,10 @@ public interface CartApi {
         @PathParam("id") String id,
 
         @ApiParam(value = "The shipping method id.", required = true)
-        @FormParam("shippingMethodId") String shippingMethodId);
+        @FormParam("shippingMethodId") String shippingMethodId,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 
     @DELETE
     @Path("/{id}/shippingmethod")
@@ -253,7 +289,10 @@ public interface CartApi {
     })
     Cart deleteShippingMethod(
         @ApiParam(value = "The ID of the cart for which the shipping method will be deleted.", required = true)
-        @PathParam("id") String id);
+        @PathParam("id") String id,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 
     @GET
     @Path("/{id}/shippingmethods")
@@ -265,7 +304,10 @@ public interface CartApi {
     })
     List<ShippingMethod> getShippingMethods(
         @ApiParam(value = "The id of the cart.", required = true)
-        @PathParam("id") String id);
+        @PathParam("id") String id,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 
     @POST
     @Path("/{id}/payment")
@@ -282,7 +324,10 @@ public interface CartApi {
         @PathParam("id") String id,
 
         @ApiParam(value = "The payment to create. If the cart belongs to a customer, the customer id must be set.", required = true)
-        PaymentWrapper paymentWrapper);
+        PaymentWrapper paymentWrapper,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 
     @DELETE
     @Path("/{id}/payment")
@@ -295,7 +340,10 @@ public interface CartApi {
     })
     Cart deletePayment(
         @ApiParam(value = "The ID of the cart for which the payment will be deleted.", required = true)
-        @PathParam("id") String id);
+        @PathParam("id") String id,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 
     @POST
     @Path("/{id}/coupons")
@@ -312,7 +360,10 @@ public interface CartApi {
         @PathParam("id") String id,
 
         @ApiParam(value = "The coupon code.", required = true)
-        @FormParam("code") String code);
+        @FormParam("code") String code,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
 
     @DELETE
     @Path("/{id}/coupons/{couponId}")
@@ -328,7 +379,10 @@ public interface CartApi {
         @PathParam("id") String id,
 
         @ApiParam(value = "The id of the coupon that will be deleted.", required = true)
-        @PathParam("couponId") String couponId
+        @PathParam("couponId") String couponId,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 
 }

@@ -16,6 +16,7 @@ package com.adobe.commerce.cif.api;
 
 import javax.validation.constraints.Min;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -31,6 +32,8 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE;
+import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE_DESC;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
 import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND;
@@ -50,7 +53,10 @@ public interface CategoryApi {
     })
     Category getCategoryById(
         @ApiParam(value = "The ID of the category to return.", required = true)
-        @PathParam("id") String id
+        @PathParam("id") String id,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
     
     @GET
@@ -88,6 +94,9 @@ public interface CategoryApi {
         @ApiParam(value = "Defines the maximum depth of the returned categories. No value means infinite depth, 0 means only the root categories.")
         @QueryParam(value = "depth") 
         @Min(value = 0)
-        Integer depth
+        Integer depth,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 }
