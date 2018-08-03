@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.127
+ * @version 1.0.0
  */
 
 const ProductVariant = require('./ProductVariant.js').ProductVariant;
