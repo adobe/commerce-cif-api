@@ -19,37 +19,54 @@
  * @version 0.1.127
  */
 
-class Order {
+class MoneyValue {
 
     /**
-     * Constructs a Order based on its enclosed builder.
+     * Constructs a MoneyValue based on its enclosed builder.
      * @constructor 
-     * @param {Builder} builder the Order builder
+     * @param {Builder} builder the MoneyValue builder
      */
     constructor(builder) {
         /**
-         * The order id.
+         * The currency code for this money value.
          * @type {string}
          */
-        this.id = builder.id;
+        this.currency = builder.currency;
+
+        /**
+         * The amount in cents of this money value.
+         * @type {number}
+         */
+        this.amount = builder.amount;
+
+        /**
+         * The country code for this money value.
+         * @type {string}
+         */
+        this.country = undefined;
 
     }
 
     /**
-     * Builds a Order based on API required properties.
+     * Builds a MoneyValue based on API required properties.
      */
     static get Builder() {
         class Builder {
-            withId(id) {
-                this.id = id;
+            withAmount(amount) {
+                this.amount = amount;
+                return this;
+            }
+
+            withCurrency(currency) {
+                this.currency = currency;
                 return this;
             }
 
             build() {
-                return new Order(this);
+                return new MoneyValue(this);
             }
         }
         return Builder;
     }
 }
-module.exports.Order = Order;
+module.exports.MoneyValue = MoneyValue;

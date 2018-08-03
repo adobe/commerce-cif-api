@@ -16,11 +16,11 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.126
+ * @version 0.1.127
  */
 
 const ProductVariant = require('./ProductVariant.js').ProductVariant;
-const Price = require('./Price.js').Price;
+const MoneyValue = require('./MoneyValue.js').MoneyValue;
 const Discount = require('./Discount.js').Discount;
 const TaxInfo = require('./TaxInfo.js').TaxInfo;
 
@@ -52,7 +52,7 @@ class CartEntry {
 
         /**
          * The product variant item price.
-         * @type {Price}
+         * @type {MoneyValue}
          */
         this.unitPrice = builder.unitPrice;
 
@@ -64,13 +64,13 @@ class CartEntry {
 
         /**
          * The calculated cart entry price. May or may not include taxes, depending on the tax policy.
-         * @type {Price}
+         * @type {MoneyValue}
          */
         this.price = builder.price;
 
         /**
          * The cart entry price after all discounts have been applied.
-         * @type {Price}
+         * @type {MoneyValue}
          */
         this.discountedPrice = undefined;
 

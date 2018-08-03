@@ -16,8 +16,10 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.126
+ * @version 0.1.127
  */
+
+const MoneyValue = require('./MoneyValue.js').MoneyValue;
 
 class TaxPortion {
 
@@ -34,10 +36,10 @@ class TaxPortion {
         this.name = builder.name;
 
         /**
-         * The amount in cents for the tax portion.
-         * @type {number}
+         * The value of the tax portion.
+         * @type {MoneyValue}
          */
-        this.amount = builder.amount;
+        this.value = builder.value;
 
     }
 
@@ -46,13 +48,13 @@ class TaxPortion {
      */
     static get Builder() {
         class Builder {
-            withAmount(amount) {
-                this.amount = amount;
+            withName(name) {
+                this.name = name;
                 return this;
             }
 
-            withName(name) {
-                this.name = name;
+            withValue(value) {
+                this.value = value;
                 return this;
             }
 

@@ -16,11 +16,11 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.126
+ * @version 0.1.127
  */
 
 const Customer = require('./Customer.js').Customer;
-const Price = require('./Price.js').Price;
+const MoneyValue = require('./MoneyValue.js').MoneyValue;
 
 class Payment {
 
@@ -61,10 +61,10 @@ class Payment {
         this.method = builder.method;
 
         /**
-         * The amount of the payment.
-         * @type {Price}
+         * The value of the payment.
+         * @type {MoneyValue}
          */
-        this.amount = undefined;
+        this.value = undefined;
 
         /**
          * The token used to communicate with the payment service provider.

@@ -5,7 +5,7 @@
 #    before the first location directive that already exists in the file
 # 3) Restart the Openwhisk nginx/edge component by running "wskdev edge"
 #
-# CCIF API Version 0.1.126
+# CCIF API Version 0.1.127
 
 # set $controller "http://controllers";
 set $ow_namespace "your-namespace";

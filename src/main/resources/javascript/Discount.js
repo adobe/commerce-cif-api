@@ -16,10 +16,10 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.126
+ * @version 0.1.127
  */
 
-const Price = require('./Price.js').Price;
+const MoneyValue = require('./MoneyValue.js').MoneyValue;
 
 class Discount {
 
@@ -54,10 +54,10 @@ class Discount {
         this.description = undefined;
 
         /**
-         * The amount which is discounted. Subtract this to obtain new price.
-         * @type {Price}
+         * The value which is discounted.
+         * @type {MoneyValue}
          */
-        this.amount = builder.amount;
+        this.value = builder.value;
 
     }
 
@@ -66,11 +66,6 @@ class Discount {
      */
     static get Builder() {
         class Builder {
-            withAmount(amount) {
-                this.amount = amount;
-                return this;
-            }
-
             withId(id) {
                 this.id = id;
                 return this;
@@ -78,6 +73,11 @@ class Discount {
 
             withType(type) {
                 this.type = type;
+                return this;
+            }
+
+            withValue(value) {
+                this.value = value;
                 return this;
             }
 

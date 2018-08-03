@@ -16,11 +16,11 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.126
+ * @version 0.1.127
  */
 
 const CartEntry = require('./CartEntry.js').CartEntry;
-const Price = require('./Price.js').Price;
+const MoneyValue = require('./MoneyValue.js').MoneyValue;
 const TaxInfo = require('./TaxInfo.js').TaxInfo;
 const Address = require('./Address.js').Address;
 const ShippingInfo = require('./ShippingInfo.js').ShippingInfo;
@@ -68,19 +68,19 @@ class Cart {
 
         /**
          * The net total price for the cart, including discounts, and shipping, but excluding any taxes. Until a shipping address is set, this field is typically not set.
-         * @type {Price}
+         * @type {MoneyValue}
          */
         this.netTotalPrice = undefined;
 
         /**
          * The gross total price for the cart, including discounts, shipping, and all taxes. Until a shipping address is set, this field is typically not set.
-         * @type {Price}
+         * @type {MoneyValue}
          */
         this.grossTotalPrice = undefined;
 
         /**
          * The product subtotal for the cart, including discounts and with or without taxes depending if the product prices include taxes or not.Until a shipping address is set, this field is typically used as the temporary cart total until it is known if prices include taxes or not.
-         * @type {Price}
+         * @type {MoneyValue}
          */
         this.productTotalPrice = builder.productTotalPrice;
 

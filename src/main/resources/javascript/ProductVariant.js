@@ -16,10 +16,10 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.126
+ * @version 0.1.127
  */
 
-const Price = require('./Price.js').Price;
+const MoneyValue = require('./MoneyValue.js').MoneyValue;
 const Category = require('./Category.js').Category;
 const Asset = require('./Asset.js').Asset;
 const Attribute = require('./Attribute.js').Attribute;
@@ -64,7 +64,7 @@ class ProductVariant {
 
         /**
          * The prices for this product.
-         * @type {Price[]}
+         * @type {MoneyValue[]}
          */
         this.prices = builder.prices;
 

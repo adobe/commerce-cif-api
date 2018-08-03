@@ -16,10 +16,10 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.126
+ * @version 0.1.127
  */
 
-const Price = require('./Price.js').Price;
+const MoneyValue = require('./MoneyValue.js').MoneyValue;
 
 class ShippingMethod {
 
@@ -48,10 +48,10 @@ class ShippingMethod {
         this.description = undefined;
 
         /**
-         * The price of the shipping method aka shipping cost.
-         * @type {Price}
+         * The cost of shipping.
+         * @type {MoneyValue}
          */
-        this.price = builder.price;
+        this.cost = builder.cost;
 
     }
 
@@ -60,6 +60,11 @@ class ShippingMethod {
      */
     static get Builder() {
         class Builder {
+            withCost(cost) {
+                this.cost = cost;
+                return this;
+            }
+
             withId(id) {
                 this.id = id;
                 return this;
@@ -67,11 +72,6 @@ class ShippingMethod {
 
             withName(name) {
                 this.name = name;
-                return this;
-            }
-
-            withPrice(price) {
-                this.price = price;
                 return this;
             }
 
