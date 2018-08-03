@@ -14,7 +14,7 @@
 
 package com.adobe.commerce.cif.model.discount;
 
-import com.adobe.commerce.cif.model.common.Price;
+import com.adobe.commerce.cif.model.common.MoneyValue;
 import io.swagger.annotations.ApiModelProperty;
 
 public class Discount {
@@ -31,8 +31,8 @@ public class Discount {
     @ApiModelProperty(value = "The description associated with the discount. May be displayed in the UI.")
     protected String description;
 
-    @ApiModelProperty(value = "The amount which is discounted. Subtract this to obtain new price.", required = true)
-    protected Price amount;
+    @ApiModelProperty(value = "The value which is discounted.", required = true)
+    protected MoneyValue value;
 
     public String getId() {
         return id;
@@ -66,11 +66,11 @@ public class Discount {
         this.description = description;
     }
 
-    public Price getAmount() {
-        return amount;
+    public MoneyValue getValue() {
+        return value;
     }
 
-    public void setAmount(Price amount) {
-        this.amount = amount;
+    public void setValue(MoneyValue value) {
+        this.value = value;
     }
 }

@@ -18,8 +18,8 @@ import java.util.List;
 
 import com.adobe.commerce.cif.model.common.Address;
 import com.adobe.commerce.cif.model.common.ModelWithDates;
+import com.adobe.commerce.cif.model.common.MoneyValue;
 import com.adobe.commerce.cif.model.common.Payment;
-import com.adobe.commerce.cif.model.common.Price;
 import com.adobe.commerce.cif.model.common.TaxInfo;
 import com.adobe.commerce.cif.model.discount.Discount;
 import io.swagger.annotations.ApiModelProperty;
@@ -36,14 +36,14 @@ public class Cart extends ModelWithDates {
     protected String customerId;
     
     @ApiModelProperty(value = "The net total price for the cart, including discounts, and shipping, but excluding any taxes. Until a shipping address is set, this field is typically not set.")
-    protected Price netTotalPrice;
+    protected MoneyValue netTotalPrice;
     
     @ApiModelProperty(value = "The gross total price for the cart, including discounts, shipping, and all taxes. Until a shipping address is set, this field is typically not set.")
-    protected Price grossTotalPrice;
+    protected MoneyValue grossTotalPrice;
     
     @ApiModelProperty(value = "The product subtotal for the cart, including discounts and with or without taxes depending if the product prices include taxes or not." +
                               "Until a shipping address is set, this field is typically used as the temporary cart total until it is known if prices include taxes or not.", required = true)
-    protected Price productTotalPrice;
+    protected MoneyValue productTotalPrice;
 
     @ApiModelProperty(value = "The cart tax info, including cart entries tax and shipping info tax. Until a shipping address is set, this field is typically not set.")
     protected TaxInfo taxInfo;
@@ -96,27 +96,27 @@ public class Cart extends ModelWithDates {
         this.customerId = customerId;
     }
     
-    public Price getNetTotalPrice() {
+    public MoneyValue getNetTotalPrice() {
         return netTotalPrice;
     }
 
-    public void setNetTotalPrice(Price netTotalPrice) {
+    public void setNetTotalPrice(MoneyValue netTotalPrice) {
         this.netTotalPrice = netTotalPrice;
     }
 
-    public Price getGrossTotalPrice() {
+    public MoneyValue getGrossTotalPrice() {
         return grossTotalPrice;
     }
 
-    public void setGrossTotalPrice(Price grossTotalPrice) {
+    public void setGrossTotalPrice(MoneyValue grossTotalPrice) {
         this.grossTotalPrice = grossTotalPrice;
     }
     
-    public Price getProductTotalPrice() {
+    public MoneyValue getProductTotalPrice() {
         return productTotalPrice;
     }
 
-    public void setProductTotalPrice(Price productTotalPrice) {
+    public void setProductTotalPrice(MoneyValue productTotalPrice) {
         this.productTotalPrice = productTotalPrice;
     }
 

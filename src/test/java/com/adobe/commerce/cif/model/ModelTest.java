@@ -101,7 +101,7 @@ public class ModelTest {
     @Test
     public void testShippingInfo() throws Exception {
         ShippingInfo shippingInfo = map("shippingInfo.json", ShippingInfo.class);
-        String[] ignoredFields = {"discountedPrice"};
+        String[] ignoredFields = {"discountedCost"};
         FieldTester fieldTester = FieldTester.builder()
             .doCheckListElements()
             .withIgnoredFieldNames(new HashSet<String>(Arrays.asList(ignoredFields)))

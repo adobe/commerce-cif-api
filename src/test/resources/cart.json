@@ -41,7 +41,7 @@
                     "type": "cart-entry-discount",
                     "name": "$10 discount for orders over $100",
                     "description": "Get $10 discount for orders over $100.",
-                    "amount": {
+                    "value": {
                         "currency": "USD",
                         "amount": 1000
                     }
@@ -52,11 +52,19 @@
                 "amount": 10000
             },
             "taxInfo": {
-                "amount": 1000,
+                "value": {
+                    "currency": "USD",
+                    "amount": 1000,
+                    "country": "US"
+                },
                 "portions": [
                     {
                         "name": "VAT 10%",
-                        "amount": 1000
+                        "value": {
+                            "currency": "USD",
+                            "amount": 1000,
+                            "country": "US"
+                        }
                     }
                 ]
             },
@@ -64,11 +72,19 @@
         }
     ],
     "taxInfo": {
-        "amount": 1000,
+        "value": {
+            "currency": "USD",
+            "amount": 1000,
+            "country": "US"
+        },
         "portions": [
             {
                 "name": "VAT 10%",
-                "amount": 1000
+                "value": {
+                    "currency": "USD",
+                    "amount": 1000,
+                    "country": "US"
+                }
             }
         ]
     },

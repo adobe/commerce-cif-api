@@ -3,9 +3,9 @@
     "type": "unit-discount",
     "name": "$20 discount for orders over $200",
     "description": "Get $20 discount for orders over $200",
-    "amount": {
-        "country": "US",
+    "value": {
         "currency": "USD",
-        "amount": 20000
+        "amount": 2000,
+        "country":"US"
     }
 }

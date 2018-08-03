@@ -14,7 +14,7 @@
 
 package com.adobe.commerce.cif.model.cart;
 
-import com.adobe.commerce.cif.model.common.Price;
+import com.adobe.commerce.cif.model.common.MoneyValue;
 import com.adobe.commerce.cif.model.common.TaxInfo;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -26,11 +26,11 @@ public class ShippingInfo {
     @ApiModelProperty(value = "The shipping method name.", required = true)
     protected String name;
     
-    @ApiModelProperty(value = "The shipping price.", required = true)
-    protected Price price;
+    @ApiModelProperty(value = "The cost of the shipping.", required = true)
+    protected MoneyValue cost;
     
-    @ApiModelProperty(value = "The discounted shipping price.")
-    protected Price discountedPrice;
+    @ApiModelProperty(value = "The discounted shipping cost.")
+    protected MoneyValue discountedCost;
 
     @ApiModelProperty(value = "The tax for the shipping.", required = true)
     protected TaxInfo taxInfo;
@@ -43,20 +43,20 @@ public class ShippingInfo {
         this.name = name;
     }
 
-    public Price getPrice() {
-        return price;
+    public MoneyValue getDiscountedCost() {
+        return discountedCost;
     }
 
-    public void setPrice(Price price) {
-        this.price = price;
+    public void setDiscountedCost(MoneyValue discountedCost) {
+        this.discountedCost = discountedCost;
     }
 
-    public Price getDiscountedPrice() {
-        return discountedPrice;
+    public MoneyValue getCost() {
+        return cost;
     }
 
-    public void setDiscountedPrice(Price discountedPrice) {
-        this.discountedPrice = discountedPrice;
+    public void setCost(MoneyValue cost) {
+        this.cost = cost;
     }
 
     public String getId() {

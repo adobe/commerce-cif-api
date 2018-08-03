@@ -16,7 +16,7 @@ package com.adobe.commerce.cif.model.cart;
 
 import java.util.List;
 
-import com.adobe.commerce.cif.model.common.Price;
+import com.adobe.commerce.cif.model.common.MoneyValue;
 import com.adobe.commerce.cif.model.common.TaxInfo;
 import com.adobe.commerce.cif.model.discount.Discount;
 import com.adobe.commerce.cif.model.product.ProductVariant;
@@ -34,16 +34,16 @@ public class CartEntry {
     protected ProductVariant productVariant;
 
     @ApiModelProperty(value = "The product variant item price.", required = true)
-    protected Price unitPrice;
+    protected MoneyValue unitPrice;
 
     @ApiModelProperty(value = "A list of all applied discounts.")
     protected List<Discount> discounts;
 
     @ApiModelProperty(value = "The calculated cart entry price. May or may not include taxes, depending on the tax policy.", required = true)
-    protected Price price;
+    protected MoneyValue price;
 
     @ApiModelProperty(value = "The cart entry price after all discounts have been applied.")
-    protected Price discountedPrice;
+    protected MoneyValue discountedPrice;
 
     @ApiModelProperty(value = "The cart entry tax info. Until a shipping address is set, this field is typically not set.")
     protected TaxInfo taxInfo;
@@ -75,11 +75,11 @@ public class CartEntry {
         this.productVariant = productVariant;
     }
 
-    public Price getUnitPrice() {
+    public MoneyValue getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(Price unitPrice) {
+    public void setUnitPrice(MoneyValue unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -91,19 +91,19 @@ public class CartEntry {
         this.discounts = discounts;
     }
 
-    public Price getPrice() {
+    public MoneyValue getPrice() {
         return price;
     }
 
-    public void setPrice(Price price) {
+    public void setPrice(MoneyValue price) {
         this.price = price;
     }
 
-    public Price getDiscountedPrice() {
+    public MoneyValue getDiscountedPrice() {
         return discountedPrice;
     }
 
-    public void setDiscountedPrice(Price discountedPrice) {
+    public void setDiscountedPrice(MoneyValue discountedPrice) {
         this.discountedPrice = discountedPrice;
     }
 

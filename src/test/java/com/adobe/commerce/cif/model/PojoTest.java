@@ -59,13 +59,18 @@ public class PojoTest {
     @Test
     public void testSettersAndGetters() throws Exception {
         Set<ClassInfo> classes = ClassPath.from(this.getClass().getClassLoader()).getTopLevelClassesRecursive(MODEL_PACKAGE);
-        for (Class<?> clazz : classes.stream().map(c -> c.load()).collect(Collectors.toList())) {
-            LOGGER.debug("Checking setter/getter for " + clazz.getName());
-            if (clazz.getSimpleName().contains("Test") || clazz.isEnum() || Modifier.isAbstract(clazz.getModifiers())) {
-                continue; // ignore test classes, enums, and abstract classes
-            }
-            testSettersAndGettersFor(clazz);
-        }
+
+        classes.stream()
+                .map(c -> c.load())
+                .filter( clazz -> !(clazz.getSimpleName().contains("Test") || clazz.isEnum() || Modifier.isAbstract(clazz.getModifiers())))
+                .forEach(clazz -> {
+                    try {
+                        LOGGER.debug("Checking setter/getter for " + clazz.getName());
+                        testSettersAndGettersFor(clazz);
+                    } catch (Exception e) {
+                       LOGGER.error(e.getMessage(), e);
+                    }
+                });
     }
 
     private void testSettersAndGettersFor(Class<?> clazz) throws Exception {

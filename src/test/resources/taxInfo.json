@@ -1,9 +1,17 @@
 {
-    "amount": 900,
+    "value": {
+        "currency": "USD",
+        "amount": 900,
+        "country": "US"
+    },
     "portions": [
         {
             "name": "VAT 10%",
-            "amount": 900
+            "value": {
+                "currency": "USD",
+                "amount": 900,
+                "country": "US"
+            }
         }
     ]
 }

@@ -20,7 +20,7 @@ import com.adobe.commerce.cif.model.category.Category;
 import com.adobe.commerce.cif.model.common.Asset;
 import com.adobe.commerce.cif.model.common.Attribute;
 import com.adobe.commerce.cif.model.common.ModelWithDates;
-import com.adobe.commerce.cif.model.common.Price;
+import com.adobe.commerce.cif.model.common.MoneyValue;
 import io.swagger.annotations.ApiModelProperty;
 
 public abstract class AbstractProduct extends ModelWithDates {
@@ -35,7 +35,7 @@ public abstract class AbstractProduct extends ModelWithDates {
     protected String description;
 
     @ApiModelProperty(value = "The prices for this product.", required = true)
-    protected List<Price> prices;
+    protected List<MoneyValue> prices;
 
     @ApiModelProperty(value = "The categories for this product.")
     protected List<Category> categories;
@@ -70,11 +70,11 @@ public abstract class AbstractProduct extends ModelWithDates {
         this.description = description;
     }
 
-    public List<Price> getPrices() {
+    public List<MoneyValue> getPrices() {
         return prices;
     }
 
-    public void setPrices(List<Price> prices) {
+    public void setPrices(List<MoneyValue> prices) {
         this.prices = prices;
     }
 
