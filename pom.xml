@@ -165,6 +165,7 @@
                                 <exclude>package.json</exclude>
                                 <exclude>license.txt</exclude>
                                 <exclude>models-package.json</exclude>
+                                <exclude>models-readme.md</exclude>
                             </excludes>
                         </fileset>
                     </filesets>

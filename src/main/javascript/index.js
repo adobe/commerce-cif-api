@@ -186,6 +186,7 @@ if (!swagger.info.version.includes('-SNAPSHOT')) {
     fsx.removeSync('../resources/javascript');
     fsx.removeSync('../resources/swagger');
     fsx.copySync('../resources/generated/javascript', '../resources/javascript');
+    fsx.copySync('./models-readme.md', '../resources/javascript/readme.md');
     fsx.copySync('../resources/generated/swagger', '../resources/swagger');
     fsx.copySync('../resources/generated/swagger/swagger.json', '../../../docs/swagger.json');
 }
