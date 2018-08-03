@@ -16,29 +16,42 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.126
  */
+
+const ShoppingListEntry = require('./ShoppingListEntry.js').ShoppingListEntry;
+
 class ShoppingList {
 
     /**
-     * Represents a ShoppingList
+     * Constructs a ShoppingList based on its enclosed builder.
      * @constructor 
-     * @param {ShoppingListEntry[]} entries
-     * @param {string} id
-     * @param {string} name
+     * @param {Builder} builder the ShoppingList builder
      */
-    constructor(entries, id, name) {
+    constructor(builder) {
+        /**
+         * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.createdAt = undefined;
+
+        /**
+         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.lastModifiedAt = undefined;
+
         /**
          * The id of the shopping list.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * The name of the shopping list.
          * @type {string}
          */
-        this.name = name;
+        this.name = builder.name;
 
         /**
          * The description of the shopping list.
@@ -50,7 +63,7 @@ class ShoppingList {
          * The entries of the shopping list.
          * @type {ShoppingListEntry[]}
          */
-        this.entries = entries;
+        this.entries = builder.entries;
 
         /**
          * The customer id that owns this shopping list.
@@ -58,18 +71,33 @@ class ShoppingList {
          */
         this.customerId = undefined;
 
-        /**
-         * The date when this shopping list was created.
-         * @type {string}
-         */
-        this.createdDate = undefined;
+    }
 
-        /**
-         * The date when this shopping list was last modified.
-         * @type {string}
-         */
-        this.lastModifiedDate = undefined;
+    /**
+     * Builds a ShoppingList based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withEntries(entries) {
+                this.entries = entries;
+                return this;
+            }
 
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withName(name) {
+                this.name = name;
+                return this;
+            }
+
+            build() {
+                return new ShoppingList(this);
+            }
+        }
+        return Builder;
     }
 }
-module.exports.ShoppingList = ShoppingList
+module.exports.ShoppingList = ShoppingList;

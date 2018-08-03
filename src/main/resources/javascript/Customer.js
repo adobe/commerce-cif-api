@@ -16,52 +16,85 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.126
  */
+
 class Customer {
 
     /**
-     * Represents a Customer
+     * Constructs a Customer based on its enclosed builder.
      * @constructor 
-     * @param {string} id
+     * @param {Builder} builder the Customer builder
      */
-    constructor(id) {
+    constructor(builder) {
+        /**
+         * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.createdAt = undefined;
+
+        /**
+         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.lastModifiedAt = undefined;
+
         /**
          * The unique id of this customer
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * The customer's email address
          * @type {string}
          */
-        this.email = undefined;
+        this.email = builder.email;
 
         /**
          * The firstname of this customer
          * @type {string}
          */
-        this.firstname = undefined;
+        this.firstName = builder.firstName;
 
         /**
          * The lastname of this customer
          * @type {string}
          */
-        this.lastname = undefined;
-
-        /**
-         * The date when this customer was registered
-         * @type {string}
-         */
-        this.createdDate = undefined;
-
-        /**
-         * The date when this customer was last modified
-         * @type {string}
-         */
-        this.lastModifiedDate = undefined;
+        this.lastName = builder.lastName;
 
     }
+
+    /**
+     * Builds a Customer based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withEmail(email) {
+                this.email = email;
+                return this;
+            }
+
+            withFirstName(firstName) {
+                this.firstName = firstName;
+                return this;
+            }
+
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withLastName(lastName) {
+                this.lastName = lastName;
+                return this;
+            }
+
+            build() {
+                return new Customer(this);
+            }
+        }
+        return Builder;
+    }
 }
-module.exports.Customer = Customer
+module.exports.Customer = Customer;

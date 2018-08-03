@@ -4,15 +4,15 @@
     "price": {
         "country": "US",
         "currency": "USD",
-        "centAmount": 1000
+        "amount": 1000
     },
     "discountedPrice": {},
-    "shippingTaxInfo": {
-        "totalCentAmount": 100,
-        "taxPortions": [
+    "taxInfo": {
+        "amount": 100,
+        "portions": [
             {
                 "name": "Fuel tax 10%",
-                "centAmount": 100
+                "amount": 100
             }
         ]
     }

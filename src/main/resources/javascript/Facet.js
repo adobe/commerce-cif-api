@@ -16,27 +16,30 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.126
  */
+
+const FacetValue = require('./FacetValue.js').FacetValue;
+
 class Facet {
 
     /**
-     * Represents a Facet
+     * Constructs a Facet based on its enclosed builder.
      * @constructor 
-     * @param {string} name
+     * @param {Builder} builder the Facet builder
      */
-    constructor(name) {
+    constructor(builder) {
+        /**
+         * The id of the facet.
+         * @type {string}
+         */
+        this.id = builder.id;
+
         /**
          * The name of the facet.
          * @type {string}
          */
-        this.name = name;
-
-        /**
-         * The label of the facet.
-         * @type {string}
-         */
-        this.label = undefined;
+        this.name = builder.name;
 
         /**
          * The number of missed items.
@@ -54,14 +57,46 @@ class Facet {
          * The type of the facet.
          * @type {string}
          */
-        this.type = undefined;
+        this.type = builder.type;
 
         /**
          * List of facetValues calculated for this facet.
          * @type {FacetValue[]}
          */
-        this.facetValues = undefined;
+        this.values = builder.values;
 
     }
+
+    /**
+     * Builds a Facet based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withName(name) {
+                this.name = name;
+                return this;
+            }
+
+            withType(type) {
+                this.type = type;
+                return this;
+            }
+
+            withValues(values) {
+                this.values = values;
+                return this;
+            }
+
+            build() {
+                return new Facet(this);
+            }
+        }
+        return Builder;
+    }
 }
-module.exports.Facet = Facet
+module.exports.Facet = Facet;

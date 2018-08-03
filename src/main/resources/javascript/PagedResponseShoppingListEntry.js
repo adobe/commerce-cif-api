@@ -16,38 +16,43 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.126
  */
+
+const ShoppingListEntry = require('./ShoppingListEntry.js').ShoppingListEntry;
+const Facet = require('./Facet.js').Facet;
+
 class PagedResponseShoppingListEntry {
 
     /**
-     * Represents a PagedResponseShoppingListEntry
+     * Constructs a PagedResponseShoppingListEntry based on its enclosed builder.
      * @constructor 
+     * @param {Builder} builder the PagedResponseShoppingListEntry builder
      */
-    constructor() {
+    constructor(builder) {
         /**
          * The offset for this response, this is the number of elements skipped, not a page number.
          * @type {integer}
          */
-        this.offset = undefined;
+        this.offset = builder.offset;
 
         /**
          * The actual number of results returned in results.
          * @type {integer}
          */
-        this.count = undefined;
+        this.count = builder.count;
 
         /**
          * The total number of results matching the query.
          * @type {integer}
          */
-        this.total = undefined;
+        this.total = builder.total;
 
         /**
          * The results for this response.
          * @type {ShoppingListEntry[]}
          */
-        this.results = undefined;
+        this.results = builder.results;
 
         /**
          * The list of facets for this response.
@@ -56,5 +61,37 @@ class PagedResponseShoppingListEntry {
         this.facets = undefined;
 
     }
+
+    /**
+     * Builds a PagedResponseShoppingListEntry based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withCount(count) {
+                this.count = count;
+                return this;
+            }
+
+            withOffset(offset) {
+                this.offset = offset;
+                return this;
+            }
+
+            withResults(results) {
+                this.results = results;
+                return this;
+            }
+
+            withTotal(total) {
+                this.total = total;
+                return this;
+            }
+
+            build() {
+                return new PagedResponseShoppingListEntry(this);
+            }
+        }
+        return Builder;
+    }
 }
-module.exports.PagedResponseShoppingListEntry = PagedResponseShoppingListEntry
+module.exports.PagedResponseShoppingListEntry = PagedResponseShoppingListEntry;

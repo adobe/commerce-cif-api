@@ -16,33 +16,45 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.126
  */
+
+const Price = require('./Price.js').Price;
+const Category = require('./Category.js').Category;
+const Asset = require('./Asset.js').Asset;
+const Attribute = require('./Attribute.js').Attribute;
+
 class ProductVariant {
 
     /**
-     * Represents a ProductVariant
+     * Constructs a ProductVariant based on its enclosed builder.
      * @constructor 
-     * @param {string} id
+     * @param {Builder} builder the ProductVariant builder
      */
-    constructor(id) {
+    constructor(builder) {
+        /**
+         * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.createdAt = undefined;
+
+        /**
+         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.lastModifiedAt = undefined;
+
         /**
          * The internal unique ID of the product in the commerce backend system.
          * @type {string}
          */
-        this.id = id;
-
-        /**
-         * The unique SKU of the product assigned by the vendor or manufacturer.
-         * @type {string}
-         */
-        this.sku = undefined;
+        this.id = builder.id;
 
         /**
          * The name of the product.
          * @type {string}
          */
-        this.name = undefined;
+        this.name = builder.name;
 
         /**
          * The description of the product.
@@ -54,7 +66,7 @@ class ProductVariant {
          * The prices for this product.
          * @type {Price[]}
          */
-        this.prices = undefined;
+        this.prices = builder.prices;
 
         /**
          * The categories for this product.
@@ -75,23 +87,54 @@ class ProductVariant {
         this.attributes = undefined;
 
         /**
-         * The date when this product was created.
+         * The unique SKU of the product variant assigned by the vendor or manufacturer.
          * @type {string}
          */
-        this.createdDate = undefined;
-
-        /**
-         * The date when this product was last modified.
-         * @type {string}
-         */
-        this.lastModifiedDate = undefined;
+        this.sku = builder.sku;
 
         /**
          * Indicates if the product is available or not in the inventory.
          * @type {boolean}
          */
-        this.available = undefined;
+        this.available = builder.available;
 
     }
+
+    /**
+     * Builds a ProductVariant based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withAvailable(available) {
+                this.available = available;
+                return this;
+            }
+
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withName(name) {
+                this.name = name;
+                return this;
+            }
+
+            withPrices(prices) {
+                this.prices = prices;
+                return this;
+            }
+
+            withSku(sku) {
+                this.sku = sku;
+                return this;
+            }
+
+            build() {
+                return new ProductVariant(this);
+            }
+        }
+        return Builder;
+    }
 }
-module.exports.ProductVariant = ProductVariant
+module.exports.ProductVariant = ProductVariant;

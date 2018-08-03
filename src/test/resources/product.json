@@ -15,7 +15,7 @@
         {
             "country": "US",
             "currency": "USD",
-            "centAmount": 50000
+            "amount": 50000
         }
     ],
     "assets": [
@@ -31,8 +31,8 @@
             "value": "An example value for product 1"
         }
     ],
-    "createdDate": "2017-01-11T14:58:29.432Z",
-    "lastModifiedDate": "2017-07-06T18:09:42.687Z",
+    "createdAt": "2017-01-11T14:58:29.432Z",
+    "lastModifiedAt": "2017-07-06T18:09:42.687Z",
     "masterVariantId": "product-1-1",
     "variants": [
         {
@@ -40,8 +40,8 @@
             "sku": "sku-1-1",
             "name": "A name",
             "description": "A description",
-            "createdDate": "2017-01-11T14:58:29.432Z",
-            "lastModifiedDate": "2017-07-06T18:09:42.687Z",
+            "createdAt": "2017-01-11T14:58:29.432Z",
+            "lastModifiedAt": "2017-07-06T18:09:42.687Z",
             "categories": [
                 {
                     "id": "category-1"
@@ -51,7 +51,7 @@
                 {
                     "country": "US",
                     "currency": "USD",
-                    "centAmount": 10000
+                    "amount": 10000
                 }
             ],
             "assets": [
@@ -65,25 +65,25 @@
                     "id": "summary",
                     "name": "An example attribute",
                     "value": "An example value for variant 1",
-                    "variantAttribute": false
+                    "isVariantAxis": false
                 },
                 {
                     "id": "power",
                     "name": "An example Integer attribute",
                     "value": 1,
-                    "variantAttribute": true
+                    "isVariantAxis": true
                 },
                 {
                     "id": "brand",
                     "name": "An example String attribute",
                     "value": "Adobe",
-                    "variantAttribute": true
+                    "isVariantAxis": true
                 },
                 {
                     "id": "publishedDate",
                     "name": "An example Date attribute",
                     "value": "2018-04-17T17:26:29.432Z",
-                    "variantAttribute": false
+                    "isVariantAxis": false
                 }
             ],
             "available": "true"
@@ -93,8 +93,8 @@
             "sku": "sku-1-2",
             "name": "A name",
             "description": "A description",
-            "createdDate": "2017-01-11T14:58:29.432Z",
-            "lastModifiedDate": "2017-07-06T18:09:42.687Z",
+            "createdAt": "2017-01-11T14:58:29.432Z",
+            "lastModifiedAt": "2017-07-06T18:09:42.687Z",
             "categories": [
                 {
                     "id": "category-2"
@@ -104,7 +104,7 @@
                 {
                     "country": "US",
                     "currency": "USD",
-                    "centAmount": 20000
+                    "amount": 20000
                 }
             ],
             "assets": [
@@ -118,25 +118,25 @@
                     "id": "summary",
                     "name": "An example attribute",
                     "value": "An example value for variant 2",
-                    "variantAttribute": false
+                    "isVariantAxis": false
                 },
                 {
                     "id": "power",
                     "name": "An example Integer attribute",
                     "value": 2,
-                    "variantAttribute": true
+                    "isVariantAxis": true
                 },
                 {
                     "id": "brand",
                     "name": "An example String attribute",
                     "value": "Adobe Systems",
-                    "variantAttribute": true
+                    "isVariantAxis": true
                 },
                 {
                     "id": "publishedDate",
                     "name": "An example Date attribute",
                     "value": "2018-04-17T17:26:29.432Z",
-                    "variantAttribute": false
+                    "isVariantAxis": false
                 }
             ],
             "available": "false"

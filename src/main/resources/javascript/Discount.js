@@ -16,29 +16,30 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.126
  */
+
+const Price = require('./Price.js').Price;
+
 class Discount {
 
     /**
-     * Represents a Discount
+     * Constructs a Discount based on its enclosed builder.
      * @constructor 
-     * @param {Price} discountedAmount
-     * @param {string} id
-     * @param {string} type
+     * @param {Builder} builder the Discount builder
      */
-    constructor(discountedAmount, id, type) {
+    constructor(builder) {
         /**
          * The id for the discount.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * The type of the discount.
          * @type {string}
          */
-        this.type = type;
+        this.type = builder.type;
 
         /**
          * The name of the discount.
@@ -47,17 +48,44 @@ class Discount {
         this.name = undefined;
 
         /**
-         * The message associated with the discount. May be displayed in the UI.
+         * The description associated with the discount. May be displayed in the UI.
          * @type {string}
          */
-        this.message = undefined;
+        this.description = undefined;
 
         /**
          * The amount which is discounted. Subtract this to obtain new price.
          * @type {Price}
          */
-        this.discountedAmount = discountedAmount;
+        this.amount = builder.amount;
 
     }
+
+    /**
+     * Builds a Discount based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withAmount(amount) {
+                this.amount = amount;
+                return this;
+            }
+
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withType(type) {
+                this.type = type;
+                return this;
+            }
+
+            build() {
+                return new Discount(this);
+            }
+        }
+        return Builder;
+    }
 }
-module.exports.Discount = Discount
+module.exports.Discount = Discount;

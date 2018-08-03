@@ -16,27 +16,30 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.126
  */
+
+const Price = require('./Price.js').Price;
+
 class ShippingMethod {
 
     /**
-     * Represents a ShippingMethod
+     * Constructs a ShippingMethod based on its enclosed builder.
      * @constructor 
-     * @param {string} id
+     * @param {Builder} builder the ShippingMethod builder
      */
-    constructor(id) {
+    constructor(builder) {
         /**
          * The id of the shipping method.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * The name of the shipping method.
          * @type {string}
          */
-        this.name = undefined;
+        this.name = builder.name;
 
         /**
          * The description of the shipping method.
@@ -48,8 +51,35 @@ class ShippingMethod {
          * The price of the shipping method aka shipping cost.
          * @type {Price}
          */
-        this.price = undefined;
+        this.price = builder.price;
 
     }
+
+    /**
+     * Builds a ShippingMethod based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withName(name) {
+                this.name = name;
+                return this;
+            }
+
+            withPrice(price) {
+                this.price = price;
+                return this;
+            }
+
+            build() {
+                return new ShippingMethod(this);
+            }
+        }
+        return Builder;
+    }
 }
-module.exports.ShippingMethod = ShippingMethod
+module.exports.ShippingMethod = ShippingMethod;

@@ -14,8 +14,9 @@
 
 package com.adobe.commerce.cif.model.common;
 
-import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
+
+import io.swagger.annotations.ApiModelProperty;
 
 public class TaxPortion {
 
@@ -23,7 +24,7 @@ public class TaxPortion {
     protected String name;
 
     @ApiModelProperty(value = "The amount in cents for the tax portion.", required = true)
-    protected BigDecimal centAmount;
+    protected BigDecimal amount;
 
     public String getName() {
         return name;
@@ -33,12 +34,12 @@ public class TaxPortion {
         this.name = name;
     }
 
-    public BigDecimal getCentAmount() {
-        return centAmount;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setCentAmount(BigDecimal centAmount) {
-        this.centAmount = centAmount;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 }
 

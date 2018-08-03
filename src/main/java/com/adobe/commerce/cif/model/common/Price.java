@@ -24,7 +24,7 @@ public class Price {
     protected String currency;
 
     @ApiModelProperty(value = "The amount in cents for that price.", required = true)
-    protected BigDecimal centAmount;
+    protected BigDecimal amount;
 
     @ApiModelProperty(value = "The country code for that price.")
     protected String country;
@@ -37,12 +37,12 @@ public class Price {
         this.currency = currency;
     }
 
-    public BigDecimal getCentAmount() {
-        return centAmount;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setCentAmount(BigDecimal centAmount) {
-        this.centAmount = centAmount;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 
     public String getCountry() {

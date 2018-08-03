@@ -16,21 +16,37 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.126
  */
+
+const Customer = require('./Customer.js').Customer;
+const Price = require('./Price.js').Price;
+
 class Payment {
 
     /**
-     * Represents a Payment
+     * Constructs a Payment based on its enclosed builder.
      * @constructor 
-     * @param {string} method
+     * @param {Builder} builder the Payment builder
      */
-    constructor(method) {
+    constructor(builder) {
+        /**
+         * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.createdAt = undefined;
+
+        /**
+         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.lastModifiedAt = undefined;
+
         /**
          * The id of the payment.
          * @type {string}
          */
-        this.id = undefined;
+        this.id = builder.id;
 
         /**
          * The customer the payment belongs to. If this is not set the payment belongs to an anonymous customer.
@@ -42,7 +58,7 @@ class Payment {
          * The method for this payment like Card or Cash.
          * @type {string}
          */
-        this.method = method;
+        this.method = builder.method;
 
         /**
          * The amount of the payment.
@@ -68,18 +84,28 @@ class Payment {
          */
         this.status = undefined;
 
-        /**
-         * The date when this payment was created.
-         * @type {string}
-         */
-        this.createdDate = undefined;
+    }
 
-        /**
-         * The date when this payment was last modified.
-         * @type {string}
-         */
-        this.lastModifiedDate = undefined;
+    /**
+     * Builds a Payment based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withId(id) {
+                this.id = id;
+                return this;
+            }
 
+            withMethod(method) {
+                this.method = method;
+                return this;
+            }
+
+            build() {
+                return new Payment(this);
+            }
+        }
+        return Builder;
     }
 }
-module.exports.Payment = Payment
+module.exports.Payment = Payment;

@@ -16,21 +16,34 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.126
  */
+
 class Category {
 
     /**
-     * Represents a Category
+     * Constructs a Category based on its enclosed builder.
      * @constructor 
-     * @param {string} id
+     * @param {Builder} builder the Category builder
      */
-    constructor(id) {
+    constructor(builder) {
+        /**
+         * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.createdAt = undefined;
+
+        /**
+         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.lastModifiedAt = undefined;
+
         /**
          * The internal unique ID of the category in the commerce backend system.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * The name of the category.
@@ -48,32 +61,37 @@ class Category {
          * The id of the main parent category (if this category has multiple parents).
          * @type {string}
          */
-        this.mainParentCategoryId = undefined;
+        this.mainParentId = undefined;
 
         /**
          * The list of parent categories for this category. Depending on the backend system, the returned items may only have their ids being set.
          * @type {Category[]}
          */
-        this.parentCategories = undefined;
+        this.parents = undefined;
 
         /**
          * The list of subcategories for this category. Depending on the backend system, the returned items may only have their ids being set.
          * @type {Category[]}
          */
-        this.subCategories = undefined;
-
-        /**
-         * The date when this product was created.
-         * @type {string}
-         */
-        this.createdDate = undefined;
-
-        /**
-         * The date when this product was last modified.
-         * @type {string}
-         */
-        this.lastModifiedDate = undefined;
+        this.children = undefined;
 
     }
+
+    /**
+     * Builds a Category based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            build() {
+                return new Category(this);
+            }
+        }
+        return Builder;
+    }
 }
-module.exports.Category = Category
+module.exports.Category = Category;

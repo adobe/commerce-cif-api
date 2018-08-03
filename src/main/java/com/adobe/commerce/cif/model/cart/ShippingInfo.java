@@ -20,6 +20,9 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class ShippingInfo {
     
+    @ApiModelProperty(value = "The shipping method id.", required = true)
+    protected String id;
+
     @ApiModelProperty(value = "The shipping method name.", required = true)
     protected String name;
     
@@ -30,10 +33,7 @@ public class ShippingInfo {
     protected Price discountedPrice;
 
     @ApiModelProperty(value = "The tax for the shipping.", required = true)
-    protected TaxInfo shippingTaxInfo;
-
-    @ApiModelProperty(value = "The shipping method id.", required = true)
-    protected String id;
+    protected TaxInfo taxInfo;
     
     public String getName() {
         return name;
@@ -67,11 +67,11 @@ public class ShippingInfo {
         this.id = id;
     }
 
-    public TaxInfo getShippingTaxInfo() {
-        return shippingTaxInfo;
+    public TaxInfo getTaxInfo() {
+        return taxInfo;
     }
 
-    public void setShippingTaxInfo(TaxInfo shippingTaxInfo) {
-        this.shippingTaxInfo = shippingTaxInfo;
+    public void setTaxInfo(TaxInfo taxInfo) {
+        this.taxInfo = taxInfo;
     }
 }

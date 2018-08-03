@@ -16,44 +16,48 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.126
  */
+
+const ProductVariant = require('./ProductVariant.js').ProductVariant;
+const Price = require('./Price.js').Price;
+const Discount = require('./Discount.js').Discount;
+const TaxInfo = require('./TaxInfo.js').TaxInfo;
+
 class CartEntry {
 
     /**
-     * Represents a CartEntry
+     * Constructs a CartEntry based on its enclosed builder.
      * @constructor 
-     * @param {string} id
-     * @param {ProductVariant} productVariant
-     * @param {integer} quantity
+     * @param {Builder} builder the CartEntry builder
      */
-    constructor(id, productVariant, quantity) {
+    constructor(builder) {
         /**
          * The id for the entry.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * The quantity for the entry.
          * @type {integer}
          */
-        this.quantity = quantity;
+        this.quantity = builder.quantity;
 
         /**
          * The ProductVariant for the entry.
          * @type {ProductVariant}
          */
-        this.productVariant = productVariant;
+        this.productVariant = builder.productVariant;
 
         /**
          * The product variant item price.
          * @type {Price}
          */
-        this.unitPrice = undefined;
+        this.unitPrice = builder.unitPrice;
 
         /**
-         * A list of all applied discounts
+         * A list of all applied discounts.
          * @type {Discount[]}
          */
         this.discounts = undefined;
@@ -62,26 +66,68 @@ class CartEntry {
          * The calculated cart entry price. May or may not include taxes, depending on the tax policy.
          * @type {Price}
          */
-        this.cartEntryPrice = undefined;
+        this.price = builder.price;
 
         /**
          * The cart entry price after all discounts have been applied.
          * @type {Price}
          */
-        this.discountedCartEntryPrice = undefined;
+        this.discountedPrice = undefined;
 
         /**
-         * The cart entry tax info.
+         * The cart entry tax info. Until a shipping address is set, this field is typically not set.
          * @type {TaxInfo}
          */
-        this.cartEntryTaxInfo = undefined;
+        this.taxInfo = undefined;
 
         /**
          * Cart entry type.
          * @type {string}
          */
-        this.type = undefined;
+        this.type = builder.type;
 
     }
+
+    /**
+     * Builds a CartEntry based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withPrice(price) {
+                this.price = price;
+                return this;
+            }
+
+            withProductVariant(productVariant) {
+                this.productVariant = productVariant;
+                return this;
+            }
+
+            withQuantity(quantity) {
+                this.quantity = quantity;
+                return this;
+            }
+
+            withType(type) {
+                this.type = type;
+                return this;
+            }
+
+            withUnitPrice(unitPrice) {
+                this.unitPrice = unitPrice;
+                return this;
+            }
+
+            build() {
+                return new CartEntry(this);
+            }
+        }
+        return Builder;
+    }
 }
-module.exports.CartEntry = CartEntry
+module.exports.CartEntry = CartEntry;

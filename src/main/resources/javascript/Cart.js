@@ -16,28 +16,49 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.126
  */
+
+const CartEntry = require('./CartEntry.js').CartEntry;
+const Price = require('./Price.js').Price;
+const TaxInfo = require('./TaxInfo.js').TaxInfo;
+const Address = require('./Address.js').Address;
+const ShippingInfo = require('./ShippingInfo.js').ShippingInfo;
+const Discount = require('./Discount.js').Discount;
+const Payment = require('./Payment.js').Payment;
+const Coupon = require('./Coupon.js').Coupon;
+
 class Cart {
 
     /**
-     * Represents a Cart
+     * Constructs a Cart based on its enclosed builder.
      * @constructor 
-     * @param {CartEntry[]} cartEntries
-     * @param {string} id
+     * @param {Builder} builder the Cart builder
      */
-    constructor(cartEntries, id) {
+    constructor(builder) {
+        /**
+         * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.createdAt = undefined;
+
+        /**
+         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.lastModifiedAt = undefined;
+
         /**
          * The id for the cart.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * The list of the entries in the cart.
          * @type {CartEntry[]}
          */
-        this.cartEntries = cartEntries;
+        this.entries = builder.entries;
 
         /**
          * If set, this defines the customer owning this cart. If not set, the cart is an anonymous cart.
@@ -46,13 +67,13 @@ class Cart {
         this.customerId = undefined;
 
         /**
-         * The net total price for the cart, including discounts, and shipping, but excluding any taxes.
+         * The net total price for the cart, including discounts, and shipping, but excluding any taxes. Until a shipping address is set, this field is typically not set.
          * @type {Price}
          */
         this.netTotalPrice = undefined;
 
         /**
-         * The gross total price for the cart, including discounts, shipping, and all taxes.
+         * The gross total price for the cart, including discounts, shipping, and all taxes. Until a shipping address is set, this field is typically not set.
          * @type {Price}
          */
         this.grossTotalPrice = undefined;
@@ -61,31 +82,19 @@ class Cart {
          * The product subtotal for the cart, including discounts and with or without taxes depending if the product prices include taxes or not.Until a shipping address is set, this field is typically used as the temporary cart total until it is known if prices include taxes or not.
          * @type {Price}
          */
-        this.totalProductPrice = undefined;
+        this.productTotalPrice = builder.productTotalPrice;
 
         /**
-         * The cart tax info, including cart entries tax and shipping info tax.
+         * The cart tax info, including cart entries tax and shipping info tax. Until a shipping address is set, this field is typically not set.
          * @type {TaxInfo}
          */
-        this.cartTaxInfo = undefined;
+        this.taxInfo = undefined;
 
         /**
-         * Indicates if taxes are included or not in all the prices.
+         * Indicates if taxes are included or not in all the prices. Until a shipping address is set, this field is typically not set.
          * @type {boolean}
          */
         this.taxIncludedInPrices = undefined;
-
-        /**
-         * The date when this cart was created.
-         * @type {string}
-         */
-        this.createdDate = undefined;
-
-        /**
-         * The date when this cart was last modified.
-         * @type {string}
-         */
-        this.lastModifiedDate = undefined;
 
         /**
          * The shipping address for the cart products.
@@ -121,7 +130,7 @@ class Cart {
          * The currency for the cart.
          * @type {string}
          */
-        this.currency = undefined;
+        this.currency = builder.currency;
 
         /**
          * A list of all coupons of the cart.
@@ -130,5 +139,37 @@ class Cart {
         this.coupons = undefined;
 
     }
+
+    /**
+     * Builds a Cart based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withCurrency(currency) {
+                this.currency = currency;
+                return this;
+            }
+
+            withEntries(entries) {
+                this.entries = entries;
+                return this;
+            }
+
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withProductTotalPrice(productTotalPrice) {
+                this.productTotalPrice = productTotalPrice;
+                return this;
+            }
+
+            build() {
+                return new Cart(this);
+            }
+        }
+        return Builder;
+    }
 }
-module.exports.Cart = Cart
+module.exports.Cart = Cart;

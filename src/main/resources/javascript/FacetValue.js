@@ -16,35 +16,34 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.126
  */
+
 class FacetValue {
 
     /**
-     * Represents a FacetValue
+     * Constructs a FacetValue based on its enclosed builder.
      * @constructor 
-     * @param {string} id
-     * @param {integer} occurrences
-     * @param {object} value
+     * @param {Builder} builder the FacetValue builder
      */
-    constructor(id, occurrences, value) {
+    constructor(builder) {
         /**
          * The id for this facet.
          * @type {string}
          */
-        this.id = id;
+        this.id = builder.id;
 
         /**
          * The value for this facet.
          * @type {object}
          */
-        this.value = value;
+        this.value = builder.value;
 
         /**
          * The number of facet value occurrences.
          * @type {integer}
          */
-        this.occurrences = occurrences;
+        this.occurrences = undefined;
 
         /**
          * Indicates if the current facet value was selected.
@@ -53,5 +52,27 @@ class FacetValue {
         this.selected = undefined;
 
     }
+
+    /**
+     * Builds a FacetValue based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withValue(value) {
+                this.value = value;
+                return this;
+            }
+
+            build() {
+                return new FacetValue(this);
+            }
+        }
+        return Builder;
+    }
 }
-module.exports.FacetValue = FacetValue
+module.exports.FacetValue = FacetValue;

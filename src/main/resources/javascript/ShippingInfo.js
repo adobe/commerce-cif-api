@@ -16,28 +16,37 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.126
  */
+
+const Price = require('./Price.js').Price;
+const TaxInfo = require('./TaxInfo.js').TaxInfo;
+
 class ShippingInfo {
 
     /**
-     * Represents a ShippingInfo
+     * Constructs a ShippingInfo based on its enclosed builder.
      * @constructor 
-     * @param {string} name
-     * @param {Price} price
+     * @param {Builder} builder the ShippingInfo builder
      */
-    constructor(name, price) {
+    constructor(builder) {
+        /**
+         * The shipping method id.
+         * @type {string}
+         */
+        this.id = builder.id;
+
         /**
          * The shipping method name.
          * @type {string}
          */
-        this.name = name;
+        this.name = builder.name;
 
         /**
          * The shipping price.
          * @type {Price}
          */
-        this.price = price;
+        this.price = builder.price;
 
         /**
          * The discounted shipping price.
@@ -49,14 +58,40 @@ class ShippingInfo {
          * The tax for the shipping.
          * @type {TaxInfo}
          */
-        this.shippingTaxInfo = undefined;
-
-        /**
-         * The shipping method id.
-         * @type {string}
-         */
-        this.id = undefined;
+        this.taxInfo = builder.taxInfo;
 
     }
+
+    /**
+     * Builds a ShippingInfo based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withName(name) {
+                this.name = name;
+                return this;
+            }
+
+            withPrice(price) {
+                this.price = price;
+                return this;
+            }
+
+            withTaxInfo(taxInfo) {
+                this.taxInfo = taxInfo;
+                return this;
+            }
+
+            build() {
+                return new ShippingInfo(this);
+            }
+        }
+        return Builder;
+    }
 }
-module.exports.ShippingInfo = ShippingInfo
+module.exports.ShippingInfo = ShippingInfo;

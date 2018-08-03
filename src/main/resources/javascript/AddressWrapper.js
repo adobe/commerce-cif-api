@@ -16,27 +16,42 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.126
  */
+
+const Address = require('./Address.js').Address;
+
 class AddressWrapper {
 
     /**
-     * Represents a AddressWrapper
+     * Constructs a AddressWrapper based on its enclosed builder.
      * @constructor 
+     * @param {Builder} builder the AddressWrapper builder
      */
-    constructor() {
+    constructor(builder) {
         /**
          * The address object.
          * @type {Address}
          */
-        this.address = undefined;
-
-        /**
-         * If the cart belongs to a customer, this must be set to the customer id owning that cart.
-         * @type {string}
-         */
-        this.customerId = undefined;
+        this.address = builder.address;
 
     }
+
+    /**
+     * Builds a AddressWrapper based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withAddress(address) {
+                this.address = address;
+                return this;
+            }
+
+            build() {
+                return new AddressWrapper(this);
+            }
+        }
+        return Builder;
+    }
 }
-module.exports.AddressWrapper = AddressWrapper
+module.exports.AddressWrapper = AddressWrapper;

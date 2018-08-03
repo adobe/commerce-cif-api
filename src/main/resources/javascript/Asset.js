@@ -16,27 +16,51 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 0.1.123
+ * @version 0.1.126
  */
+
 class Asset {
 
     /**
-     * Represents a Asset
+     * Constructs a Asset based on its enclosed builder.
      * @constructor 
+     * @param {Builder} builder the Asset builder
      */
-    constructor() {
+    constructor(builder) {
         /**
          * The id of the asset.
          * @type {string}
          */
-        this.id = undefined;
+        this.id = builder.id;
 
         /**
          * The url of the asset.
          * @type {string}
          */
-        this.url = undefined;
+        this.url = builder.url;
 
     }
+
+    /**
+     * Builds a Asset based on API required properties.
+     */
+    static get Builder() {
+        class Builder {
+            withId(id) {
+                this.id = id;
+                return this;
+            }
+
+            withUrl(url) {
+                this.url = url;
+                return this;
+            }
+
+            build() {
+                return new Asset(this);
+            }
+        }
+        return Builder;
+    }
 }
-module.exports.Asset = Asset
+module.exports.Asset = Asset;
