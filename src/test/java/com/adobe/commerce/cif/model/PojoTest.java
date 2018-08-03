@@ -65,9 +65,10 @@ public class PojoTest {
                 .filter( clazz -> !(clazz.getSimpleName().contains("Test") || clazz.isEnum() || Modifier.isAbstract(clazz.getModifiers())))
                 .forEach(clazz -> {
                     try {
+                        LOGGER.debug("Checking setter/getter for " + clazz.getName());
                         testSettersAndGettersFor(clazz);
                     } catch (Exception e) {
-                       throw new RuntimeException(e);
+                       LOGGER.error(e.getMessage(), e);
                     }
                 });
     }

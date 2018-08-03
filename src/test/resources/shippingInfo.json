@@ -15,7 +15,7 @@
         "value": {
             "currency": "USD",
             "amount": "900",
-            "country":"US"
+            "country": "US"
         },
         "portions": [
             {
@@ -23,7 +23,7 @@
                 "value": {
                     "currency": "USD",
                     "amount": "900",
-                    "country":"US"
+                    "country": "US"
                 }
             }
         ]
