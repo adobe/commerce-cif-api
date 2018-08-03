@@ -52,11 +52,11 @@ public class ShippingInfo {
     }
 
     public MoneyValue getCost() {
-        return discountedCost;
+        return cost;
     }
 
     public void setCost(MoneyValue cost) {
-        this.discountedCost = cost;
+        this.cost = cost;
     }
 
     public String getId() {

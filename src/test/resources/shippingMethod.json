@@ -2,7 +2,7 @@
     "id": "shipping-method-1",
     "name": "two-business-day",
     "description": "Flat Rate 2-day Shipping",
-    "price": {
+    "cost": {
         "country": "US",
         "currency": "USD",
         "amount": 2500

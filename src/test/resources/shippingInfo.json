@@ -1,12 +1,16 @@
 {
     "id": "shipping-1",
     "name": "1-day shipping",
-    "price": {
+    "cost": {
         "country": "US",
         "currency": "USD",
         "amount": 1000
     },
-    "discountedPrice": {},
+    "discountedCost": {
+        "country": "US",
+        "currency": "USD",
+        "amount": 1000
+    },
     "taxInfo": {
         "value": {
             "currency": "USD",
