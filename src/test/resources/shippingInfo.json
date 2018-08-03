@@ -9,17 +9,17 @@
     "discountedPrice": {},
     "taxInfo": {
         "value": {
-          "currency": "USD",
-          "amount": "900",
-          "country":"US"
+            "currency": "USD",
+            "amount": "900",
+            "country":"US"
         },
         "portions": [
             {
                 "name": "Fuel tax 10%",
                 "value": {
-                  "currency": "USD",
-                  "amount": "900",
-                  "country":"US"
+                    "currency": "USD",
+                    "amount": "900",
+                    "country":"US"
                 }
             }
         ]

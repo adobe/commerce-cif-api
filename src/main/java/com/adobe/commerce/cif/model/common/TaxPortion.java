@@ -21,7 +21,7 @@ public class TaxPortion {
     @ApiModelProperty(value = "The name for this tax portion.", required = true)
     protected String name;
 
-    @ApiModelProperty(value = "The amount in cents for the tax portion.", required = true)
+    @ApiModelProperty(value = "The value of the tax portion.", required = true)
     protected MoneyValue value;
 
     public String getName() {

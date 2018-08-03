@@ -2,7 +2,7 @@
     "id": "payment-1",
     "customer": {},
     "method": "Credit-Card payment",
-    "amount": {
+    "value": {
         "country": "US",
         "currency": "USD",
         "amount": 9000

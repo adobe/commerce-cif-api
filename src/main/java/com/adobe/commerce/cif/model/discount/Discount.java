@@ -31,7 +31,7 @@ public class Discount {
     @ApiModelProperty(value = "The description associated with the discount. May be displayed in the UI.")
     protected String description;
 
-    @ApiModelProperty(value = "The amount which is discounted. Subtract this to obtain new price.", required = true)
+    @ApiModelProperty(value = "The value which is discounted.", required = true)
     protected MoneyValue value;
 
     public String getId() {

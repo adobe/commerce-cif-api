@@ -28,8 +28,8 @@ public class ShippingMethod {
     @ApiModelProperty(value = "The description of the shipping method.")
     protected String description;
     
-    @ApiModelProperty(value = "The price of the shipping method aka shipping cost.", required = true)
-    protected MoneyValue price;
+    @ApiModelProperty(value = "The cost of shipping.", required = true)
+    protected MoneyValue cost;
 
     public String getId() {
         return id;
@@ -55,11 +55,11 @@ public class ShippingMethod {
         this.description = description;
     }
 
-    public MoneyValue getPrice() {
-        return price;
+    public MoneyValue getCost() {
+        return cost;
     }
 
-    public void setPrice(MoneyValue price) {
-        this.price = price;
+    public void setCost(MoneyValue cost) {
+        this.cost = cost;
     }
 }

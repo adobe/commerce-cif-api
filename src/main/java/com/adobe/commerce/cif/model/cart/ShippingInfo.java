@@ -26,11 +26,11 @@ public class ShippingInfo {
     @ApiModelProperty(value = "The shipping method name.", required = true)
     protected String name;
     
-    @ApiModelProperty(value = "The shipping price.", required = true)
-    protected MoneyValue price;
+    @ApiModelProperty(value = "The cost of the shipping.", required = true)
+    protected MoneyValue cost;
     
-    @ApiModelProperty(value = "The discounted shipping price.")
-    protected MoneyValue discountedPrice;
+    @ApiModelProperty(value = "The discounted shipping cost.")
+    protected MoneyValue discountedCost;
 
     @ApiModelProperty(value = "The tax for the shipping.", required = true)
     protected TaxInfo taxInfo;
@@ -43,20 +43,20 @@ public class ShippingInfo {
         this.name = name;
     }
 
-    public MoneyValue getPrice() {
-        return price;
+    public MoneyValue getDiscountedCost() {
+        return discountedCost;
     }
 
-    public void setPrice(MoneyValue price) {
-        this.price = price;
+    public void setDiscountedCost(MoneyValue discountedCost) {
+        this.discountedCost = discountedCost;
     }
 
-    public MoneyValue getDiscountedPrice() {
-        return discountedPrice;
+    public MoneyValue getCost() {
+        return discountedCost;
     }
 
-    public void setDiscountedPrice(MoneyValue discountedPrice) {
-        this.discountedPrice = discountedPrice;
+    public void setCost(MoneyValue cost) {
+        this.discountedCost = cost;
     }
 
     public String getId() {

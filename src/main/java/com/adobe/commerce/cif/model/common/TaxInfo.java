@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class TaxInfo {
 
-    @ApiModelProperty(value = "The amount in cents for the tax info.", required = true)
+    @ApiModelProperty(value = "The value of the tax info, which is the total value of the tax portions.", required = true)
     protected MoneyValue value;
 
     @ApiModelProperty(value = "The portions for this tax.")
