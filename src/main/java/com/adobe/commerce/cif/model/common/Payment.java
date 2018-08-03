@@ -30,7 +30,7 @@ public class Payment extends ModelWithDates {
     protected String method;
 
     @ApiModelProperty(value = "The amount of the payment.")
-    protected Price amount;
+    protected MoneyValue amount;
 
     @ApiModelProperty(value = "The token used to communicate with the payment service provider.")
     protected String token;
@@ -65,11 +65,11 @@ public class Payment extends ModelWithDates {
         this.method = method;
     }
 
-    public Price getAmount() {
+    public MoneyValue getAmount() {
         return amount;
     }
 
-    public void setAmount(Price amount) {
+    public void setAmount(MoneyValue amount) {
         this.amount = amount;
     }
 

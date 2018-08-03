@@ -18,15 +18,15 @@ import java.math.BigDecimal;
 
 import io.swagger.annotations.ApiModelProperty;
 
-public class Price {
+public class MoneyValue {
 
-    @ApiModelProperty(value = "The currency code for that price.", required = true)
+    @ApiModelProperty(value = "The currency code for this money value.", required = true)
     protected String currency;
 
-    @ApiModelProperty(value = "The amount in cents for that price.", required = true)
+    @ApiModelProperty(value = "The amount in cents of this money value.", required = true)
     protected BigDecimal amount;
 
-    @ApiModelProperty(value = "The country code for that price.")
+    @ApiModelProperty(value = "The country code for this money value.")
     protected String country;
 
     public String getCurrency() {

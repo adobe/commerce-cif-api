@@ -14,7 +14,7 @@
 
 package com.adobe.commerce.cif.model.cart;
 
-import com.adobe.commerce.cif.model.common.Price;
+import com.adobe.commerce.cif.model.common.MoneyValue;
 import io.swagger.annotations.ApiModelProperty;
 
 public class ShippingMethod {
@@ -29,7 +29,7 @@ public class ShippingMethod {
     protected String description;
     
     @ApiModelProperty(value = "The price of the shipping method aka shipping cost.", required = true)
-    protected Price price;
+    protected MoneyValue price;
 
     public String getId() {
         return id;
@@ -55,11 +55,11 @@ public class ShippingMethod {
         this.description = description;
     }
 
-    public Price getPrice() {
+    public MoneyValue getPrice() {
         return price;
     }
 
-    public void setPrice(Price price) {
+    public void setPrice(MoneyValue price) {
         this.price = price;
     }
 }
