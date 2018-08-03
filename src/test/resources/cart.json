@@ -54,7 +54,7 @@
             "taxInfo": {
                 "value": {
                     "currency": "USD",
-                    "amount": "900",
+                    "amount": 1000,
                     "country": "US"
                 },
                 "portions": [
@@ -62,7 +62,7 @@
                         "name": "VAT 10%",
                         "value": {
                             "currency": "USD",
-                            "amount": "900",
+                            "amount": 1000,
                             "country": "US"
                         }
                     }
@@ -74,7 +74,7 @@
     "taxInfo": {
         "value": {
             "currency": "USD",
-            "amount": "900",
+            "amount": 1000,
             "country": "US"
         },
         "portions": [
@@ -82,7 +82,7 @@
                 "name": "VAT 10%",
                 "value": {
                     "currency": "USD",
-                    "amount": "900",
+                    "amount": 1000,
                     "country": "US"
                 }
             }

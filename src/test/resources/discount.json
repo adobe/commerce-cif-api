@@ -5,7 +5,7 @@
     "description": "Get $20 discount for orders over $200",
     "value": {
         "currency": "USD",
-        "amount": "900",
+        "amount": 2000,
         "country":"US"
     }
 }
