@@ -320,6 +320,7 @@
                 </executions>
             </plugin>
             
+            <!-- Enforce semantic versioning -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-enforcer-plugin</artifactId>
@@ -347,7 +348,7 @@
 		                </configuration>
 		            </execution>
 		        </executions>
-		      </plugin>
+		    </plugin>
         </plugins>
     </build>
 
