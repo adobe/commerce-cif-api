@@ -341,7 +341,7 @@ public interface CartApi {
         @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_JSON)
-    Cart postPayments(
+    Cart postCartPayment(
         @ApiParam(value = "The ID of the cart for which the payment will be set.", required = true)
         @PathParam("id") String id,
 
@@ -377,7 +377,7 @@ public interface CartApi {
         @ApiResponse(code = HTTP_FORBIDDEN, message = HTTP_FORBIDDEN_MESSAGE, response = ErrorResponse.class),
         @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
-    Cart deletePayments(
+    Cart deleteCartPayment(
         @ApiParam(value = "The ID of the cart for which the payment will be deleted.", required = true)
         @PathParam("id") String id,
 
