@@ -23,14 +23,20 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import com.adobe.commerce.cif.model.category.Category;
+import com.adobe.commerce.cif.model.common.Asset;
+import com.adobe.commerce.cif.model.common.MoneyValue;
 import com.adobe.commerce.cif.model.common.PagedResponse;
 import com.adobe.commerce.cif.model.error.ErrorResponse;
 import com.adobe.commerce.cif.model.product.Product;
+import com.adobe.commerce.cif.model.product.ProductVariant;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+
+import java.util.List;
 
 import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE;
 import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE_DESC;
@@ -57,7 +63,139 @@ public interface ProductApi {
         String id,
 
         @ApiParam(value = ACCEPT_LANGUAGE_DESC)
-        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
+        @HeaderParam(ACCEPT_LANGUAGE)
+        String acceptLanguage
+    );
+
+    @GET
+    @Path("/{id}/prices")
+    @ApiOperation(value = "Returns the prices of a product by ID.")
+    @ApiResponses(value = {
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
+    })
+    List<MoneyValue> getProductPricesById(
+        @ApiParam(value = "The ID of the product.", required = true)
+        @PathParam("id")
+        String id,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE)
+        String acceptLanguage
+    );
+
+    @GET
+    @Path("/{id}/variants/{variantId}/prices")
+    @ApiOperation(value = "Returns the prices of a product variant. The product and its variant are identified by their ids.")
+    @ApiResponses(value = {
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
+    })
+    List<MoneyValue> getProductVariantPricesById(
+        @ApiParam(value = "The ID of the product.", required = true)
+        @PathParam("id")
+        String id,
+
+        @ApiParam(value = "The ID of the variant", required = true)
+        @PathParam("variantId")
+        String variantId,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE)
+        String acceptLanguage
+    );
+
+    @GET
+    @Path("/{id}/assets")
+    @ApiOperation(value = "Returns the assets of a product by ID.")
+    @ApiResponses(value = {
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
+    })
+    List<Asset> getProductAssetsById(
+        @ApiParam(value = "The ID of the product.", required = true)
+        @PathParam("id")
+        String id,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE)
+        String acceptLanguage
+    );
+
+    @GET
+    @Path("/{id}/variants/{variantId}/assets")
+    @ApiOperation(value = "Returns the assets of a product variant. The product and its variant are identified by their ids.")
+    @ApiResponses(value = {
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
+    })
+    List<Asset> getProductVariantAssetsById(
+        @ApiParam(value = "The ID of the product.", required = true)
+        @PathParam("id")
+        String id,
+
+        @ApiParam(value = "The ID of the variant.", required = true)
+        @PathParam("variantId")
+        String variantId,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE)
+        String acceptLanguage
+    );
+
+    @GET
+    @Path("/{id}/categories")
+    @ApiOperation(value = "Returns the categories of a product by ID.")
+    @ApiResponses(value = {
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
+    })
+    List<Category> getProductCategoriesById(
+        @ApiParam(value = "The ID of the product.", required = true)
+        @PathParam("id")
+        String id,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE)
+        String acceptLanguage
+    );
+
+    @GET
+    @Path("/{id}/variants/{variantId}/categories")
+    @ApiOperation(value = "Returns the categories of a product variant. The product and its variant are identified by their ids.")
+    @ApiResponses(value = {
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
+    })
+    List<Category> getProductVariantCategoriesById(
+        @ApiParam(value = "The ID of the product.", required = true)
+        @PathParam("id")
+        String id,
+
+        @ApiParam(value = "The ID of the variant.", required = true)
+        @PathParam("variantId")
+        String variantId,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE)
+        String acceptLanguage
+    );
+
+    @GET
+    @Path("/{id}/variants")
+    @ApiOperation(value = "Returns product variants by ID.")
+    @ApiResponses(value = {
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
+    })
+    List<ProductVariant> getProductVariantsById(
+        @ApiParam(value = "The ID of the product.", required = true)
+        @PathParam("id")
+        String id,
+
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE)
+        String acceptLanguage
     );
 
     @GET
