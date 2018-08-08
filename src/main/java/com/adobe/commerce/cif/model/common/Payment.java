@@ -26,8 +26,12 @@ public class Payment extends ModelWithDates {
             "anonymous customer.")
     protected Customer customer;
 
-    @ApiModelProperty(value = "The method for this payment like Card or Cash.", required = true)
+    @ApiModelProperty(value = "DEPRECATED. The method for this payment like Card or Cash.", required = true)
+    @Deprecated
     protected String method;
+
+    @ApiModelProperty(value = "The id of the payment method for this payment.", required = true)
+    protected String methodId;
 
     @ApiModelProperty(value = "The value of the payment.")
     protected MoneyValue value;
@@ -57,12 +61,30 @@ public class Payment extends ModelWithDates {
         this.customer = customer;
     }
 
+    /**
+     * @deprecated
+     * @return Payment Method
+     */
+    @Deprecated
     public String getMethod() {
         return method;
     }
 
+    /**
+     * @deprecated
+     * @param method Payment Method
+     */
+    @Deprecated
     public void setMethod(String method) {
         this.method = method;
+    }
+
+    public String getMethodId() {
+        return methodId;
+    }
+
+    public void setMethodId(String methodId) {
+        this.methodId = methodId;
     }
 
     public MoneyValue getValue() {

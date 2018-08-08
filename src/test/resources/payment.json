@@ -1,7 +1,8 @@
 {
     "id": "payment-1",
     "customer": {},
-    "method": "Credit-Card payment",
+    "method": "",
+    "methodId": "credit-card",
     "value": {
         "country": "US",
         "currency": "USD",

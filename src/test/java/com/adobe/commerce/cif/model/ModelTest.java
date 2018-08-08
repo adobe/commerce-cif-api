@@ -22,6 +22,7 @@ import java.util.HashSet;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.adobe.commerce.cif.model.common.PaymentMethod;
 import com.adobe.commerce.cif.model.cart.Cart;
 import com.adobe.commerce.cif.model.cart.Order;
 import com.adobe.commerce.cif.model.cart.ShippingInfo;
@@ -149,6 +150,13 @@ public class ModelTest {
         ShippingMethod shippingMethod = map("shippingMethod.json", ShippingMethod.class);
         FieldTester fieldTester = FieldTester.builder().build();
         fieldTester.assertAllFieldsNotNull(shippingMethod);
+    }
+
+    @Test
+    public void testPaymentMethod() throws Exception {
+        PaymentMethod paymentMethod = map("paymentMethod.json", PaymentMethod.class);
+        FieldTester fieldTester = FieldTester.builder().build();
+        fieldTester.assertAllFieldsNotNull(paymentMethod);
     }
     
     @Test

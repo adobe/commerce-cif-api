@@ -93,6 +93,7 @@
     "shippingInfo": {},
     "discounts": [],
     "payment": {},
+    "payments": [],
     "coupons": [
         {
             "id": "coupon-id",

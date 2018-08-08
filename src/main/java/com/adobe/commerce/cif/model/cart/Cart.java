@@ -63,8 +63,12 @@ public class Cart extends ModelWithDates {
     @ApiModelProperty(value = "The billing address for the cart.")
     protected Address billingAddress;
 
-    @ApiModelProperty(value = "The payment details for the cart.")
+    @ApiModelProperty(value = "DEPRECATED. The payment details for the cart.")
+    @Deprecated
     protected Payment payment;
+
+    @ApiModelProperty(value = "A list of payment details for the cart.")
+    protected List<Payment> payments;
 
     @ApiModelProperty(value = "The currency for the cart.", required = true)
     protected String currency;
@@ -152,12 +156,30 @@ public class Cart extends ModelWithDates {
         this.billingAddress = billingAddress;
     }
 
+    /**
+     * @deprecated
+     * @return payment Payment.
+     */
+    @Deprecated
     public Payment getPayment() {
         return payment;
     }
 
+    /**
+     * @deprecated
+     * @param payment Payment.
+     */
+    @Deprecated
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public List<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
     }
 
     public TaxInfo getTaxInfo() {

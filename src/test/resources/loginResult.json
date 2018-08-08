@@ -22,6 +22,7 @@
         "shippingInfo": {},
         "discounts": [],
         "payment": {},
+        "payments": [],
         "coupons": [],
         "createdAt": "2017-01-11T14:58:29.432Z",
         "lastModifiedAt": "2017-07-06T18:09:42.687Z"
