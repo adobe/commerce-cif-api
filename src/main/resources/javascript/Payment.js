@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 const Customer = require('./Customer.js').Customer;
@@ -55,10 +55,16 @@ class Payment {
         this.customer = undefined;
 
         /**
-         * The method for this payment like Card or Cash.
+         * DEPRECATED. The method for this payment like Card or Cash.
          * @type {string}
          */
         this.method = builder.method;
+
+        /**
+         * The id of the payment method for this payment.
+         * @type {string}
+         */
+        this.methodId = builder.methodId;
 
         /**
          * The value of the payment.
@@ -98,6 +104,11 @@ class Payment {
 
             withMethod(method) {
                 this.method = method;
+                return this;
+            }
+
+            withMethodId(methodId) {
+                this.methodId = methodId;
                 return this;
             }
 

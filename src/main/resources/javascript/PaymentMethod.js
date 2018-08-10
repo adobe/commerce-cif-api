@@ -19,28 +19,28 @@
  * @version 1.1.0
  */
 
-class Coupon {
+class PaymentMethod {
 
     /**
-     * Constructs a Coupon based on its enclosed builder.
+     * Constructs a PaymentMethod based on its enclosed builder.
      * @constructor 
-     * @param {Builder} builder the Coupon builder
+     * @param {Builder} builder the PaymentMethod builder
      */
     constructor(builder) {
         /**
-         * The id of the coupon instance applied to a cart. If not supported by commerce engine, should be equal to code.
+         * The id of the payment method.
          * @type {string}
          */
         this.id = builder.id;
 
         /**
-         * The code to activate the coupon.
+         * The name of the payment method.
          * @type {string}
          */
-        this.code = builder.code;
+        this.name = builder.name;
 
         /**
-         * The description of the coupon.
+         * The description of the payment method.
          * @type {string}
          */
         this.description = undefined;
@@ -48,25 +48,25 @@ class Coupon {
     }
 
     /**
-     * Builds a Coupon based on API required properties.
+     * Builds a PaymentMethod based on API required properties.
      */
     static get Builder() {
         class Builder {
-            withCode(code) {
-                this.code = code;
-                return this;
-            }
-
             withId(id) {
                 this.id = id;
                 return this;
             }
 
+            withName(name) {
+                this.name = name;
+                return this;
+            }
+
             build() {
-                return new Coupon(this);
+                return new PaymentMethod(this);
             }
         }
         return Builder;
     }
 }
-module.exports.Coupon = Coupon;
+module.exports.PaymentMethod = PaymentMethod;

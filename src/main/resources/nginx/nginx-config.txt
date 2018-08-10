@@ -5,7 +5,7 @@
 #    before the first location directive that already exists in the file
 # 3) Restart the Openwhisk nginx/edge component by running "wskdev edge"
 #
-# CCIF API Version 1.0.0
+# CCIF API Version 1.1.0
 
 # set $controller "http://controllers";
 set $ow_namespace "your-namespace";
@@ -98,6 +98,33 @@ location ~ ^/commerce/carts/(?<id>[^/]+)/payment$ {
   if ($request_method = DELETE) {
     rewrite ^ /api/v1/web/$ow_namespace/default/deletePayment.http?id=${id} break;
   }
+  proxy_pass $controller;
+  proxy_read_timeout 70s;
+}
+
+location ~ ^/commerce/carts/(?<id>[^/]+)/paymentmethods$ {
+  if ($request_method != GET) {
+    return 405;
+  }
+  rewrite ^ /api/v1/web/$ow_namespace/default/getPaymentMethods.http?id=${id} break;
+  proxy_pass $controller;
+  proxy_read_timeout 70s;
+}
+
+location ~ ^/commerce/carts/(?<id>[^/]+)/payments$ {
+  if ($request_method != POST) {
+    return 405;
+  }
+  rewrite ^ /api/v1/web/$ow_namespace/default/postCartPayment.http?id=${id} break;
+  proxy_pass $controller;
+  proxy_read_timeout 70s;
+}
+
+location ~ ^/commerce/carts/(?<id>[^/]+)/payments/(?<paymentId>[^/]+)$ {
+  if ($request_method != DELETE) {
+    return 405;
+  }
+  rewrite ^ /api/v1/web/$ow_namespace/default/deleteCartPayment.http?id=${id}&paymentId=${paymentId} break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }

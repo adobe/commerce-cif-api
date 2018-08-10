@@ -13,7 +13,7 @@ Adobe Commerce Cloud API
 
 
 
-**Version** 1.0.0
+**Version** 1.1.0
 
 [**Terms of Service**]()
 
@@ -1152,8 +1152,8 @@ Adobe Commerce Cloud API
 
 ### POST
 
-
-<a id="postPayment">Creates a payment for this shopping cart.</a>
+-deprecated-
+<a id="postPayment">DEPRECATED. Creates a payment for this shopping cart.</a>
 
 
 
@@ -1254,8 +1254,8 @@ Adobe Commerce Cloud API
 
 
 ### DELETE
-
-<a id="deletePayment">Removes the payment from the shopping cart.</a>
+-deprecated-
+<a id="deletePayment">DEPRECATED. Removes the payment from the shopping cart.</a>
 
 
 
@@ -1289,6 +1289,339 @@ Adobe Commerce Cloud API
     <td>yes</td>
     <td>
         The ID of the cart for which the payment will be deleted.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+<tr>
+    <th>Accept-Language</th>
+    <td>header</td>
+    <td>no</td>
+    <td>
+        The languages the client is able to understand, and which locale variant is preferred.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** application/json
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | OK. | <a href="#/definitions/Cart">Cart</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+
+
+
+
+
+
+
+
+
+
+
+
+## /carts/{id}/paymentmethods
+
+
+### GET
+
+<a id="getPaymentMethods">Retrieves the available payment methods for the current cart.</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>id</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>
+        The id of the cart.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+<tr>
+    <th>Accept-Language</th>
+    <td>header</td>
+    <td>no</td>
+    <td>
+        The languages the client is able to understand, and which locale variant is preferred.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** application/json
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | successful operation | Array[<a href="#/definitions/PaymentMethod">PaymentMethod</a>]|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /carts/{id}/payments
+
+
+
+
+
+
+### POST
+
+
+<a id="postCartPayment">Adds a payment to this shopping cart.</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+**Content-Type: ** application/json
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>id</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>
+        The ID of the cart for which the payment will be set.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+<tr>
+    <th>body</th>
+    <td>body</td>
+    <td>yes</td>
+    <td>
+        The payment to create. If the cart belongs to a customer, the customer id must be set.
+        
+    </td>
+    <td> - </td>
+
+    <td>
+    
+    <a href="#/definitions/PaymentWrapper">PaymentWrapper</a> 
+    </td>
+
+</tr>
+
+<tr>
+    <th>Accept-Language</th>
+    <td>header</td>
+    <td>no</td>
+    <td>
+        The languages the client is able to understand, and which locale variant is preferred.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** application/json
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | OK. | <a href="#/definitions/Cart">Cart</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 403    | Forbidden. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /carts/{id}/payments/{paymentId}
+
+
+
+
+
+
+
+
+### DELETE
+
+<a id="deleteCartPayment">Removes the payment with the given ID from the shopping cart.</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>id</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>
+        The ID of the cart for which the payment will be deleted.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+<tr>
+    <th>paymentId</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>
+        The ID of the payment which will be deleted.
         
     </td>
     <td> - </td>
@@ -4589,7 +4922,22 @@ The name and description properties will be stored as localized strings in the l
                 
             </td>
             <td>optional</td>
-            <td>The payment details for the cart.</td>
+            <td>DEPRECATED. The payment details for the cart.</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>payments</td>
+            <td>
+                
+                
+                    array[<a href="#/definitions/Payment">Payment</a>]
+                
+                
+                
+            </td>
+            <td>optional</td>
+            <td>A list of payment details for the cart.</td>
             <td></td>
         </tr>
     
@@ -6077,7 +6425,20 @@ The name and description properties will be stored as localized strings in the l
                 
             </td>
             <td>required</td>
-            <td>The method for this payment like Card or Cash.</td>
+            <td>DEPRECATED. The method for this payment like Card or Cash.</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>methodId</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>required</td>
+            <td>The id of the payment method for this payment.</td>
             <td></td>
         </tr>
     
@@ -6130,6 +6491,58 @@ The name and description properties will be stored as localized strings in the l
             </td>
             <td>optional</td>
             <td>The external status message/text for the payment.</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+## <a name="/definitions/PaymentMethod">PaymentMethod</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>id</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>required</td>
+            <td>The id of the payment method.</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>name</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>required</td>
+            <td>The name of the payment method.</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>description</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>The description of the payment method.</td>
             <td></td>
         </tr>
     

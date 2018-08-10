@@ -36,6 +36,7 @@ module.exports.PagedResponseProduct = require('./PagedResponseProduct.js').Paged
 module.exports.PagedResponseShoppingList = require('./PagedResponseShoppingList.js').PagedResponseShoppingList;
 module.exports.PagedResponseShoppingListEntry = require('./PagedResponseShoppingListEntry.js').PagedResponseShoppingListEntry;
 module.exports.Payment = require('./Payment.js').Payment;
+module.exports.PaymentMethod = require('./PaymentMethod.js').PaymentMethod;
 module.exports.PaymentWrapper = require('./PaymentWrapper.js').PaymentWrapper;
 module.exports.Product = require('./Product.js').Product;
 module.exports.ProductVariant = require('./ProductVariant.js').ProductVariant;

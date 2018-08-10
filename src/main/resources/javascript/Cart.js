@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 const CartEntry = require('./CartEntry.js').CartEntry;
@@ -121,10 +121,16 @@ class Cart {
         this.billingAddress = undefined;
 
         /**
-         * The payment details for the cart.
+         * DEPRECATED. The payment details for the cart.
          * @type {Payment}
          */
         this.payment = undefined;
+
+        /**
+         * A list of payment details for the cart.
+         * @type {Payment[]}
+         */
+        this.payments = undefined;
 
         /**
          * The currency for the cart.
