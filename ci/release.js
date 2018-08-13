@@ -39,7 +39,6 @@ pomParser.parse(opts, function(err, response) {
     try {
         ci.gitImpersonate('CircleCi', 'noreply@circleci.com', () => {
             release(response.pomObject.project.version);
-            commit();
         });
     } finally {
         // Remove release tag
@@ -88,20 +87,4 @@ function release(pomVersion) {
     ci.sh('mvn -B -s ci/settings.xml clean release:prepare release:perform -DreleaseVersion=' + newVersion + ' -DdevelopmentVersion=' + nextVersion);
     
     ci.stage('RELEASE DONE');
-}
-
-function commit() {
-    // The maven release:perform goal does not commit the Javascript, Swagger, and Nginx generated files
-    // so we do this here after the release
-
-    ci.stage('COMMIT - Adding/staging/deleting all changes to the generated files');
-
-    ci.sh('git add -A src/main/resources/javascript/*');
-    ci.sh('git add -A src/main/resources/swagger/*');
-    ci.sh('git add -A src/main/resources/nginx/*');
-    ci.sh('git add -A docs/swagger.json');
-    ci.sh('git commit -m "@releng : automatically commit generated files after maven release:perform"');
-    ci.sh('git push git@github.com:adobe/commerce-cif-api.git');
-    
-    ci.stage('COMMIT DONE');
 }
