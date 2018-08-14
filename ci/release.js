@@ -18,6 +18,8 @@ const pomParser = require('pom-parser');
 const semver = require('semver');
 const CI = require('./ci.js');
 const ci = new CI();
+const fs = require('fs');
+const cp = require('child_process');
 
 ci.context();
 
@@ -38,7 +40,8 @@ pomParser.parse(opts, function(err, response) {
  
     try {
         ci.gitImpersonate('CircleCi', 'noreply@circleci.com', () => {
-            release(response.pomObject.project.version);
+            let releasedVersion = release(response.pomObject.project.version);
+            updateSwaggerUiIndex(releasedVersion);
         });
     } finally {
         // Remove release tag
@@ -87,4 +90,35 @@ function release(pomVersion) {
     ci.sh('mvn -B -s ci/settings.xml clean release:prepare release:perform -DreleaseVersion=' + newVersion + ' -DdevelopmentVersion=' + nextVersion);
     
     ci.stage('RELEASE DONE');
+    return newVersion;
+}
+
+/**
+ * Updates the Swagger UI index.html file with the newly release Swagger specification
+ * 
+ * @param {*} releasedVersion The newly released version.
+ */
+function updateSwaggerUiIndex(releasedVersion) {
+    // The release tag is 1 commit before the last maven release:prepare commit
+    let releaseCommit = cp.execSync(`git rev-parse HEAD~1`).toString().trim();
+
+    let index = fs.readFileSync(__dirname + '/../docs/index.html', 'utf-8');
+
+    // Parses the urls array, adds the new Swagger link, and replaces the current file 
+    let urls = eval(index.match(/urls: (\[[\s\S]*?\])/)[1]);
+    urls.unshift({
+        url: `https://raw.githubusercontent.com/adobe/commerce-cif-api/${releaseCommit}/docs/swagger.json`,
+        name: `CIF Cloud API ${releasedVersion}`
+    });
+    index = index.replace(/urls: [\s\S]*?\]/, 'urls: ' + JSON.stringify(urls, null, 4));
+
+    fs.writeFileSync(__dirname + '/../docs/index.html', index);
+
+    ci.stage('COMMIT - Adding Swagger UI new index file');
+
+    ci.sh('git add -A docs/index.html');
+    ci.sh('git commit -m "@releng : automatically commit Swagger UI index after maven release:perform"');
+    ci.sh('git push git@github.com:adobe/commerce-cif-api.git');
+    
+    ci.stage('COMMIT DONE');
 }

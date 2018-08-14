@@ -261,7 +261,7 @@
                 <version>1.10.0</version>
                 <configuration>
                     <pushChanges>false</pushChanges>
-                    <message>@releng [maven-scm] :prepare release ${project.artifactId}}-${project.version}</message>            
+                    <message>@releng [maven-scm] :prepare release ${project.artifactId}-${project.version}</message>            
                 </configuration>
             </plugin>
             
