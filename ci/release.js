@@ -40,8 +40,8 @@ pomParser.parse(opts, function(err, response) {
  
     try {
         ci.gitImpersonate('CircleCi', 'noreply@circleci.com', () => {
-            let releasedVersion = release(response.pomObject.project.version);
-            updateSwaggerUiIndex(releasedVersion);
+            release(response.pomObject.project.version);
+            updateSwaggerUiIndex();
         });
     } finally {
         // Remove release tag
@@ -90,15 +90,12 @@ function release(pomVersion) {
     ci.sh('mvn -B -s ci/settings.xml clean release:prepare release:perform -DreleaseVersion=' + newVersion + ' -DdevelopmentVersion=' + nextVersion);
     
     ci.stage('RELEASE DONE');
-    return newVersion;
 }
 
 /**
  * Updates the Swagger UI index.html file with the newly release Swagger specification
- * 
- * @param {*} releasedVersion The newly released version.
  */
-function updateSwaggerUiIndex(releasedVersion) {
+function updateSwaggerUiIndex() {
     let tags = cp.execSync(`git tag -l api-model-*`).toString().trim().split('\n').reverse();
 
     // We ignore all 0.x versions and versions 1.0.0 and 1.1.0
