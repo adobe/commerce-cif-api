@@ -18,6 +18,8 @@ const pomParser = require('pom-parser');
 const semver = require('semver');
 const CI = require('./ci.js');
 const ci = new CI();
+const fs = require('fs');
+const cp = require('child_process');
 
 ci.context();
 
@@ -39,7 +41,7 @@ pomParser.parse(opts, function(err, response) {
     try {
         ci.gitImpersonate('CircleCi', 'noreply@circleci.com', () => {
             release(response.pomObject.project.version);
-            commit();
+            updateSwaggerUiIndex();
         });
     } finally {
         // Remove release tag
@@ -90,17 +92,37 @@ function release(pomVersion) {
     ci.stage('RELEASE DONE');
 }
 
-function commit() {
-    // The maven release:perform goal does not commit the Javascript, Swagger, and Nginx generated files
-    // so we do this here after the release
+/**
+ * Updates the Swagger UI index.html file with the newly release Swagger specification
+ */
+function updateSwaggerUiIndex() {
+    let tags = cp.execSync(`git tag -l api-model-*`).toString().trim().split('\n').reverse();
 
-    ci.stage('COMMIT - Adding/staging/deleting all changes to the generated files');
+    // We ignore all 0.x versions and versions 1.0.0 and 1.1.0
+    // Due to an issue in the first releases, versions 1.0.0 and 1.1.0 have to be handled differently
+    tags = tags.filter(tag => !tag.startsWith('api-model-0.') && tag != 'api-model-1.0.0' && tag != 'api-model-1.1.0');
 
-    ci.sh('git add -A src/main/resources/javascript/*');
-    ci.sh('git add -A src/main/resources/swagger/*');
-    ci.sh('git add -A src/main/resources/nginx/*');
-    ci.sh('git add -A docs/swagger.json');
-    ci.sh('git commit -m "@releng : automatically commit generated files after maven release:perform"');
+    let urls = [
+        {url: "http://opensource.adobe.com/commerce-cif-api/swagger-1.1.0.json", name: "CIF Cloud API 1.1.0"},
+        {url: "http://opensource.adobe.com/commerce-cif-api/swagger-1.0.0.json", name: "CIF Cloud API 1.0.0"}
+    ];
+
+    tags.forEach(tag => {
+        urls.unshift({
+            url: `https://raw.githubusercontent.com/adobe/commerce-cif-api/${tag}/docs/swagger.json`,
+            name: 'CIF Cloud API ' + tag.substring(10)
+        });
+    });
+
+    // replace the 'urls' array in index.html
+    let index = fs.readFileSync(__dirname + '/../docs/index.html', 'utf-8');
+    index = index.replace(/urls: [\s\S]*?\]/, 'urls: ' + JSON.stringify(urls, null, 4));
+    fs.writeFileSync(__dirname + '/../docs/index.html', index);
+
+    ci.stage('COMMIT - Adding Swagger UI new index file');
+
+    ci.sh('git add -A docs/index.html');
+    ci.sh('git commit -m "@releng : automatically commit Swagger UI index after maven release:perform"');
     ci.sh('git push git@github.com:adobe/commerce-cif-api.git');
     
     ci.stage('COMMIT DONE');
