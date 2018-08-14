@@ -99,19 +99,27 @@ function release(pomVersion) {
  * @param {*} releasedVersion The newly released version.
  */
 function updateSwaggerUiIndex(releasedVersion) {
-    // The release tag is 1 commit before the last maven release:prepare commit
-    let releaseCommit = cp.execSync(`git rev-parse HEAD~1`).toString().trim();
+    let tags = cp.execSync(`git tag -l api-model-*`).toString().trim().split('\n').reverse();
 
-    let index = fs.readFileSync(__dirname + '/../docs/index.html', 'utf-8');
+    // We ignore all 0.x versions and versions 1.0.0 and 1.1.0
+    // Due to an issue in the first releases, versions 1.0.0 and 1.1.0 have to be handled differently
+    tags = tags.filter(tag => !tag.startsWith('api-model-0.') && tag != 'api-model-1.0.0' && tag != 'api-model-1.1.0');
 
-    // Parses the urls array, adds the new Swagger link, and replaces the current file 
-    let urls = eval(index.match(/urls: (\[[\s\S]*?\])/)[1]);
-    urls.unshift({
-        url: `https://raw.githubusercontent.com/adobe/commerce-cif-api/${releaseCommit}/docs/swagger.json`,
-        name: `CIF Cloud API ${releasedVersion}`
+    let urls = [
+        {url: "http://opensource.adobe.com/commerce-cif-api/swagger-1.1.0.json", name: "CIF Cloud API 1.1.0"},
+        {url: "http://opensource.adobe.com/commerce-cif-api/swagger-1.0.0.json", name: "CIF Cloud API 1.0.0"}
+    ];
+
+    tags.forEach(tag => {
+        urls.unshift({
+            url: `https://raw.githubusercontent.com/adobe/commerce-cif-api/${tag}/docs/swagger.json`,
+            name: 'CIF Cloud API ' + tag.substring(10)
+        });
     });
-    index = index.replace(/urls: [\s\S]*?\]/, 'urls: ' + JSON.stringify(urls, null, 4));
 
+    // replace the 'urls' array in index.html
+    let index = fs.readFileSync(__dirname + '/../docs/index.html', 'utf-8');
+    index = index.replace(/urls: [\s\S]*?\]/, 'urls: ' + JSON.stringify(urls, null, 4));
     fs.writeFileSync(__dirname + '/../docs/index.html', index);
 
     ci.stage('COMMIT - Adding Swagger UI new index file');
