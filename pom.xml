@@ -252,7 +252,6 @@
                         </checkModificationExclude>
                     </checkModificationExcludes>
                     <preparationGoals>clean compile scm:checkin</preparationGoals>
-                    <pushChanges>false</pushChanges>
                 </configuration>
             </plugin>
             
@@ -260,7 +259,6 @@
                 <artifactId>maven-scm-plugin</artifactId>
                 <version>1.10.0</version>
                 <configuration>
-                    <pushChanges>false</pushChanges>
                     <message>@releng [maven-scm] :prepare release ${project.artifactId}-${project.version}</message>            
                 </configuration>
             </plugin>
