@@ -23,14 +23,14 @@ const SWAGGER_TO_GRAPHQL_TYPES = {
     boolean: "Boolean",
     number: "Int",
     object: "String"
-}
+};
 
 let graphqlTypes = [];
 let graphqlTypeNames = new Set();
 
 function generateGraphqlSchema(swagger) {
     // Generates Query part for searchProducts
-    let searchProducts = _.find(swagger.paths, (obj, path) => path == '/products/search')['get'];
+    let searchProducts = _.find(swagger.paths, (obj, path) => path === '/products/search')['get'];
     let searchProductsQuery = {
         name: 'searchProducts',
         args: [],
