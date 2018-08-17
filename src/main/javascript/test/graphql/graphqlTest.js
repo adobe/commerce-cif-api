@@ -15,7 +15,10 @@
 const assert = require('chai').assert;
 const swagger = require(__dirname + '/../../../resources/generated/swagger/swagger.json');
 const generateGraphqlSchema = require(__dirname + '/../../src/graphql/graphql.js').generateGraphqlSchema;
-const schema = require(__dirname + '/schema.js', 'r').schema;
+
+const buildSchema = require('graphql').buildSchema;
+const parse = require('graphql/language').parse;
+const validate = require('graphql/validation').validate;
 
 /**
  * Because it's not straightforward to be able to check that the generated schema is correct,
@@ -29,9 +32,80 @@ const schema = require(__dirname + '/schema.js', 'r').schema;
 
 describe('Unit tests', () => {
     describe('generateGraphqlSchema', () => {
-        it('generates a valid graphQL schema', () => {   
+
+        let generatedSchema = eval(generateGraphqlSchema(swagger));
+
+        it('generates a valid graphQL schema that supports CIF graphQL products queries', () => {   
+            let query = `
+                query {
+                    searchProducts(text: "whatever") {
+                        offset
+                        count
+                        total
+                        results {
+                            id
+                            sku
+                            name
+                            description
+                            categories {
+                                id
+                            }
+                            prices {
+                                amount
+                                currency
+                            }
+                            variants {
+                                id
+                                sku
+                                attributes {
+                                    id
+                                    name
+                                    value
+                                    isVariantAxis
+                                }
+                                createdAt
+                                lastModifiedAt
+                            }
+                        }
+                    }
+                }`;
+
+            let queryAST = parse(query);
+            let errors = validate(buildSchema(generatedSchema), queryAST);
+            errors.forEach(e => {
+                console.error(e.message);
+            })
+            assert.isTrue(errors.length == 0);
+        });
+
+        it('query fails with wrong query', () => {   
             let generatedSchema = eval(generateGraphqlSchema(swagger));
-            assert.strictEqual(schema, generatedSchema);
+
+            let query = `
+                query {
+                    wrongMethod(text: "whatever") {
+                        id
+                    }
+                }`;
+
+            let queryAST = parse(query);
+            let errors = validate(buildSchema(generatedSchema), queryAST);
+            assert.isTrue(errors.length > 0);
+        });
+
+        it('query fails with wrong field', () => {   
+            let generatedSchema = eval(generateGraphqlSchema(swagger));
+
+            let query = `
+                query {
+                    searchProducts(text: "whatever") {
+                        id
+                    }
+                }`;
+
+            let queryAST = parse(query);
+            let errors = validate(buildSchema(generatedSchema), queryAST);
+            assert.isTrue(errors.length > 0);
         });
     });
 });

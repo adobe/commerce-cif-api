@@ -20,7 +20,7 @@
  */
 
 let schema = `
-{
+
     type Query {
         {{#each queries}}
         {{name}}({{#each args}}{{name}}: {{type}}{{#unless @last}}, {{/unless}}{{/each}}): {{response}}
@@ -36,6 +36,6 @@ let schema = `
     }
 
     {{/each}}
-}`;
+`;
 
 module.exports.schema = schema;
