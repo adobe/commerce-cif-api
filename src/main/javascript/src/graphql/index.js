@@ -13,8 +13,8 @@
  ******************************************************************************/
 
 const genFolder = __dirname + '/../../../resources/generated/graphql';
-const resourcesFolder = __dirname + '/../../../resources/graphql';
 const fs = require('fs');
+const fsx = require('fs-extra');
 const swagger = require(__dirname + '/../../../resources/generated/swagger/swagger.json');
 const generateGraphqlSchema = require(__dirname + '/graphql.js').generateGraphqlSchema;
 
@@ -24,3 +24,8 @@ if (!fs.existsSync(genFolder)) {
 
 let schema = fs.openSync(genFolder + '/schema.js', 'w');
 fs.appendFileSync(schema, generateGraphqlSchema(swagger));
+
+// Add graphQL schema to the commerce-cif-model package so it is included in the release
+fsx.copySync(genFolder + '/schema.js', __dirname + '/../../../resources/generated/javascript/graphqlSchema.js');
+let index = fs.openSync(__dirname + '/../../../resources/generated/javascript/index.js', 'a');
+fs.appendFileSync(index, "module.exports.graphqlSchema = require('./graphqlSchema.js').schema;\n");

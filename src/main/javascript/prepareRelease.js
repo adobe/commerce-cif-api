@@ -17,6 +17,11 @@ const genFolder = resourcesFolder + '/generated';
 const fsx = require('fs-extra');
 const swagger = require(genFolder + '/swagger/swagger.json');
 
+/**
+ * When buidling a released version, this script copies all the generated folders
+ * to the "released" resources folders.
+ */
+
 let folders = ['javascript', 'nginx', 'swagger', 'graphql'];
 
 if (!swagger.info.version.includes('-SNAPSHOT')) {
