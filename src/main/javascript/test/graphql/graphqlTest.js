@@ -79,12 +79,10 @@ describe('Unit tests', () => {
         });
 
         it('query fails with wrong query', () => {   
-            let generatedSchema = eval(generateGraphqlSchema(swagger));
-
             let query = `
                 query {
                     wrongMethod(text: "whatever") {
-                        id
+                        results
                     }
                 }`;
 
@@ -94,12 +92,10 @@ describe('Unit tests', () => {
         });
 
         it('query fails with wrong field', () => {   
-            let generatedSchema = eval(generateGraphqlSchema(swagger));
-
             let query = `
                 query {
                     searchProducts(text: "whatever") {
-                        id
+                        wrongField
                     }
                 }`;
 
