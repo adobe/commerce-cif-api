@@ -14,7 +14,6 @@
 
 const _ = require('lodash');
 const fs = require('fs');
-const fsx = require('fs-extra');
 const escape = require('js-string-escape');
 const swagger = require('../resources/generated/swagger/swagger.json');
 const license = fs.readFileSync('license.txt');
@@ -180,13 +179,3 @@ _.forEach(swagger.definitions, function(definition, classname) {
 
 // Add OW package name to all "operationId" fields
 replaceOperationIdProperties();
-
-// If this is NOT a SNAPSHOT version, we copy the generated files to the folders included in github
-if (!swagger.info.version.includes('-SNAPSHOT')) {
-    fsx.removeSync('../resources/javascript');
-    fsx.removeSync('../resources/swagger');
-    fsx.copySync('../resources/generated/javascript', '../resources/javascript');
-    fsx.copySync('./models-readme.md', '../resources/javascript/readme.md');
-    fsx.copySync('../resources/generated/swagger', '../resources/swagger');
-    fsx.copySync('../resources/generated/swagger/swagger.json', '../../../docs/swagger.json');
-}

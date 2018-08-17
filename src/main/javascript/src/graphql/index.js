@@ -15,7 +15,6 @@
 const genFolder = __dirname + '/../../../resources/generated/graphql';
 const resourcesFolder = __dirname + '/../../../resources/graphql';
 const fs = require('fs');
-const fsx = require('fs-extra');
 const swagger = require(__dirname + '/../../../resources/generated/swagger/swagger.json');
 const generateGraphqlSchema = require(__dirname + '/graphql.js').generateGraphqlSchema;
 
@@ -25,9 +24,3 @@ if (!fs.existsSync(genFolder)) {
 
 let schema = fs.openSync(genFolder + '/schema.js', 'w');
 fs.appendFileSync(schema, generateGraphqlSchema(swagger));
-
-// If this is NOT a SNAPSHOT version, we copy the generated files to the folders included in github
-if (!swagger.info.version.includes('-SNAPSHOT')) {
-    fsx.removeSync(resourcesFolder);
-    fsx.copySync(genFolder, resourcesFolder);
-}

@@ -15,7 +15,6 @@
 const genFolder = __dirname + '/../resources/generated';
 const _ = require('lodash');
 const fs = require('fs');
-const fsx = require('fs-extra');
 const escape = require('js-string-escape');
 const swagger = require(genFolder + '/swagger/swagger.json');
 
@@ -41,12 +40,6 @@ _.forEach(swagger.paths, (endpoints, path) => {
     console.log('Creating nginx location config for ' + escape(path));
     appendNginxConfig(endpoints, escape(path));
 });
-
-// If this is NOT a SNAPSHOT version, we copy the generated files to the folders included in github
-if (!swagger.info.version.includes('-SNAPSHOT')) {
-    fsx.removeSync(__dirname + '/../resources/nginx');
-    fsx.copySync(genFolder + '/nginx', __dirname + '/../resources/nginx');
-}
 
 function appendNginxConfig(endpoints, path) {
     let pathVariables = [];
