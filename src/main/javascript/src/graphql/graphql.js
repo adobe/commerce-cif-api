@@ -46,7 +46,7 @@ function generateGraphqlSchema(swagger) {
 
     addGraphqlType(searchProductsQuery.response, swagger.definitions[searchProductsQuery.response], swagger);
 
-    let schemaTemplate = fs.readFileSync(__dirname + '/schema.hdb', 'utf8');
+    let schemaTemplate = fs.readFileSync(__dirname + '/schema.hbs', 'utf8');
     let compiledTemplate = handlebars.compile(schemaTemplate);
     let context = {
         version: swagger.info.version,
