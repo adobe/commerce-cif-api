@@ -5,10 +5,12 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node index.js; node nginx.js",
+    "test": "mocha test/**/*Test.js",
+    "build": "node index.js; node nginx.js; npm run graphql; npm run prepareRelease",
     "perform": "cd ../resources/javascript; npm publish --access public",
-    "nginx": "node nginx.js"
+    "nginx": "node nginx.js",
+    "graphql": "node src/graphql/index.js",
+    "prepareRelease": "node prepareRelease.js"
   },
   "author": {
     "name": "Adobe Systems",
@@ -16,7 +18,13 @@
   },
   "dependencies": {
     "fs-extra": "3.0.1",
+    "graphql": "0.13.2",
+    "handlebars": "4.0.11",
     "js-string-escape": "1.0.1",
     "lodash": "4.17.10"
+  },
+  "devDependencies": {
+    "chai": "4.0.2",
+    "mocha": "5.2.0"
   }
 }
