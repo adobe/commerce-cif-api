@@ -57,6 +57,14 @@ function generateGraphqlSchema(swagger) {
     return compiledTemplate(context);
 }
 
+function objectWithSortedKeys(object) {
+    let result = {};
+    _.forEach(Object.keys(object).sort(), function(key) {
+        result[key] = object[key];
+    });
+    return result;
+}
+
 function addGraphqlType(name, type, swagger) {
     if (graphqlTypeNames.has(name)) {
         return;
@@ -69,7 +77,8 @@ function addGraphqlType(name, type, swagger) {
     graphqlTypeNames.add(name);
     graphqlTypes.push(graphqlType);
 
-    _.forEach(type.properties, (property, prop) => {
+    let props = objectWithSortedKeys(type.properties);
+    _.forEach(props, (property, prop) => {
         let propertyType = getType(property);
         let rawType = propertyType.startsWith('[') ? propertyType.slice(1, -1) : propertyType;
         if (swagger.definitions[rawType] && !graphqlTypeNames.has(rawType)) {
