@@ -134,6 +134,16 @@
                         </configuration>
                     </execution>
                     <execution>
+                        <id>npm test</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run test</arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>npm publish</id>
                         <phase>deploy</phase>
                         <goals>
@@ -158,14 +168,20 @@
                             <directory>src/main/resources/generated/javascript</directory>
                         </fileset>
                         <fileset>
+                            <directory>src/main/resources/generated/graphql</directory>
+                        </fileset>
+                        <fileset>
                             <directory>src/main/javascript</directory>
                             <excludes>
                                 <exclude>*.js</exclude>
                                 <exclude>README.md</exclude>
                                 <exclude>package.json</exclude>
+                                <exclude>package-lock.json</exclude>
                                 <exclude>license.txt</exclude>
                                 <exclude>models-package.json</exclude>
                                 <exclude>models-readme.md</exclude>
+                                <exclude>src/**</exclude>
+                                <exclude>test/**</exclude>
                             </excludes>
                         </fileset>
                     </filesets>
@@ -202,6 +218,7 @@
                         <exclude>src/main/resources/template/*</exclude>
                         <!-- ignore package.json -->
                         <exclude>**/package.json</exclude>
+                        <exclude>**/package-lock.json</exclude>
                         <exclude>**/models-package.json</exclude>
                         <!-- Post-release script -->
                         <exclude>postrelease-commit.sh</exclude>
