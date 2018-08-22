@@ -107,13 +107,16 @@ If you plan to implement the CIF API for a particular commerce system, you can f
 
 The product search service supports a flexible approach to query & filter product data by full-text search or attributes. This [document](documentation/product_search.md) has a variety of examples.
 
-## Contributing
-
-Contributions are welcome! Read the [Contributing Guide](CONTRIBUTING.md) for more information.
-
 ## Online Swagger-ui documentation
 
 To publish our CIF Cloud Swagger specification, a [github page](http://opensource.adobe.com/commerce-cif-api/) was 
 configured for the repository.
 The page is configured to display the content of the [docs](docs) folder, which is basically a slightly modified version of swagger-ui.
+
+### Contributing
  
+Contributions are welcomed! Read the [Contributing Guide](.github/CONTRIBUTING.md) for more information.
+ 
+### Licensing
+ 
+This project is licensed under the Apache V2 License. See [LICENSE](LICENSE) for more information. 
