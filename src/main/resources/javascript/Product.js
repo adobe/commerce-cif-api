@@ -16,9 +16,8 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
-
 const MoneyValue = require('./MoneyValue.js').MoneyValue;
 const Category = require('./Category.js').Category;
 const Asset = require('./Asset.js').Asset;
@@ -33,47 +32,6 @@ class Product {
      * @param {Builder} builder the Product builder
      */
     constructor(builder) {
-        /**
-         * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
-         * @type {string}
-         */
-        this.createdAt = undefined;
-
-        /**
-         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
-         * @type {string}
-         */
-        this.lastModifiedAt = undefined;
-
-        /**
-         * The internal unique ID of the product in the commerce backend system.
-         * @type {string}
-         */
-        this.id = builder.id;
-
-        /**
-         * The name of the product.
-         * @type {string}
-         */
-        this.name = builder.name;
-
-        /**
-         * The description of the product.
-         * @type {string}
-         */
-        this.description = undefined;
-
-        /**
-         * The prices for this product.
-         * @type {MoneyValue[]}
-         */
-        this.prices = builder.prices;
-
-        /**
-         * The categories for this product.
-         * @type {Category[]}
-         */
-        this.categories = undefined;
 
         /**
          * The assets for this product.
@@ -88,10 +46,34 @@ class Product {
         this.attributes = undefined;
 
         /**
-         * The unique SKU of the product assigned by the vendor or manufacturer.
+         * The categories for this product.
+         * @type {Category[]}
+         */
+        this.categories = undefined;
+
+        /**
+         * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
          * @type {string}
          */
-        this.sku = undefined;
+        this.createdAt = undefined;
+
+        /**
+         * The description of the product.
+         * @type {string}
+         */
+        this.description = undefined;
+
+        /**
+         * The internal unique ID of the product in the commerce backend system.
+         * @type {string}
+         */
+        this.id = builder.id;
+
+        /**
+         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.lastModifiedAt = undefined;
 
         /**
          * The id of the master variant
@@ -100,11 +82,28 @@ class Product {
         this.masterVariantId = builder.masterVariantId;
 
         /**
+         * The name of the product.
+         * @type {string}
+         */
+        this.name = builder.name;
+
+        /**
+         * The prices for this product.
+         * @type {MoneyValue[]}
+         */
+        this.prices = builder.prices;
+
+        /**
+         * The unique SKU of the product assigned by the vendor or manufacturer.
+         * @type {string}
+         */
+        this.sku = undefined;
+
+        /**
          * The variants for this product.
          * @type {ProductVariant[]}
          */
         this.variants = builder.variants;
-
     }
 
     /**
@@ -112,6 +111,7 @@ class Product {
      */
     static get Builder() {
         class Builder {
+
             withId(id) {
                 this.id = id;
                 return this;

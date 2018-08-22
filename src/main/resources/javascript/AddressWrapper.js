@@ -16,9 +16,8 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
-
 const Address = require('./Address.js').Address;
 
 class AddressWrapper {
@@ -29,12 +28,12 @@ class AddressWrapper {
      * @param {Builder} builder the AddressWrapper builder
      */
     constructor(builder) {
+
         /**
          * The address object.
          * @type {Address}
          */
         this.address = builder.address;
-
     }
 
     /**
@@ -42,6 +41,7 @@ class AddressWrapper {
      */
     static get Builder() {
         class Builder {
+
             withAddress(address) {
                 this.address = address;
                 return this;

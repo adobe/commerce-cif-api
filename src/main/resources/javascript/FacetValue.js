@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
 
 class FacetValue {
@@ -27,17 +27,12 @@ class FacetValue {
      * @param {Builder} builder the FacetValue builder
      */
     constructor(builder) {
+
         /**
          * The id for this facet.
          * @type {string}
          */
         this.id = builder.id;
-
-        /**
-         * The value for this facet.
-         * @type {object}
-         */
-        this.value = builder.value;
 
         /**
          * The number of facet value occurrences.
@@ -51,6 +46,11 @@ class FacetValue {
          */
         this.selected = undefined;
 
+        /**
+         * The value for this facet.
+         * @type {object}
+         */
+        this.value = builder.value;
     }
 
     /**
@@ -58,6 +58,7 @@ class FacetValue {
      */
     static get Builder() {
         class Builder {
+
             withId(id) {
                 this.id = id;
                 return this;

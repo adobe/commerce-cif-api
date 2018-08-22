@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
 
 class InventoryItem {
@@ -27,6 +27,19 @@ class InventoryItem {
      * @param {Builder} builder the InventoryItem builder
      */
     constructor(builder) {
+
+        /**
+         * The product available quantity for this inventory.
+         * @type {integer}
+         */
+        this.availableQuantity = builder.availableQuantity;
+
+        /**
+         * The next expected delivery date for this inventory.
+         * @type {string}
+         */
+        this.expectedDeliveryDate = undefined;
+
         /**
          * The inventory identifier.
          * @type {string}
@@ -40,29 +53,16 @@ class InventoryItem {
         this.productId = builder.productId;
 
         /**
-         * The scope for the inventory (i.e store or channel).
-         * @type {string}
-         */
-        this.scope = undefined;
-
-        /**
-         * The product available quantity for this inventory.
-         * @type {integer}
-         */
-        this.availableQuantity = builder.availableQuantity;
-
-        /**
          * The period in days when this inventory is restocked.
          * @type {integer}
          */
         this.restockDaysPeriod = undefined;
 
         /**
-         * The next expected delivery date for this inventory.
+         * The scope for the inventory (i.e store or channel).
          * @type {string}
          */
-        this.expectedDeliveryDate = undefined;
-
+        this.scope = undefined;
     }
 
     /**
@@ -70,6 +70,7 @@ class InventoryItem {
      */
     static get Builder() {
         class Builder {
+
             withAvailableQuantity(availableQuantity) {
                 this.availableQuantity = availableQuantity;
                 return this;

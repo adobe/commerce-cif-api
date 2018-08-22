@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
 
 class Attribute {
@@ -27,11 +27,18 @@ class Attribute {
      * @param {Builder} builder the Attribute builder
      */
     constructor(builder) {
+
         /**
          * The unique id for this text attribute, for example 'width'.
          * @type {string}
          */
         this.id = builder.id;
+
+        /**
+         * If true, this attribute is a variant attribute. If not set or false, the attribute is a normal/simple attribute.
+         * @type {boolean}
+         */
+        this.isVariantAxis = undefined;
 
         /**
          * The name for this text attribute.
@@ -44,13 +51,6 @@ class Attribute {
          * @type {object}
          */
         this.value = builder.value;
-
-        /**
-         * If true, this attribute is a variant attribute. If not set or false, the attribute is a normal/simple attribute.
-         * @type {boolean}
-         */
-        this.isVariantAxis = undefined;
-
     }
 
     /**
@@ -58,6 +58,7 @@ class Attribute {
      */
     static get Builder() {
         class Builder {
+
             withId(id) {
                 this.id = id;
                 return this;

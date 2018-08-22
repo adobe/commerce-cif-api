@@ -16,9 +16,8 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
-
 const Customer = require('./Customer.js').Customer;
 const Cart = require('./Cart.js').Cart;
 
@@ -30,11 +29,6 @@ class LoginResult {
      * @param {Builder} builder the LoginResult builder
      */
     constructor(builder) {
-        /**
-         * The customer info returned by the login process
-         * @type {Customer}
-         */
-        this.customer = builder.customer;
 
         /**
          * The current or merged cart created during the login process
@@ -42,6 +36,11 @@ class LoginResult {
          */
         this.cart = undefined;
 
+        /**
+         * The customer info returned by the login process
+         * @type {Customer}
+         */
+        this.customer = builder.customer;
     }
 
     /**
@@ -49,6 +48,7 @@ class LoginResult {
      */
     static get Builder() {
         class Builder {
+
             withCustomer(customer) {
                 this.customer = customer;
                 return this;

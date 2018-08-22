@@ -16,9 +16,8 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
-
 const MoneyValue = require('./MoneyValue.js').MoneyValue;
 const TaxInfo = require('./TaxInfo.js').TaxInfo;
 
@@ -30,17 +29,6 @@ class ShippingInfo {
      * @param {Builder} builder the ShippingInfo builder
      */
     constructor(builder) {
-        /**
-         * The shipping method id.
-         * @type {string}
-         */
-        this.id = builder.id;
-
-        /**
-         * The shipping method name.
-         * @type {string}
-         */
-        this.name = builder.name;
 
         /**
          * The cost of the shipping.
@@ -55,11 +43,22 @@ class ShippingInfo {
         this.discountedCost = undefined;
 
         /**
+         * The shipping method id.
+         * @type {string}
+         */
+        this.id = builder.id;
+
+        /**
+         * The shipping method name.
+         * @type {string}
+         */
+        this.name = builder.name;
+
+        /**
          * The tax for the shipping.
          * @type {TaxInfo}
          */
         this.taxInfo = builder.taxInfo;
-
     }
 
     /**
@@ -67,6 +66,7 @@ class ShippingInfo {
      */
     static get Builder() {
         class Builder {
+
             withCost(cost) {
                 this.cost = cost;
                 return this;

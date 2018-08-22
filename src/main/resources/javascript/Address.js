@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
 
 class Address {
@@ -27,71 +27,18 @@ class Address {
      * @param {Builder} builder the Address builder
      */
     constructor(builder) {
-        /**
-         * Address unique identifier.
-         * @type {string}
-         */
-        this.id = builder.id;
 
         /**
-         * Address title
+         * Additional details for the address.
          * @type {string}
          */
-        this.title = undefined;
+        this.additionalAddressInfo = undefined;
 
         /**
-         * Address salutation
+         * Additional details for the street address.
          * @type {string}
          */
-        this.salutation = undefined;
-
-        /**
-         * First name.
-         * @type {string}
-         */
-        this.firstName = builder.firstName;
-
-        /**
-         * Last name.
-         * @type {string}
-         */
-        this.lastName = builder.lastName;
-
-        /**
-         * Email.
-         * @type {string}
-         */
-        this.email = undefined;
-
-        /**
-         * Phone.
-         * @type {string}
-         */
-        this.phone = undefined;
-
-        /**
-         * Mobile.
-         * @type {string}
-         */
-        this.mobile = undefined;
-
-        /**
-         * Fax.
-         * @type {string}
-         */
-        this.fax = undefined;
-
-        /**
-         * Country code as per ISO 3166-1.
-         * @type {string}
-         */
-        this.country = builder.country;
-
-        /**
-         * Region.
-         * @type {string}
-         */
-        this.region = undefined;
+        this.additionalStreetInfo = undefined;
 
         /**
          * City.
@@ -100,10 +47,52 @@ class Address {
         this.city = builder.city;
 
         /**
-         * Postal code.
+         * Country code as per ISO 3166-1.
          * @type {string}
          */
-        this.postalCode = builder.postalCode;
+        this.country = builder.country;
+
+        /**
+         * Department.
+         * @type {string}
+         */
+        this.department = undefined;
+
+        /**
+         * Email.
+         * @type {string}
+         */
+        this.email = undefined;
+
+        /**
+         * Fax.
+         * @type {string}
+         */
+        this.fax = undefined;
+
+        /**
+         * First name.
+         * @type {string}
+         */
+        this.firstName = builder.firstName;
+
+        /**
+         * Address unique identifier.
+         * @type {string}
+         */
+        this.id = builder.id;
+
+        /**
+         * Last name.
+         * @type {string}
+         */
+        this.lastName = builder.lastName;
+
+        /**
+         * Mobile.
+         * @type {string}
+         */
+        this.mobile = undefined;
 
         /**
          * Organization name. Can be company name.
@@ -112,10 +101,28 @@ class Address {
         this.organizationName = undefined;
 
         /**
-         * Department.
+         * Phone.
          * @type {string}
          */
-        this.department = undefined;
+        this.phone = undefined;
+
+        /**
+         * Postal code.
+         * @type {string}
+         */
+        this.postalCode = builder.postalCode;
+
+        /**
+         * Region.
+         * @type {string}
+         */
+        this.region = undefined;
+
+        /**
+         * Address salutation
+         * @type {string}
+         */
+        this.salutation = undefined;
 
         /**
          * Street name.
@@ -130,17 +137,10 @@ class Address {
         this.streetNumber = undefined;
 
         /**
-         * Additional details for the street address.
+         * Address title
          * @type {string}
          */
-        this.additionalStreetInfo = undefined;
-
-        /**
-         * Additional details for the address.
-         * @type {string}
-         */
-        this.additionalAddressInfo = undefined;
-
+        this.title = undefined;
     }
 
     /**
@@ -148,6 +148,7 @@ class Address {
      */
     static get Builder() {
         class Builder {
+
             withCity(city) {
                 this.city = city;
                 return this;

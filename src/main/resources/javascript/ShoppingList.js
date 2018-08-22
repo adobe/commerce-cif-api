@@ -16,9 +16,8 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
-
 const ShoppingListEntry = require('./ShoppingListEntry.js').ShoppingListEntry;
 
 class ShoppingList {
@@ -29,6 +28,7 @@ class ShoppingList {
      * @param {Builder} builder the ShoppingList builder
      */
     constructor(builder) {
+
         /**
          * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
          * @type {string}
@@ -36,22 +36,10 @@ class ShoppingList {
         this.createdAt = undefined;
 
         /**
-         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
+         * The customer id that owns this shopping list.
          * @type {string}
          */
-        this.lastModifiedAt = undefined;
-
-        /**
-         * The id of the shopping list.
-         * @type {string}
-         */
-        this.id = builder.id;
-
-        /**
-         * The name of the shopping list.
-         * @type {string}
-         */
-        this.name = builder.name;
+        this.customerId = undefined;
 
         /**
          * The description of the shopping list.
@@ -66,11 +54,22 @@ class ShoppingList {
         this.entries = builder.entries;
 
         /**
-         * The customer id that owns this shopping list.
+         * The id of the shopping list.
          * @type {string}
          */
-        this.customerId = undefined;
+        this.id = builder.id;
 
+        /**
+         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.lastModifiedAt = undefined;
+
+        /**
+         * The name of the shopping list.
+         * @type {string}
+         */
+        this.name = builder.name;
     }
 
     /**
@@ -78,6 +77,7 @@ class ShoppingList {
      */
     static get Builder() {
         class Builder {
+
             withEntries(entries) {
                 this.entries = entries;
                 return this;

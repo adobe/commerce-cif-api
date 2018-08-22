@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
 
 class Customer {
@@ -27,23 +27,12 @@ class Customer {
      * @param {Builder} builder the Customer builder
      */
     constructor(builder) {
+
         /**
          * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
          * @type {string}
          */
         this.createdAt = undefined;
-
-        /**
-         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
-         * @type {string}
-         */
-        this.lastModifiedAt = undefined;
-
-        /**
-         * The unique id of this customer
-         * @type {string}
-         */
-        this.id = builder.id;
 
         /**
          * The customer's email address
@@ -58,11 +47,22 @@ class Customer {
         this.firstName = builder.firstName;
 
         /**
+         * The unique id of this customer
+         * @type {string}
+         */
+        this.id = builder.id;
+
+        /**
+         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.lastModifiedAt = undefined;
+
+        /**
          * The lastname of this customer
          * @type {string}
          */
         this.lastName = builder.lastName;
-
     }
 
     /**
@@ -70,6 +70,7 @@ class Customer {
      */
     static get Builder() {
         class Builder {
+
             withEmail(email) {
                 this.email = email;
                 return this;

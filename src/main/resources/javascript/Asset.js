@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
 
 class Asset {
@@ -27,6 +27,7 @@ class Asset {
      * @param {Builder} builder the Asset builder
      */
     constructor(builder) {
+
         /**
          * The id of the asset.
          * @type {string}
@@ -38,7 +39,6 @@ class Asset {
          * @type {string}
          */
         this.url = builder.url;
-
     }
 
     /**
@@ -46,6 +46,7 @@ class Asset {
      */
     static get Builder() {
         class Builder {
+
             withId(id) {
                 this.id = id;
                 return this;

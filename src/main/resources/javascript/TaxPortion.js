@@ -16,9 +16,8 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
-
 const MoneyValue = require('./MoneyValue.js').MoneyValue;
 
 class TaxPortion {
@@ -29,6 +28,7 @@ class TaxPortion {
      * @param {Builder} builder the TaxPortion builder
      */
     constructor(builder) {
+
         /**
          * The name for this tax portion.
          * @type {string}
@@ -40,7 +40,6 @@ class TaxPortion {
          * @type {MoneyValue}
          */
         this.value = builder.value;
-
     }
 
     /**
@@ -48,6 +47,7 @@ class TaxPortion {
      */
     static get Builder() {
         class Builder {
+
             withName(name) {
                 this.name = name;
                 return this;

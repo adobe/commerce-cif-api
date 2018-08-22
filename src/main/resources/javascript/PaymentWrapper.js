@@ -16,9 +16,8 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
-
 const Payment = require('./Payment.js').Payment;
 
 class PaymentWrapper {
@@ -29,12 +28,12 @@ class PaymentWrapper {
      * @param {Builder} builder the PaymentWrapper builder
      */
     constructor(builder) {
+
         /**
          * The payment object.
          * @type {Payment}
          */
         this.payment = builder.payment;
-
     }
 
     /**
@@ -42,6 +41,7 @@ class PaymentWrapper {
      */
     static get Builder() {
         class Builder {
+
             withPayment(payment) {
                 this.payment = payment;
                 return this;

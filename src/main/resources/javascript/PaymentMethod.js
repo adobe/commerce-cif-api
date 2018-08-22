@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
 
 class PaymentMethod {
@@ -27,6 +27,13 @@ class PaymentMethod {
      * @param {Builder} builder the PaymentMethod builder
      */
     constructor(builder) {
+
+        /**
+         * The description of the payment method.
+         * @type {string}
+         */
+        this.description = undefined;
+
         /**
          * The id of the payment method.
          * @type {string}
@@ -38,13 +45,6 @@ class PaymentMethod {
          * @type {string}
          */
         this.name = builder.name;
-
-        /**
-         * The description of the payment method.
-         * @type {string}
-         */
-        this.description = undefined;
-
     }
 
     /**
@@ -52,6 +52,7 @@ class PaymentMethod {
      */
     static get Builder() {
         class Builder {
+
             withId(id) {
                 this.id = id;
                 return this;

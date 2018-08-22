@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
 
 class ErrorResponse {
@@ -27,11 +27,12 @@ class ErrorResponse {
      * @param {Builder} builder the ErrorResponse builder
      */
     constructor(builder) {
+
         /**
-         * The error type.
+         * The error message.
          * @type {string}
          */
-        this.type = builder.type;
+        this.message = builder.message;
 
         /**
          * The error reason.
@@ -40,11 +41,10 @@ class ErrorResponse {
         this.reason = builder.reason;
 
         /**
-         * The error message.
+         * The error type.
          * @type {string}
          */
-        this.message = builder.message;
-
+        this.type = builder.type;
     }
 
     /**
@@ -52,6 +52,7 @@ class ErrorResponse {
      */
     static get Builder() {
         class Builder {
+
             withMessage(message) {
                 this.message = message;
                 return this;

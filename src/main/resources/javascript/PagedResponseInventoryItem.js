@@ -16,9 +16,8 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
-
 const InventoryItem = require('./InventoryItem.js').InventoryItem;
 const Facet = require('./Facet.js').Facet;
 
@@ -30,11 +29,6 @@ class PagedResponseInventoryItem {
      * @param {Builder} builder the PagedResponseInventoryItem builder
      */
     constructor(builder) {
-        /**
-         * The offset for this response, this is the number of elements skipped, not a page number.
-         * @type {integer}
-         */
-        this.offset = builder.offset;
 
         /**
          * The actual number of results returned in results.
@@ -43,10 +37,16 @@ class PagedResponseInventoryItem {
         this.count = builder.count;
 
         /**
-         * The total number of results matching the query.
+         * The list of facets for this response.
+         * @type {Facet[]}
+         */
+        this.facets = undefined;
+
+        /**
+         * The offset for this response, this is the number of elements skipped, not a page number.
          * @type {integer}
          */
-        this.total = builder.total;
+        this.offset = builder.offset;
 
         /**
          * The results for this response.
@@ -55,11 +55,10 @@ class PagedResponseInventoryItem {
         this.results = builder.results;
 
         /**
-         * The list of facets for this response.
-         * @type {Facet[]}
+         * The total number of results matching the query.
+         * @type {integer}
          */
-        this.facets = undefined;
-
+        this.total = builder.total;
     }
 
     /**
@@ -67,6 +66,7 @@ class PagedResponseInventoryItem {
      */
     static get Builder() {
         class Builder {
+
             withCount(count) {
                 this.count = count;
                 return this;

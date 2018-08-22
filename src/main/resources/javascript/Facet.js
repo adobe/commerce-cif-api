@@ -16,9 +16,8 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
-
 const FacetValue = require('./FacetValue.js').FacetValue;
 
 class Facet {
@@ -29,17 +28,12 @@ class Facet {
      * @param {Builder} builder the Facet builder
      */
     constructor(builder) {
+
         /**
          * The id of the facet.
          * @type {string}
          */
         this.id = builder.id;
-
-        /**
-         * The name of the facet.
-         * @type {string}
-         */
-        this.name = builder.name;
 
         /**
          * The number of missed items.
@@ -54,6 +48,12 @@ class Facet {
         this.multiSelect = undefined;
 
         /**
+         * The name of the facet.
+         * @type {string}
+         */
+        this.name = builder.name;
+
+        /**
          * The type of the facet.
          * @type {string}
          */
@@ -64,7 +64,6 @@ class Facet {
          * @type {FacetValue[]}
          */
         this.values = builder.values;
-
     }
 
     /**
@@ -72,6 +71,7 @@ class Facet {
      */
     static get Builder() {
         class Builder {
+
             withId(id) {
                 this.id = id;
                 return this;

@@ -16,9 +16,8 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
-
 const ProductVariant = require('./ProductVariant.js').ProductVariant;
 const MoneyValue = require('./MoneyValue.js').MoneyValue;
 const Discount = require('./Discount.js').Discount;
@@ -32,29 +31,12 @@ class CartEntry {
      * @param {Builder} builder the CartEntry builder
      */
     constructor(builder) {
-        /**
-         * The id for the entry.
-         * @type {string}
-         */
-        this.id = builder.id;
 
         /**
-         * The quantity for the entry.
-         * @type {integer}
-         */
-        this.quantity = builder.quantity;
-
-        /**
-         * The ProductVariant for the entry.
-         * @type {ProductVariant}
-         */
-        this.productVariant = builder.productVariant;
-
-        /**
-         * The product variant item price.
+         * The cart entry price after all discounts have been applied.
          * @type {MoneyValue}
          */
-        this.unitPrice = builder.unitPrice;
+        this.discountedPrice = undefined;
 
         /**
          * A list of all applied discounts.
@@ -63,16 +45,28 @@ class CartEntry {
         this.discounts = undefined;
 
         /**
+         * The id for the entry.
+         * @type {string}
+         */
+        this.id = builder.id;
+
+        /**
          * The calculated cart entry price. May or may not include taxes, depending on the tax policy.
          * @type {MoneyValue}
          */
         this.price = builder.price;
 
         /**
-         * The cart entry price after all discounts have been applied.
-         * @type {MoneyValue}
+         * The ProductVariant for the entry.
+         * @type {ProductVariant}
          */
-        this.discountedPrice = undefined;
+        this.productVariant = builder.productVariant;
+
+        /**
+         * The quantity for the entry.
+         * @type {integer}
+         */
+        this.quantity = builder.quantity;
 
         /**
          * The cart entry tax info. Until a shipping address is set, this field is typically not set.
@@ -86,6 +80,11 @@ class CartEntry {
          */
         this.type = builder.type;
 
+        /**
+         * The product variant item price.
+         * @type {MoneyValue}
+         */
+        this.unitPrice = builder.unitPrice;
     }
 
     /**
@@ -93,6 +92,7 @@ class CartEntry {
      */
     static get Builder() {
         class Builder {
+
             withId(id) {
                 this.id = id;
                 return this;

@@ -16,9 +16,8 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
-
 const MoneyValue = require('./MoneyValue.js').MoneyValue;
 
 class Discount {
@@ -29,23 +28,6 @@ class Discount {
      * @param {Builder} builder the Discount builder
      */
     constructor(builder) {
-        /**
-         * The id for the discount.
-         * @type {string}
-         */
-        this.id = builder.id;
-
-        /**
-         * The type of the discount.
-         * @type {string}
-         */
-        this.type = builder.type;
-
-        /**
-         * The name of the discount.
-         * @type {string}
-         */
-        this.name = undefined;
 
         /**
          * The description associated with the discount. May be displayed in the UI.
@@ -54,11 +36,28 @@ class Discount {
         this.description = undefined;
 
         /**
+         * The id for the discount.
+         * @type {string}
+         */
+        this.id = builder.id;
+
+        /**
+         * The name of the discount.
+         * @type {string}
+         */
+        this.name = undefined;
+
+        /**
+         * The type of the discount.
+         * @type {string}
+         */
+        this.type = builder.type;
+
+        /**
          * The value which is discounted.
          * @type {MoneyValue}
          */
         this.value = builder.value;
-
     }
 
     /**
@@ -66,6 +65,7 @@ class Discount {
      */
     static get Builder() {
         class Builder {
+
             withId(id) {
                 this.id = id;
                 return this;

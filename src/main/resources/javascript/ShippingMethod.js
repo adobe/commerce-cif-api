@@ -16,9 +16,8 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
-
 const MoneyValue = require('./MoneyValue.js').MoneyValue;
 
 class ShippingMethod {
@@ -29,6 +28,19 @@ class ShippingMethod {
      * @param {Builder} builder the ShippingMethod builder
      */
     constructor(builder) {
+
+        /**
+         * The cost of shipping.
+         * @type {MoneyValue}
+         */
+        this.cost = builder.cost;
+
+        /**
+         * The description of the shipping method.
+         * @type {string}
+         */
+        this.description = undefined;
+
         /**
          * The id of the shipping method.
          * @type {string}
@@ -40,19 +52,6 @@ class ShippingMethod {
          * @type {string}
          */
         this.name = builder.name;
-
-        /**
-         * The description of the shipping method.
-         * @type {string}
-         */
-        this.description = undefined;
-
-        /**
-         * The cost of shipping.
-         * @type {MoneyValue}
-         */
-        this.cost = builder.cost;
-
     }
 
     /**
@@ -60,6 +59,7 @@ class ShippingMethod {
      */
     static get Builder() {
         class Builder {
+
             withCost(cost) {
                 this.cost = cost;
                 return this;

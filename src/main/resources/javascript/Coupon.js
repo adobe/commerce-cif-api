@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
 
 class Coupon {
@@ -27,11 +27,6 @@ class Coupon {
      * @param {Builder} builder the Coupon builder
      */
     constructor(builder) {
-        /**
-         * The id of the coupon instance applied to a cart. If not supported by commerce engine, should be equal to code.
-         * @type {string}
-         */
-        this.id = builder.id;
 
         /**
          * The code to activate the coupon.
@@ -45,6 +40,11 @@ class Coupon {
          */
         this.description = undefined;
 
+        /**
+         * The id of the coupon instance applied to a cart. If not supported by commerce engine, should be equal to code.
+         * @type {string}
+         */
+        this.id = builder.id;
     }
 
     /**
@@ -52,6 +52,7 @@ class Coupon {
      */
     static get Builder() {
         class Builder {
+
             withCode(code) {
                 this.code = code;
                 return this;

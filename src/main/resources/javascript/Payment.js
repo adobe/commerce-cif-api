@@ -16,9 +16,8 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
-
 const Customer = require('./Customer.js').Customer;
 const MoneyValue = require('./MoneyValue.js').MoneyValue;
 
@@ -30,6 +29,7 @@ class Payment {
      * @param {Builder} builder the Payment builder
      */
     constructor(builder) {
+
         /**
          * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
          * @type {string}
@@ -37,10 +37,10 @@ class Payment {
         this.createdAt = undefined;
 
         /**
-         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
-         * @type {string}
+         * The customer the payment belongs to. If this is not set the payment belongs to an anonymous customer.
+         * @type {Customer}
          */
-        this.lastModifiedAt = undefined;
+        this.customer = undefined;
 
         /**
          * The id of the payment.
@@ -49,10 +49,10 @@ class Payment {
         this.id = builder.id;
 
         /**
-         * The customer the payment belongs to. If this is not set the payment belongs to an anonymous customer.
-         * @type {Customer}
+         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
          */
-        this.customer = undefined;
+        this.lastModifiedAt = undefined;
 
         /**
          * DEPRECATED. The method for this payment like Card or Cash.
@@ -67,16 +67,10 @@ class Payment {
         this.methodId = builder.methodId;
 
         /**
-         * The value of the payment.
-         * @type {MoneyValue}
-         */
-        this.value = undefined;
-
-        /**
-         * The token used to communicate with the payment service provider.
+         * The external status message/text for the payment.
          * @type {string}
          */
-        this.token = undefined;
+        this.status = undefined;
 
         /**
          * The external status code for the payment.
@@ -85,11 +79,16 @@ class Payment {
         this.statusCode = undefined;
 
         /**
-         * The external status message/text for the payment.
+         * The token used to communicate with the payment service provider.
          * @type {string}
          */
-        this.status = undefined;
+        this.token = undefined;
 
+        /**
+         * The value of the payment.
+         * @type {MoneyValue}
+         */
+        this.value = undefined;
     }
 
     /**
@@ -97,6 +96,7 @@ class Payment {
      */
     static get Builder() {
         class Builder {
+
             withId(id) {
                 this.id = id;
                 return this;

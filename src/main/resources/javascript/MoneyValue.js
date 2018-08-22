@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
 
 class MoneyValue {
@@ -27,11 +27,6 @@ class MoneyValue {
      * @param {Builder} builder the MoneyValue builder
      */
     constructor(builder) {
-        /**
-         * The currency code for this money value.
-         * @type {string}
-         */
-        this.currency = builder.currency;
 
         /**
          * The amount in cents of this money value.
@@ -45,6 +40,11 @@ class MoneyValue {
          */
         this.country = undefined;
 
+        /**
+         * The currency code for this money value.
+         * @type {string}
+         */
+        this.currency = builder.currency;
     }
 
     /**
@@ -52,6 +52,7 @@ class MoneyValue {
      */
     static get Builder() {
         class Builder {
+
             withAmount(amount) {
                 this.amount = amount;
                 return this;

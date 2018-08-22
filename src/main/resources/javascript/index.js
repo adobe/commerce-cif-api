@@ -12,6 +12,13 @@
  *
  ******************************************************************************/
 
+/**
+ * Auto generated code based on Swagger definition.
+ * Dot not edit manually. Manual changes will be overridden.
+ *
+ * @version 1.1.1
+ */
+
 module.exports.Address = require('./Address.js').Address;
 module.exports.AddressWrapper = require('./AddressWrapper.js').AddressWrapper;
 module.exports.Asset = require('./Asset.js').Asset;
@@ -46,3 +53,4 @@ module.exports.ShoppingList = require('./ShoppingList.js').ShoppingList;
 module.exports.ShoppingListEntry = require('./ShoppingListEntry.js').ShoppingListEntry;
 module.exports.TaxInfo = require('./TaxInfo.js').TaxInfo;
 module.exports.TaxPortion = require('./TaxPortion.js').TaxPortion;
+module.exports.graphqlSchema = require('./graphqlSchema.js').schema;

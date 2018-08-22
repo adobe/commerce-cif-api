@@ -16,9 +16,8 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
-
 const ProductVariant = require('./ProductVariant.js').ProductVariant;
 
 class ShoppingListEntry {
@@ -29,6 +28,7 @@ class ShoppingListEntry {
      * @param {Builder} builder the ShoppingListEntry builder
      */
     constructor(builder) {
+
         /**
          * The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format
          * @type {string}
@@ -36,16 +36,16 @@ class ShoppingListEntry {
         this.createdAt = undefined;
 
         /**
-         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
-         * @type {string}
-         */
-        this.lastModifiedAt = undefined;
-
-        /**
          * The id of the entry.
          * @type {string}
          */
         this.id = builder.id;
+
+        /**
+         * The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format
+         * @type {string}
+         */
+        this.lastModifiedAt = undefined;
 
         /**
          * The product variant for the entry.
@@ -58,7 +58,6 @@ class ShoppingListEntry {
          * @type {integer}
          */
         this.quantity = builder.quantity;
-
     }
 
     /**
@@ -66,6 +65,7 @@ class ShoppingListEntry {
      */
     static get Builder() {
         class Builder {
+
             withId(id) {
                 this.id = id;
                 return this;

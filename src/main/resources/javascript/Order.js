@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
 
 class Order {
@@ -27,12 +27,12 @@ class Order {
      * @param {Builder} builder the Order builder
      */
     constructor(builder) {
+
         /**
          * The order id.
          * @type {string}
          */
         this.id = builder.id;
-
     }
 
     /**
@@ -40,6 +40,7 @@ class Order {
      */
     static get Builder() {
         class Builder {
+
             withId(id) {
                 this.id = id;
                 return this;
