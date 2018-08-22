@@ -1,0 +1,31 @@
+
+# 1) Verify the 2 variables below this header and set them to match your OpenWhisk deployment.
+#    For a local OW deployment, you need to uncomment the line setting the $controller variable.
+# 2) Copy the content of this file in ansible/roles/nginx/templates/nginx.conf.j2
+#    before the first location directive that already exists in the file
+# 3) Restart the Openwhisk nginx/edge component by running "wskdev edge"
+#
+# CCIF API Version {{version}}
+
+# set $controller "http://controllers";
+set $ow_namespace "your-namespace";
+
+{{#each locations}}
+location {{path}} {
+  if ($request_method {{rejectedMethods}}) {
+    return 405;
+  }
+  {{#each actions}}
+  {{#if method}}
+  if ($request_method = {{method}}) {
+    rewrite ^ {{url}} break;
+  }
+  {{else}}
+  rewrite ^ {{url}} break;
+  {{/if}}
+  {{/each}}
+  proxy_pass $controller;
+  proxy_read_timeout 70s;
+}
+
+{{/each}}

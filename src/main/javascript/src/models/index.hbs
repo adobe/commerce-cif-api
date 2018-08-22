@@ -12,23 +12,13 @@
  *
  ******************************************************************************/
 
-const resourcesFolder = __dirname + '/../resources';
-const genFolder = resourcesFolder + '/generated';
-const fsx = require('fs-extra');
-const swagger = require(genFolder + '/swagger/swagger.json');
-
 /**
- * When buidling a released version, this script copies all the generated folders
- * to the "released" resources folders.
+ * Auto generated code based on Swagger definition.
+ * Dot not edit manually. Manual changes will be overridden.
+ *
+ * @version {{version}}
  */
 
-let folders = ['javascript', 'nginx', 'swagger', 'graphql'];
-
-if (!swagger.info.version.includes('-SNAPSHOT')) {
-    folders.forEach(folder => {
-        fsx.removeSync(resourcesFolder + '/' + folder);
-        fsx.copySync(genFolder + '/' + folder, resourcesFolder + '/' + folder);
-    });
-
-    fsx.copySync(__dirname + '/src/models/models-readme.md', resourcesFolder + '/javascript/readme.md');
-}
+{{#each classes}}
+module.exports.{{this}} = require('./{{this}}.js').{{this}};
+{{/each}}

@@ -1,14 +1,15 @@
 {
-  "name": "ccif-js-model-generator",
+  "name": "cif-js-model-generator",
   "version": "0.1.0",
-  "description": "Generates ES6 model classes based on the CCIF Swagger definitions.",
+  "description": "Generates ES6 model classes, Nginx configuration, and graphQL schema based on the CIF Swagger specification.",
   "main": "index.js",
   "private": true,
   "scripts": {
     "test": "mocha test/**/*Test.js",
-    "build": "node index.js; node nginx.js; npm run graphql; npm run prepareRelease",
+    "build": "npm run models; npm run nginx; npm run graphql; npm run prepareRelease",
     "perform": "cd ../resources/javascript; npm publish --access public",
-    "nginx": "node nginx.js",
+    "models": "node src/models/index.js",
+    "nginx": "node src/nginx/index.js",
     "graphql": "node src/graphql/index.js",
     "prepareRelease": "node prepareRelease.js"
   },

@@ -224,6 +224,7 @@
                         <exclude>postrelease-commit.sh</exclude>
                         <!-- Generated nginx gateway config -->
                         <exclude>**/nginx-config.txt</exclude>
+                        <exclude>src/main/javascript/src/nginx/config.hbs</exclude>
                         <!-- swagger docs -->
                         <exclude>docs/*</exclude>
                         <exclude>src/main/resources/generated/swagger/*</exclude>
