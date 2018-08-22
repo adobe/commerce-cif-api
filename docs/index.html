@@ -41,9 +41,19 @@
       // Build a system
       const ui = SwaggerUIBundle({
         urls: [
-            {url: "http://opensource.adobe.com/commerce-cif-api/swagger-1.1.0.json", name: "CIF Cloud API 1.1.0"},
-            {url: "http://opensource.adobe.com/commerce-cif-api/swagger-1.0.0.json", name: "CIF Cloud API 1.0.0"}
-        ],
+    {
+        "url": "https://raw.githubusercontent.com/adobe/commerce-cif-api/api-model-1.1.1/docs/swagger.json",
+        "name": "CIF Cloud API 1.1.1"
+    },
+    {
+        "url": "http://opensource.adobe.com/commerce-cif-api/swagger-1.1.0.json",
+        "name": "CIF Cloud API 1.1.0"
+    },
+    {
+        "url": "http://opensource.adobe.com/commerce-cif-api/swagger-1.0.0.json",
+        "name": "CIF Cloud API 1.0.0"
+    }
+],
         dom_id: '#swagger-ui',
         deepLinking: true,
         presets: [
