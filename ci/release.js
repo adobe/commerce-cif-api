@@ -96,7 +96,7 @@ function release(pomVersion) {
  * Updates the Swagger UI index.html file with the newly release Swagger specification
  */
 function updateSwaggerUiIndex() {
-    let tags = cp.execSync(`git tag -l api-model-*`).toString().trim().split('\n').reverse();
+    let tags = cp.execSync(`git tag -l api-model-*`).toString().trim().split('\n');
 
     // We ignore all 0.x versions and versions 1.0.0 and 1.1.0
     // Due to an issue in the first releases, versions 1.0.0 and 1.1.0 have to be handled differently
