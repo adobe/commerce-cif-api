@@ -269,7 +269,7 @@
                         <checkModificationExclude>api-model/src/main/resources/swagger/*
                         </checkModificationExclude>
                     </checkModificationExcludes>
-                    <preparationGoals>clean compile scm:checkin</preparationGoals>
+                    <preparationGoals>clean compile scm:add scm:checkin</preparationGoals>
                 </configuration>
             </plugin>
             
@@ -277,8 +277,20 @@
                 <artifactId>maven-scm-plugin</artifactId>
                 <version>1.10.0</version>
                 <configuration>
-                    <message>@releng [maven-scm] :prepare release ${project.artifactId}-${project.version}</message>            
+                    <message>@releng [maven-scm] :prepare release ${project.artifactId}-${project.version}</message>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>default-cli</id>
+                        <goals>
+                            <goal>add</goal>
+                        </goals>
+                        <configuration>
+                            <baseDir>${basedir}</baseDir>
+                            <includes>pom.xml,src/main/resources/javascript/*,src/main/resources/graphql/*,src/main/resources/swagger/*,src/main/resources/nginx/*</includes>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             
             <plugin>
