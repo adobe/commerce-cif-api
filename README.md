@@ -36,7 +36,7 @@ Note that the build actually generates these files under the `src/main/resources
 
 ### GraphQL endpoint and specification
 
-Our Swagger API also defines an endpoint for the CIF [GraphQL](https://graphql.org/) API. Because Swagger is only designed to document a REST API, the GraphQL API and schema has its own [documentation](http://opensource.adobe.com/commerce-cif-api/graphql/index.html).
+Our Swagger API also defines the `/graphql` HTTP endpoint for the CIF [GraphQL](https://graphql.org/) API. Because Swagger is only designed to document a REST API, the GraphQL API and schema has its own [documentation](http://opensource.adobe.com/commerce-cif-api/graphql/index.html). Check this documentation to find out about the operations currently supported by the CIF GraphQL API.
 
 ### Using the API or building the SNAPSHOT version
 
