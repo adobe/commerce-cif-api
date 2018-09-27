@@ -1,0 +1,8 @@
+{
+  "query": "query aTest($var1: String!) { test(who: $var1) }",
+  "operationName": "MySimpleQuery",
+  "variables": {
+    "var1": "value1",
+    "var2": "value2"
+  }
+}

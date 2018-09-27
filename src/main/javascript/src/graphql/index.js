@@ -25,6 +25,10 @@ if (!fs.existsSync(genFolder)) {
 let schema = fs.openSync(genFolder + '/schema.js', 'w');
 fs.appendFileSync(schema, generateGraphqlSchema(swagger));
 
+let graphqlSchema = fs.openSync(genFolder + '/schema.graphql', 'w');
+let jsonSchema = require(genFolder + '/schema.js');
+fs.appendFileSync(graphqlSchema, jsonSchema.schema);
+
 // Add graphQL schema to the commerce-cif-model package so it is included in the release
 fsx.copySync(genFolder + '/schema.js', __dirname + '/../../../resources/generated/javascript/graphqlSchema.js');
 let index = fs.openSync(__dirname + '/../../../resources/generated/javascript/index.js', 'a');

@@ -34,6 +34,10 @@ The API and models are actually defined in Java with both `swagger` and `jax-rs`
 
 Note that the build actually generates these files under the `src/main/resources/generated` folder, but this folder is not committed on the git repository. The `maven release` process actually copies the generated files to the folders mentioned above so that we only have released files in the repository.
 
+### GraphQL endpoint and specification
+
+Our Swagger API also defines the `/graphql` HTTP endpoint for the CIF [GraphQL](https://graphql.org/) API. Because Swagger is only designed to document a REST API, the GraphQL API and schema has its own [documentation](http://opensource.adobe.com/commerce-cif-api/graphql/index.html). Check this documentation to find out about the operations currently supported by the CIF GraphQL API.
+
 ### Using the API or building the SNAPSHOT version
 
 To use the API in an existing Maven project, simply add the following dependency:
