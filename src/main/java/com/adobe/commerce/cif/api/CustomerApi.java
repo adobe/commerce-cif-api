@@ -24,6 +24,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.adobe.commerce.cif.model.customer.AuthenticationResponse;
 import com.adobe.commerce.cif.model.customer.Customer;
 import com.adobe.commerce.cif.model.customer.LoginResult;
 import com.adobe.commerce.cif.model.error.ErrorResponse;
@@ -64,7 +65,36 @@ public interface CustomerApi {
         @ApiParam(value = ACCEPT_LANGUAGE_DESC)
         @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
-    
+
+    @POST
+    @Path("/auth")
+    @ApiOperation(
+        nickname = "postAuthentication",
+        value = "Performs a authentication request to obtain a customer access token. Currently two types are " +
+            "supported: \"guest\" returns a token for a new guest (non-authenticated) customer and " +
+            "\"credentials\" authenticates a registered customer and returns a token for a successfully " +
+            "authentication otherwise results in an error"
+    )
+    @ApiResponses(value = {
+        @ApiResponse(code = HTTP_OK, message = HTTP_OK_MESSAGE, response = AuthenticationResponse.class),
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class)
+    })
+    @Consumes(MediaType.APPLICATION_JSON)
+    AuthenticationResponse authentication(
+        @ApiParam(value = "The type of authentication request.", required = true)
+        @FormParam("type")
+            String type,
+
+        @ApiParam(value = "The email address of the customer, required for type = \"credentials\".")
+        @FormParam("email")
+            String email,
+
+        @ApiParam(value = "The password for this customer, required for type = \"credentials\".")
+        @FormParam("password")
+            String password
+    );
+
     @POST
     @Path("/login")
     @ApiOperation(
