@@ -32,6 +32,7 @@ import com.adobe.commerce.cif.model.common.PagedResponse;
 import com.adobe.commerce.cif.model.common.Payment;
 import com.adobe.commerce.cif.model.common.PaymentMethod;
 import com.adobe.commerce.cif.model.common.TaxInfo;
+import com.adobe.commerce.cif.model.customer.AuthenticationResponse;
 import com.adobe.commerce.cif.model.customer.LoginResult;
 import com.adobe.commerce.cif.model.discount.Discount;
 import com.adobe.commerce.cif.model.error.ErrorResponse;
@@ -256,6 +257,13 @@ public class ModelTest {
         GraphqlResponse graphqlResponse = map("graphqlResponse.json", GraphqlResponse.class);
         FieldTester fieldTester = FieldTester.builder().build();
         fieldTester.assertAllFieldsNotNull(graphqlResponse);
+    }
+
+    @Test
+    public void testAuthenticationResponse() throws Exception {
+        AuthenticationResponse authenticationResponse = map("authenticationResponse.json", AuthenticationResponse.class);
+        FieldTester fieldTester = FieldTester.builder().build();
+        fieldTester.assertAllFieldsNotNull(authenticationResponse);
     }
     
     private <T> T map(String filename, Class<T> type) throws Exception {

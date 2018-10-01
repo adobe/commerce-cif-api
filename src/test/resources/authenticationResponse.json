@@ -1,0 +1,7 @@
+{
+  "access_token": "v-dZ10ZCpvbGfwcFniXqfkAj0vq1yZVI",
+  "expires_in": 172800,
+  "scope": "view_products:{projectKey} manage_my_orders:{projectKey} manage_my_profile:{projectKey}",
+  "refresh_token": "OWStLG0eaeVs7Yx3-mHcn8iAZohBohCiJSDdK1UCJ9U",
+  "token_type": "Bearer"
+}
