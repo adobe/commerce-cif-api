@@ -68,12 +68,10 @@ public interface CustomerApi {
 
     @POST
     @Path("/auth")
-    @ApiOperation(
-        nickname = "postAuthentication",
-        value = "Performs a authentication request to obtain a customer access token. Currently two types are " +
-            "supported: \"guest\" returns a token for a new guest (non-authenticated) customer and " +
-            "\"credentials\" authenticates a registered customer and returns a token for a successfully " +
-            "authentication otherwise results in an error"
+    @ApiOperation(value = "Performs an authentication request to obtain a customer access token.",
+        notes = "Currently two types are supported: \"guest\" returns a token for a new guest (non-authenticated) " +
+            "customer and \"credentials\" authenticates a registered customer and returns a token upon successful " +
+            "authentication otherwise results in an error."
     )
     @ApiResponses(value = {
         @ApiResponse(code = HTTP_OK, message = HTTP_OK_MESSAGE, response = AuthenticationResponse.class),
@@ -81,18 +79,15 @@ public interface CustomerApi {
         @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_JSON)
-    AuthenticationResponse authentication(
-        @ApiParam(value = "The type of authentication request.", required = true)
-        @FormParam("type")
-            String type,
+    AuthenticationResponse postAuthentication(
+        @ApiParam(name = "type", value = "The type of authentication request.", required = true)
+        String type,
 
-        @ApiParam(value = "The email address of the customer, required for type = \"credentials\".")
-        @FormParam("email")
-            String email,
+        @ApiParam(name = "email", value = "The email address of the customer, required for type = credentials.")
+        String email,
 
-        @ApiParam(value = "The password for this customer, required for type = \"credentials\".")
-        @FormParam("password")
-            String password
+        @ApiParam(name = "password", value = "The password for this customer, required for type = credentials.")
+        String password
     );
 
     @POST
