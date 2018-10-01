@@ -33,7 +33,6 @@ import com.adobe.commerce.cif.model.common.Payment;
 import com.adobe.commerce.cif.model.common.PaymentMethod;
 import com.adobe.commerce.cif.model.common.TaxInfo;
 import com.adobe.commerce.cif.model.customer.AuthenticationResponse;
-import com.adobe.commerce.cif.model.customer.LoginResult;
 import com.adobe.commerce.cif.model.discount.Discount;
 import com.adobe.commerce.cif.model.error.ErrorResponse;
 import com.adobe.commerce.cif.model.graphql.GraphqlRequest;
@@ -131,16 +130,7 @@ public class ModelTest {
             .build();
         fieldTester.assertAllFieldsNotNull(payment);
     }
-    
-    @Test
-    public void testLoginResult() throws Exception {
-        LoginResult loginresult = map("loginResult.json", LoginResult.class);
-        FieldTester fieldTester = FieldTester.builder()
-            .withRecursiveDepth(1)
-            .build();
-        fieldTester.assertAllFieldsNotNull(loginresult);
-    }
-    
+
     @Test
     public void testDiscount() throws Exception {
         Discount discount = map("discount.json", Discount.class);
