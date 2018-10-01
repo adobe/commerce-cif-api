@@ -14,40 +14,46 @@
 
 package com.adobe.commerce.cif.model.customer;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
 public class AuthenticationResponse {
     @ApiModelProperty(value = "The access token string as issued by the commerce backend.", required = true)
-    protected String access_token;
+    @JsonProperty("access_token")
+    protected String accessToken;
 
     @ApiModelProperty(value = "The type of token this is, typically just the string \"bearer\".", required = true, example = "bearer")
-    protected String token_type;
+    @JsonProperty("token_type")
+    protected String tokenType;
 
     @ApiModelProperty(value = "The scope the user granted to if supported by commerce backend.")
     protected String scope;
 
-    @ApiModelProperty(value = "If the access token expires, the backend should reply with the duration of time the" +
-            " access token is granted for.")
-    protected Integer expires_in;
+    @ApiModelProperty(value = "If the access token expires, the backend specifies a number of seconds after which the " +
+        "access token expires, and is no longer valid. Expiration of access tokens is optional.")
+    @JsonProperty("expires_in")
+    protected Integer expiresIn;
 
-    @ApiModelProperty(value = "If the access token will expire, then it is useful to return a refresh token which" +
-            " applications can use to obtain another access token.")
-    protected String refresh_token;
+    @ApiModelProperty(value = "The refresh token is used to obtain a new access token after the original access token " +
+        "is expired. A refresh token will not be returned in case the access token does not expire or the commerce " +
+        "engine does not support it.")
+    @JsonProperty("refresh_token")
+    protected String refreshToken;
 
-    public String getAccess_token() {
-        return access_token;
+    public String getAccessToken() {
+        return accessToken;
     }
 
-    public void setAccess_token(String access_token) {
-        this.access_token = access_token;
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
-    public String getToken_type() {
-        return token_type;
+    public String getTokenType() {
+        return tokenType;
     }
 
-    public void setToken_type(String token_type) {
-        this.token_type = token_type;
+    public void setTokenType(String tokenType) {
+        this.tokenType = tokenType;
     }
 
     public String getScope() {
@@ -58,19 +64,19 @@ public class AuthenticationResponse {
         this.scope = scope;
     }
 
-    public Integer getExpires_in() {
-        return expires_in;
+    public Integer getExpiresIn() {
+        return expiresIn;
     }
 
-    public void setExpires_in(Integer expires_in) {
-        this.expires_in = expires_in;
+    public void setExpiresIn(Integer expiresIn) {
+        this.expiresIn = expiresIn;
     }
 
-    public String getRefresh_token() {
-        return refresh_token;
+    public String getRefreshToken() {
+        return refreshToken;
     }
 
-    public void setRefresh_token(String refresh_token) {
-        this.refresh_token = refresh_token;
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
     }
 }
