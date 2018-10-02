@@ -220,15 +220,14 @@
                         <exclude>**/package.json</exclude>
                         <exclude>**/package-lock.json</exclude>
                         <exclude>**/models-package.json</exclude>
-                        <!-- Post-release script -->
-                        <exclude>postrelease-commit.sh</exclude>
                         <!-- Generated nginx gateway config -->
                         <exclude>**/nginx-config.txt</exclude>
                         <exclude>src/main/javascript/src/nginx/config.hbs</exclude>
                         <!-- swagger docs -->
-                        <exclude>docs/*</exclude>
+                        <exclude>docs/**</exclude>
                         <exclude>src/main/resources/generated/swagger/*</exclude>
                         <exclude>src/main/resources/swagger/*</exclude>
+                        <exclude>**/schema.graphql</exclude>
                         <!-- JSON examples -->
                         <exclude>src/test/resources/*</exclude>
                         <!-- CircleCI -->
@@ -287,7 +286,7 @@
                         </goals>
                         <configuration>
                             <baseDir>${basedir}</baseDir>
-                            <includes>pom.xml,src/main/resources/javascript/*,src/main/resources/graphql/*,src/main/resources/swagger/*,src/main/resources/nginx/*</includes>
+                            <includes>pom.xml,src/main/resources/javascript/*,src/main/resources/graphql/*,src/main/resources/swagger/*,src/main/resources/nginx/*,docs/graphql/**</includes>
                         </configuration>
                     </execution>
                 </executions>
