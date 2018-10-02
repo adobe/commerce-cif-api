@@ -20,6 +20,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import com.adobe.commerce.cif.model.health.StatusReport;
+import com.adobe.commerce.cif.model.health.HealthResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -40,17 +42,18 @@ public interface HealthApi {
     @Path("/")
     @ApiOperation(
         value = "Returns the health status.",
-        notes = "This endpoint is used to check if underlying services are healthy. This is an internal API used for monitoring and must "
-                + "not be used by any storefront and must not exposed to any end customers. The endpoint must not return any information in"
-                + " the response body, but instead write them to internal logs. The optional scope parameter can be used to perform health "
-                + "checks for specific individual or groups of services."
+        notes =
+            "This endpoint is used to check if underlying scope(s) are healthy." +
+            "This is an internal API used for monitoring and must not be used by any storefront." +
+            "The endpoint must not return any sensitive information in the response body like IPs or detailed error messages, but instead write them to internal logs." +
+            "If all scopes are healthy the implementation should return HTTP Status-Code 200, otherwise it should return HTTP Status-Code 503."
     )
     @ApiResponses(value = {
         @ApiResponse(code = HTTP_OK, message = HTTP_OK_MESSAGE),
         @ApiResponse(code = HTTP_SERVICE_UNAVAILABLE, message = HTTP_SERVICE_UNAVAILABLE_MESSAGE)
     })
-    void getHealth(
-        @ApiParam(value = "Scope of the health check. Can be used to distinguish between different services.")
+    HealthResponse<StatusReport> getHealth(
+        @ApiParam(value = "Optional parameter that specifies the scope(s) of the health check. A scope can be a service like Inventory, PIM or Order")
         @QueryParam(value = "scope")
         String scope
     );

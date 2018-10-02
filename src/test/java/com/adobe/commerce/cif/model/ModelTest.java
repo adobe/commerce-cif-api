@@ -18,7 +18,10 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
+import com.adobe.commerce.cif.model.health.HealthResponse;
+import com.adobe.commerce.cif.model.health.StatusReport;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -264,6 +267,18 @@ public class ModelTest {
         AuthenticationResponse authenticationResponse = map("authenticationResponse.json", AuthenticationResponse.class);
         FieldTester fieldTester = FieldTester.builder().build();
         fieldTester.assertAllFieldsNotNull(authenticationResponse);
+    }
+
+    @Test
+    public void testHealthStatusResponse() throws Exception {
+        HealthResponse<StatusReport> pagedResponse = map("healthReport.json", new TypeReference<HealthResponse<StatusReport>>() {});
+        String[] ignoredFields = { "message"};
+        FieldTester fieldTester = FieldTester.builder()
+                .doCheckListElements()
+                .withIgnoredFieldNames(new HashSet<>(Arrays.asList(ignoredFields)))
+                .withRecursiveDepth(1)
+                .build();
+        fieldTester.assertAllFieldsNotNull(pagedResponse);
     }
     
     private <T> T map(String filename, Class<T> type) throws Exception {
