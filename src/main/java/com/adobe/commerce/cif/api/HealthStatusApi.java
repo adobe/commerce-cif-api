@@ -35,8 +35,8 @@ import static com.adobe.commerce.cif.api.Constants.HTTP_SERVICE_UNAVAILABLE_MESS
 
 @Path("/_health")
 @Api(value = "/_health")
-@Produces(MediaType.TEXT_PLAIN)
-public interface HealthApi {
+@Produces(MediaType.APPLICATION_JSON)
+public interface HealthStatusApi {
 
     @GET
     @Path("/")
