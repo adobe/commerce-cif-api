@@ -18,7 +18,6 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 
 import com.adobe.commerce.cif.model.health.HealthResponse;
 import com.adobe.commerce.cif.model.health.StatusReport;
