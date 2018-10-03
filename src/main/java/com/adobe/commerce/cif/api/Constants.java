@@ -37,6 +37,9 @@ public final class Constants {
     public static final int HTTP_NOT_FOUND = 404;
     public static final String HTTP_NOT_FOUND_MESSAGE = "Not Found.";
 
+    public static final int HTTP_SERVICE_UNAVAILABLE = 503;
+    public static final String HTTP_SERVICE_UNAVAILABLE_MESSAGE = "Service Unavailable.";
+
     public static final String ACCEPT_LANGUAGE = "Accept-Language";
     public static final String ACCEPT_LANGUAGE_DESC = "The languages the client is able to understand, and which locale variant is preferred.";
 }

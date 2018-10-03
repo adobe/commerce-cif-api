@@ -106,6 +106,8 @@ public class PojoTest {
                 setters.put(StringUtils.uncapitalize(methodName.substring(3)), method);
             } else if (methodName.startsWith("get")) {
                 getters.put(StringUtils.uncapitalize(methodName.substring(3)), method);
+            } else if (methodName.startsWith("is")) {
+                getters.put(StringUtils.uncapitalize(methodName.substring(2)), method);
             }
         }
 

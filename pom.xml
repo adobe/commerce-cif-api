@@ -234,6 +234,8 @@
                         <exclude>.circleci/*</exclude>
                         <exclude>ci/node_modules/**</exclude>
                         <exclude>ci/package-lock.json</exclude>
+                        <!-- ignore project files-->
+                        <exclude>**/*.iml</exclude>
                     </excludes>
                 </configuration>
                 <executions>

@@ -1,0 +1,13 @@
+{
+  "reports": [
+    {
+      "scope": "Scope1",
+      "healthy": false,
+      "message": "NOT OK"
+    },
+    {
+      "scope": "Scope2",
+      "healthy": true
+    }
+  ]
+}
