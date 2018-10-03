@@ -15,7 +15,6 @@
 package com.adobe.commerce.cif.api;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
@@ -26,7 +25,6 @@ import javax.ws.rs.core.MediaType;
 
 import com.adobe.commerce.cif.model.customer.AuthenticationResponse;
 import com.adobe.commerce.cif.model.customer.Customer;
-import com.adobe.commerce.cif.model.customer.LoginResult;
 import com.adobe.commerce.cif.model.error.ErrorResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -88,34 +86,5 @@ public interface CustomerApi {
 
         @ApiParam(name = "password", value = "The password for this customer, required for type = credentials.")
         String password
-    );
-
-    @POST
-    @Path("/login")
-    @ApiOperation(
-        nickname = "postCustomerLogin",
-        value = "Performs a customer login, potentially merging an anonymous cart with a customer cart."
-    )
-    @ApiResponses(value = {
-        @ApiResponse(code = HTTP_OK, message = HTTP_OK_MESSAGE, response = LoginResult.class),
-        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
-        @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class)
-    })
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    LoginResult login(
-        @ApiParam(value = "The email address of the customer.", required = true)
-        @FormParam("email")
-        String email,
-        
-        @ApiParam(value = "The password for this customer.", required = true)
-        @FormParam("password")
-        String password,
-        
-        @ApiParam(value = "An optional anonymous cart id to be merged during the login process.")
-        @FormParam("anonymousCartId")
-        String anonymousCartId,
-
-        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
-        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 }
