@@ -90,6 +90,7 @@ public interface CustomerApi {
         String password
     );
 
+    @Deprecated
     @POST
     @Path("/login")
     @ApiOperation(

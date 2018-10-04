@@ -17,6 +17,7 @@ package com.adobe.commerce.cif.model.customer;
 import com.adobe.commerce.cif.model.cart.Cart;
 import io.swagger.annotations.ApiModelProperty;
 
+@Deprecated
 public class LoginResult {
 
     @ApiModelProperty(value = "The customer info returned by the login process", required = true)
