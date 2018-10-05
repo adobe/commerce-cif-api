@@ -31,7 +31,7 @@ public abstract class AbstractProduct extends ModelWithDates {
     @ApiModelProperty(value = "The name of the product.", required = true)
     protected String name;
 
-    @ApiModelProperty(value = "Slug or human readable identifier that can be used for SEO friendly urls.")
+    @ApiModelProperty(value = "Slug or human readable key that uniquely identifies the product and that can be used for SEO friendly urls.")
     protected String slug;
 
     @ApiModelProperty(value = "The description of the product.")

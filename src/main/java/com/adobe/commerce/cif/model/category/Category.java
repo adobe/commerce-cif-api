@@ -27,7 +27,7 @@ public class Category extends ModelWithDates {
     @ApiModelProperty(value = "The name of the category.")
     protected String name;
 
-    @ApiModelProperty(value = "Slug or human readable identifier that can be used for SEO friendly urls.")
+    @ApiModelProperty(value = "Slug or human readable key that uniquely identifies the category and that can be used for SEO friendly urls. The slug can be a path containing slashes.")
     protected String slug;
 
     @ApiModelProperty(value = "The description of the category.")

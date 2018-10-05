@@ -67,7 +67,7 @@ public interface CategoryApi {
             @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     Category getCategoryBySlug(
-            @ApiParam(value = "The slug of the category to return.", required = true)
+            @ApiParam(value = "The slug of the category to return. The slug needs to uniquely identify the category and can be a path that contains slashes.", required = true)
             @PathParam("slug") String slug,
 
             @ApiParam(value = ACCEPT_LANGUAGE_DESC)
