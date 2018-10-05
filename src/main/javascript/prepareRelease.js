@@ -16,10 +16,11 @@ const resourcesFolder = __dirname + '/../resources';
 const genFolder = resourcesFolder + '/generated';
 const fsx = require('fs-extra');
 const swagger = require(genFolder + '/swagger/swagger.json');
+const cp = require('child_process');
 
 /**
- * When buidling a released version, this script copies all the generated folders
- * to the "released" resources folders.
+ * When building a released version, this script copies all the generated folders
+ * to the "released" resources folders, and also generates the GraphQL documentation.
  */
 
 let folders = ['javascript', 'nginx', 'swagger', 'graphql'];
@@ -31,4 +32,10 @@ if (!swagger.info.version.includes('-SNAPSHOT')) {
     });
 
     fsx.copySync(__dirname + '/src/models/models-readme.md', resourcesFolder + '/javascript/readme.md');
+
+    // Generate graphQL documentation
+    let packageJson = __dirname + '/../resources/javascript/package.json';
+    let graphqlSchema = __dirname + '/../resources/graphql/schema.graphql';
+    let docsFolder = __dirname + '/../../../docs/graphql';
+    cp.execSync(`$(npm bin)/graphdoc --force -c ${packageJson} -s ${graphqlSchema} -o ${docsFolder}`, {stdio: 'inherit'});
 }

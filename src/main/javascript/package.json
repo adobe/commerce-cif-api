@@ -18,6 +18,7 @@
     "url": "http://adobe.com"
   },
   "dependencies": {
+    "@2fd/graphdoc": "2.4.0",
     "fs-extra": "3.0.1",
     "graphql": "0.13.2",
     "handlebars": "4.0.11",

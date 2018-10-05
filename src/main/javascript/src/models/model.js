@@ -68,7 +68,7 @@ function addProperties(properties, requiredProperties, clazz) {
             name: name,
             nameUpperCase: _.upperFirst(name),
             description: property.description,
-            required: requiredProperties.includes(name),
+            required: requiredProperties ? requiredProperties.includes(name) : false,
             type: `{${type}}`
         }
 
