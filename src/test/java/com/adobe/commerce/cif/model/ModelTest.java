@@ -19,10 +19,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 
+import com.adobe.commerce.cif.model.health.HealthResponse;
+import com.adobe.commerce.cif.model.health.StatusReport;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.adobe.commerce.cif.model.common.PaymentMethod;
 import com.adobe.commerce.cif.model.cart.Cart;
 import com.adobe.commerce.cif.model.cart.Order;
 import com.adobe.commerce.cif.model.cart.ShippingInfo;
@@ -31,10 +32,14 @@ import com.adobe.commerce.cif.model.category.Category;
 import com.adobe.commerce.cif.model.common.Address;
 import com.adobe.commerce.cif.model.common.PagedResponse;
 import com.adobe.commerce.cif.model.common.Payment;
+import com.adobe.commerce.cif.model.common.PaymentMethod;
 import com.adobe.commerce.cif.model.common.TaxInfo;
+import com.adobe.commerce.cif.model.customer.AuthenticationResponse;
 import com.adobe.commerce.cif.model.customer.LoginResult;
 import com.adobe.commerce.cif.model.discount.Discount;
 import com.adobe.commerce.cif.model.error.ErrorResponse;
+import com.adobe.commerce.cif.model.graphql.GraphqlRequest;
+import com.adobe.commerce.cif.model.graphql.GraphqlResponse;
 import com.adobe.commerce.cif.model.inventory.InventoryItem;
 import com.adobe.commerce.cif.model.product.Product;
 import com.adobe.commerce.cif.model.shoppinglist.ShoppingList;
@@ -242,6 +247,39 @@ public class ModelTest {
         fieldTester.assertAllFieldsNotNull(errorResponse);
     }
 
+    @Test
+    public void testGraphqlRequest() throws Exception {
+        GraphqlRequest graphqlRequest = map("graphqlRequest.json", GraphqlRequest.class);
+        FieldTester fieldTester = FieldTester.builder().build();
+        fieldTester.assertAllFieldsNotNull(graphqlRequest);
+    }
+    
+    @Test
+    public void testGraphqlResponse() throws Exception {
+        GraphqlResponse graphqlResponse = map("graphqlResponse.json", GraphqlResponse.class);
+        FieldTester fieldTester = FieldTester.builder().build();
+        fieldTester.assertAllFieldsNotNull(graphqlResponse);
+    }
+
+    @Test
+    public void testAuthenticationResponse() throws Exception {
+        AuthenticationResponse authenticationResponse = map("authenticationResponse.json", AuthenticationResponse.class);
+        FieldTester fieldTester = FieldTester.builder().build();
+        fieldTester.assertAllFieldsNotNull(authenticationResponse);
+    }
+
+    @Test
+    public void testHealthStatusResponse() throws Exception {
+        HealthResponse<StatusReport> pagedResponse = map("healthReport.json", new TypeReference<HealthResponse<StatusReport>>() {});
+        String[] ignoredFields = { "message"};
+        FieldTester fieldTester = FieldTester.builder()
+                .doCheckListElements()
+                .withIgnoredFieldNames(new HashSet<>(Arrays.asList(ignoredFields)))
+                .withRecursiveDepth(1)
+                .build();
+        fieldTester.assertAllFieldsNotNull(pagedResponse);
+    }
+    
     private <T> T map(String filename, Class<T> type) throws Exception {
         InputStream is = this.getClass().getClassLoader().getResourceAsStream(filename);
         return objectMapper.readValue(is, type);
