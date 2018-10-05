@@ -68,7 +68,7 @@ public interface ProductApi {
             @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
     })
     Product getProductBySlug(
-            @ApiParam(value = "The slug of the product to return. The slug needs to uniquely identify the product.", required = true)
+            @ApiParam(value = "The slug of the product to return. The slug needs to uniquely identify the product and can be a path that contains slashes.", required = true)
             @PathParam("slug") String slug,
 
             @ApiParam(value = ACCEPT_LANGUAGE_DESC)
