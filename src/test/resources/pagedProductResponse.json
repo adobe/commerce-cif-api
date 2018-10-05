@@ -5,11 +5,13 @@
     "results": [
         {
             "id": "product-1",
-            "sku": "sku-1"
+            "sku": "sku-1",
+            "slug": "product-1"
         },
         {
             "id": "product-2",
-            "sku": "sku-2"
+            "sku": "sku-2",
+            "slug": "product-2"
         }
     ],
     "facets": []

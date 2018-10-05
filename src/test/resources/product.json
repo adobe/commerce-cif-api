@@ -2,6 +2,7 @@
     "id": "product-1",
     "sku": "sku-1",
     "name": "A name",
+    "slug": "a-name",
     "description": "A description",
     "categories": [
         {
@@ -39,6 +40,7 @@
             "id": "product-1-1",
             "sku": "sku-1-1",
             "name": "A name",
+            "slug": "a-name-1",
             "description": "A description",
             "createdAt": "2017-01-11T14:58:29.432Z",
             "lastModifiedAt": "2017-07-06T18:09:42.687Z",
@@ -92,6 +94,7 @@
             "id": "product-1-2",
             "sku": "sku-1-2",
             "name": "A name",
+            "slug": "a-name-2",
             "description": "A description",
             "createdAt": "2017-01-11T14:58:29.432Z",
             "lastModifiedAt": "2017-07-06T18:09:42.687Z",

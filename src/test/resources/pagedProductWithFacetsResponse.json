@@ -6,6 +6,7 @@
         {
             "id": "product-1",
             "sku": "sku-1",
+            "slug": "product-1",
             "variants": [
                 {
                     "id": "product-1-green",

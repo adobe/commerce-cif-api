@@ -58,6 +58,21 @@ public interface CategoryApi {
         @ApiParam(value = ACCEPT_LANGUAGE_DESC)
         @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
+
+    @GET
+    @Path("/slug/{slug}")
+    @ApiOperation(value = "Returns a category by slug.")
+    @ApiResponses(value = {
+            @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE , response = ErrorResponse.class),
+            @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
+    })
+    Category getCategoryBySlug(
+            @ApiParam(value = "The slug of the category to return. The slug needs to uniquely identify the category and can be a path that contains slashes.", required = true)
+            @PathParam("slug") String slug,
+
+            @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+            @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
+    );
     
     @GET
     @Path("/")

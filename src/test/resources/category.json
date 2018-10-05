@@ -1,6 +1,7 @@
 {
     "id": "category-1-1",
     "name": "A name",
+    "slug": "a-name",
     "description": "A description",
     "mainParentId": "category-1",
     "parents": [
