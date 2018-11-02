@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: adobe/commerce-cif-ci-env:v0.0.1
+      - image: adobe/commerce-cif-ci-env:ci-v0.0.2
     steps:
       - checkout
       - restore_cache:
@@ -20,9 +20,11 @@ jobs:
           path: target/surefire-reports
       - store_artifacts:
           path: target/surefire-reports
+      - store_artifacts:
+          path: audit.json
   release:
     docker:
-      - image: adobe/commerce-cif-ci-env:v0.0.1
+      - image: adobe/commerce-cif-ci-env:ci-v0.0.2
     steps:
       - checkout
       - restore_cache:
