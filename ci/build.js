@@ -22,6 +22,9 @@ ci.context();
 ci.stage('BUILD');
 ci.sh('mvn -B clean install -DskipTests -s ci/settings.xml');
 
+ci.stage('SECURITY AUDIT');
+ci.sh('node ci/audit.js');
+
 ci.stage('UNIT TESTS');
 ci.sh('mvn -B verify -s ci/settings.xml');
 ci.sh('curl -s https://codecov.io/bash | bash');

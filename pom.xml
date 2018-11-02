@@ -212,7 +212,7 @@
                         <exclude>wiki/*.md</exclude>
                         <!-- ignore node and npm install directories -->
                         <exclude>src/main/javascript/node/**</exclude>
-                        <exclude>src/main/javascript/node_modules/**</exclude>
+                        <exclude>**/node_modules/**</exclude>
                         <exclude>**/npm-debug.log</exclude>
                         <!-- ignore the swagger doc template -->
                         <exclude>src/main/resources/template/*</exclude>
