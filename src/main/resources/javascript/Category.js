@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.2
+ * @version 1.2.0
  */
 
 class Category {
@@ -75,6 +75,12 @@ class Category {
          * @type {Category[]}
          */
         this.parents = undefined;
+
+        /**
+         * Slug or human readable key that uniquely identifies the category and that can be used for SEO friendly urls. The slug can be a path containing slashes.
+         * @type {string}
+         */
+        this.slug = undefined;
     }
 
     /**

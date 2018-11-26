@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.2
+ * @version 1.2.0
  */
 const MoneyValue = require('./MoneyValue.js').MoneyValue;
 const Category = require('./Category.js').Category;
@@ -98,6 +98,12 @@ class Product {
          * @type {string}
          */
         this.sku = undefined;
+
+        /**
+         * Slug or human readable key that uniquely identifies the product and that can be used for SEO friendly urls. The slug can be a path containing slashes.
+         * @type {string}
+         */
+        this.slug = undefined;
 
         /**
          * The variants for this product.

@@ -5,10 +5,19 @@
 #    before the first location directive that already exists in the file
 # 3) Restart the Openwhisk nginx/edge component by running "wskdev edge"
 #
-# CCIF API Version 1.1.2
+# CCIF API Version 1.2.0
 
 # set $controller "http://controllers";
 set $ow_namespace "your-namespace";
+
+location = /commerce/_health {
+  if ($request_method != GET) {
+    return 405;
+  }
+  rewrite ^ /api/v1/web/$ow_namespace/default/getHealth.http break;
+  proxy_pass $controller;
+  proxy_read_timeout 70s;
+}
 
 location = /commerce/carts {
   if ($request_method != POST) {
@@ -175,11 +184,29 @@ location = /commerce/categories {
   proxy_read_timeout 70s;
 }
 
+location ~ ^/commerce/categories/slug/(?<slug>[^/]+)$ {
+  if ($request_method != GET) {
+    return 405;
+  }
+  rewrite ^ /api/v1/web/$ow_namespace/default/getCategoryBySlug.http?slug=${slug} break;
+  proxy_pass $controller;
+  proxy_read_timeout 70s;
+}
+
 location ~ ^/commerce/categories/(?<id>[^/]+)$ {
   if ($request_method != GET) {
     return 405;
   }
   rewrite ^ /api/v1/web/$ow_namespace/default/getCategoryById.http?id=${id} break;
+  proxy_pass $controller;
+  proxy_read_timeout 70s;
+}
+
+location = /commerce/customers/auth {
+  if ($request_method != POST) {
+    return 405;
+  }
+  rewrite ^ /api/v1/web/$ow_namespace/default/postAuthentication.http break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }
@@ -198,6 +225,15 @@ location ~ ^/commerce/customers/(?<id>[^/]+)$ {
     return 405;
   }
   rewrite ^ /api/v1/web/$ow_namespace/default/getCustomerById.http?id=${id} break;
+  proxy_pass $controller;
+  proxy_read_timeout 70s;
+}
+
+location = /commerce/graphql {
+  if ($request_method != POST) {
+    return 405;
+  }
+  rewrite ^ /api/v1/web/$ow_namespace/default/postRequest.http break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }
@@ -225,6 +261,15 @@ location = /commerce/products/search {
     return 405;
   }
   rewrite ^ /api/v1/web/$ow_namespace/default/searchProducts.http break;
+  proxy_pass $controller;
+  proxy_read_timeout 70s;
+}
+
+location ~ ^/commerce/products/slug/(?<slug>[^/]+)$ {
+  if ($request_method != GET) {
+    return 405;
+  }
+  rewrite ^ /api/v1/web/$ow_namespace/default/getProductBySlug.http?slug=${slug} break;
   proxy_pass $controller;
   proxy_read_timeout 70s;
 }

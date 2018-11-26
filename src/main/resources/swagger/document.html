@@ -13,7 +13,7 @@ Adobe Commerce Cloud API
 
 
 
-**Version** 1.1.2
+**Version** 1.2.0
 
 [**Terms of Service**]()
 
@@ -29,6 +29,87 @@ Adobe Commerce Cloud API
 
 
 # APIs
+
+
+## /_health
+
+
+### GET
+
+<a id="getHealth">Returns the health status.</a>
+
+This endpoint is used to check if underlying scope(s) are healthy.This is an internal API used for monitoring and must not be used by any storefront.The endpoint must not return any sensitive information in the response body like IPs or detailed error messages, but instead write them to internal logs.If all scopes are healthy the implementation should return HTTP Status-Code 200, otherwise it should return HTTP Status-Code 503.
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>scope</th>
+    <td>query</td>
+    <td>no</td>
+    <td>
+        Optional parameter that specifies the scope(s) of the health check. A scope can be a service like Inventory, PIM or Order
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** application/json
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | OK. | <a href="#/definitions/HealthResponseStatusReport">HealthResponseStatusReport</a>|
+| 503    | Service Unavailable. |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## /carts
@@ -2339,6 +2420,104 @@ Adobe Commerce Cloud API
 
 
 
+## /categories/slug/{slug}
+
+
+### GET
+
+<a id="getCategoryBySlug">Returns a category by slug.</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>slug</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>
+        The slug of the category to return. The slug needs to uniquely identify the category and can be a path that contains slashes.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+<tr>
+    <th>Accept-Language</th>
+    <td>header</td>
+    <td>no</td>
+    <td>
+        The languages the client is able to understand, and which locale variant is preferred.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** application/json
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | successful operation | <a href="#/definitions/Category">Category</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## /categories/{id}
 
 
@@ -2437,7 +2616,7 @@ Adobe Commerce Cloud API
 
 
 
-## /customers/login
+## /customers/auth
 
 
 
@@ -2447,6 +2626,126 @@ Adobe Commerce Cloud API
 ### POST
 
 
+<a id="postAuthentication">Performs an authentication request to obtain a customer access token.</a>
+
+Currently two types are supported: &quot;guest&quot; returns a token for a new guest (non-authenticated) customer and &quot;credentials&quot; authenticates a registered customer and returns a token upon successful authentication otherwise results in an error.
+
+
+
+
+
+
+
+#### Request
+
+
+**Content-Type: ** application/json
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>type</th>
+    <td>body</td>
+    <td>yes</td>
+    <td>
+        The type of authentication request.
+        
+    </td>
+    <td> - </td>
+
+    <td>
+    
+    
+    </td>
+
+</tr>
+
+<tr>
+    <th>email</th>
+    <td>body</td>
+    <td>no</td>
+    <td>
+        The email address of the customer, required for type = credentials.
+        
+    </td>
+    <td> - </td>
+
+    <td>
+    
+    
+    </td>
+
+</tr>
+
+<tr>
+    <th>password</th>
+    <td>body</td>
+    <td>no</td>
+    <td>
+        The password for this customer, required for type = credentials.
+        
+    </td>
+    <td> - </td>
+
+    <td>
+    
+    
+    </td>
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** application/json
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | OK. | <a href="#/definitions/AuthenticationResponse">AuthenticationResponse</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 401    | Unauthorized. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /customers/login
+
+
+
+
+
+
+### POST
+
+-deprecated-
 <a id="postCustomerLogin">Performs a customer login, potentially merging an anonymous cart with a customer cart.</a>
 
 
@@ -2653,6 +2952,106 @@ Adobe Commerce Cloud API
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /graphql
+
+
+
+
+
+
+### POST
+
+
+<a id="postRequest">Processes a GraphQL request and returns a GraphQL response.</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+**Content-Type: ** application/json
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>body</th>
+    <td>body</td>
+    <td>yes</td>
+    <td>
+        The graphQL JSON request
+        
+    </td>
+    <td> - </td>
+
+    <td>
+    
+    <a href="#/definitions/GraphqlRequest">GraphqlRequest</a> 
+    </td>
+
+</tr>
+
+<tr>
+    <th>Accept-Language</th>
+    <td>header</td>
+    <td>no</td>
+    <td>
+        The languages the client is able to understand, and which locale variant is preferred.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** application/json
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | successful operation | <a href="#/definitions/GraphqlResponse">GraphqlResponse</a>|
 
 
 
@@ -3091,6 +3490,104 @@ Adobe Commerce Cloud API
 |-------------|-------------|----------------|
 | 200    | successful operation | <a href="#/definitions/PagedResponseProduct">PagedResponseProduct</a>|
 | 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /products/slug/{slug}
+
+
+### GET
+
+<a id="getProductBySlug">Returns a product by slug.</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>slug</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>
+        The slug of the product to return. The slug needs to uniquely identify the product and can be a path that contains slashes.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+<tr>
+    <th>Accept-Language</th>
+    <td>header</td>
+    <td>no</td>
+    <td>
+        The languages the client is able to understand, and which locale variant is preferred.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** application/json
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | successful operation | <a href="#/definitions/Product">Product</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 404    | Not Found. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
 
 
 
@@ -4716,6 +5213,84 @@ The name and description properties will be stored as localized strings in the l
     
 </table>
 
+## <a name="/definitions/AuthenticationResponse">AuthenticationResponse</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>scope</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>The scope the user granted to if supported by commerce backend.</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>access_token</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>required</td>
+            <td>The access token string as issued by the commerce backend.</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>token_type</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>required</td>
+            <td>The type of token this is, typically just the string "bearer".</td>
+            <td>bearer</td>
+        </tr>
+    
+        <tr>
+            <td>expires_in</td>
+            <td>
+                
+                    
+                    integer (int32)
+                
+            </td>
+            <td>optional</td>
+            <td>If the access token expires, the backend specifies a number of seconds after which the access token expires, and is no longer valid. Expiration of access tokens is optional.</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>refresh_token</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>The refresh token is used to obtain a new access token after the original access token is expired. A refresh token will not be returned in case the access token does not expire or the commerce engine does not support it.</td>
+            <td></td>
+        </tr>
+    
+</table>
+
 ## <a name="/definitions/Cart">Cart</a>
 
 <table border="1">
@@ -5163,6 +5738,19 @@ The name and description properties will be stored as localized strings in the l
             </td>
             <td>optional</td>
             <td>The name of the category.</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>slug</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>Slug or human readable key that uniquely identifies the category and that can be used for SEO friendly urls. The slug can be a path containing slashes.</td>
             <td></td>
         </tr>
     
@@ -5650,6 +6238,151 @@ The name and description properties will be stored as localized strings in the l
             </td>
             <td>optional</td>
             <td>Indicates if the current facet value was selected.</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+## <a name="/definitions/GraphqlRequest">GraphqlRequest</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>query</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>required</td>
+            <td>The query string in graphQL query format.</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>operationName</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>Only required if multiple operations are present in the query.</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>variables</td>
+            <td>
+                
+                    
+                    object
+                
+            </td>
+            <td>optional</td>
+            <td>An optional JSON object defining variables for the query.</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+## <a name="/definitions/GraphqlResponse">GraphqlResponse</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>data</td>
+            <td>
+                
+                    
+                    object
+                
+            </td>
+            <td>optional</td>
+            <td>If successful, this contains the JSON data returned by a graphQL request.</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>errors</td>
+            <td>
+                
+                
+                array[object]
+                
+            </td>
+            <td>optional</td>
+            <td>If any, this contains a JSON array of the errors encountered while executing a graphQL request.</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+## <a name="/definitions/HealthResponse">HealthResponse</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>reports</td>
+            <td>
+                
+                
+                array[object]
+                
+            </td>
+            <td>optional</td>
+            <td>The list of status reports for this response.</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+## <a name="/definitions/HealthResponseStatusReport">HealthResponseStatusReport</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>reports</td>
+            <td>
+                
+                
+                    array[<a href="#/definitions/StatusReport">StatusReport</a>]
+                
+                
+                
+            </td>
+            <td>optional</td>
+            <td>The list of status reports for this response.</td>
             <td></td>
         </tr>
     
@@ -6638,6 +7371,19 @@ The name and description properties will be stored as localized strings in the l
         </tr>
     
         <tr>
+            <td>slug</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>Slug or human readable key that uniquely identifies the product and that can be used for SEO friendly urls. The slug can be a path containing slashes.</td>
+            <td></td>
+        </tr>
+    
+        <tr>
             <td>description</td>
             <td>
                 
@@ -6813,6 +7559,19 @@ The name and description properties will be stored as localized strings in the l
             </td>
             <td>required</td>
             <td>The name of the product.</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>slug</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>Slug or human readable key that uniquely identifies the product and that can be used for SEO friendly urls. The slug can be a path containing slashes.</td>
             <td></td>
         </tr>
     
@@ -7239,6 +7998,58 @@ The name and description properties will be stored as localized strings in the l
             </td>
             <td>required</td>
             <td>The quantity for the entry.</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+## <a name="/definitions/StatusReport">StatusReport</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>scope</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>required</td>
+            <td>The scope that was checked.</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>healthy</td>
+            <td>
+                
+                    
+                    boolean
+                
+            </td>
+            <td>required</td>
+            <td>Indicates if scope is healthy or not.</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>message</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>optional</td>
+            <td>Optional message to accompany the reported healthy status. Typically useful when scope is not healthy.</td>
             <td></td>
         </tr>
     

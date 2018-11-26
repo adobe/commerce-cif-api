@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.2
+ * @version 1.2.0
  */
 const ShoppingListEntry = require('./ShoppingListEntry.js').ShoppingListEntry;
 

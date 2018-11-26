@@ -16,7 +16,7 @@
  * Auto generated graphQL schema based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.1.2
+ * @version 1.2.0
  */
 
 let schema = `
@@ -87,6 +87,8 @@ let schema = `
         prices: [MoneyValue]!
         # The unique SKU of the product assigned by the vendor or manufacturer.
         sku: String
+        # Slug or human readable key that uniquely identifies the product and that can be used for SEO friendly urls. The slug can be a path containing slashes.
+        slug: String
         # The variants for this product.
         variants: [ProductVariant]!
     }
@@ -126,6 +128,8 @@ let schema = `
         name: String
         # The list of parent categories for this category. Depending on the backend system, the returned items may only have their ids being set.
         parents: [Category]
+        # Slug or human readable key that uniquely identifies the category and that can be used for SEO friendly urls. The slug can be a path containing slashes.
+        slug: String
     }
 
     type MoneyValue {
@@ -160,6 +164,8 @@ let schema = `
         prices: [MoneyValue]!
         # The unique SKU of the product variant assigned by the vendor or manufacturer.
         sku: String!
+        # Slug or human readable key that uniquely identifies the product and that can be used for SEO friendly urls. The slug can be a path containing slashes.
+        slug: String
     }
 
 `;
