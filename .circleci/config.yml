@@ -33,7 +33,7 @@ jobs:
             - maven-repo-v1-
       - run:
           name: Release
-          command: cd ci; npm install; cd ..; node ci/release.js
+          command: cd ci; npm ci; cd ..; node ci/release.js
 
 workflows:
   version: 2
