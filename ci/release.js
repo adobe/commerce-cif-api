@@ -109,6 +109,7 @@ function updateSwaggerUiIndex() {
 
     tags.forEach(tag => {
         urls.unshift({
+            url: `https://raw.githubusercontent.com/adobe/commerce-cif-api/${tag}/src/main/resources/swagger/swagger.json`,
             url: `https://raw.githubusercontent.com/adobe/commerce-cif-api/${tag}/docs/swagger.json`,
             name: 'CIF Cloud API ' + tag.substring(10)
         });
