@@ -16,17 +16,17 @@ package com.adobe.commerce.cif.model.common;
 
 import java.util.Date;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class ModelWithDates {
 
-    @ApiModelProperty(
-        value = "The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format",
+    @Schema(
+        description = "The date-time when this object was created. The JSON representation must be in RFC339 / ISO8601 format",
         example = "2018-06-05T10:58:18.000Z")
     protected Date createdAt;
 
-    @ApiModelProperty(
-        value = "The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format",
+    @Schema(
+        description = "The date-time when this object was last modified. The JSON representation must be in RFC339 / ISO8601 format",
         example = "2018-06-05T10:58:18.000Z")
     protected Date lastModifiedAt;
 

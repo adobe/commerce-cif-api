@@ -14,17 +14,17 @@
 
 package com.adobe.commerce.cif.model.graphql;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class GraphqlRequest {
 
-    @ApiModelProperty(value = "The query string in graphQL query format.", required = true)
+    @Schema(description = "The query string in graphQL query format.", required = true)
     protected String query;
     
-    @ApiModelProperty(value = "Only required if multiple operations are present in the query.")
+    @Schema(description = "Only required if multiple operations are present in the query.")
     protected String operationName;
     
-    @ApiModelProperty(value = "An optional JSON object defining variables for the query.")
+    @Schema(description = "An optional JSON object defining variables for the query.")
     protected Object variables;
 
     public String getQuery() {

@@ -20,35 +20,35 @@ import com.adobe.commerce.cif.model.common.MoneyValue;
 import com.adobe.commerce.cif.model.common.TaxInfo;
 import com.adobe.commerce.cif.model.discount.Discount;
 import com.adobe.commerce.cif.model.product.ProductVariant;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class CartEntry {
 
-    @ApiModelProperty(value = "The id for the entry.", required = true)
+    @Schema(description = "The id for the entry.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The quantity for the entry.", required = true)
+    @Schema(description = "The quantity for the entry.", required = true)
     protected Integer quantity;
 
-    @ApiModelProperty(value = "The ProductVariant for the entry.", required = true)
+    @Schema(description = "The ProductVariant for the entry.", required = true)
     protected ProductVariant productVariant;
 
-    @ApiModelProperty(value = "The product variant item price.", required = true)
+    @Schema(description = "The product variant item price.", required = true)
     protected MoneyValue unitPrice;
 
-    @ApiModelProperty(value = "A list of all applied discounts.")
+    @Schema(description = "A list of all applied discounts.")
     protected List<Discount> discounts;
 
-    @ApiModelProperty(value = "The calculated cart entry price. May or may not include taxes, depending on the tax policy.", required = true)
+    @Schema(description = "The calculated cart entry price. May or may not include taxes, depending on the tax policy.", required = true)
     protected MoneyValue price;
 
-    @ApiModelProperty(value = "The cart entry price after all discounts have been applied.")
+    @Schema(description = "The cart entry price after all discounts have been applied.")
     protected MoneyValue discountedPrice;
 
-    @ApiModelProperty(value = "The cart entry tax info. Until a shipping address is set, this field is typically not set.")
+    @Schema(description = "The cart entry tax info. Until a shipping address is set, this field is typically not set.")
     protected TaxInfo taxInfo;
 
-    @ApiModelProperty(value = "Cart entry type.", required = true)
+    @Schema(description = "Cart entry type.", required = true)
     protected CartEntryType type;
 
     public String getId() {

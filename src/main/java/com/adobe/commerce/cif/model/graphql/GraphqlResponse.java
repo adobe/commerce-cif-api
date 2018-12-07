@@ -16,14 +16,14 @@ package com.adobe.commerce.cif.model.graphql;
 
 import java.util.List;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class GraphqlResponse {
 
-    @ApiModelProperty(value = "If successful, this contains the JSON data returned by a graphQL request.")
+    @Schema(description = "If successful, this contains the JSON data returned by a graphQL request.")
     protected Object data;
 
-    @ApiModelProperty(value = "If any, this contains a JSON array of the errors encountered while executing a graphQL request.")
+    @Schema(description = "If any, this contains a JSON array of the errors encountered while executing a graphQL request.")
     protected List<Object> errors;
     
     public Object getData() {

@@ -14,17 +14,17 @@
 
 package com.adobe.commerce.cif.model.health;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class StatusReport {
 
-    @ApiModelProperty(value = "The scope that was checked.", required = true)
+    @Schema(description = "The scope that was checked.", required = true)
     protected String scope;
 
-    @ApiModelProperty(value = "Indicates if scope is healthy or not.", required = true)
+    @Schema(description = "Indicates if scope is healthy or not.", required = true)
     protected Boolean healthy;
 
-    @ApiModelProperty(value = "Optional message to accompany the reported healthy status. Typically useful when scope is not healthy.")
+    @Schema(description = "Optional message to accompany the reported healthy status. Typically useful when scope is not healthy.")
     protected String message;
 
     public String getScope() {

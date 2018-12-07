@@ -15,20 +15,20 @@
 package com.adobe.commerce.cif.model.customer;
 
 import com.adobe.commerce.cif.model.common.ModelWithDates;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class Customer extends ModelWithDates {
 
-    @ApiModelProperty(value = "The unique id of this customer", required = true)
+    @Schema(description = "The unique id of this customer", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The customer's email address", required = true)
+    @Schema(description = "The customer's email address", required = true)
     protected String email;
 
-    @ApiModelProperty(value = "The firstname of this customer", required = true)
+    @Schema(description = "The firstname of this customer", required = true)
     protected String firstName;
 
-    @ApiModelProperty(value = "The lastname of this customer", required = true)
+    @Schema(description = "The lastname of this customer", required = true)
     protected String lastName;
 
     public String getId() {

@@ -20,13 +20,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import com.adobe.commerce.cif.model.health.StatusReport;
 import com.adobe.commerce.cif.model.health.HealthResponse;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import com.adobe.commerce.cif.model.health.StatusReport;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import static com.adobe.commerce.cif.api.Constants.HTTP_OK;
 import static com.adobe.commerce.cif.api.Constants.HTTP_OK_MESSAGE;
@@ -34,26 +33,24 @@ import static com.adobe.commerce.cif.api.Constants.HTTP_SERVICE_UNAVAILABLE;
 import static com.adobe.commerce.cif.api.Constants.HTTP_SERVICE_UNAVAILABLE_MESSAGE;
 
 @Path("/_health")
-@Api(value = "/_health")
+@Tag(name = "_health")
 @Produces(MediaType.APPLICATION_JSON)
 public interface HealthStatusApi {
 
     @GET
     @Path("/")
-    @ApiOperation(
-        value = "Returns the health status.",
-        notes =
+    @Operation(
+        summary = "Returns the health status.",
+        description =
             "This endpoint is used to check if underlying scope(s) are healthy." +
             "This is an internal API used for monitoring and must not be used by any storefront." +
             "The endpoint must not return any sensitive information in the response body like IPs or detailed error messages, but instead write them to internal logs." +
             "If all scopes are healthy the implementation should return HTTP Status-Code 200, otherwise it should return HTTP Status-Code 503."
     )
-    @ApiResponses(value = {
-        @ApiResponse(code = HTTP_OK, message = HTTP_OK_MESSAGE),
-        @ApiResponse(code = HTTP_SERVICE_UNAVAILABLE, message = HTTP_SERVICE_UNAVAILABLE_MESSAGE)
-    })
+    @ApiResponse(responseCode = HTTP_OK, description = HTTP_OK_MESSAGE)
+    @ApiResponse(responseCode = HTTP_SERVICE_UNAVAILABLE, description = HTTP_SERVICE_UNAVAILABLE_MESSAGE)
     HealthResponse<StatusReport> getHealth(
-        @ApiParam(value = "Optional parameter that specifies the scope(s) of the health check. A scope can be a service like Inventory, PIM or Order")
+        @Parameter(description = "Optional parameter that specifies the scope(s) of the health check. A scope can be a service like Inventory, PIM or Order")
         @QueryParam(value = "scope")
         String scope
     );

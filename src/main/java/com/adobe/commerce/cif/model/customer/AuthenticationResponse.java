@@ -15,26 +15,26 @@
 package com.adobe.commerce.cif.model.customer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class AuthenticationResponse {
-    @ApiModelProperty(value = "The access token string as issued by the commerce backend.", required = true)
+    @Schema(description = "The access token string as issued by the commerce backend.", required = true)
     @JsonProperty("access_token")
     protected String accessToken;
 
-    @ApiModelProperty(value = "The type of token this is, typically just the string \"bearer\".", required = true, example = "bearer")
+    @Schema(description = "The type of token this is, typically just the string \"bearer\".", required = true, example = "bearer")
     @JsonProperty("token_type")
     protected String tokenType;
 
-    @ApiModelProperty(value = "The scope the user granted to if supported by commerce backend.")
+    @Schema(description = "The scope the user granted to if supported by commerce backend.")
     protected String scope;
 
-    @ApiModelProperty(value = "If the access token expires, the backend specifies a number of seconds after which the " +
+    @Schema(description = "If the access token expires, the backend specifies a number of seconds after which the " +
         "access token expires, and is no longer valid. Expiration of access tokens is optional.")
     @JsonProperty("expires_in")
     protected Integer expiresIn;
 
-    @ApiModelProperty(value = "The refresh token is used to obtain a new access token after the original access token " +
+    @Schema(description = "The refresh token is used to obtain a new access token after the original access token " +
         "is expired. A refresh token will not be returned in case the access token does not expire or the commerce " +
         "engine does not support it.")
     @JsonProperty("refresh_token")

@@ -14,65 +14,65 @@
 
 package com.adobe.commerce.cif.model.common;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class Address {
 
-    @ApiModelProperty(value = "Address unique identifier.", required = true)
+    @Schema(description = "Address unique identifier.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "Address title")
+    @Schema(description = "Address title")
     protected String title;
 
-    @ApiModelProperty(value = "Address salutation")
+    @Schema(description = "Address salutation")
     protected String salutation;
 
-    @ApiModelProperty(value = "First name.", required = true)
+    @Schema(description = "First name.", required = true)
     protected String firstName;
 
-    @ApiModelProperty(value = "Last name.", required = true)
+    @Schema(description = "Last name.", required = true)
     protected String lastName;
 
-    @ApiModelProperty(value = "Email.")
+    @Schema(description = "Email.")
     protected String email;
 
-    @ApiModelProperty(value = "Phone.")
+    @Schema(description = "Phone.")
     protected String phone;
 
-    @ApiModelProperty(value = "Mobile.")
+    @Schema(description = "Mobile.")
     protected String mobile;
 
-    @ApiModelProperty(value = "Fax.")
+    @Schema(description = "Fax.")
     protected String fax;
 
-    @ApiModelProperty(value = "Country code as per ISO 3166-1.", required = true)
+    @Schema(description = "Country code as per ISO 3166-1.", required = true)
     protected String country;
 
-    @ApiModelProperty(value = "Region.")
+    @Schema(description = "Region.")
     protected String region;
 
-    @ApiModelProperty(value = "City.", required = true)
+    @Schema(description = "City.", required = true)
     protected String city;
 
-    @ApiModelProperty(value = "Postal code.", required = true)
+    @Schema(description = "Postal code.", required = true)
     protected String postalCode;
 
-    @ApiModelProperty(value = "Organization name. Can be company name.")
+    @Schema(description = "Organization name. Can be company name.")
     protected String organizationName;
 
-    @ApiModelProperty(value = "Department.")
+    @Schema(description = "Department.")
     protected String department;
 
-    @ApiModelProperty(value = "Street name.", required = true)
+    @Schema(description = "Street name.", required = true)
     protected String streetName;
 
-    @ApiModelProperty(value = "Street no.")
+    @Schema(description = "Street no.")
     protected String streetNumber;
 
-    @ApiModelProperty(value = "Additional details for the street address.")
+    @Schema(description = "Additional details for the street address.")
     protected String additionalStreetInfo;
 
-    @ApiModelProperty(value = "Additional details for the address.")
+    @Schema(description = "Additional details for the address.")
     protected String additionalAddressInfo;
 
     public String getId() {

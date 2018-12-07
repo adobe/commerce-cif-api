@@ -15,20 +15,20 @@
 package com.adobe.commerce.cif.model.cart;
 
 import com.adobe.commerce.cif.model.common.MoneyValue;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class ShippingMethod {
     
-    @ApiModelProperty(value = "The id of the shipping method.", required = true)
+    @Schema(description = "The id of the shipping method.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The name of the shipping method.", required = true)
+    @Schema(description = "The name of the shipping method.", required = true)
     protected String name;
 
-    @ApiModelProperty(value = "The description of the shipping method.")
+    @Schema(description = "The description of the shipping method.")
     protected String description;
     
-    @ApiModelProperty(value = "The cost of shipping.", required = true)
+    @Schema(description = "The cost of shipping.", required = true)
     protected MoneyValue cost;
 
     public String getId() {

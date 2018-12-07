@@ -14,14 +14,14 @@
 
 package com.adobe.commerce.cif.model.common;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class TaxPortion {
 
-    @ApiModelProperty(value = "The name for this tax portion.", required = true)
+    @Schema(description = "The name for this tax portion.", required = true)
     protected String name;
 
-    @ApiModelProperty(value = "The value of the tax portion.", required = true)
+    @Schema(description = "The value of the tax portion.", required = true)
     protected MoneyValue value;
 
     public String getName() {

@@ -14,20 +14,20 @@
 
 package com.adobe.commerce.cif.model.common;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class Attribute {
 
-    @ApiModelProperty(value = "The unique id for this text attribute, for example 'width'.", required = true)
+    @Schema(description = "The unique id for this text attribute, for example 'width'.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The name for this text attribute.", required = true, example = "Width")
+    @Schema(description = "The name for this text attribute.", required = true, example = "Width")
     protected String name;
 
-    @ApiModelProperty(value = "The value of the attribute. This can be any arbitrary valid JSON value.", required = true)
+    @Schema(description = "The value of the attribute. This can be any arbitrary valid JSON value.", required = true)
     protected Object value;
     
-    @ApiModelProperty(value = "If true, this attribute is a variant attribute. If not set or false, the attribute is a normal/simple attribute.")
+    @Schema(description = "If true, this attribute is a variant attribute. If not set or false, the attribute is a normal/simple attribute.")
     protected Boolean isVariantAxis;
     
     public String getId() {

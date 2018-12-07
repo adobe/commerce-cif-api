@@ -15,11 +15,11 @@
 package com.adobe.commerce.cif.model.wrapper;
 
 import com.adobe.commerce.cif.model.common.Payment;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class PaymentWrapper {
 
-    @ApiModelProperty(value = "The payment object.", required = true)
+    @Schema(description = "The payment object.", required = true)
     protected Payment payment;
 
     public Payment getPayment() {

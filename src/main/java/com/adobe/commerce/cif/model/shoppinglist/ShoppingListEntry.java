@@ -16,17 +16,17 @@ package com.adobe.commerce.cif.model.shoppinglist;
 
 import com.adobe.commerce.cif.model.common.ModelWithDates;
 import com.adobe.commerce.cif.model.product.ProductVariant;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class ShoppingListEntry extends ModelWithDates {
 
-    @ApiModelProperty(value = "The id of the entry.", required = true)
+    @Schema(description = "The id of the entry.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The product variant for the entry.", required = true)
+    @Schema(description = "The product variant for the entry.", required = true)
     protected ProductVariant productVariant;
 
-    @ApiModelProperty(value = "The quantity for the entry.", required = true)
+    @Schema(description = "The quantity for the entry.", required = true)
     protected Integer quantity;
 
     public String getId() {

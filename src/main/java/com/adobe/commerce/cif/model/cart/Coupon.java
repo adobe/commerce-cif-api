@@ -14,17 +14,17 @@
 
 package com.adobe.commerce.cif.model.cart;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class Coupon {
 
-    @ApiModelProperty(value = "The id of the coupon instance applied to a cart. If not supported by commerce engine, should be equal to code.", required = true)
+    @Schema(description = "The id of the coupon instance applied to a cart. If not supported by commerce engine, should be equal to code.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The code to activate the coupon.", required = true)
+    @Schema(description = "The code to activate the coupon.", required = true)
     protected String code;
 
-    @ApiModelProperty(value = "The description of the coupon.")
+    @Schema(description = "The description of the coupon.")
     protected String description;
 
     public String getId() {

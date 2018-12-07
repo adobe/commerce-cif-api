@@ -17,23 +17,23 @@ package com.adobe.commerce.cif.model.common;
 import java.util.List;
 
 import com.adobe.commerce.cif.model.product.Facet;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class PagedResponse<T> {
 
-    @ApiModelProperty(value = "The offset for this response, this is the number of elements skipped, not a page number.", required = true)
+    @Schema(description = "The offset for this response, this is the number of elements skipped, not a page number.", required = true)
     protected Integer offset;
 
-    @ApiModelProperty(value = "The actual number of results returned in results.", required = true)
+    @Schema(description = "The actual number of results returned in results.", required = true)
     protected Integer count;
 
-    @ApiModelProperty(value = "The total number of results matching the query.", required = true)
+    @Schema(description = "The total number of results matching the query.", required = true)
     protected Integer total;
 
-    @ApiModelProperty(value = "The results for this response.", required = true)
+    @Schema(description = "The results for this response.", required = true)
     protected List<T> results;
 
-    @ApiModelProperty(value = "The list of facets for this response.")
+    @Schema(description = "The list of facets for this response.")
     protected List<Facet> facets;
 
     public Integer getOffset() {

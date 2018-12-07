@@ -16,23 +16,23 @@ package com.adobe.commerce.cif.model.cart;
 
 import com.adobe.commerce.cif.model.common.MoneyValue;
 import com.adobe.commerce.cif.model.common.TaxInfo;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class ShippingInfo {
     
-    @ApiModelProperty(value = "The shipping method id.", required = true)
+    @Schema(description = "The shipping method id.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The shipping method name.", required = true)
+    @Schema(description = "The shipping method name.", required = true)
     protected String name;
     
-    @ApiModelProperty(value = "The cost of the shipping.", required = true)
+    @Schema(description = "The cost of the shipping.", required = true)
     protected MoneyValue cost;
     
-    @ApiModelProperty(value = "The discounted shipping cost.")
+    @Schema(description = "The discounted shipping cost.")
     protected MoneyValue discountedCost;
 
-    @ApiModelProperty(value = "The tax for the shipping.", required = true)
+    @Schema(description = "The tax for the shipping.", required = true)
     protected TaxInfo taxInfo;
     
     public String getName() {

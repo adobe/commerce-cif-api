@@ -14,14 +14,14 @@
 
 package com.adobe.commerce.cif.model.common;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class Asset {
 
-    @ApiModelProperty(value = "The id of the asset.", required = true)
+    @Schema(description = "The id of the asset.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The url of the asset.", required = true)
+    @Schema(description = "The url of the asset.", required = true)
     protected String url;
 
     public String getId() {

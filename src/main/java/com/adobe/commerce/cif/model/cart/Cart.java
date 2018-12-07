@@ -22,58 +22,58 @@ import com.adobe.commerce.cif.model.common.MoneyValue;
 import com.adobe.commerce.cif.model.common.Payment;
 import com.adobe.commerce.cif.model.common.TaxInfo;
 import com.adobe.commerce.cif.model.discount.Discount;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class Cart extends ModelWithDates {
 
-    @ApiModelProperty(value = "The id for the cart.", required = true)
+    @Schema(description = "The id for the cart.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The list of the entries in the cart.", required = true)
+    @Schema(description = "The list of the entries in the cart.", required = true)
     protected List<CartEntry> entries;
 
-    @ApiModelProperty(value = "If set, this defines the customer owning this cart. If not set, the cart is an anonymous cart.")
+    @Schema(description = "If set, this defines the customer owning this cart. If not set, the cart is an anonymous cart.")
     protected String customerId;
     
-    @ApiModelProperty(value = "The net total price for the cart, including discounts, and shipping, but excluding any taxes. Until a shipping address is set, this field is typically not set.")
+    @Schema(description = "The net total price for the cart, including discounts, and shipping, but excluding any taxes. Until a shipping address is set, this field is typically not set.")
     protected MoneyValue netTotalPrice;
     
-    @ApiModelProperty(value = "The gross total price for the cart, including discounts, shipping, and all taxes. Until a shipping address is set, this field is typically not set.")
+    @Schema(description = "The gross total price for the cart, including discounts, shipping, and all taxes. Until a shipping address is set, this field is typically not set.")
     protected MoneyValue grossTotalPrice;
     
-    @ApiModelProperty(value = "The product subtotal for the cart, including discounts and with or without taxes depending if the product prices include taxes or not." +
+    @Schema(description = "The product subtotal for the cart, including discounts and with or without taxes depending if the product prices include taxes or not." +
                               "Until a shipping address is set, this field is typically used as the temporary cart total until it is known if prices include taxes or not.", required = true)
     protected MoneyValue productTotalPrice;
 
-    @ApiModelProperty(value = "The cart tax info, including cart entries tax and shipping info tax. Until a shipping address is set, this field is typically not set.")
+    @Schema(description = "The cart tax info, including cart entries tax and shipping info tax. Until a shipping address is set, this field is typically not set.")
     protected TaxInfo taxInfo;
 
-    @ApiModelProperty(value = "Indicates if taxes are included or not in all the prices. Until a shipping address is set, this field is typically not set.")
+    @Schema(description = "Indicates if taxes are included or not in all the prices. Until a shipping address is set, this field is typically not set.")
     protected Boolean taxIncludedInPrices;
 
-    @ApiModelProperty(value = "The shipping address for the cart products.")
+    @Schema(description = "The shipping address for the cart products.")
     protected Address shippingAddress;
 
-    @ApiModelProperty(value = "The shipping info for the cart.")
+    @Schema(description = "The shipping info for the cart.")
     protected ShippingInfo shippingInfo;
 
-    @ApiModelProperty(value = "A list of all applied discounts.")
+    @Schema(description = "A list of all applied discounts.")
     protected List<Discount> discounts;
 
-    @ApiModelProperty(value = "The billing address for the cart.")
+    @Schema(description = "The billing address for the cart.")
     protected Address billingAddress;
 
-    @ApiModelProperty(value = "DEPRECATED. The payment details for the cart.")
+    @Schema(description = "DEPRECATED. The payment details for the cart.")
     @Deprecated
     protected Payment payment;
 
-    @ApiModelProperty(value = "A list of payment details for the cart.")
+    @Schema(description = "A list of payment details for the cart.")
     protected List<Payment> payments;
 
-    @ApiModelProperty(value = "The currency for the cart.", required = true)
+    @Schema(description = "The currency for the cart.", required = true)
     protected String currency;
 
-    @ApiModelProperty(value = "A list of all coupons of the cart.")
+    @Schema(description = "A list of all coupons of the cart.")
     protected List<Coupon> coupons;
 
     public String getId() {

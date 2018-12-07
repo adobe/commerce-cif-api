@@ -34,17 +34,17 @@ function generateGraphqlSchema(swagger) {
     let searchProductsQuery = {
         name: 'searchProducts',
         args: [],
-        response: getType(searchProducts.responses['200'].schema)
+        response: getType(searchProducts.responses['200'].content['application/json'].schema)
     };
     searchProducts.parameters.filter(param => param.in == 'query').forEach(param => {
-        let type = getType(param);
+        let type = getType(param.schema);
         searchProductsQuery.args.push({
             name: param.name,
             type: type
         });   
     });
 
-    addGraphqlType(searchProductsQuery.response, swagger.definitions[searchProductsQuery.response], swagger);
+    addGraphqlType(searchProductsQuery.response, swagger.components.schemas[searchProductsQuery.response], swagger);
 
     let schemaTemplate = fs.readFileSync(__dirname + '/schema.hbs', 'utf8');
     let compiledTemplate = handlebars.compile(schemaTemplate);
@@ -81,8 +81,8 @@ function addGraphqlType(name, type, swagger) {
     _.forEach(props, (property, prop) => {
         let propertyType = getType(property);
         let rawType = propertyType.startsWith('[') ? propertyType.slice(1, -1) : propertyType;
-        if (swagger.definitions[rawType] && !graphqlTypeNames.has(rawType)) {
-            addGraphqlType(rawType, swagger.definitions[rawType], swagger);
+        if (swagger.components.schemas[rawType] && !graphqlTypeNames.has(rawType)) {
+            addGraphqlType(rawType, swagger.components.schemas[rawType], swagger);
         }
         
         let required = type.required.includes(prop);

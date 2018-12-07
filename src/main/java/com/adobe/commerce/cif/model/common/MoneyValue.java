@@ -16,17 +16,17 @@ package com.adobe.commerce.cif.model.common;
 
 import java.math.BigDecimal;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class MoneyValue {
 
-    @ApiModelProperty(value = "The currency code for this money value.", required = true)
+    @Schema(description = "The currency code for this money value.", required = true)
     protected String currency;
 
-    @ApiModelProperty(value = "The amount in cents of this money value.", required = true)
+    @Schema(description = "The amount in cents of this money value.", required = true)
     protected BigDecimal amount;
 
-    @ApiModelProperty(value = "The country code for this money value.")
+    @Schema(description = "The country code for this money value.")
     protected String country;
 
     public String getCurrency() {

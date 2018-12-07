@@ -14,7 +14,6 @@
 
 package com.adobe.commerce.cif.api;
 
-import javax.validation.constraints.Min;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
@@ -25,11 +24,13 @@ import javax.ws.rs.core.MediaType;
 import com.adobe.commerce.cif.model.common.PagedResponse;
 import com.adobe.commerce.cif.model.error.ErrorResponse;
 import com.adobe.commerce.cif.model.inventory.InventoryItem;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterStyle;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE;
 import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE_DESC;
@@ -37,37 +38,46 @@ import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
 
 @Path("/inventory")
-@Api(value = "/inventory")
+@Tag(name = "inventory")
 @Produces(MediaType.APPLICATION_JSON)
 public interface InventoryApi {
 
     @GET
     @Path("/query")
-    @ApiOperation(value = "Queries inventory based on the given query parameters.")
-    @ApiResponses(value = {
-        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class)
-    })
+    @Operation(summary = "Queries inventory based on the given query parameters.")
+    @ApiResponse(
+        responseCode = HTTP_BAD_REQUEST,
+        description = HTTP_BAD_REQUEST_MESSAGE,
+        content = @Content(schema = @Schema(implementation = ErrorResponse.class))
+    )
     PagedResponse<InventoryItem> query(
 
-            @ApiParam(value = "The list of product identifiers for which the inventory will be queried.", collectionFormat = "pipes")
-            @QueryParam(value = "productId")
-            String[] productId,
+        @Parameter(
+            description = "The list of product identifiers for which the inventory will be queried.",
+            style = ParameterStyle.PIPEDELIMITED
+        )
+        @QueryParam(value = "productId")
+        String[] productId,
 
-            @ApiParam(value = "The list of scopes for which the inventory will be queried.", collectionFormat = "pipes")
-            @QueryParam(value = "scope")
-            String[] scope,
+        @Parameter(
+            description = "The list of scopes for which the inventory will be queried.",
+            style = ParameterStyle.PIPEDELIMITED
+        )
+        @QueryParam(value = "scope")
+        String[] scope,
 
-            @ApiParam(value = "Defines the number of inventory items to skip when returning the result.")
-            @QueryParam(value = "offset")
-            @Min(value = 0)
-            Integer offset,
+        @Parameter(description = "Defines the number of inventory items to skip when returning the result.")
+        @QueryParam(value = "offset")
+        @Schema(minimum = "0")
+        Integer offset,
 
-            @ApiParam(value = "Defines the maximum number of inventory items to be returned in the result.")
-            @QueryParam(value = "limit")
-            @Min(value = 0)
-            Integer limit,
+        @Parameter(description = "Defines the maximum number of inventory items to be returned in the result.")
+        @QueryParam(value = "limit")
+        @Schema(minimum = "0")
+        Integer limit,
 
-            @ApiParam(value = ACCEPT_LANGUAGE_DESC)
-            @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
+        @Parameter(description = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE)
+        String acceptLanguage
     );
 }

@@ -23,27 +23,27 @@ import javax.ws.rs.core.MediaType;
 
 import com.adobe.commerce.cif.model.graphql.GraphqlRequest;
 import com.adobe.commerce.cif.model.graphql.GraphqlResponse;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE;
 import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE_DESC;
 
 @Path("/graphql")
-@Api(value = "/graphql")
+@Tag(name = "graphql")
 @Produces(MediaType.APPLICATION_JSON)
 public interface GraphqlApi {
 
     @POST
     @Path("/")
-    @ApiOperation(value = "Processes a GraphQL request and returns a GraphQL response.")
+    @Operation(summary = "Processes a GraphQL request and returns a GraphQL response.")
     @Consumes(MediaType.APPLICATION_JSON)
     GraphqlResponse postRequest(
-        @ApiParam(value = "The graphQL JSON request", required = true)
+        @Parameter(description = "The graphQL JSON request", required = true)
         GraphqlRequest request,
 
-        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @Parameter(description = ACCEPT_LANGUAGE_DESC)
         @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
     );
 }

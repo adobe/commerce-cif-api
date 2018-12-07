@@ -16,17 +16,17 @@ package com.adobe.commerce.cif.model.product;
 
 import java.util.List;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class Product extends AbstractProduct {
 
-    @ApiModelProperty(value = "The unique SKU of the product assigned by the vendor or manufacturer.")
+    @Schema(description = "The unique SKU of the product assigned by the vendor or manufacturer.")
     protected String sku;
 
-    @ApiModelProperty(value = "The id of the master variant", required = true)
+    @Schema(description = "The id of the master variant", required = true)
     protected String masterVariantId;
 
-    @ApiModelProperty(value = "The variants for this product.", required = true)
+    @Schema(description = "The variants for this product.", required = true)
     protected List<ProductVariant> variants;
 
     public String getSku() {

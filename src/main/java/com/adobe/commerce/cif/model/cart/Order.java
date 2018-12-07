@@ -14,11 +14,11 @@
 
 package com.adobe.commerce.cif.model.cart;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class Order {
 
-    @ApiModelProperty(value = "The order id.", required = true)
+    @Schema(description = "The order id.", required = true)
     protected String id;
 
     public String getId() {

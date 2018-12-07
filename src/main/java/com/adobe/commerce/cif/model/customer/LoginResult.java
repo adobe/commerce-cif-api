@@ -15,15 +15,15 @@
 package com.adobe.commerce.cif.model.customer;
 
 import com.adobe.commerce.cif.model.cart.Cart;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @Deprecated
 public class LoginResult {
 
-    @ApiModelProperty(value = "The customer info returned by the login process", required = true)
+    @Schema(description = "The customer info returned by the login process", required = true)
     protected Customer customer;
 
-    @ApiModelProperty(value = "The current or merged cart created during the login process")
+    @Schema(description = "The current or merged cart created during the login process")
     protected Cart cart;
 
     public Customer getCustomer() {

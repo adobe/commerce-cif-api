@@ -14,14 +14,14 @@
 
 package com.adobe.commerce.cif.model.product;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class ProductVariant extends AbstractProduct {
 
-    @ApiModelProperty(value = "The unique SKU of the product variant assigned by the vendor or manufacturer.", required = true)
+    @Schema(description = "The unique SKU of the product variant assigned by the vendor or manufacturer.", required = true)
     protected String sku;
 
-    @ApiModelProperty(value = "Indicates if the product is available or not in the inventory.", required = true)
+    @Schema(description = "Indicates if the product is available or not in the inventory.", required = true)
     protected Boolean available;
 
     public String getSku() {

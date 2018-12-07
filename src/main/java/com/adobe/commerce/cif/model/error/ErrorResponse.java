@@ -14,17 +14,17 @@
 
 package com.adobe.commerce.cif.model.error;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class ErrorResponse {
 
-    @ApiModelProperty(value = "The error type.", required = true)
+    @Schema(description = "The error type.", required = true)
     protected String type;
 
-    @ApiModelProperty(value = "The error reason.", required = true)
+    @Schema(description = "The error reason.", required = true)
     protected String reason;
 
-    @ApiModelProperty(value = "The error message.", required = true)
+    @Schema(description = "The error message.", required = true)
     protected String message;
 
     public String getType() {

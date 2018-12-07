@@ -31,7 +31,7 @@ fs.appendFileSync(packageJsonFile, modelsPackageJson);
 
 let classes = [];
 // Generates all JS model classes
-_.forEach(swagger.definitions, function(definition, classname) {
+_.forEach(swagger.components.schemas, function(definition, classname) {
     classes.push(classname);
     let model = fs.openSync(jsFolder + '/' + classname + '.js', 'w');
     fs.appendFileSync(model, generateModelClass(swagger, definition, classname));

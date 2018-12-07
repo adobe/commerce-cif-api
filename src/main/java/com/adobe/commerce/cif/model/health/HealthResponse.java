@@ -14,13 +14,13 @@
 
 package com.adobe.commerce.cif.model.health;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.List;
 
 public class HealthResponse<T> {
 
-    @ApiModelProperty(value = "The list of status reports for this response.")
+    @Schema(description = "The list of status reports for this response.")
     protected List<T> reports;
 
     public List<T> getReports() {

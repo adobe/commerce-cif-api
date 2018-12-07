@@ -21,32 +21,32 @@ import com.adobe.commerce.cif.model.common.Asset;
 import com.adobe.commerce.cif.model.common.Attribute;
 import com.adobe.commerce.cif.model.common.ModelWithDates;
 import com.adobe.commerce.cif.model.common.MoneyValue;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public abstract class AbstractProduct extends ModelWithDates {
 
-    @ApiModelProperty(value = "The internal unique ID of the product in the commerce backend system.", required = true)
+    @Schema(description = "The internal unique ID of the product in the commerce backend system.", required = true)
     protected String id;
     
-    @ApiModelProperty(value = "The name of the product.", required = true)
+    @Schema(description = "The name of the product.", required = true)
     protected String name;
 
-    @ApiModelProperty(value = "Slug or human readable key that uniquely identifies the product and that can be used for SEO friendly urls. The slug can be a path containing slashes.")
+    @Schema(description = "Slug or human readable key that uniquely identifies the product and that can be used for SEO friendly urls. The slug can be a path containing slashes.")
     protected String slug;
 
-    @ApiModelProperty(value = "The description of the product.")
+    @Schema(description = "The description of the product.")
     protected String description;
 
-    @ApiModelProperty(value = "The prices for this product.", required = true)
+    @Schema(description = "The prices for this product.", required = true)
     protected List<MoneyValue> prices;
 
-    @ApiModelProperty(value = "The categories for this product.")
+    @Schema(description = "The categories for this product.")
     protected List<Category> categories;
 
-    @ApiModelProperty(value = "The assets for this product.")
+    @Schema(description = "The assets for this product.")
     protected List<Asset> assets;
 
-    @ApiModelProperty(value = "The attributes for this product.")
+    @Schema(description = "The attributes for this product.")
     protected List<Attribute> attributes;
 
     public String getId() {

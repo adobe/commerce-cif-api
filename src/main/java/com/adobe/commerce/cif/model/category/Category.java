@@ -17,29 +17,29 @@ package com.adobe.commerce.cif.model.category;
 import java.util.List;
 
 import com.adobe.commerce.cif.model.common.ModelWithDates;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class Category extends ModelWithDates {
 
-    @ApiModelProperty(value = "The internal unique ID of the category in the commerce backend system.", required = true)
+    @Schema(description = "The internal unique ID of the category in the commerce backend system.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The name of the category.")
+    @Schema(description = "The name of the category.")
     protected String name;
 
-    @ApiModelProperty(value = "Slug or human readable key that uniquely identifies the category and that can be used for SEO friendly urls. The slug can be a path containing slashes.")
+    @Schema(description = "Slug or human readable key that uniquely identifies the category and that can be used for SEO friendly urls. The slug can be a path containing slashes.")
     protected String slug;
 
-    @ApiModelProperty(value = "The description of the category.")
+    @Schema(description = "The description of the category.")
     protected String description;
     
-    @ApiModelProperty(value = "The id of the main parent category (if this category has multiple parents).")
+    @Schema(description = "The id of the main parent category (if this category has multiple parents).")
     protected String mainParentId;
 
-    @ApiModelProperty(value = "The list of parent categories for this category. Depending on the backend system, the returned items may only have their ids being set.")
+    @Schema(description = "The list of parent categories for this category. Depending on the backend system, the returned items may only have their ids being set.")
     protected List<Category> parents;
 
-    @ApiModelProperty(value = "The list of subcategories for this category. Depending on the backend system, the returned items may only have their ids being set.")
+    @Schema(description = "The list of subcategories for this category. Depending on the backend system, the returned items may only have their ids being set.")
     protected List<Category> children;
 
     public String getId() {

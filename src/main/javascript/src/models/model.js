@@ -68,7 +68,7 @@ function addProperties(properties, requiredProperties, clazz) {
             name: name,
             nameUpperCase: _.upperFirst(name),
             description: property.description,
-            required: requiredProperties ? requiredProperties.includes(name) : false,
+            required: requiredProperties ? requiredProperties.includes(name) : true,
             type: `{${type}}`
         }
 
@@ -83,7 +83,7 @@ function addImports(classname, properties, swagger) {
         if (type == 'array' && property.items) {
             type = getType(property.items);
         }
-        if (type != classname && swagger.definitions[type]) {
+        if (type != classname && swagger.components.schemas[type]) {
             types.add(type);
         }
     });

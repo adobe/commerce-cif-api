@@ -17,23 +17,23 @@ package com.adobe.commerce.cif.model.shoppinglist;
 import java.util.List;
 
 import com.adobe.commerce.cif.model.common.ModelWithDates;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class ShoppingList extends ModelWithDates {
 
-    @ApiModelProperty(value = "The id of the shopping list.", required = true)
+    @Schema(description = "The id of the shopping list.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The name of the shopping list.", required = true)
+    @Schema(description = "The name of the shopping list.", required = true)
     protected String name;
 
-    @ApiModelProperty(value = "The description of the shopping list.")
+    @Schema(description = "The description of the shopping list.")
     protected String description;
 
-    @ApiModelProperty(value = "The entries of the shopping list.", required = true)
+    @Schema(description = "The entries of the shopping list.", required = true)
     protected List<ShoppingListEntry> entries;
 
-    @ApiModelProperty(value = "The customer id that owns this shopping list.")
+    @Schema(description = "The customer id that owns this shopping list.")
     protected String customerId;
 
     public String getId() {

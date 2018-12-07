@@ -16,26 +16,26 @@ package com.adobe.commerce.cif.model.product;
 
 import java.util.List;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class Facet {
 
-    @ApiModelProperty(value = "The id of the facet.", required = true)
+    @Schema(description = "The id of the facet.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The name of the facet.", required = true)
+    @Schema(description = "The name of the facet.", required = true)
     protected String name;
 
-    @ApiModelProperty(value = "The number of missed items.")
+    @Schema(description = "The number of missed items.")
     protected Integer missed;
 
-    @ApiModelProperty(value = "Indicates if the facet is multi selectable.")
+    @Schema(description = "Indicates if the facet is multi selectable.")
     protected Boolean multiSelect;
 
-    @ApiModelProperty(value = "The type of the facet.", required = true)
+    @Schema(description = "The type of the facet.", required = true)
     protected String type;
 
-    @ApiModelProperty(value = "List of facetValues calculated for this facet.", required = true)
+    @Schema(description = "List of facetValues calculated for this facet.", required = true)
     protected List<FacetValue> values;
 
     public String getId() {

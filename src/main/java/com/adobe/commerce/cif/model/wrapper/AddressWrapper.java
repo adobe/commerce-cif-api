@@ -15,11 +15,11 @@
 package com.adobe.commerce.cif.model.wrapper;
 
 import com.adobe.commerce.cif.model.common.Address;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class AddressWrapper {
 
-    @ApiModelProperty(value = "The address object.", required = true)
+    @Schema(description = "The address object.", required = true)
     protected Address address;
     
     public Address getAddress() {

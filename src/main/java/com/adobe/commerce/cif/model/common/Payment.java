@@ -15,34 +15,34 @@
 package com.adobe.commerce.cif.model.common;
 
 import com.adobe.commerce.cif.model.customer.Customer;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class Payment extends ModelWithDates {
 
-    @ApiModelProperty(value = "The id of the payment.", required = true)
+    @Schema(description = "The id of the payment.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The customer the payment belongs to. If this is not set the payment belongs to an " +
+    @Schema(description = "The customer the payment belongs to. If this is not set the payment belongs to an " +
             "anonymous customer.")
     protected Customer customer;
 
-    @ApiModelProperty(value = "DEPRECATED. The method for this payment like Card or Cash.", required = true)
+    @Schema(description = "DEPRECATED. The method for this payment like Card or Cash.", required = true)
     @Deprecated
     protected String method;
 
-    @ApiModelProperty(value = "The id of the payment method for this payment.", required = true)
+    @Schema(description = "The id of the payment method for this payment.", required = true)
     protected String methodId;
 
-    @ApiModelProperty(value = "The value of the payment.")
+    @Schema(description = "The value of the payment.")
     protected MoneyValue value;
 
-    @ApiModelProperty(value = "The token used to communicate with the payment service provider.")
+    @Schema(description = "The token used to communicate with the payment service provider.")
     protected String token;
 
-    @ApiModelProperty(value = "The external status code for the payment.")
+    @Schema(description = "The external status code for the payment.")
     protected String statusCode;
 
-    @ApiModelProperty(value = "The external status message/text for the payment.")
+    @Schema(description = "The external status message/text for the payment.")
     protected String status;
 
     public String getId() {

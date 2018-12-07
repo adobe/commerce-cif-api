@@ -16,26 +16,26 @@ package com.adobe.commerce.cif.model.inventory;
 
 import java.util.Date;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class InventoryItem {
 
-    @ApiModelProperty(value = "The inventory identifier.", required = true)
+    @Schema(description = "The inventory identifier.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The product identifier.", required = true)
+    @Schema(description = "The product identifier.", required = true)
     protected String productId;
 
-    @ApiModelProperty(value = "The scope for the inventory (i.e store or channel).")
+    @Schema(description = "The scope for the inventory (i.e store or channel).")
     protected String scope;
 
-    @ApiModelProperty(value = "The product available quantity for this inventory.", required = true)
+    @Schema(description = "The product available quantity for this inventory.", required = true)
     protected Integer availableQuantity;
 
-    @ApiModelProperty(value = "The period in days when this inventory is restocked.")
+    @Schema(description = "The period in days when this inventory is restocked.")
     protected Integer restockDaysPeriod;
 
-    @ApiModelProperty(value = "The next expected delivery date for this inventory.")
+    @Schema(description = "The next expected delivery date for this inventory.")
     protected Date expectedDeliveryDate;
 
     public String getId() {

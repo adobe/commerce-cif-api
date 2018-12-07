@@ -18,7 +18,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.adobe.commerce.cif</groupId>
     <artifactId>api-model</artifactId>
-    <version>1.2.1-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
 
     <name>Commerce Integration Framework (CIF) Cloud - API and Models</name>
     <description>This package contains the REST API and java model definition of the Commerce Integration Framework (CIF) Cloud.</description>
@@ -57,35 +57,31 @@
 
         <plugins>
             <plugin>
-                <groupId>com.github.kongchen</groupId>
+                <groupId>io.openapitools.swagger</groupId>
                 <artifactId>swagger-maven-plugin</artifactId>
-                <version>3.1.7</version>
+                <version>2.0.1</version>
                 <configuration>
-                    <apiSources>
-                        <apiSource>
-                            <springmvc>false</springmvc>
-                            <locations>com.adobe.commerce.cif.api</locations>
-                            <schemes>https</schemes>
-                            <host>runtime.adobe.io</host>
-                            <basePath>/commerce</basePath>
-                            <info>
-                                <title>Commerce Integration Framework (CIF) Cloud API</title>
-                                <version>${project.version}</version>
+                    <resourcePackages>
+                        <resourcePackage>com.adobe.commerce.cif.api</resourcePackage>
+                    </resourcePackages>
+                    <swaggerConfig>
+                        <servers>
+                            <server>
+                                <url>https://runtime.adobe.io</url>
                                 <description>Adobe Commerce Cloud API</description>
-                                <license>
-                                    <name>Copyright 2018 Adobe. All rights reserved.</name>
-                                </license>
-                                <vendorExtensions>
-                                    <x-ow-namespace>your-namespace</x-ow-namespace>
-                                    <x-ow-package>default</x-ow-package>
-                                </vendorExtensions>
-                            </info>
-                            <templatePath>${basedir}/src/main/resources/template/strapdown.html.hbs</templatePath>
-                            <outputPath>${basedir}/src/main/resources/generated/swagger/document.html</outputPath>
-                            <swaggerDirectory>${basedir}/src/main/resources/generated/swagger/</swaggerDirectory>
-                            <outputFormats>json,yaml</outputFormats>
-                        </apiSource>
-                    </apiSources>
+                            </server>
+                        </servers>
+                        <info>
+                            <title>Commerce Integration Framework (CIF) Cloud API</title>
+                            <version>${project.version}</version>
+                            <termsOfService>Terms</termsOfService>
+                            <license>
+                                <name>Copyright 2018 Adobe. All rights reserved.</name>
+                            </license>
+                        </info>
+                    </swaggerConfig>
+                    <outputDirectory>${basedir}/src/main/resources/generated/swagger/</outputDirectory>
+                    <outputFormats>JSON,YAML</outputFormats>
                 </configuration>
                 <executions>
                     <execution>
@@ -435,14 +431,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-core</artifactId>
-            <version>1.5.14</version>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>2.0.6</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.servicemix.specs</groupId>
-            <artifactId>org.apache.servicemix.specs.jsr311-api-1.1</artifactId>
-            <version>2.9.0</version>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.9.7</version>
         </dependency>
         
         <!-- Unit tests dependencies -->
@@ -474,6 +475,12 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>24.1-jre</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

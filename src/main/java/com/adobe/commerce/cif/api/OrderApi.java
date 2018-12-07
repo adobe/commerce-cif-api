@@ -24,12 +24,13 @@ import javax.ws.rs.core.MediaType;
 
 import com.adobe.commerce.cif.model.cart.Order;
 import com.adobe.commerce.cif.model.error.ErrorResponse;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-import io.swagger.annotations.ResponseHeader;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.headers.Header;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE;
 import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE_DESC;
@@ -43,25 +44,44 @@ import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND;
 import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND_MESSAGE;
 
 @Path("/orders")
-@Api(value = "/orders")
+@Tag(name = "orders")
 @Produces(MediaType.APPLICATION_JSON)
 public interface OrderApi {
 
     @POST
     @Path("/")
-    @ApiOperation(value = "Creates an order based on a cart.")
-    @ApiResponses(value = {
-        @ApiResponse(code = HTTP_CREATED, message = HTTP_CREATED_MESSAGE, response = Order.class,
-                responseHeaders = @ResponseHeader(name = "Location", description = "Location of the newly created order.", response = String.class)),
-        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
-        @ApiResponse(code = HTTP_FORBIDDEN, message = HTTP_FORBIDDEN_MESSAGE, response = ErrorResponse.class),
-        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class)
-    })
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Operation(summary = "Creates an order based on a cart.")
+    @ApiResponse(
+        responseCode = HTTP_CREATED,
+        description = HTTP_CREATED_MESSAGE,
+        content = @Content(schema = @Schema(implementation = Order.class)),
+        headers = {
+            @Header(name = "Location", description = "Location of the newly created order.")
+        }
+    )
+    @ApiResponse(
+        responseCode = HTTP_BAD_REQUEST,
+        description = HTTP_BAD_REQUEST_MESSAGE,
+        content = @Content(schema = @Schema(implementation = ErrorResponse.class))
+    )
+    @ApiResponse(
+        responseCode = HTTP_FORBIDDEN,
+        description = HTTP_FORBIDDEN_MESSAGE,
+        content = @Content(schema = @Schema(implementation = ErrorResponse.class))
+    )
+    @ApiResponse(
+        responseCode = HTTP_NOT_FOUND,
+        description = HTTP_NOT_FOUND_MESSAGE,
+        content = @Content(schema = @Schema(implementation = ErrorResponse.class))
+    )
+    @Consumes({MediaType.APPLICATION_FORM_URLENCODED, MediaType.APPLICATION_JSON})
     Order postOrder(
-        @ApiParam(value = "The id of the cart from which the order will be created.")
-        @FormParam("cartId") String cartId,
+        @Parameter(description = "The id of the cart from which the order will be created.")
+        @FormParam("cartId")
+        String cartId,
 
-        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
-        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage);
+        @Parameter(description = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE)
+        String acceptLanguage
+    );
 }

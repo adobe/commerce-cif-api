@@ -14,17 +14,17 @@
 
 package com.adobe.commerce.cif.model.common;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class PaymentMethod {
 
-    @ApiModelProperty(value = "The id of the payment method.", required = true)
+    @Schema(description = "The id of the payment method.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The name of the payment method.", required = true)
+    @Schema(description = "The name of the payment method.", required = true)
     protected String name;
 
-    @ApiModelProperty(value = "The description of the payment method.")
+    @Schema(description = "The description of the payment method.")
     protected String description;
 
     public String getId() {

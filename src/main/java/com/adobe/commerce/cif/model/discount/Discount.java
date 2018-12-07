@@ -15,23 +15,23 @@
 package com.adobe.commerce.cif.model.discount;
 
 import com.adobe.commerce.cif.model.common.MoneyValue;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class Discount {
 
-    @ApiModelProperty(value = "The id for the discount.", required = true)
+    @Schema(description = "The id for the discount.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The type of the discount.", required = true)
+    @Schema(description = "The type of the discount.", required = true)
     protected String type;
 
-    @ApiModelProperty(value = "The name of the discount.")
+    @Schema(description = "The name of the discount.")
     protected String name;
 
-    @ApiModelProperty(value = "The description associated with the discount. May be displayed in the UI.")
+    @Schema(description = "The description associated with the discount. May be displayed in the UI.")
     protected String description;
 
-    @ApiModelProperty(value = "The value which is discounted.", required = true)
+    @Schema(description = "The value which is discounted.", required = true)
     protected MoneyValue value;
 
     public String getId() {

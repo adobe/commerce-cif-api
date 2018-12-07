@@ -14,23 +14,23 @@
 
 package com.adobe.commerce.cif.model.product;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * Facets Values.
  */
 public class FacetValue {
 
-    @ApiModelProperty(value = "The id for this facet.", required = true)
+    @Schema(description = "The id for this facet.", required = true)
     protected String id;
 
-    @ApiModelProperty(value = "The value for this facet.", required = true)
+    @Schema(description = "The value for this facet.", required = true)
     protected Object value;
 
-    @ApiModelProperty(value = "The number of facet value occurrences.")
+    @Schema(description = "The number of facet value occurrences.")
     protected Integer occurrences;
 
-    @ApiModelProperty(value = "Indicates if the current facet value was selected.")
+    @Schema(description = "Indicates if the current facet value was selected.")
     protected Boolean selected;
 
     public String getId() {
