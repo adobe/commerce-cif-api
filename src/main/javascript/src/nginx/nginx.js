@@ -36,13 +36,11 @@ function generateNginxConfig(swagger) {
 }
 
 function appendNginxConfig(endpoints, path, swagger) {
-    let pathVariables = [];
-    let basePath = escape(swagger.basePath) || '';
-    if (basePath) {
-        basePath = '/' + _.trim(basePath, '/');
-    }
-    
+    // REPLACE with the path prefix, if any, that will be added to all the nginx 'location' directives
+    // The prefix MUST start with a slash and MUST NOT end with a slash. For example: /commerce
     let location = '';
+
+    let pathVariables = [];
     let parts = path.split('/');
     parts.filter(p => p).forEach(part => {
         if (part.startsWith('{') && part.endsWith('}')) {
@@ -62,9 +60,9 @@ function appendNginxConfig(endpoints, path, swagger) {
     // See http://nginx.org/en/docs/http/ngx_http_core_module.html#location
     // --> we use a prefix location with exact match when there isn't any path parameter to optimise the location matching
     if (pathVariables.length == 0) {
-        location = '= ' + basePath + location;
+        location = '= ' + location;
     } else {
-        location = '~ ^' + basePath + location + '$';
+        location = '~ ^' + location + '$';
     }
     
     let rejectedMethods;

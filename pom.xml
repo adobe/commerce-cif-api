@@ -59,7 +59,7 @@
             <plugin>
                 <groupId>io.openapitools.swagger</groupId>
                 <artifactId>swagger-maven-plugin</artifactId>
-                <version>2.0.1</version>
+                <version>2.0.2-SNAPSHOT</version>
                 <configuration>
                     <resourcePackages>
                         <resourcePackage>com.adobe.commerce.cif.api</resourcePackage>
@@ -78,10 +78,15 @@
                             <license>
                                 <name>Copyright 2018 Adobe. All rights reserved.</name>
                             </license>
+                            <extensions>
+                                <x-ow-namespace>cif-customer</x-ow-namespace>
+                                <x-ow-package>magento</x-ow-package>
+                            </extensions>
                         </info>
                     </swaggerConfig>
                     <outputDirectory>${basedir}/src/main/resources/generated/swagger/</outputDirectory>
                     <outputFormats>JSON,YAML</outputFormats>
+                    <prettyPrint>true</prettyPrint>
                 </configuration>
                 <executions>
                     <execution>
