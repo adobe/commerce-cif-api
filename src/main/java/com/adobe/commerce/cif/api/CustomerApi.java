@@ -43,8 +43,12 @@ import static com.adobe.commerce.cif.api.Constants.HTTP_FORBIDDEN;
 import static com.adobe.commerce.cif.api.Constants.HTTP_FORBIDDEN_MESSAGE;
 import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND;
 import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND_MESSAGE;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_IMPLEMENTED;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_IMPLEMENTED_MESSAGE;
 import static com.adobe.commerce.cif.api.Constants.HTTP_OK;
 import static com.adobe.commerce.cif.api.Constants.HTTP_OK_MESSAGE;
+import static com.adobe.commerce.cif.api.Constants.HTTP_UNAUTHORIZED;
+import static com.adobe.commerce.cif.api.Constants.HTTP_UNAUTHORIZED_MESSAGE;
 
 @Path("/customers")
 @Tag(name = "customers")
@@ -88,13 +92,18 @@ public interface CustomerApi {
         content = @Content(schema = @Schema(implementation = AuthenticationResponse.class))
     )
     @ApiResponse(
-        responseCode = HTTP_FORBIDDEN,
-        description = HTTP_FORBIDDEN_MESSAGE,
+        responseCode = HTTP_UNAUTHORIZED,
+        description = HTTP_UNAUTHORIZED_MESSAGE,
         content = @Content(schema = @Schema(implementation = ErrorResponse.class))
     )
     @ApiResponse(
         responseCode = HTTP_NOT_FOUND,
         description = HTTP_NOT_FOUND_MESSAGE,
+        content = @Content(schema = @Schema(implementation = ErrorResponse.class))
+    )
+    @ApiResponse(
+        responseCode = HTTP_NOT_IMPLEMENTED,
+        description = HTTP_NOT_IMPLEMENTED_MESSAGE,
         content = @Content(schema = @Schema(implementation = ErrorResponse.class))
     )
     @Consumes(MediaType.APPLICATION_JSON)

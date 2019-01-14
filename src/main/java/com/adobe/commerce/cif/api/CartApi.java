@@ -94,15 +94,15 @@ public interface CartApi {
     )
     @Consumes({MediaType.APPLICATION_FORM_URLENCODED, MediaType.APPLICATION_JSON})
     Cart postCart(
-        @Parameter(description = "Three-digit currency code.", required = true)
+        @Schema(description = "Three-digit currency code.", required = true)
         @FormParam("currency")
         String currency,
 
-        @Parameter(description = "The product variant id to be added to the cart entry.")
+        @Schema(description = "The product variant id to be added to the cart entry.")
         @FormParam("productVariantId")
         String productVariantId,
 
-        @Parameter(description = "The quantity for the product variant.")
+        @Schema(description = "The quantity for the product variant.")
         @FormParam("quantity")
         int quantity,
 
@@ -212,14 +212,13 @@ public interface CartApi {
         @PathParam("id")
         String id,
 
-        @Parameter(description = "The product variant id to be added to the cart entry. If product variant exists in the" +
+        @Schema(description = "The product variant id to be added to the cart entry. If product variant exists in the" +
             " cart then the cart entry quantity is increased with the provided quantity.", required = true)
         @FormParam("productVariantId")
         String productVariantId,
 
-        @Parameter(description = "The quantity for the new entry.", required = true)
+        @Schema(description = "The quantity for the new entry.", required = true, minimum = "0")
         @FormParam("quantity")
-        @Schema(minimum = "0")
         int quantity,
 
         @Parameter(description = ACCEPT_LANGUAGE_DESC)
@@ -261,10 +260,9 @@ public interface CartApi {
         @PathParam("cartEntryId")
         String cartEntryId,
 
-        @Parameter(description = "The cart entry quantity. When quantity is 0 the entry will be removed otherwise the " +
-            "value is used as new quantity.", required = true)
+        @Schema(description = "The cart entry quantity. When quantity is 0 the entry will be removed otherwise the " +
+            "value is used as new quantity.", required = true, minimum = "0")
         @FormParam("quantity")
-        @Schema(minimum = "0")
         int quantity,
 
         @Parameter(description = ACCEPT_LANGUAGE_DESC)
@@ -334,13 +332,13 @@ public interface CartApi {
         description = HTTP_NOT_FOUND_MESSAGE,
         content = @Content(schema = @Schema(implementation = ErrorResponse.class))
     )
-    @Consumes({MediaType.APPLICATION_FORM_URLENCODED, MediaType.APPLICATION_JSON})
+    @Consumes(MediaType.APPLICATION_JSON)
     Cart postShippingAddress(
         @Parameter(description = "The ID of the cart for the shipping address.", required = true)
         @PathParam("id")
         String id,
 
-        @Parameter(description = "The shipping address", required = true)
+        @Schema(description = "The shipping address", required = true)
         AddressWrapper addressWrapper,
 
         @Parameter(description = ACCEPT_LANGUAGE_DESC)
@@ -411,7 +409,7 @@ public interface CartApi {
         @Parameter(description = "The ID of the cart for the billing address.", required = true)
         @PathParam("id") String id,
 
-        @Parameter(description = "The billing address", required = true)
+        @Schema(description = "The billing address", required = true)
         AddressWrapper addressWrapper,
 
         @Parameter(description = ACCEPT_LANGUAGE_DESC)
@@ -477,7 +475,7 @@ public interface CartApi {
         @Parameter(description = "The ID of the cart for which the shipping method will be updated.", required = true)
         @PathParam("id") String id,
 
-        @Parameter(description = "The shipping method id.", required = true)
+        @Schema(description = "The shipping method id.", required = true)
         @FormParam("shippingMethodId") String shippingMethodId,
 
         @Parameter(description = ACCEPT_LANGUAGE_DESC)
@@ -585,7 +583,7 @@ public interface CartApi {
         @PathParam("id")
         String id,
 
-        @Parameter(description = "The payment to create. If the cart belongs to a customer, the customer id must be set.", required = true)
+        @Schema(description = "The payment to create. If the cart belongs to a customer, the customer id must be set.", required = true)
         PaymentWrapper paymentWrapper,
 
         @Parameter(description = ACCEPT_LANGUAGE_DESC)
@@ -623,12 +621,13 @@ public interface CartApi {
         @PathParam("id")
         String id,
 
-        @Parameter(description = "The payment to create. If the cart belongs to a customer, the customer id must be set.", required = true)
+        @Schema(description = "The payment to create. If the cart belongs to a customer, the customer id must be set.", required = true)
         PaymentWrapper paymentWrapper,
 
         @Parameter(description = ACCEPT_LANGUAGE_DESC)
         @HeaderParam(ACCEPT_LANGUAGE)
-        String acceptLanguage);
+        String acceptLanguage
+    );
 
     
     @Deprecated
@@ -770,7 +769,7 @@ public interface CartApi {
         @PathParam("id")
         String id,
 
-        @Parameter(description = "The coupon code.", required = true)
+        @Schema(description = "The coupon code.", required = true)
         @FormParam("code")
         String code,
 

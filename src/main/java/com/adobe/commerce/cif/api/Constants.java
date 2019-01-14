@@ -37,6 +37,9 @@ public final class Constants {
     public static final String HTTP_NOT_FOUND = "404";
     public static final String HTTP_NOT_FOUND_MESSAGE = "Not Found.";
 
+    public static final String HTTP_NOT_IMPLEMENTED = "501";
+    public static final String HTTP_NOT_IMPLEMENTED_MESSAGE = "Not Implemented.";
+    
     public static final String HTTP_SERVICE_UNAVAILABLE = "503";
     public static final String HTTP_SERVICE_UNAVAILABLE_MESSAGE = "Service Unavailable.";
 
