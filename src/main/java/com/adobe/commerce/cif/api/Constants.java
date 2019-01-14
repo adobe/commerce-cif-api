@@ -42,4 +42,7 @@ public final class Constants {
 
     public static final String ACCEPT_LANGUAGE = "Accept-Language";
     public static final String ACCEPT_LANGUAGE_DESC = "The languages the client is able to understand, and which locale variant is preferred.";
+    
+    public static final String AUTHORIZATION = "Authorization";
+    public static final String AUTHORIZATION_DESC = "The authorization 'bearer' token of the customer.";
 }
