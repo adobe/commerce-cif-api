@@ -57,7 +57,6 @@ public interface CustomerApi {
     @ApiOperation(value = "Returns customer data based on the authorization header bearer token.")
     @ApiResponses(value = {
         @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
-        @ApiResponse(code = HTTP_NOT_FOUND, message = HTTP_NOT_FOUND_MESSAGE, response = ErrorResponse.class),
         @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class)
     })
     Customer getCustomer(
