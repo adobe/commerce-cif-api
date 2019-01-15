@@ -13,7 +13,7 @@ Adobe Commerce Cloud API
 
 
 
-**Version** 1.2.0
+**Version** 1.3.0
 
 [**Terms of Service**]()
 
@@ -2869,11 +2869,109 @@ Currently two types are supported: &quot;guest&quot; returns a token for a new g
 
 
 
-## /customers/{id}
+## /customers/me
 
 
 ### GET
 
+<a id="getCustomer">Returns customer data based on the authorization header bearer token.</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>Authorization</th>
+    <td>header</td>
+    <td>yes</td>
+    <td>
+        The authorization &#x27;bearer&#x27; token of the customer.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+<tr>
+    <th>Accept-Language</th>
+    <td>header</td>
+    <td>no</td>
+    <td>
+        The languages the client is able to understand, and which locale variant is preferred.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+**Content-Type: ** application/json
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | successful operation | <a href="#/definitions/Customer">Customer</a>|
+| 400    | Bad Request. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+| 401    | Unauthorized. | <a href="#/definitions/ErrorResponse">ErrorResponse</a>|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /customers/{id}
+
+
+### GET
+-deprecated-
 <a id="getCustomerById">Returns a customer by ID.</a>
 
 

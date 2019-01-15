@@ -16,7 +16,7 @@
  * Auto generated graphQL schema based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.2.0
+ * @version 1.3.0
  */
 
 let schema = `
