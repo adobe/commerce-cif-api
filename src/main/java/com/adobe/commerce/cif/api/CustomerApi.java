@@ -36,6 +36,8 @@ import io.swagger.annotations.ApiResponses;
 
 import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE;
 import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE_DESC;
+import static com.adobe.commerce.cif.api.Constants.AUTHORIZATION;
+import static com.adobe.commerce.cif.api.Constants.AUTHORIZATION_DESC;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
 import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND;
@@ -50,6 +52,22 @@ import static com.adobe.commerce.cif.api.Constants.HTTP_UNAUTHORIZED_MESSAGE;
 @Produces(MediaType.APPLICATION_JSON)
 public interface CustomerApi {
 
+    @GET
+    @Path("/me")
+    @ApiOperation(value = "Returns customer data based on the authorization header bearer token.")
+    @ApiResponses(value = {
+        @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class)
+    })
+    Customer getCustomer(
+        @ApiParam(value = AUTHORIZATION_DESC, required = true)
+        @HeaderParam(AUTHORIZATION) String token,
+        
+        @ApiParam(value = ACCEPT_LANGUAGE_DESC)
+        @HeaderParam(ACCEPT_LANGUAGE) String acceptLanguage
+    );
+    
+    @Deprecated
     @GET
     @Path("/{id}")
     @ApiOperation(value = "Returns a customer by ID.")
