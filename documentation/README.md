@@ -13,19 +13,19 @@ Starting with version `1.3.0` of the CIF API, the specification introduces the `
 To perform customer authentication, simply send an HTTP POST request to `/customers/auth` with a POST JSON body like:
 ```
 {
-    type: 'credentials',
-    email: 'john.doe@example.com',
-    password: 'my-secret'
+  type: 'credentials',
+  email: 'john.doe@example.com',
+  password: 'my-secret'
 }
 ```
 A successful request will return a JSON `AuthenticationResponse` object like for example:
 ```
 {
-   access_token: '8fbnhzdotg80ua8u2ttu5g10jw58xrvc',
-   token_type: 'bearer',
-   expires_in: 3600,
-   scope: 'optional'
-   refresh_token: 'optional'
+  access_token: '8fbnhzdotg80ua8u2ttu5g10jw58xrvc',
+  token_type: 'bearer',
+  expires_in: 3600,
+  scope: 'optional'
+  refresh_token: 'optional'
 }
 ```
 Note that the `expires_in`, `scope` and `refresh_token` fields are optional, and may be set if they are supported by the commerce backend platform.
@@ -42,7 +42,7 @@ Although some commerce platforms do not require that, guest (or anonymous) sessi
 To perform guest authentication, simply send an HTTP POST request to `/customers/auth` with a POST JSON body like:
 ```
 {
-    type: 'guest'
+  type: 'guest'
 }
 ```
 If the commerce backend platform supports guest authentication, this request will return a JSON `AuthenticationResponse` object similar to customer authentication. That token must then be added to subsequent HTTP requests in an `Authorization: Bearer` header.
