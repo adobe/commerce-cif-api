@@ -6,11 +6,13 @@ The Adobe CIF Cloud API follows the [REST](https://en.wikipedia.org/wiki/Represe
 
 ## Authentication
 
-Starting with version `1.3.0` of the CIF API, the specification introduces the `/customers/auth` endpoint which should be used to perform user authentication and deprecates the previous `/customers/login` endpoint.
+Starting with version `1.3.0` of the CIF API, the specification introduces the `/customers/auth` endpoint which should be used to perform user authentication. This new endpoint deprecates the previous `/customers/login` endpoint.
+
+Note: the Adobe I/O Runtime platform (based on Openwhisk) "transparently" processes HTTP POST body data in a similar manner whether it contains `application/json` or `application/x-www-form-urlencoded` data. This means that the authentication flow described below works in a similar manner if credentials are sent in JSON or via an HTML form.
 
 ### Customer authentication
 
-To perform customer authentication, simply send an HTTP POST request to `/customers/auth` with a POST JSON body like:
+To perform customer authentication, simply send an HTTP POST request to `/customers/auth` with a POST JSON body (or an equivalent HTTP `application/x-www-form-urlencoded` form) like:
 ```
 {
   type: 'credentials',
@@ -24,7 +26,7 @@ A successful request will return a JSON `AuthenticationResponse` object like for
   access_token: '8fbnhzdotg80ua8u2ttu5g10jw58xrvc',
   token_type: 'bearer',
   expires_in: 3600,
-  scope: 'optional'
+  scope: 'optional',
   refresh_token: 'optional'
 }
 ```
@@ -39,7 +41,7 @@ Authorization: Bearer 8fbnhzdotg80ua8u2ttu5g10jw58xrvc
 
 Although some commerce platforms do not require that, guest (or anonymous) sessions should also be authenticated when interacting with CIF. This ensures that a generic CIF client will work with whatever commerce backend platform and whether or not it requires guest authentication.
 
-To perform guest authentication, simply send an HTTP POST request to `/customers/auth` with a POST JSON body like:
+To perform guest authentication, simply send an HTTP POST request to `/customers/auth` with a POST JSON body (or an equivalent HTTP `application/x-www-form-urlencoded` form) like:
 ```
 {
   type: 'guest'
@@ -47,7 +49,9 @@ To perform guest authentication, simply send an HTTP POST request to `/customers
 ```
 If the commerce backend platform supports guest authentication, this request will return a JSON `AuthenticationResponse` object similar to customer authentication. That token must then be added to subsequent HTTP requests in an `Authorization: Bearer` header.
 
-If guest authentication is **not** supported, the response MUST be an HTTP 501 "Not implemented" response. In this case, a CIF client must consider that guest authentication is not supported and should simply continue to interact with CIF endpoints without sending any HTTP `Authorization` header.
+If guest authentication is **not** supported, the response MUST be an HTTP 501 "Not implemented" response. In this case, a CIF client MUST consider that guest authentication is not supported and should simply continue to interact with CIF endpoints without sending any HTTP `Authorization` header.
+
+If a customer login occurs after guest authentication, the CIF client must perform a customer authentication as described above and, if successful, must replace the guest token with the newly obtained customer token.
  
 ## JSON
 
