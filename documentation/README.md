@@ -11,7 +11,7 @@ Starting with version `1.3.0` of the CIF API, the specification introduces the `
 ### Customer authentication
 
 To perform customer authentication, simply send an HTTP POST request to `/customers/auth` with a POST JSON body like:
-```json
+```
 {
     type: 'credentials',
     email: 'john.doe@example.com',
@@ -19,7 +19,7 @@ To perform customer authentication, simply send an HTTP POST request to `/custom
 }
 ```
 A successful request will return a JSON `AuthenticationResponse` object like for example:
-```json
+```
 {
    access_token: '8fbnhzdotg80ua8u2ttu5g10jw58xrvc',
    token_type: 'bearer',
@@ -37,10 +37,10 @@ Authorization: Bearer 8fbnhzdotg80ua8u2ttu5g10jw58xrvc
 
 ### Guest authentication
 
-Although some commerce platforms do not require that, guest (or anonymous) sessions should also be authenticated when interacting with CIF. This ensures that a client will work with whatever commerce backend platform and whether or not it requires guest authentication.
+Although some commerce platforms do not require that, guest (or anonymous) sessions should also be authenticated when interacting with CIF. This ensures that a generic CIF client will work with whatever commerce backend platform and whether or not it requires guest authentication.
 
 To perform guest authentication, simply send an HTTP POST request to `/customers/auth` with a POST JSON body like:
-```json
+```
 {
     type: 'guest'
 }
