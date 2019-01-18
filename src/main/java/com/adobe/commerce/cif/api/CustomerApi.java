@@ -42,6 +42,8 @@ import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST;
 import static com.adobe.commerce.cif.api.Constants.HTTP_BAD_REQUEST_MESSAGE;
 import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND;
 import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_FOUND_MESSAGE;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_IMPLEMENTED;
+import static com.adobe.commerce.cif.api.Constants.HTTP_NOT_IMPLEMENTED_MESSAGE;
 import static com.adobe.commerce.cif.api.Constants.HTTP_OK;
 import static com.adobe.commerce.cif.api.Constants.HTTP_OK_MESSAGE;
 import static com.adobe.commerce.cif.api.Constants.HTTP_UNAUTHORIZED;
@@ -94,7 +96,8 @@ public interface CustomerApi {
     @ApiResponses(value = {
         @ApiResponse(code = HTTP_OK, message = HTTP_OK_MESSAGE, response = AuthenticationResponse.class),
         @ApiResponse(code = HTTP_BAD_REQUEST, message = HTTP_BAD_REQUEST_MESSAGE, response = ErrorResponse.class),
-        @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class)
+        @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class),
+        @ApiResponse(code = HTTP_NOT_IMPLEMENTED, message = HTTP_NOT_IMPLEMENTED_MESSAGE, response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_JSON)
     AuthenticationResponse postAuthentication(
