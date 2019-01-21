@@ -97,7 +97,7 @@ public interface CustomerApi {
         @ApiResponse(code = HTTP_UNAUTHORIZED, message = HTTP_UNAUTHORIZED_MESSAGE, response = ErrorResponse.class)
     })
     @Consumes(MediaType.APPLICATION_JSON)
-    AuthenticationResponse postAuthentication(
+    AuthenticationResponse postCustomerAuth(
         @ApiParam(name = "type", value = "The type of authentication request.", required = true)
         String type,
 
