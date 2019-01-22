@@ -88,7 +88,9 @@ public interface CustomerApi {
 
     @POST
     @Path("/auth")
-    @ApiOperation(value = "Performs an authentication request to obtain a customer access token.",
+    @ApiOperation(
+        nickname = "postCustomerAuth",
+        value = "Performs an authentication request to obtain a customer access token.",
         notes = "Currently two types are supported: \"guest\" returns a token for a new guest (non-authenticated) " +
             "customer and \"credentials\" authenticates a registered customer and returns a token upon successful " +
             "authentication otherwise results in an error."
