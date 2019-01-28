@@ -228,7 +228,7 @@
                         <exclude>src/main/resources/generated/swagger/*</exclude>
                         <exclude>src/main/resources/swagger/*</exclude>
                         <exclude>**/schema.graphql</exclude>
-                        <exclude>src/main/resources/generated/javascript/swagger.*</exclude>
+                        <exclude>**/swagger.json</exclude>
                         <!-- JSON examples -->
                         <exclude>src/test/resources/*</exclude>
                         <!-- CircleCI -->
