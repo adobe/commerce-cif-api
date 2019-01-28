@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.3.0
+ * @version 1.3.1
  */
 
 module.exports.Address = require('./Address.js').Address;
@@ -59,4 +59,5 @@ module.exports.ShoppingListEntry = require('./ShoppingListEntry.js').ShoppingLis
 module.exports.StatusReport = require('./StatusReport.js').StatusReport;
 module.exports.TaxInfo = require('./TaxInfo.js').TaxInfo;
 module.exports.TaxPortion = require('./TaxPortion.js').TaxPortion;
+module.exports.swagger = require('./swagger.json');
 module.exports.graphqlSchema = require('./graphqlSchema.js').schema;

@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.3.0
+ * @version 1.3.1
  */
 const Facet = require('./Facet.js').Facet;
 
