@@ -15,6 +15,7 @@
 const genFolder = __dirname + '/../../../resources/generated';
 const jsFolder = genFolder + '/javascript';
 const fs = require('fs');
+const fsx = require('fs-extra');
 const _ = require('lodash');
 const handlebars = require('handlebars');
 const swagger = require(genFolder + '/swagger/swagger.json');
@@ -59,3 +60,8 @@ function replaceOperationIdProperties() {
     swagYaml = swagYaml.replace(/operationId: "/g, 'operationId: "' + pkg + '/');
     fs.writeFileSync(genFolder + '/swagger/swagger.yaml', swagYaml);
 }
+
+// We copy the Swagger spec to the commerce-cif-model package so they are included in the release
+// This will make the Swagger spec available via NPM
+fsx.copySync(genFolder + '/swagger/swagger.json', jsFolder + '/swagger.json');
+fs.appendFileSync(index, "module.exports.swagger = require('./swagger.json');\n");
