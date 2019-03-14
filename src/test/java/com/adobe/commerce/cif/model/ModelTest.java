@@ -38,8 +38,6 @@ import com.adobe.commerce.cif.model.customer.AuthenticationResponse;
 import com.adobe.commerce.cif.model.customer.LoginResult;
 import com.adobe.commerce.cif.model.discount.Discount;
 import com.adobe.commerce.cif.model.error.ErrorResponse;
-import com.adobe.commerce.cif.model.graphql.GraphqlRequest;
-import com.adobe.commerce.cif.model.graphql.GraphqlResponse;
 import com.adobe.commerce.cif.model.inventory.InventoryItem;
 import com.adobe.commerce.cif.model.product.Product;
 import com.adobe.commerce.cif.model.shoppinglist.ShoppingList;
@@ -245,20 +243,6 @@ public class ModelTest {
         ErrorResponse errorResponse = map("errorResponse.json", ErrorResponse.class);
         FieldTester fieldTester = FieldTester.builder().build();
         fieldTester.assertAllFieldsNotNull(errorResponse);
-    }
-
-    @Test
-    public void testGraphqlRequest() throws Exception {
-        GraphqlRequest graphqlRequest = map("graphqlRequest.json", GraphqlRequest.class);
-        FieldTester fieldTester = FieldTester.builder().build();
-        fieldTester.assertAllFieldsNotNull(graphqlRequest);
-    }
-    
-    @Test
-    public void testGraphqlResponse() throws Exception {
-        GraphqlResponse graphqlResponse = map("graphqlResponse.json", GraphqlResponse.class);
-        FieldTester fieldTester = FieldTester.builder().build();
-        fieldTester.assertAllFieldsNotNull(graphqlResponse);
     }
 
     @Test

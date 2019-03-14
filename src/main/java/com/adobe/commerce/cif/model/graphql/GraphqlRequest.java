@@ -14,17 +14,22 @@
 
 package com.adobe.commerce.cif.model.graphql;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+@Deprecated
+/**
+ * @deprecated
+ */
 public class GraphqlRequest {
 
-    @ApiModelProperty(value = "The query string in graphQL query format.", required = true)
+    @ApiModelProperty(value = "DEPRECATED. The query string in graphQL query format.", required = true)
     protected String query;
     
-    @ApiModelProperty(value = "Only required if multiple operations are present in the query.")
+    @ApiModelProperty(value = "DEPRECATED. Only required if multiple operations are present in the query.")
     protected String operationName;
     
-    @ApiModelProperty(value = "An optional JSON object defining variables for the query.")
+    @ApiModelProperty(value = "DEPRECATED. An optional JSON object defining variables for the query.")
     protected Object variables;
 
     public String getQuery() {

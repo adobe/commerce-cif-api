@@ -18,12 +18,13 @@ import java.util.List;
 
 import io.swagger.annotations.ApiModelProperty;
 
+@Deprecated
 public class GraphqlResponse {
 
-    @ApiModelProperty(value = "If successful, this contains the JSON data returned by a graphQL request.")
+    @ApiModelProperty(value = "DEPRECATED. If successful, this contains the JSON data returned by a graphQL request.")
     protected Object data;
 
-    @ApiModelProperty(value = "If any, this contains a JSON array of the errors encountered while executing a graphQL request.")
+    @ApiModelProperty(value = "DEPRECATED. If any, this contains a JSON array of the errors encountered while executing a graphQL request.")
     protected List<Object> errors;
     
     public Object getData() {
