@@ -12,6 +12,10 @@
  *
  ******************************************************************************/
 
+/*
+ * DEPRECATED
+ */
+
 const genFolder = __dirname + '/../../../resources/generated/graphql';
 const fs = require('fs');
 const fsx = require('fs-extra');

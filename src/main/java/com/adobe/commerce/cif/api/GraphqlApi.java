@@ -30,14 +30,16 @@ import io.swagger.annotations.ApiParam;
 import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE;
 import static com.adobe.commerce.cif.api.Constants.ACCEPT_LANGUAGE_DESC;
 
+@Deprecated
 @Path("/graphql")
 @Api(value = "/graphql")
 @Produces(MediaType.APPLICATION_JSON)
 public interface GraphqlApi {
 
+    @Deprecated
     @POST
     @Path("/")
-    @ApiOperation(value = "Processes a GraphQL request and returns a GraphQL response.")
+    @ApiOperation(value = "DEPRECATED. Processes a GraphQL request and returns a GraphQL response.")
     @Consumes(MediaType.APPLICATION_JSON)
     GraphqlResponse postRequest(
         @ApiParam(value = "The graphQL JSON request", required = true)
