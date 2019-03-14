@@ -103,14 +103,14 @@ function updateSwaggerUiIndex() {
     tags = tags.filter(tag => !tag.startsWith('api-model-0.') && tag != 'api-model-1.0.0' && tag != 'api-model-1.1.0');
 
     let urls = [
-        {url: "http://opensource.adobe.com/commerce-cif-api/swagger-1.1.0.json", name: "CIF Cloud API 1.1.0"},
-        {url: "http://opensource.adobe.com/commerce-cif-api/swagger-1.0.0.json", name: "CIF Cloud API 1.0.0"}
+        {url: "http://opensource.adobe.com/commerce-cif-api/swagger-1.1.0.json", name: "CIF REST API 1.1.0"},
+        {url: "http://opensource.adobe.com/commerce-cif-api/swagger-1.0.0.json", name: "CIF REST API 1.0.0"}
     ];
 
     tags.forEach(tag => {
         urls.unshift({
             url: `https://raw.githubusercontent.com/adobe/commerce-cif-api/${tag}/src/main/resources/swagger/swagger.json`,
-            name: 'CIF Cloud API ' + tag.substring(10)
+            name: 'CIF REST API ' + tag.substring(10)
         });
     });
 

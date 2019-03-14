@@ -1,7 +1,7 @@
 {
   "name": "cif-js-model-generator",
   "version": "0.1.0",
-  "description": "Generates ES6 model classes, Nginx configuration, and graphQL schema based on the CIF Swagger specification.",
+  "description": "Generates ES6 model classes, Nginx configuration, and graphQL schema based on the CIF REST Swagger specification.",
   "main": "index.js",
   "private": true,
   "scripts": {
