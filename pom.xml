@@ -134,16 +134,6 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>npm test</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>run test</arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
                         <id>npm publish</id>
                         <phase>deploy</phase>
                         <goals>
