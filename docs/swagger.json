@@ -3,7 +3,7 @@
   "info" : {
     "description" : "Adobe Commerce Cloud API",
     "version" : "1.1.0",
-    "title" : "Commerce Integration Framework (CIF) Cloud API",
+    "title" : "Commerce Integration Framework (CIF REST) API",
     "license" : {
       "name" : "Copyright 2018 Adobe. All rights reserved."
     },

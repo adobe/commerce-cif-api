@@ -20,8 +20,8 @@
     <artifactId>api-model</artifactId>
     <version>1.5.1-SNAPSHOT</version>
 
-    <name>Commerce Integration Framework (CIF) Cloud - API and Models</name>
-    <description>This package contains the REST API and java model definition of the Commerce Integration Framework (CIF) Cloud.</description>
+    <name>Commerce Integration Framework (CIF REST) - API and Models</name>
+    <description>This package contains the REST API and java model definition of the Commerce Integration Framework (CIF REST).</description>
     <url>https://github.com/adobe/commerce-cif-api</url>
 
     <scm>
@@ -69,7 +69,7 @@
                             <host>runtime.adobe.io</host>
                             <basePath>/commerce</basePath>
                             <info>
-                                <title>Commerce Integration Framework (CIF) Cloud API</title>
+                                <title>Commerce Integration Framework (CIF REST) API</title>
                                 <version>${project.version}</version>
                                 <description>Adobe Commerce Cloud API</description>
                                 <license>

@@ -1,7 +1,7 @@
 {
   "name": "@adobe/commerce-cif-model",
   "version": "VERSION_PLACEHOLDER",
-  "description": "Adobe Commerce Integration Framework (CIF) Model Project",
+  "description": "Adobe Commerce Integration Framework (CIF REST) Model Project",
   "author": "Adobe Systems Inc.",
   "license": "Apache-2.0",
   "repository": {
@@ -10,8 +10,8 @@
   },
   "keywords": [
     "Adobe",
-    "Commerce Integration Framework Cloud",
-    "CIF Cloud"
+    "Commerce Integration Framework",
+    "CIF REST"
   ]
 }
 

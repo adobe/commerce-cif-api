@@ -1,7 +1,7 @@
 {
   "name": "commerce-cif-api-release-tools",
   "version": "1.0.0",
-  "description": "This package contains tools to build and release the CIF API",
+  "description": "This package contains tools to build and release the CIF REST API",
   "private": true,
   "author": "Adobe Systems Inc.",
   "license": "Apache-2.0",

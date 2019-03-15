@@ -4,24 +4,24 @@
 [![Maven Central](https://img.shields.io/maven-central/v/com.adobe.commerce.cif/api-model.svg)](https://search.maven.org/search?q=g:com.adobe.commerce.cif%20AND%20a:api-model)
 [![npm (scoped)](https://img.shields.io/npm/v/@adobe/commerce-cif-model.svg)](https://www.npmjs.com/package/@adobe/commerce-cif-model)
 
-# Adobe CIF Cloud API and data model
+# Adobe CIF REST API and data model
 
-This repository contains the API reference and data model documentation files for the Adobe Commerce Integration Framework (CIF) Cloud API.
+This repository contains the API reference and data model documentation files for the Adobe Commerce Integration Framework (CIF REST) API.
 
 ## API
 
-The CIF Cloud API is the heart of all programmatic interactions with Adobe's commerce integrations. The goal of the CIF Cloud API is to provide a comprehensive and extendable commerce storefront API. The API defines endpoints and data models suitable for all channels of customer facing shopping experiences. 
+The CIF REST API is the heart of all programmatic interactions with Adobe's commerce integrations. The goal of the CIF REST API is to provide a comprehensive and extendable commerce storefront API. The API defines endpoints and data models suitable for all channels of customer facing shopping experiences. 
 
-Using the CIF Cloud API, you can:
+Using the CIF REST API, you can:
 
 * Retrieve product information for a single product or a collection of products and use it on any website or device.
 * Invoke a product search and filter to search results.
 * Create omni channel checkout experiences with flexible control over the shopping cart and checkout flow.
 * Create and login customer users to build personalized experiences.
 
-CIF Cloud services are exposed via REST style APIs. All API access via Adobe I/O Runtime is over HTTPS. All CIF services return the information that you request as JSON data format.
+CIF REST services are exposed via REST style APIs. All API access via Adobe I/O Runtime is over HTTPS. All CIF REST services return the information that you request as JSON data format.
 
-The CIF Cloud API is not a full CRUD commerce admin or management API, for example it is not designed for data import / export use cases.
+The CIF REST API is not a full CRUD commerce admin or management API, for example it is not designed for data import / export use cases.
 
 ### API Specification
 
@@ -29,7 +29,7 @@ The API and data models are specified in [swagger.yaml](src/main/resources/swagg
 
 The API and models are actually defined in Java with both `swagger` and `jax-rs` annotations, so we do not directly edit the Swagger JSON and YAML specification. These Java definitions can be found under [src/main/java](src/main/java). They are used to automatically generate:
 * the Swagger specification: [src/main/resources/swagger](src/main/resources/swagger)
-* the Javascript model classes used by the CIF implementations written in `Node.js`: [src/main/resources/javascript](src/main/resources/javascript)
+* the Javascript model classes used by the CIF REST implementations written in `Node.js`: [src/main/resources/javascript](src/main/resources/javascript)
 * the Nginx configuration that can be used to configure the CIF REST API endpoints on an Openwhisk environment: [src/main/resources/nginx](src/main/resources/nginx)
 
 Note that the build actually generates these files under the `src/main/resources/generated` folder, but this folder is not committed on the git repository. The `maven release` process actually copies the generated files to the folders mentioned above so that we only have released files in the repository.
@@ -60,17 +60,17 @@ The Java unit tests in [src/test](src/test) ensure that all model classes define
 
 ### JSON model examples
 
-The [resources](src/test/resources) folder contains some JSON model examples that can help during the development of the CIF Cloud API. Check the [README](src/test/resources) in that folder for more information about the examples.
+The [resources](src/test/resources) folder contains some JSON model examples that can help during the development of the CIF REST API. Check the [README](src/test/resources) in that folder for more information about the examples.
 
-Note that these examples are also used by unit tests to ensure that they are always up-to-date with the Java models. This means that a change in a model usually requires applying that change to the corresponsing JSON example. This ensures that all examples are always also updated so that they accurately represent the JSON responses expected by the CIF API.
+Note that these examples are also used by unit tests to ensure that they are always up-to-date with the Java models. This means that a change in a model usually requires applying that change to the corresponsing JSON example. This ensures that all examples are always also updated so that they accurately represent the JSON responses expected by the CIF REST API.
 
 ## Adobe I/O Runtime
 
-The CIF Cloud services architecture is based on [Apache OpenWhisk](https://openwhisk.apache.org) & [Adobe I/O Runtime](https://www.adobe.io/apis/cloudplatform/runtime.html). The main building blocks of the new commerce services are serverless functions (OpenWhisk actions). These actions run on Adobe I/O Runtime inside an isolated container, stateless and serverless interacting with the commerce backend system or other endpoints via their APIs. 
+The CIF REST services architecture is based on [Apache OpenWhisk](https://openwhisk.apache.org) & [Adobe I/O Runtime](https://www.adobe.io/apis/cloudplatform/runtime.html). The main building blocks of the new commerce services are serverless functions (OpenWhisk actions). These actions run on Adobe I/O Runtime inside an isolated container, stateless and serverless interacting with the commerce backend system or other endpoints via their APIs. 
 
 ### Configuring the REST API on Adobe I/O Runtime
 
-The current implementations of the CIF Cloud API for [Magento](https://github.com/adobe/commerce-cif-magento) and [Commercetools](https://github.com/adobe/commerce-cif-commercetools) expose web actions that can be called directly and that do not automatically "implement" the CIF Cloud REST API. For example, the `/products/{id}` endpoint would be reachable via the following URL, assuming an example `demo` namespace with the actions deployed in the `magento` package, looking up a product with id `123`:
+The current implementations of the CIF REST API for [Magento](https://github.com/adobe/commerce-cif-magento) and [Commercetools](https://github.com/adobe/commerce-cif-commercetools) expose web actions that can be called directly and that do not automatically "implement" the CIF REST API. For example, the `/products/{id}` endpoint would be reachable via the following URL, assuming an example `demo` namespace with the actions deployed in the `magento` package, looking up a product with id `123`:
 
 `https://runtime.adobe.io/api/v1/web/demo/magento/getProductById?id=123`
 
@@ -78,8 +78,8 @@ The configuration of the REST API is done "on top" of those web actions, based o
 
 To do so, simply edit the [pom.xml](pom.xml) file of the project, and replace the following properties of the `swagger-maven-plugin`:
 * `basePath`: the base path via which your REST API will be reachable, for example `/commerce`
-* `x-ow-namespace`: the namespace in which your CIF Cloud actions are deployed
-* `x-ow-package`: the package in which your CIF Cloud actions are deployed
+* `x-ow-namespace`: the namespace in which your CIF REST actions are deployed
+* `x-ow-package`: the package in which your CIF REST actions are deployed
 
 then rebuild the project with `mvn clean compile`. This will regenerate the Swagger documentation in `src/main/resources/generated/swagger/`.
 
@@ -99,9 +99,9 @@ This endpoint basically fowards all requests to the corresponding web action. No
 
 The configuration of the REST API on a local Openwhisk instance is done differently. One has to do the same changes to the `pom.xml`, rebuild the project, and this also generates the file `src/main/resources/generated/nginx/nginx-config.txt`. See the instructions at the top of this file to add this nginx extra configuration to a local Openwhisk instance.
 
-## Implementing the CIF API
+## Implementing the CIF REST API
 
-If you plan to implement the CIF API for a particular commerce system, you can follow the [tutorial](documentation/tutorial) that guides you into developing one particular API endpoint.
+If you plan to implement the CIF REST API for a particular commerce system, you can follow the [tutorial](documentation/tutorial) that guides you into developing one particular API endpoint.
 
 ### Product Search
 
@@ -109,7 +109,7 @@ The product search service supports a flexible approach to query & filter produc
 
 ## Online Swagger-ui documentation
 
-To publish our CIF Cloud Swagger specification, a [github page](http://opensource.adobe.com/commerce-cif-api/) was 
+To publish our CIF REST Swagger specification, a [github page](http://opensource.adobe.com/commerce-cif-api/) was 
 configured for the repository.
 The page is configured to display the content of the [docs](docs) folder, which is basically a slightly modified version of swagger-ui.
 
