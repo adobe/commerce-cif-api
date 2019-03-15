@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Adobe Commerce Integration Framework (CIF REST) Cloud API</title>
+    <title>Adobe Commerce Integration Framework (CIF REST) API</title>
     <link rel="stylesheet" type="text/css" href="./swagger-ui.css" >
     <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
@@ -40,6 +40,10 @@
       // Begin Swagger UI call region
       const ui = SwaggerUIBundle({
         urls: [
+    {
+        "url": "https://raw.githubusercontent.com/adobe/commerce-cif-api/api-model-1.5.0/src/main/resources/swagger/swagger.json",
+        "name": "CIF REST API 1.5.0"
+    },
     {
         "url": "https://raw.githubusercontent.com/adobe/commerce-cif-api/api-model-1.4.0/src/main/resources/swagger/swagger.json",
         "name": "CIF REST API 1.4.0"

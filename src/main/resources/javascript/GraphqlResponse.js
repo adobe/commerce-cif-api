@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.4.0
+ * @version 1.5.0
  */
 
 class GraphqlResponse {
@@ -29,13 +29,13 @@ class GraphqlResponse {
     constructor(builder) {
 
         /**
-         * If successful, this contains the JSON data returned by a graphQL request.
+         * DEPRECATED. If successful, this contains the JSON data returned by a graphQL request.
          * @type {object}
          */
         this.data = undefined;
 
         /**
-         * If any, this contains a JSON array of the errors encountered while executing a graphQL request.
+         * DEPRECATED. If any, this contains a JSON array of the errors encountered while executing a graphQL request.
          * @type {object[]}
          */
         this.errors = undefined;

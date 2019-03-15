@@ -2,8 +2,8 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "Adobe Commerce Cloud API",
-    "version" : "1.4.0",
-    "title" : "Commerce Integration Framework (CIF REST) Cloud API",
+    "version" : "1.5.0",
+    "title" : "Commerce Integration Framework (CIF REST) API",
     "license" : {
       "name" : "Copyright 2018 Adobe. All rights reserved."
     },
@@ -1510,7 +1510,7 @@
     "/graphql" : {
       "post" : {
         "tags" : [ "graphql" ],
-        "summary" : "Processes a GraphQL request and returns a GraphQL response.",
+        "summary" : "DEPRECATED. Processes a GraphQL request and returns a GraphQL response.",
         "description" : "",
         "operationId" : "default/postRequest",
         "consumes" : [ "application/json" ],
@@ -1537,7 +1537,8 @@
               "$ref" : "#/definitions/GraphqlResponse"
             }
           }
-        }
+        },
+        "deprecated" : true
       }
     },
     "/inventory/query" : {
@@ -2940,15 +2941,15 @@
       "properties" : {
         "query" : {
           "type" : "string",
-          "description" : "The query string in graphQL query format."
+          "description" : "DEPRECATED. The query string in graphQL query format."
         },
         "operationName" : {
           "type" : "string",
-          "description" : "Only required if multiple operations are present in the query."
+          "description" : "DEPRECATED. Only required if multiple operations are present in the query."
         },
         "variables" : {
           "type" : "object",
-          "description" : "An optional JSON object defining variables for the query."
+          "description" : "DEPRECATED. An optional JSON object defining variables for the query."
         }
       }
     },
@@ -2957,11 +2958,11 @@
       "properties" : {
         "data" : {
           "type" : "object",
-          "description" : "If successful, this contains the JSON data returned by a graphQL request."
+          "description" : "DEPRECATED. If successful, this contains the JSON data returned by a graphQL request."
         },
         "errors" : {
           "type" : "array",
-          "description" : "If any, this contains a JSON array of the errors encountered while executing a graphQL request.",
+          "description" : "DEPRECATED. If any, this contains a JSON array of the errors encountered while executing a graphQL request.",
           "items" : {
             "type" : "object"
           }

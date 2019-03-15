@@ -16,7 +16,7 @@
  * Auto generated code based on Swagger definition.
  * Dot not edit manually. Manual changes will be overridden.
  *
- * @version 1.4.0
+ * @version 1.5.0
  */
 
 class GraphqlRequest {
@@ -29,19 +29,19 @@ class GraphqlRequest {
     constructor(builder) {
 
         /**
-         * Only required if multiple operations are present in the query.
+         * DEPRECATED. Only required if multiple operations are present in the query.
          * @type {string}
          */
         this.operationName = undefined;
 
         /**
-         * The query string in graphQL query format.
+         * DEPRECATED. The query string in graphQL query format.
          * @type {string}
          */
         this.query = builder.query;
 
         /**
-         * An optional JSON object defining variables for the query.
+         * DEPRECATED. An optional JSON object defining variables for the query.
          * @type {object}
          */
         this.variables = undefined;
