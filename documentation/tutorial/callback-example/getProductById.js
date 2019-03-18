@@ -15,7 +15,7 @@
 
 'use strict';
 
-const HttpClient = require('node-rest-client').Client;
+const request = require('request');
 
 // This should point to some commerce backend URL to GET products
 const url = 'https://my-commerce-backend/products/';
@@ -34,12 +34,13 @@ function main(args) {
     let httpClient = new HttpClient();
     
     return new Promise((resolve, reject) => {
-        httpClient.get(url + args.id, function (data, response) {
-            return resolve(buildResponse(data));
-        }).on('error', function (err) {
-            // To have this example working even without a valid URL, we simulate some "response" here
-            return resolve(buildResponse(sampleProductData));
-        });
+        request(url + args.id, function (error, response, body) {
+            if(response.statusCode == 200){
+                return resolve(buildResponse(body));
+            } else {
+                return resolve(buildResponse(sampleProductData));
+            }
+          });
     });
 }
 
