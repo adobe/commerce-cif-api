@@ -4,7 +4,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/com.adobe.commerce.cif/api-model.svg)](https://search.maven.org/search?q=g:com.adobe.commerce.cif%20AND%20a:api-model)
 [![npm (scoped)](https://img.shields.io/npm/v/@adobe/commerce-cif-model.svg)](https://www.npmjs.com/package/@adobe/commerce-cif-model)
 
-# Adobe CIF REST API and data model
+# Adobe CIF REST API and data model (NOTE: Replaced with new API / Github; CIF REST API and data model not supported by Adobe anymore)
 
 This repository contains the API reference and data model documentation files for the Adobe Commerce Integration Framework (CIF REST) API.
 
